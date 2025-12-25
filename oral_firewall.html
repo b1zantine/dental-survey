@@ -332,6 +332,28 @@
                 </select>
             </div>
 
+            <div class="form-group">
+                <label>9. SYSTEM OVERLOAD: Common oral health consequence of prolonged psychological stress:</label>
+                <select name="q_stress">
+                    <option value="">Select...</option>
+                    <option value="A">Increased salivary flow</option>
+                    <option value="B">Improved oral hygiene habits</option>
+                    <option value="C">Strengthening of tooth enamel</option>
+                    <option value="D">Development of gum disease due to inflammation</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>10. SPECIALIST MODULE: Which dental specialty focuses on gum disease prevention and treatment?</label>
+                <select name="q_specialty">
+                    <option value="">Select...</option>
+                    <option value="A">Orthodontics</option>
+                    <option value="B">Prosthodontics</option>
+                    <option value="C">Periodontics</option>
+                    <option value="D">Endodontics</option>
+                </select>
+            </div>
+
             <button type="button" class="btn" onclick="validateAndNext('screen-level2', 'screen-level3')">COMPILE DATA &gt;&gt;</button>
         </div>
 
@@ -363,18 +385,60 @@
                     <div style="text-align:center"><input type="radio" name="att_2" value="SD"></div>
                 </div>
                  <div class="likert-grid">
-                    <div>3. Workplace stress overheats the oral drive.</div>
+                    <div>3. Attending workplace awareness programs will improve gum health.</div>
                     <div style="text-align:center"><input type="radio" name="att_3" value="SA"></div>
                     <div style="text-align:center"><input type="radio" name="att_3" value="A"></div>
                     <div style="text-align:center"><input type="radio" name="att_3" value="D"></div>
                     <div style="text-align:center"><input type="radio" name="att_3" value="SD"></div>
                 </div>
                  <div class="likert-grid">
-                    <div>4. Visiting Admin (Dentist) only necessary during failure (Pain).</div>
+                    <div>4. Maintaining oral hygiene is equally important as maintaining physical fitness.</div>
                     <div style="text-align:center"><input type="radio" name="att_4" value="SA"></div>
                     <div style="text-align:center"><input type="radio" name="att_4" value="A"></div>
                     <div style="text-align:center"><input type="radio" name="att_4" value="D"></div>
                     <div style="text-align:center"><input type="radio" name="att_4" value="SD"></div>
+                </div>
+                 <div class="likert-grid">
+                    <div>5. Visiting Admin (Dentist) only necessary during failure (Pain).</div>
+                    <div style="text-align:center"><input type="radio" name="att_5" value="SA"></div>
+                    <div style="text-align:center"><input type="radio" name="att_5" value="A"></div>
+                    <div style="text-align:center"><input type="radio" name="att_5" value="D"></div>
+                    <div style="text-align:center"><input type="radio" name="att_5" value="SD"></div>
+                </div>
+                 <div class="likert-grid">
+                    <div>6. Poor gum health can negatively affect my confidence or social interactions.</div>
+                    <div style="text-align:center"><input type="radio" name="att_6" value="SA"></div>
+                    <div style="text-align:center"><input type="radio" name="att_6" value="A"></div>
+                    <div style="text-align:center"><input type="radio" name="att_6" value="D"></div>
+                    <div style="text-align:center"><input type="radio" name="att_6" value="SD"></div>
+                </div>
+                 <div class="likert-grid">
+                    <div>7. Oral hygiene aids like floss or mouthwash can be used if recommended by a dentist.</div>
+                    <div style="text-align:center"><input type="radio" name="att_7" value="SA"></div>
+                    <div style="text-align:center"><input type="radio" name="att_7" value="A"></div>
+                    <div style="text-align:center"><input type="radio" name="att_7" value="D"></div>
+                    <div style="text-align:center"><input type="radio" name="att_7" value="SD"></div>
+                </div>
+                 <div class="likert-grid">
+                    <div>8. Oral hygiene maintenance is time consuming and difficult to follow.</div>
+                    <div style="text-align:center"><input type="radio" name="att_8" value="SA"></div>
+                    <div style="text-align:center"><input type="radio" name="att_8" value="A"></div>
+                    <div style="text-align:center"><input type="radio" name="att_8" value="D"></div>
+                    <div style="text-align:center"><input type="radio" name="att_8" value="SD"></div>
+                </div>
+                 <div class="likert-grid">
+                    <div>9. Workplace stress can have an impact on my gum and oral health.</div>
+                    <div style="text-align:center"><input type="radio" name="att_9" value="SA"></div>
+                    <div style="text-align:center"><input type="radio" name="att_9" value="A"></div>
+                    <div style="text-align:center"><input type="radio" name="att_9" value="D"></div>
+                    <div style="text-align:center"><input type="radio" name="att_9" value="SD"></div>
+                </div>
+                 <div class="likert-grid">
+                    <div>10. Investing in preventive dental care is better than spending on treatment later.</div>
+                    <div style="text-align:center"><input type="radio" name="att_10" value="SA"></div>
+                    <div style="text-align:center"><input type="radio" name="att_10" value="A"></div>
+                    <div style="text-align:center"><input type="radio" name="att_10" value="D"></div>
+                    <div style="text-align:center"><input type="radio" name="att_10" value="SD"></div>
                 </div>
             </div>
 
@@ -409,32 +473,79 @@
                 <label>3. Peripheral Type (Brush Hardness):</label>
                 <div class="radio-group">
                     <label><input type="radio" name="p_type" value="Soft">Soft</label>
+                    <label><input type="radio" name="p_type" value="Ultrasoft">Ultrasoft</label>
                     <label><input type="radio" name="p_type" value="Medium">Medium</label>
                     <label><input type="radio" name="p_type" value="Hard">Hard</label>
                 </div>
             </div>
 
             <div class="form-group">
-                <label>4. Runtime Duration:</label>
+                <label>4. Script Execution Schedule (When do you brush?):</label>
                 <div class="radio-group">
-                    <label><input type="radio" name="p_time" value="Low">&lt; 1 min</label>
-                    <label><input type="radio" name="p_time" value="Med">1-3 min</label>
-                    <label><input type="radio" name="p_time" value="High">&gt; 5 min</label>
+                    <label><input type="radio" name="p_when" value="Morning">Only morning</label>
+                    <label><input type="radio" name="p_when" value="Night">Only night</label>
+                    <label><input type="radio" name="p_when" value="Both">Both morning and night</label>
+                    <label><input type="radio" name="p_when" value="AfterMeals">After lunch and breakfast</label>
                 </div>
             </div>
 
             <div class="form-group">
-                <label>5. Debugging Tools (Check all used):</label>
+                <label>5. Runtime Duration:</label>
                 <div class="radio-group">
-                    <label><input type="checkbox" name="p_tool" value="Tongue">Tongue Scraper</label>
-                    <label><input type="checkbox" name="p_tool" value="Floss">Floss</label>
-                    <label><input type="checkbox" name="p_tool" value="Pick">Toothpick</label>
+                    <label><input type="radio" name="p_time" value="Low">&lt; 1 min</label>
+                    <label><input type="radio" name="p_time" value="Med">1-3 min</label>
+                    <label><input type="radio" name="p_time" value="High">3-5 min</label>
+                    <label><input type="radio" name="p_time" value="VeryHigh">&gt; 5 min</label>
                 </div>
+            </div>
+
+            <div class="form-group">
+                <label>6. Post-Meal Rinse Protocol:</label>
+                <select name="p_rinse">
+                    <option value="">Select...</option>
+                    <option value="Everytime">Yes, everytime</option>
+                    <option value="Occasionally">Occasionally</option>
+                    <option value="Never">Never</option>
+                    <option value="AfterDinner">Only after dinner</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>7. Debugging Tools (Check all used):</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="p_tool" value="Tongue">Tongue scraper</label>
+                    <label><input type="radio" name="p_tool" value="Floss">Dental floss</label>
+                    <label><input type="radio" name="p_tool" value="Pick">Tooth pick</label>
+                    <label><input type="radio" name="p_tool" value="Both">Both (Tongue scraper and Floss)</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>8. Peripheral Replacement Cycle:</label>
+                <select name="p_replace">
+                    <option value="">Select...</option>
+                    <option value="3months">Once in 3 months</option>
+                    <option value="6months">Once in 6 months</option>
+                    <option value="1year">Once in a year</option>
+                    <option value="WearOut">When the bristles wear out</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>9. Last Admin Visit (Dentist):</label>
+                <select name="p_dentist">
+                    <option value="">Select...</option>
+                    <option value="Never">Never</option>
+                    <option value="0-6months">0 - 6 months</option>
+                    <option value="7-12months">7 - 12 months</option>
+                    <option value="MoreThanYear">More than a year</option>
+                </select>
             </div>
             
              <div class="form-group">
-                <label>6. Corrupting Files (Habits: Gutka/Pan/Smoke):</label>
+                <label>10. Corrupting Files (Habits: Gutka/Pan/Smoke):</label>
                  <select name="p_habits">
+                    <option value="">Select...</option>
                     <option value="No">No</option>
                     <option value="Yes">Yes</option>
                     <option value="Sometimes">Sometimes</option>
@@ -450,7 +561,7 @@
     <div id="screen-results" class="hidden">
         <h2>DIAGNOSTIC COMPLETE</h2>
         <div style="border: 1px solid var(--terminal-green); padding: 15px; margin-bottom: 20px;">
-            <p>KNOWLEDGE DATABASE: <span id="res-knowledge">0</span>/8 Correct</p>
+            <p>KNOWLEDGE DATABASE: <span id="res-knowledge">0</span>/10 Correct</p>
             <p>SYSTEM INTEGRITY SCORE: <span id="res-score">0</span>%</p>
             <h3 id="res-title" style="color: #fff; background: var(--terminal-green); color: #000; display:inline-block; padding: 5px;">ANALYZING...</h3>
         </div>
@@ -519,6 +630,8 @@
         if(formData.get('q_diet') === 'A') knowledgeScore++;
         if(formData.get('q_vit') === 'C') knowledgeScore++;
         if(formData.get('q_health') === 'B') knowledgeScore++;
+        if(formData.get('q_stress') === 'D') knowledgeScore++;
+        if(formData.get('q_specialty') === 'C') knowledgeScore++;
 
         // Practice Scoring (Arbitrary for Game Fun)
         // Brushing 2x = 10pts
