@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: Oral Firewall | System Diagnostic</title>
+    <style>
+        :root {
+            --bg-color: #0d0d0d;
+            --terminal-green: #0f0;
+            --terminal-dim: #004400;
+            --alert-red: #ff3333;
+            --ui-font: 'Courier New', Courier, monospace;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--terminal-green);
+            font-family: var(--ui-font);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.2));
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            border: 2px solid var(--terminal-green);
+            padding: 20px;
+            box-shadow: 0 0 20px var(--terminal-dim);
+            background-color: rgba(0, 20, 0, 0.9);
+            position: relative;
+        }
+
+        h1, h2 {
+            text-transform: uppercase;
+            border-bottom: 1px dashed var(--terminal-green);
+            padding-bottom: 10px;
+            text-shadow: 0 0 5px var(--terminal-green);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .btn {
+            background-color: transparent;
+            color: var(--terminal-green);
+            border: 1px solid var(--terminal-green);
+            padding: 10px 20px;
+            font-family: var(--ui-font);
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--terminal-green);
+            color: var(--bg-color);
+            box-shadow: 0 0 10px var(--terminal-green);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            border-left: 2px solid var(--terminal-dim);
+            padding-left: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="number"], select {
+            background-color: #000;
+            border: 1px solid var(--terminal-green);
+            color: var(--terminal-green);
+            padding: 8px;
+            width: 90%;
+            font-family: var(--ui-font);
+        }
+
+        .radio-group label {
+            font-weight: normal;
+            display: inline-block;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        
+        .radio-group input {
+            margin-right: 5px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: var(--terminal-dim);
+            height: 10px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: var(--terminal-green);
+            width: 0%;
+            transition: width 0.5s;
+        }
+
+        .blink {
+            animation: blinker 1s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% { opacity: 0; }
+        }
+
+        .error-msg {
+            color: var(--alert-red);
+            font-size: 0.8em;
+            display: none;
+        }
+        
+        /* Grid for Attitude Likert Scale */
+        .likert-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            gap: 10px;
+            align-items: center;
+            border-bottom: 1px solid var(--terminal-dim);
+            padding: 10px 0;
+        }
+        .likert-header {
+            font-weight: bold;
+            border-bottom: 1px solid var(--terminal-green);
+            margin-bottom: 10px;
+        }
+        .mobile-label { display: none; }
+        
+        @media (max-width: 600px) {
+            .likert-grid {
+                grid-template-columns: 1fr;
+            }
+            .mobile-label { display: inline; margin-left: 5px; color: #888; font-size: 0.8em; }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="scanlines"></div>
+
+<div class="container">
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <div style="text-align: right; font-size: 0.8em;">SYSTEM STATUS: <span id="systemStatus">IDLE</span></div>
+
+    <div id="screen-intro">
+        <h1>PROJECT: ORAL FIREWALL v1.0</h1>
+        <p>> TARGET: IT Professionals, Bangalore City</p>
+        <p>> MISSION: Diagnose biological hardware (Gums) before system failure.</p>
+        <p>> INITIATING PROTOCOL...</p>
+        <br>
+        <div class="blink">PRESS START TO BEGIN DIAGNOSTICS_</div>
+        <button class="btn" onclick="nextScreen('screen-intro', 'screen-level1')">START SYSTEM CHECK</button>
+    </div>
+
+    <form id="gameForm">
+        
+        <div id="screen-level1" class="hidden">
+            <h2>LEVEL 1: HARDWARE SPECS</h2>
+            
+            <div class="form-group">
+                <label>1. Hardware Runtime Age (Years) *</label>
+                <input type="number" name="age" required>
+            </div>
+
+            <div class="form-group">
+                <label>2. Chassis Type (Gender) *</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="gender" value="Male">Male</label>
+                    <label><input type="radio" name="gender" value="Female">Female</label>
+                    <label><input type="radio" name="gender" value="Other">Other</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>3. Experience Level (Years of Work) *</label>
+                <input type="number" name="exp" required>
+            </div>
+
+            <div class="form-group">
+                <label>4. Server Node Location (Locality) *</label>
+                <input type="text" name="locality" required>
+            </div>
+
+            <div class="form-group">
+                <label>5. Operation Mode (Work Type) *</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="worktype" value="FullTime">On-Prem (Full Time)</label>
+                    <label><input type="radio" name="worktype" value="Hybrid">Hybrid Cloud</label>
+                    <label><input type="radio" name="worktype" value="Remote">Remote Server (WFH)</label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>6. Admin Privilege (Designation) *</label>
+                <input type="text" name="designation" required>
+            </div>
+
+            <div class="form-group">
+                <label>7. Previous Incident Reports (Gum Treatment?) *</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="treatment" value="Yes" onclick="toggleTreatment(true)">Yes (Data Recovery Needed)</label>
+                    <label><input type="radio" name="treatment" value="No" onclick="toggleTreatment(false)">No</label>
+                </div>
+            </div>
+
+            <div class="form-group hidden" id="treatment-details">
+                <label>8. Specify Recovery Method:</label>
+                <div class="radio-group">
+                    <label><input type="checkbox" name="treatment_type" value="Scaling">Cleaning (Scaling)</label><br>
+                    <label><input type="checkbox" name="treatment_type" value="RootPlaning">Deep Debug (Root Planing)</label><br>
+                    <label><input type="checkbox" name="treatment_type" value="Surgery">Hardware Replacement (Flap Surgery)</label>
+                </div>
+            </div>
+
+            <button type="button" class="btn" onclick="validateAndNext('screen-level1', 'screen-level2')">UPLOAD SPECS &gt;&gt;</button>
+        </div>
+
+        <div id="screen-level2" class="hidden">
+            <h2>LEVEL 2: THREAT IDENTIFICATION</h2>
+            <p>> Identify the malware correctly to update virus definitions.</p>
+
+            <div class="form-group">
+                <label>1. THREAT DETECTED: "Dental Plaque". Identify file type:</label>
+                <select name="q_plaque">
+                    <option value="">Select...</option>
+                    <option value="A">Hard mineral deposit</option>
+                    <option value="B">Soft film of bacteria (Malware)</option>
+                    <option value="C">Coffee stains</option>
+                    <option value="D">Protective Enamel</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>2. THREAT ESCALATION: "Calculus/Tartar". Identify status:</label>
+                <select name="q_calculus">
+                    <option value="">Select...</option>
+                    <option value="A">Hardened mineral block</option>
+                    <option value="B">Stains</option>
+                    <option value="C">Soft film</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>3. SYSTEM ALERT: Early Gum Infection Sign:</label>
+                <select name="q_sign">
+                    <option value="">Select...</option>
+                    <option value="A">White spots</option>
+                    <option value="B">Dry mouth (Fan failure)</option>
+                    <option value="C">Bleeding gums (Coolant leak)</option>
+                    <option value="D">Jaw pain</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>4. ROOT CAUSE: Primary cause of Gum Disease:</label>
+                <select name="q_cause">
+                    <option value="">Select...</option>
+                    <option value="A">Plaque accumulation (Data overflow)</option>
+                    <option value="B">Poor brushing</option>
+                    <option value="C">Tooth decay</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>5. PERFORMANCE: Main cause of Bad Breath:</label>
+                <select name="q_breath">
+                    <option value="">Select...</option>
+                    <option value="A">Frequent brushing</option>
+                    <option value="B">Gum disease (System corruption)</option>
+                    <option value="C">Cold beverages</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>6. EXTERNAL THREAT: Most damaging input?</label>
+                <select name="q_diet">
+                    <option value="">Select...</option>
+                    <option value="A">Processed sugar/drinks</option>
+                    <option value="B">Leafy greens</option>
+                    <option value="C">Dairy</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>7. ANTIVIRUS: Essential Vitamin Patch:</label>
+                <select name="q_vit">
+                    <option value="">Select...</option>
+                    <option value="A">Vitamin A</option>
+                    <option value="B">Vitamin B</option>
+                    <option value="C">Vitamin C</option>
+                </select>
+            </div>
+
+             <div class="form-group">
+                <label>8. NETWORK: Link to General Health:</label>
+                <select name="q_health">
+                    <option value="">Select...</option>
+                    <option value="A">Boosts immunity</option>
+                    <option value="B">Can affect Heart/Diabetes</option>
+                    <option value="C">Isolated to mouth only</option>
+                </select>
+            </div>
+
+            <button type="button" class="btn" onclick="validateAndNext('screen-level2', 'screen-level3')">COMPILE DATA &gt;&gt;</button>
+        </div>
+
+        <div id="screen-level3" class="hidden">
+            <h2>LEVEL 3: ADMIN CONFIGURATION</h2>
+            <p>> Do you Agree (Enable) or Disagree (Disable) with these protocols?</p>
+
+            <div class="likert-header likert-grid">
+                <div>Protocol</div>
+                <div style="text-align:center">Str. Agree</div>
+                <div style="text-align:center">Agree</div>
+                <div style="text-align:center">Disagree</div>
+                <div style="text-align:center">Str. Disagree</div>
+            </div>
+
+            <div id="attitude-questions">
+                <div class="likert-grid">
+                    <div>1. Neglecting hygiene logs leads to system crash.</div>
+                    <div style="text-align:center"><input type="radio" name="att_1" value="SA"><span class="mobile-label">SA</span></div>
+                    <div style="text-align:center"><input type="radio" name="att_1" value="A"><span class="mobile-label">A</span></div>
+                    <div style="text-align:center"><input type="radio" name="att_1" value="D"><span class="mobile-label">D</span></div>
+                    <div style="text-align:center"><input type="radio" name="att_1" value="SD"><span class="mobile-label">SD</span></div>
+                </div>
+                 <div class="likert-grid">
+                    <div>2. Leaking coolant (Bleeding) is a CRITICAL error.</div>
+                    <div style="text-align:center"><input type="radio" name="att_2" value="SA"></div>
+                    <div style="text-align:center"><input type="radio" name="att_2" value="A"></div>
+                    <div style="text-align:center"><input type="radio" name="att_2" value="D"></div>
+                    <div style="text-align:center"><input type="radio" name="att_2" value="SD"></div>
+                </div>
+                 <div class="likert-grid">
+                    <div>3. Workplace stress overheats the oral drive.</div>
+                    <div style="text-align:center"><input type="radio" name="att_3" value="SA"></div>
+                    <div style="text-align:center"><input type="radio" name="att_3" value="A"></div>
+                    <div style="text-align:center"><input type="radio" name="att_3" value="D"></div>
+                    <div style="text-align:center"><input type="radio" name="att_3" value="SD"></div>
+                </div>
+                 <div class="likert-grid">
+                    <div>4. Visiting Admin (Dentist) only necessary during failure (Pain).</div>
+                    <div style="text-align:center"><input type="radio" name="att_4" value="SA"></div>
+                    <div style="text-align:center"><input type="radio" name="att_4" value="A"></div>
+                    <div style="text-align:center"><input type="radio" name="att_4" value="D"></div>
+                    <div style="text-align:center"><input type="radio" name="att_4" value="SD"></div>
+                </div>
+            </div>
+
+            <button type="button" class="btn" onclick="validateAndNext('screen-level3', 'screen-level4')">SAVE CONFIG &gt;&gt;</button>
+        </div>
+
+        <div id="screen-level4" class="hidden">
+            <h2>LEVEL 4: MAINTENANCE LOGS</h2>
+            <p>> Audit your daily operations.</p>
+
+            <div class="form-group">
+                <label>1. Cleaning Script Frequency (Brush/Day):</label>
+                <select name="p_freq">
+                    <option value="2">Twice a day (Optimal)</option>
+                    <option value="3">Thrice a day</option>
+                    <option value="1">Once a day</option>
+                    <option value="0">Occasionally</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>2. Script Algorithm (Direction):</label>
+                <select name="p_dir">
+                    <option value="Circular">Circular</option>
+                    <option value="Vertical">Vertical</option>
+                    <option value="Horizontal">Horizontal</option>
+                    <option value="Mixed">Mixed</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>3. Peripheral Type (Brush Hardness):</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="p_type" value="Soft">Soft</label>
+                    <label><input type="radio" name="p_type" value="Medium">Medium</label>
+                    <label><input type="radio" name="p_type" value="Hard">Hard</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>4. Runtime Duration:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="p_time" value="Low">&lt; 1 min</label>
+                    <label><input type="radio" name="p_time" value="Med">1-3 min</label>
+                    <label><input type="radio" name="p_time" value="High">&gt; 5 min</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>5. Debugging Tools (Check all used):</label>
+                <div class="radio-group">
+                    <label><input type="checkbox" name="p_tool" value="Tongue">Tongue Scraper</label>
+                    <label><input type="checkbox" name="p_tool" value="Floss">Floss</label>
+                    <label><input type="checkbox" name="p_tool" value="Pick">Toothpick</label>
+                </div>
+            </div>
+            
+             <div class="form-group">
+                <label>6. Corrupting Files (Habits: Gutka/Pan/Smoke):</label>
+                 <select name="p_habits">
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                    <option value="Sometimes">Sometimes</option>
+                    <option value="Quit">Have Quit (Uninstalled)</option>
+                </select>
+            </div>
+
+            <button type="button" class="btn" onclick="calculateScore()">RUN FINAL DIAGNOSTIC</button>
+        </div>
+
+    </form>
+
+    <div id="screen-results" class="hidden">
+        <h2>DIAGNOSTIC COMPLETE</h2>
+        <div style="border: 1px solid var(--terminal-green); padding: 15px; margin-bottom: 20px;">
+            <p>KNOWLEDGE DATABASE: <span id="res-knowledge">0</span>/8 Correct</p>
+            <p>SYSTEM INTEGRITY SCORE: <span id="res-score">0</span>%</p>
+            <h3 id="res-title" style="color: #fff; background: var(--terminal-green); color: #000; display:inline-block; padding: 5px;">ANALYZING...</h3>
+        </div>
+        <p id="res-msg">Generating report...</p>
+        
+        <p style="font-size: 0.8em; margin-top: 30px; color: #666;">
+            [LOG]: Data encrypted.
+        </p>
+        <button class="btn" onclick="location.reload()">REBOOT SYSTEM</button>
+    </div>
+
+</div>
+
+<script>
+    // Audio Context for beeps (Optional, browser blocks auto-audio usually, keeping silent for now)
+    
+    function nextScreen(current, next) {
+        document.getElementById(current).classList.add('hidden');
+        document.getElementById(next).classList.remove('hidden');
+        
+        // Update Progress Bar
+        let percent = 0;
+        if(next === 'screen-level1') percent = 10;
+        if(next === 'screen-level2') percent = 35;
+        if(next === 'screen-level3') percent = 60;
+        if(next === 'screen-level4') percent = 85;
+        
+        document.getElementById('progressFill').style.width = percent + '%';
+        document.getElementById('systemStatus').innerText = "SCANNING SECTOR " + next.replace('screen-level', '');
+    }
+
+    function toggleTreatment(show) {
+        const div = document.getElementById('treatment-details');
+        if(show) div.classList.remove('hidden');
+        else div.classList.add('hidden');
+    }
+
+    function validateAndNext(current, next) {
+        // Simple validation check (are required fields empty?)
+        // For this demo, we move forward, but in production, check specific inputs
+        const inputs = document.querySelectorAll(`#${current} input[required]`);
+        let valid = true;
+        inputs.forEach(i => {
+            if(!i.value) valid = false;
+        });
+
+        if(valid) {
+            nextScreen(current, next);
+        } else {
+            alert("ERROR: REQUIRED FIELDS MISSING. PLEASE COMPLETE INPUT.");
+        }
+    }
+
+    function calculateScore() {
+        const form = document.getElementById('gameForm');
+        const formData = new FormData(form);
+        let knowledgeScore = 0;
+        let practiceScore = 0;
+
+        // Knowledge Key (Based on provided PDF Logic)
+        if(formData.get('q_plaque') === 'B') knowledgeScore++;
+        if(formData.get('q_calculus') === 'A') knowledgeScore++;
+        if(formData.get('q_sign') === 'C') knowledgeScore++;
+        if(formData.get('q_cause') === 'A') knowledgeScore++;
+        if(formData.get('q_breath') === 'B') knowledgeScore++;
+        if(formData.get('q_diet') === 'A') knowledgeScore++;
+        if(formData.get('q_vit') === 'C') knowledgeScore++;
+        if(formData.get('q_health') === 'B') knowledgeScore++;
+
+        // Practice Scoring (Arbitrary for Game Fun)
+        // Brushing 2x = 10pts
+        if(formData.get('p_freq') === '2') practiceScore += 20;
+        // Soft Brush = 10pts
+        if(formData.get('p_type') === 'Soft') practiceScore += 10;
+        // Time 1-3 min = 10pts
+        if(formData.get('p_time') === 'Med') practiceScore += 10;
+        // No bad habits = 20pts
+        if(formData.get('p_habits') === 'No') practiceScore += 20;
+
+        // Calculate Total % (Roughly)
+        let totalSystemHealth = knowledgeScore * 5 + practiceScore; 
+        if(totalSystemHealth > 100) totalSystemHealth = 100;
+
+        // Display Results
+        document.getElementById('screen-level4').classList.add('hidden');
+        document.getElementById('screen-results').classList.remove('hidden');
+        document.getElementById('progressFill').style.width = '100%';
+        document.getElementById('systemStatus').innerText = "COMPLETE";
+
+        document.getElementById('res-knowledge').innerText = knowledgeScore;
+        document.getElementById('res-score').innerText = totalSystemHealth;
+
+        let title = "";
+        let msg = "";
+
+        if(totalSystemHealth > 80) {
+            title = "SENIOR ARCHITECT";
+            msg = "Your biological hardware is optimized. Keep running current protocols.";
+            document.getElementById('res-title').style.backgroundColor = "#0f0";
+        } else if (totalSystemHealth > 50) {
+            title = "JUNIOR DEVELOPER";
+            msg = "System stable, but vulnerabilities detected. Patch management (Flossing) required.";
+            document.getElementById('res-title').style.backgroundColor = "#fa0";
+        } else {
+            title = "LEGACY SYSTEM";
+            msg = "CRITICAL FAILURE IMMINENT. Immediate Admin (Dentist) intervention required.";
+            document.getElementById('res-title').style.backgroundColor = "#f00";
+        }
+
+        document.getElementById('res-title').innerText = title;
+        document.getElementById('res-msg').innerText = msg;
+    }
+</script>
+
+</body>
+</html>
