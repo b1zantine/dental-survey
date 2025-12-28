@@ -576,6 +576,20 @@
                 radial-gradient(circle at 50% 50%, rgba(255, 107, 107, 0.2) 0%, rgba(255, 107, 107, 0.1) 40%, rgba(20, 28, 45, 0.9) 100%);
         }
 
+        .bubble.selected {
+            border-color: rgba(0, 229, 160, 0.8);
+            background: 
+                radial-gradient(ellipse 30% 20% at 30% 25%, rgba(255, 255, 255, 0.5) 0%, transparent 50%),
+                radial-gradient(ellipse 20% 15% at 70% 75%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(0, 229, 160, 0.35) 0%, rgba(0, 229, 160, 0.15) 40%, rgba(20, 28, 45, 0.9) 100%);
+            box-shadow: 
+                inset 0 -20px 40px rgba(0, 0, 0, 0.3),
+                inset 0 10px 30px rgba(255, 255, 255, 0.1),
+                0 5px 20px rgba(0, 0, 0, 0.3),
+                0 0 40px rgba(0, 229, 160, 0.4),
+                0 0 60px rgba(0, 229, 160, 0.2);
+        }
+
         /* Particle explosion for bubble pop */
         .pop-particles {
             position: absolute;
@@ -1183,12 +1197,8 @@
             </div>
             <div class="question-counter">Question <span id="practiceCounter">1</span> of <span>10</span></div>
             <p class="practice-question-text" id="practiceQuestionText"></p>
-            <div class="circular-options" id="practiceOptions">
-                <!-- Options will be injected here -->
-            </div>
-            <div class="nav-buttons" style="max-width: 400px; width: 100%; margin-top: 30px;">
-                <button class="nav-btn secondary" id="practicePrev" style="display: none;">Back</button>
-                <button class="nav-btn primary" id="practiceNext" disabled>Next</button>
+            <div class="bubble-container" id="practiceOptions">
+                <!-- Bubbles will be injected here -->
             </div>
         </section>
 
@@ -1658,6 +1668,7 @@
         }
         
         let bubblePhysics = null;
+        let practiceBubblePhysics = null;
 
         // =====================================================
         // GOOGLE SHEETS INTEGRATION
@@ -2898,7 +2909,7 @@
         }
 
         // =====================================================
-        // PRACTICE - CIRCULAR OPTIONS
+        // PRACTICE - BUBBLE POP
         // =====================================================
         function renderPracticeQuestion() {
             const questionIndex = state.practice.currentQuestion;
@@ -2908,55 +2919,81 @@
             document.getElementById('practiceQuestionText').textContent = question.question;
             
             const container = document.getElementById('practiceOptions');
+            
+            // Stop existing physics simulation
+            if (practiceBubblePhysics) {
+                practiceBubblePhysics.stop();
+                practiceBubblePhysics = null;
+            }
+            
             container.innerHTML = '';
             
+            // Clear any active element focus
+            if (document.activeElement) {
+                document.activeElement.blur();
+            }
+            
+            // Create bubbles (positions will be set by physics engine)
             question.options.forEach((opt, i) => {
-                const option = document.createElement('button');
-                option.className = 'circular-option';
-                option.textContent = opt;
-                option.dataset.index = i;
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                bubble.textContent = opt;
+                bubble.dataset.index = i;
                 
-                if (state.practice.responses[question.id] === i) {
-                    option.classList.add('selected');
-                }
+                // Explicitly reset any potential styling
+                bubble.style.borderColor = '';
+                bubble.style.boxShadow = '';
                 
-                option.addEventListener('click', () => {
-                    audio.playClick();
-                    haptic('medium');
-                    
-                    container.querySelectorAll('.circular-option').forEach(o => o.classList.remove('selected'));
-                    option.classList.add('selected');
-                    
-                    state.practice.responses[question.id] = i;
-                    updateProgress();
-                    saveStateToStorage();
-                    
-                    document.getElementById('practiceNext').disabled = false;
+                bubble.addEventListener('click', () => handlePracticeBubblePop(bubble, i, question));
+                
+                // Prevent any focus/hover state from sticking on touch devices
+                bubble.addEventListener('touchend', (e) => {
+                    e.target.blur();
                 });
                 
-                container.appendChild(option);
+                container.appendChild(bubble);
             });
             
-            // Update navigation
-            const prevBtn = document.getElementById('practicePrev');
-            const nextBtn = document.getElementById('practiceNext');
-            
-            prevBtn.style.display = questionIndex > 0 ? 'block' : 'none';
-            nextBtn.textContent = questionIndex === surveyData.practice.length - 1 ? 'Finish' : 'Next';
-            nextBtn.disabled = state.practice.responses[question.id] === undefined;
+            // Initialize and start physics simulation after bubbles are rendered
+            requestAnimationFrame(() => {
+                practiceBubblePhysics = new BubblePhysics(container);
+                practiceBubblePhysics.init(container.querySelectorAll('.bubble'));
+                practiceBubblePhysics.start();
+            });
         }
 
-        function setupPracticeNavigation() {
-            document.getElementById('practicePrev').addEventListener('click', () => {
-                audio.playClick();
-                haptic('light');
-                state.practice.currentQuestion--;
-                renderPracticeQuestion();
+        function handlePracticeBubblePop(bubble, selectedIndex, question) {
+            if (bubble.classList.contains('popped') || bubble.classList.contains('fade')) return;
+            
+            audio.playPop();
+            haptic('medium');
+            
+            // Freeze all bubbles in their current positions before stopping physics
+            if (practiceBubblePhysics) {
+                practiceBubblePhysics.freeze();
+            }
+            
+            // Create particle explosion
+            createPracticePopParticles(bubble);
+            
+            // Only pop the clicked bubble, fade others
+            const container = document.getElementById('practiceOptions');
+            container.querySelectorAll('.bubble').forEach((b, i) => {
+                if (i === selectedIndex) {
+                    b.classList.add('popped');
+                } else {
+                    b.classList.add('fade');
+                }
             });
             
-            document.getElementById('practiceNext').addEventListener('click', () => {
-                audio.playClick();
-                haptic('medium');
+            // Record response
+            state.practice.responses[question.id] = selectedIndex;
+            updateProgress();
+            saveStateToStorage();
+            
+            // Move to next question
+            setTimeout(() => {
+                practiceBubblePhysics = null;
                 
                 if (state.practice.currentQuestion < surveyData.practice.length - 1) {
                     state.practice.currentQuestion++;
@@ -2964,7 +3001,35 @@
                 } else {
                     finishSurvey();
                 }
-            });
+            }, 1000);
+        }
+
+        function createPracticePopParticles(bubble) {
+            const container = document.getElementById('practiceOptions');
+            const rect = bubble.getBoundingClientRect();
+            const containerRect = container.getBoundingClientRect();
+            
+            const centerX = rect.left - containerRect.left + rect.width / 2;
+            const centerY = rect.top - containerRect.top + rect.height / 2;
+            
+            const colors = ['var(--mint)', 'var(--electric-blue)', 'var(--purple)', '#fff'];
+            
+            for (let i = 0; i < 12; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'pop-particle';
+                particle.style.left = `${centerX}px`;
+                particle.style.top = `${centerY}px`;
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                const angle = (i / 12) * Math.PI * 2;
+                const distance = 50 + Math.random() * 50;
+                particle.style.setProperty('--tx', `${Math.cos(angle) * distance}px`);
+                particle.style.setProperty('--ty', `${Math.sin(angle) * distance}px`);
+                
+                container.appendChild(particle);
+                
+                setTimeout(() => particle.remove(), 600);
+            }
         }
 
         // =====================================================
@@ -3038,8 +3103,6 @@
                 showSection('demographics');
                 renderDemographicsQuestion();
             });
-            
-            setupPracticeNavigation();
             
             // Handle window resize for bubble physics
             window.addEventListener('resize', () => {
