@@ -474,6 +474,8 @@
             max-width: 200px;
             animation: bubbleFloat 3s ease-in-out infinite;
             user-select: none;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .bubble:nth-child(1) { animation-delay: 0s; }
@@ -482,14 +484,30 @@
         .bubble:nth-child(4) { animation-delay: 1.5s; }
 
         @keyframes bubbleFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            0%, 100% { 
+                transform: translateY(0) scale(1); 
+            }
+            50% { 
+                transform: translateY(-10px) scale(1); 
+            }
         }
 
-        .bubble:hover {
-            border-color: var(--mint);
-            box-shadow: 0 0 30px var(--mint-glow);
-            transform: scale(1.05);
+        /* Only apply hover on devices that support hover (not touch devices) */
+        @media (hover: hover) {
+            .bubble:hover:not(.popped):not(.fade):not(.correct):not(.incorrect) {
+                border-color: var(--mint);
+                box-shadow: 0 0 30px var(--mint-glow);
+                transform: translateY(-10px) scale(1.05);
+                animation: none;
+            }
+        }
+
+        .bubble:focus {
+            outline: none;
+        }
+
+        .bubble:active:not(.popped):not(.fade):not(.correct):not(.incorrect) {
+            transform: scale(0.98);
         }
 
         .bubble.popped {
@@ -2088,6 +2106,11 @@
             const container = document.getElementById('bubbleContainer');
             container.innerHTML = '';
             
+            // Clear any active element focus
+            if (document.activeElement) {
+                document.activeElement.blur();
+            }
+            
             // Position bubbles in a nice layout
             const positions = [
                 { left: '10%', top: '15%' },
@@ -2104,7 +2127,17 @@
                 bubble.style.top = positions[i].top;
                 bubble.dataset.index = i;
                 
+                // Explicitly reset any potential styling
+                bubble.style.borderColor = '';
+                bubble.style.boxShadow = '';
+                bubble.style.transform = '';
+                
                 bubble.addEventListener('click', () => handleBubblePop(bubble, i, question));
+                
+                // Prevent any focus/hover state from sticking on touch devices
+                bubble.addEventListener('touchend', (e) => {
+                    e.target.blur();
+                });
                 
                 container.appendChild(bubble);
             });
