@@ -599,7 +599,7 @@
         .swipe-container {
             width: 100%;
             max-width: 350px;
-            height: 280px;
+            height: 380px;
             position: relative;
             perspective: 1000px;
         }
@@ -650,70 +650,54 @@
             line-height: 1.5;
         }
 
-        .swipe-indicators {
+        /* Swipe instructions below card */
+        .swipe-instructions {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 8px 16px;
-            width: 100%;
-            max-width: 400px;
-            margin-top: 20px;
-            padding: 0 10px;
-        }
-
-        .swipe-indicator {
-            display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .swipe-instructions.visible {
+            opacity: 1;
+        }
+        
+        .instruction-text {
             font-size: 0.75rem;
             color: var(--text-muted);
-            padding: 6px 10px;
-            background: var(--bg-glass);
-            border-radius: 20px;
-            border: 1px solid var(--border-glass);
+            letter-spacing: 0.5px;
         }
 
-        .swipe-indicator.far-left { color: #FF4444; border-color: rgba(255, 68, 68, 0.3); }
-        .swipe-indicator.left { color: var(--coral); border-color: rgba(255, 107, 107, 0.3); }
-        .swipe-indicator.right { color: var(--mint); border-color: rgba(0, 229, 160, 0.3); }
-        .swipe-indicator.far-right { color: #00FF88; border-color: rgba(0, 255, 136, 0.3); }
+        /* Attitude navigation */
+        .attitude-nav {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+        }
 
-        .swipe-hint {
+        /* Response indicator at bottom of card */
+        .swipe-response {
             position: absolute;
-            font-size: 1rem;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.1rem;
             font-weight: 700;
-            opacity: 0;
-            transition: opacity 0.15s ease;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            opacity: 0;
+            transition: opacity 0.15s ease, color 0.15s ease;
             pointer-events: none;
+            white-space: nowrap;
         }
-
-        .swipe-hint.agree {
-            right: 15px;
-            top: 15px;
-            color: var(--mint);
-        }
-
-        .swipe-hint.strongly-agree {
-            right: 15px;
-            bottom: 15px;
-            color: #00FF88;
-            font-size: 0.85rem;
-        }
-
-        .swipe-hint.disagree {
-            left: 15px;
-            top: 15px;
-            color: var(--coral);
-        }
-
-        .swipe-hint.strongly-disagree {
-            left: 15px;
-            bottom: 15px;
-            color: #FF4444;
-            font-size: 0.85rem;
-        }
+        
+        .swipe-response.agree { color: var(--mint); }
+        .swipe-response.disagree { color: var(--coral); }
+        .swipe-response.strongly-agree { color: #00FF88; }
+        .swipe-response.strongly-disagree { color: #FF4444; }
 
         /* Dial container for practice questions */
         .dial-container {
@@ -904,7 +888,7 @@
 
             .swipe-container {
                 max-width: 300px;
-                height: 240px;
+                height: 320px;
             }
 
             .dial-container {
@@ -1181,11 +1165,12 @@
             <div class="swipe-container" id="swipeContainer">
                 <!-- Swipe card will be injected here -->
             </div>
-            <div class="swipe-indicators">
-                <div class="swipe-indicator far-left">⟪ Strongly Disagree</div>
-                <div class="swipe-indicator left">← Disagree</div>
-                <div class="swipe-indicator right">Agree →</div>
-                <div class="swipe-indicator far-right">Strongly Agree ⟫</div>
+            <div class="swipe-instructions" id="swipeInstructions">
+                <span class="instruction-text">← Disagree · Agree →</span>
+                <span class="instruction-text">↑ Strongly Disagree · Strongly Agree ↓</span>
+            </div>
+            <div class="attitude-nav">
+                <button class="nav-btn secondary" id="attitudeBack" style="display: none;">← Back</button>
             </div>
         </section>
 
@@ -2058,6 +2043,7 @@
                 renderKnowledgeQuestion();
             } else if (section === 'attitude') {
                 showSection('attitude');
+                setupAttitudeBackButton();
                 renderAttitudeCard();
             } else if (section === 'practice') {
                 showSection('practice');
@@ -2532,6 +2518,7 @@
             state.currentSection = 'attitude';
             saveStateToStorage();
             showSection('attitude');
+            setupAttitudeBackButton();
             renderAttitudeCard();
         }
 
@@ -2544,22 +2531,54 @@
             
             document.getElementById('attitudeCounter').textContent = questionIndex + 1;
             
+            // Show/hide back button based on question index
+            const backBtn = document.getElementById('attitudeBack');
+            if (backBtn) {
+                backBtn.style.display = questionIndex > 0 ? 'block' : 'none';
+            }
+            
+            // Hide instructions initially, will show after 2 seconds
+            const instructions = document.getElementById('swipeInstructions');
+            if (instructions) {
+                instructions.classList.remove('visible');
+            }
+            
             const container = document.getElementById('swipeContainer');
             container.innerHTML = '';
             
             const card = document.createElement('div');
             card.className = 'swipe-card';
             card.innerHTML = `
-                <span class="swipe-hint agree">Agree</span>
-                <span class="swipe-hint strongly-agree">Strongly Agree</span>
-                <span class="swipe-hint disagree">Disagree</span>
-                <span class="swipe-hint strongly-disagree">Strongly Disagree</span>
                 <p class="question-text">${question.statement}</p>
+                <div class="swipe-response"></div>
             `;
             
             container.appendChild(card);
             
             setupSwipeListeners(card, question);
+        }
+        
+        function setupAttitudeBackButton() {
+            const backBtn = document.getElementById('attitudeBack');
+            if (backBtn) {
+                backBtn.addEventListener('click', () => {
+                    if (state.attitude.currentQuestion > 0) {
+                        audio.playClick();
+                        haptic('light');
+                        
+                        // Go back to previous question
+                        state.attitude.currentQuestion--;
+                        
+                        // Clear the response for the current question (the one we're going back to)
+                        const previousQuestion = surveyData.attitude[state.attitude.currentQuestion];
+                        delete state.attitude.responses[previousQuestion.id];
+                        
+                        updateProgress();
+                        saveStateToStorage();
+                        renderAttitudeCard();
+                    }
+                });
+            }
         }
 
         function setupSwipeListeners(card, question) {
@@ -2575,10 +2594,66 @@
             let lastY = 0;
             let lastTime = 0;
             
-            // Thresholds
-            const THRESHOLD_NORMAL = 80;
-            const THRESHOLD_STRONG = 160;
-            const VELOCITY_THRESHOLD = 0.5;
+            // Threshold for minimum movement to register a direction
+            const THRESHOLD = 40;
+            const VELOCITY_THRESHOLD = 0.4;
+            
+            // Zone tracking for haptic feedback
+            let lastZone = 'neutral';
+            
+            // Instruction hint timer - show after 2 seconds of inactivity
+            let instructionTimer = null;
+            const instructions = document.getElementById('swipeInstructions');
+            
+            function showInstructionsAfterDelay() {
+                if (instructionTimer) clearTimeout(instructionTimer);
+                instructionTimer = setTimeout(() => {
+                    if (instructions && !isDragging) {
+                        instructions.classList.add('visible');
+                    }
+                }, 2000);
+            }
+            
+            function hideInstructions() {
+                if (instructionTimer) clearTimeout(instructionTimer);
+                if (instructions) {
+                    instructions.classList.remove('visible');
+                }
+            }
+            
+            // Start the instruction timer
+            showInstructionsAfterDelay();
+            
+            // 4-direction zone detection based on dominant direction
+            function getZone(x, y) {
+                const absX = Math.abs(x);
+                const absY = Math.abs(y);
+                
+                // Need minimum movement to register
+                if (absX < THRESHOLD && absY < THRESHOLD) return 'neutral';
+                
+                // Determine dominant direction
+                if (absY > absX) {
+                    // Vertical dominant: up = strongly disagree, down = strongly agree
+                    return y < 0 ? 'strongly-disagree' : 'strongly-agree';
+                } else {
+                    // Horizontal dominant: left = disagree, right = agree
+                    return x < 0 ? 'disagree' : 'agree';
+                }
+            }
+            
+            function checkZoneTransition(x, y) {
+                const newZone = getZone(x, y);
+                if (newZone !== lastZone) {
+                    // Trigger haptic on zone change
+                    if (newZone === 'agree' || newZone === 'disagree') {
+                        haptic('light');
+                    } else if (newZone === 'strongly-agree' || newZone === 'strongly-disagree') {
+                        haptic('medium');
+                    }
+                    lastZone = newZone;
+                }
+            }
             
             function getPoint(e) {
                 return e.touches ? e.touches[0] : e;
@@ -2589,6 +2664,9 @@
                 card.classList.add('dragging');
                 card.classList.remove('releasing', 'snapping');
                 
+                // Hide instructions when user starts dragging
+                hideInstructions();
+                
                 const point = getPoint(e);
                 startX = point.clientX;
                 startY = point.clientY;
@@ -2597,6 +2675,7 @@
                 lastTime = Date.now();
                 velocityX = 0;
                 velocityY = 0;
+                lastZone = 'neutral'; // Reset zone tracking
                 
                 // Cancel any ongoing animation
                 if (animationFrameId) {
@@ -2607,69 +2686,64 @@
             function updateCard() {
                 if (!isDragging) return;
                 
+                // Check for zone transitions and trigger haptic feedback
+                checkZoneTransition(currentX, currentY);
+                
                 // Smooth rotation based on horizontal movement
                 const rotation = currentX * 0.08;
                 const scale = 1 + Math.min(Math.abs(currentX) / 800, 0.05);
                 
                 card.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) rotate(${rotation}deg) scale(${scale})`;
                 
-                // Get hint elements
-                const agreeHint = card.querySelector('.swipe-hint.agree');
-                const stronglyAgreeHint = card.querySelector('.swipe-hint.strongly-agree');
-                const disagreeHint = card.querySelector('.swipe-hint.disagree');
-                const stronglyDisagreeHint = card.querySelector('.swipe-hint.strongly-disagree');
+                // Get current zone and update response indicator
+                const currentZone = getZone(currentX, currentY);
+                const responseIndicator = card.querySelector('.swipe-response');
                 
-                // Calculate hint opacities based on distance
-                const absX = Math.abs(currentX);
-                
-                if (currentX > 0) {
-                    // Moving right - agree direction
-                    if (absX > THRESHOLD_STRONG) {
-                        agreeHint.style.opacity = '0.3';
-                        stronglyAgreeHint.style.opacity = Math.min((absX - THRESHOLD_STRONG) / 80, 1);
-                    } else {
-                        agreeHint.style.opacity = Math.min(absX / THRESHOLD_NORMAL, 1);
-                        stronglyAgreeHint.style.opacity = '0';
-                    }
-                    disagreeHint.style.opacity = '0';
-                    stronglyDisagreeHint.style.opacity = '0';
-                } else if (currentX < 0) {
-                    // Moving left - disagree direction
-                    if (absX > THRESHOLD_STRONG) {
-                        disagreeHint.style.opacity = '0.3';
-                        stronglyDisagreeHint.style.opacity = Math.min((absX - THRESHOLD_STRONG) / 80, 1);
-                    } else {
-                        disagreeHint.style.opacity = Math.min(absX / THRESHOLD_NORMAL, 1);
-                        stronglyDisagreeHint.style.opacity = '0';
-                    }
-                    agreeHint.style.opacity = '0';
-                    stronglyAgreeHint.style.opacity = '0';
+                // Update response indicator text and styling
+                responseIndicator.className = 'swipe-response';
+                if (currentZone === 'neutral') {
+                    responseIndicator.style.opacity = '0';
+                    responseIndicator.textContent = '';
                 } else {
-                    // Centered
-                    agreeHint.style.opacity = '0';
-                    stronglyAgreeHint.style.opacity = '0';
-                    disagreeHint.style.opacity = '0';
-                    stronglyDisagreeHint.style.opacity = '0';
+                    responseIndicator.style.opacity = '1';
+                    responseIndicator.classList.add(currentZone);
+                    switch (currentZone) {
+                        case 'agree':
+                            responseIndicator.textContent = 'Agree →';
+                            break;
+                        case 'disagree':
+                            responseIndicator.textContent = '← Disagree';
+                            break;
+                        case 'strongly-agree':
+                            responseIndicator.textContent = 'Strongly Agree ↓';
+                            break;
+                        case 'strongly-disagree':
+                            responseIndicator.textContent = '↑ Strongly Disagree';
+                            break;
+                    }
                 }
                 
-                // Update card glow based on position and intensity
-                if (currentX > THRESHOLD_STRONG) {
-                    card.style.boxShadow = `0 0 50px rgba(0, 255, 136, 0.5)`;
-                    card.style.borderColor = '#00FF88';
-                } else if (currentX > THRESHOLD_NORMAL / 2) {
-                    const intensity = Math.min((currentX - THRESHOLD_NORMAL / 2) / 100, 1);
-                    card.style.boxShadow = `0 0 ${30 * intensity}px var(--mint-glow)`;
-                    card.style.borderColor = `rgba(0, 229, 160, ${0.5 + intensity * 0.5})`;
-                } else if (currentX < -THRESHOLD_STRONG) {
-                    card.style.boxShadow = `0 0 50px rgba(255, 68, 68, 0.5)`;
-                    card.style.borderColor = '#FF4444';
-                } else if (currentX < -THRESHOLD_NORMAL / 2) {
-                    const intensity = Math.min((-currentX - THRESHOLD_NORMAL / 2) / 100, 1);
-                    card.style.boxShadow = `0 0 ${30 * intensity}px var(--coral-glow)`;
-                    card.style.borderColor = `rgba(255, 107, 107, ${0.5 + intensity * 0.5})`;
-                } else {
-                    card.style.boxShadow = '';
-                    card.style.borderColor = '';
+                // Update card glow based on zone
+                switch (currentZone) {
+                    case 'agree':
+                        card.style.boxShadow = `0 0 40px var(--mint-glow)`;
+                        card.style.borderColor = 'var(--mint)';
+                        break;
+                    case 'disagree':
+                        card.style.boxShadow = `0 0 40px var(--coral-glow)`;
+                        card.style.borderColor = 'var(--coral)';
+                        break;
+                    case 'strongly-agree':
+                        card.style.boxShadow = `0 0 50px rgba(0, 255, 136, 0.5)`;
+                        card.style.borderColor = '#00FF88';
+                        break;
+                    case 'strongly-disagree':
+                        card.style.boxShadow = `0 0 50px rgba(255, 68, 68, 0.5)`;
+                        card.style.borderColor = '#FF4444';
+                        break;
+                    default:
+                        card.style.boxShadow = '';
+                        card.style.borderColor = '';
                 }
             }
             
@@ -2712,24 +2786,40 @@
                 
                 // Determine response based on position AND velocity
                 const absX = Math.abs(currentX);
-                const effectiveX = currentX + velocityX * 150; // Project position based on velocity
+                const absY = Math.abs(currentY);
+                const effectiveX = currentX + velocityX * 100;
+                const effectiveY = currentY + velocityY * 100;
                 const absEffectiveX = Math.abs(effectiveX);
+                const absEffectiveY = Math.abs(effectiveY);
                 
                 let response = null;
                 let flyDirection = { x: 0, y: 0 };
                 
                 // Check if swipe was decisive (position or velocity)
-                const isDecisive = absX > THRESHOLD_NORMAL || Math.abs(velocityX) > VELOCITY_THRESHOLD;
+                const isDecisiveX = absX > THRESHOLD || Math.abs(velocityX) > VELOCITY_THRESHOLD;
+                const isDecisiveY = absY > THRESHOLD || Math.abs(velocityY) > VELOCITY_THRESHOLD;
                 
-                if (isDecisive) {
-                    if (effectiveX > 0) {
-                        // Agree direction
-                        response = absEffectiveX > THRESHOLD_STRONG || absX > THRESHOLD_STRONG ? 'Strongly Agree' : 'Agree';
-                        flyDirection = { x: 1000 + Math.abs(velocityX) * 500, y: currentY };
-                    } else {
-                        // Disagree direction
-                        response = absEffectiveX > THRESHOLD_STRONG || absX > THRESHOLD_STRONG ? 'Strongly Disagree' : 'Disagree';
-                        flyDirection = { x: -1000 - Math.abs(velocityX) * 500, y: currentY };
+                // Determine dominant direction for final response
+                const zone = getZone(effectiveX, effectiveY);
+                
+                if (zone !== 'neutral' && (isDecisiveX || isDecisiveY)) {
+                    switch (zone) {
+                        case 'agree':
+                            response = 'Agree';
+                            flyDirection = { x: 800, y: currentY * 0.5 };
+                            break;
+                        case 'disagree':
+                            response = 'Disagree';
+                            flyDirection = { x: -800, y: currentY * 0.5 };
+                            break;
+                        case 'strongly-agree':
+                            response = 'Strongly Agree';
+                            flyDirection = { x: currentX * 0.5, y: 600 };
+                            break;
+                        case 'strongly-disagree':
+                            response = 'Strongly Disagree';
+                            flyDirection = { x: currentX * 0.5, y: -600 };
+                            break;
                     }
                 }
                 
@@ -2768,7 +2858,15 @@
                     card.style.boxShadow = '';
                     card.style.borderColor = '';
                     
-                    card.querySelectorAll('.swipe-hint').forEach(h => h.style.opacity = '0');
+                    // Reset response indicator
+                    const responseIndicator = card.querySelector('.swipe-response');
+                    if (responseIndicator) {
+                        responseIndicator.style.opacity = '0';
+                        responseIndicator.className = 'swipe-response';
+                    }
+                    
+                    // Restart instruction timer after snap back
+                    showInstructionsAfterDelay();
                     
                     currentX = 0;
                     currentY = 0;
