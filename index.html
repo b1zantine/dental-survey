@@ -1,0 +1,1992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>GumSync - Debugging Gum Health</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --mint: #00E5A0;
+            --mint-glow: rgba(0, 229, 160, 0.4);
+            --electric-blue: #00C2FF;
+            --blue-glow: rgba(0, 194, 255, 0.4);
+            --coral: #FF6B6B;
+            --coral-glow: rgba(255, 107, 107, 0.4);
+            --purple: #A855F7;
+            --purple-glow: rgba(168, 85, 247, 0.4);
+            --bg-dark: #0A0E17;
+            --bg-card: rgba(20, 28, 45, 0.85);
+            --bg-glass: rgba(255, 255, 255, 0.05);
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.4);
+            --border-glass: rgba(255, 255, 255, 0.1);
+            --shadow-glow: 0 0 40px rgba(0, 229, 160, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated gradient background */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(0, 229, 160, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(0, 194, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 60%),
+                var(--bg-dark);
+            animation: gradientShift 15s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { 
+                background-position: 0% 0%, 100% 100%, 50% 50%; 
+            }
+            50% { 
+                background-position: 100% 100%, 0% 0%, 50% 50%; 
+            }
+        }
+
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--mint);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* App container */
+        .app {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Progress bar */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--bg-glass);
+            z-index: 1000;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--mint), var(--electric-blue));
+            width: 0%;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 20px var(--mint-glow);
+        }
+
+        /* Section container */
+        .sections-wrapper {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .section {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+        }
+
+        .section.hidden {
+            display: none;
+        }
+
+        /* Landing section */
+        .landing {
+            text-align: center;
+        }
+
+        .landing-logo {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .landing h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--mint), var(--electric-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .landing h2 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 400px;
+        }
+
+        .start-btn {
+            padding: 18px 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, var(--mint), var(--electric-blue));
+            border: none;
+            border-radius: 50px;
+            color: var(--bg-dark);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px var(--mint-glow);
+        }
+
+        .start-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px var(--mint-glow);
+        }
+
+        .start-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Section headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        /* Question counter */
+        .question-counter {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .question-counter span {
+            color: var(--mint);
+            font-weight: 600;
+        }
+
+        /* Demographics form styles */
+        .demo-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            padding: 40px;
+            width: 100%;
+            max-width: 450px;
+            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .demo-question {
+            display: none;
+            animation: fadeSlideIn 0.4s ease;
+        }
+
+        .demo-question.active {
+            display: block;
+        }
+
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .demo-label {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .demo-input {
+            width: 100%;
+            padding: 16px 20px;
+            font-size: 1rem;
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-glass);
+            border: 2px solid var(--border-glass);
+            border-radius: 12px;
+            color: var(--text-primary);
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .demo-input:focus {
+            border-color: var(--mint);
+            box-shadow: 0 0 20px var(--mint-glow);
+        }
+
+        .demo-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        /* Option buttons for demographics */
+        .demo-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .demo-option {
+            padding: 16px 20px;
+            background: var(--bg-glass);
+            border: 2px solid var(--border-glass);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: 'Outfit', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .demo-option:hover {
+            border-color: var(--mint);
+            background: rgba(0, 229, 160, 0.1);
+        }
+
+        .demo-option.selected {
+            border-color: var(--mint);
+            background: rgba(0, 229, 160, 0.2);
+            box-shadow: 0 0 20px var(--mint-glow);
+        }
+
+        /* Checkbox options */
+        .demo-checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .demo-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            background: var(--bg-glass);
+            border: 2px solid var(--border-glass);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .demo-checkbox:hover {
+            border-color: var(--electric-blue);
+        }
+
+        .demo-checkbox.checked {
+            border-color: var(--electric-blue);
+            background: rgba(0, 194, 255, 0.15);
+        }
+
+        .demo-checkbox input {
+            display: none;
+        }
+
+        .demo-checkbox .checkmark {
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--border-glass);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .demo-checkbox.checked .checkmark {
+            background: var(--electric-blue);
+            border-color: var(--electric-blue);
+        }
+
+        .demo-checkbox .checkmark::after {
+            content: '✓';
+            color: var(--bg-dark);
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .demo-checkbox.checked .checkmark::after {
+            opacity: 1;
+        }
+
+        /* Navigation buttons */
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .nav-btn {
+            flex: 1;
+            padding: 14px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Outfit', sans-serif;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn.secondary {
+            background: var(--bg-glass);
+            border: 2px solid var(--border-glass);
+            color: var(--text-primary);
+        }
+
+        .nav-btn.secondary:hover {
+            border-color: var(--text-secondary);
+        }
+
+        .nav-btn.primary {
+            background: linear-gradient(135deg, var(--mint), var(--electric-blue));
+            color: var(--bg-dark);
+        }
+
+        .nav-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px var(--mint-glow);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* Bubble container for knowledge questions */
+        .bubble-container {
+            width: 100%;
+            max-width: 500px;
+            height: 400px;
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .bubble {
+            position: absolute;
+            padding: 20px 25px;
+            background: var(--bg-card);
+            border: 2px solid var(--border-glass);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            font-size: 0.95rem;
+            max-width: 200px;
+            animation: bubbleFloat 3s ease-in-out infinite;
+            user-select: none;
+        }
+
+        .bubble:nth-child(1) { animation-delay: 0s; }
+        .bubble:nth-child(2) { animation-delay: 0.5s; }
+        .bubble:nth-child(3) { animation-delay: 1s; }
+        .bubble:nth-child(4) { animation-delay: 1.5s; }
+
+        @keyframes bubbleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .bubble:hover {
+            border-color: var(--mint);
+            box-shadow: 0 0 30px var(--mint-glow);
+            transform: scale(1.05);
+        }
+
+        .bubble.popped {
+            animation: bubblePop 0.4s ease forwards;
+        }
+
+        @keyframes bubblePop {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(0); opacity: 0; }
+        }
+
+        .bubble.fade {
+            animation: bubbleFade 0.3s ease forwards;
+        }
+
+        @keyframes bubbleFade {
+            to { opacity: 0.3; transform: scale(0.9); }
+        }
+
+        .bubble.correct {
+            border-color: var(--mint);
+            background: rgba(0, 229, 160, 0.2);
+        }
+
+        .bubble.incorrect {
+            border-color: var(--coral);
+            background: rgba(255, 107, 107, 0.1);
+        }
+
+        /* Particle explosion for bubble pop */
+        .pop-particles {
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .pop-particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: particleExplode 0.6s ease-out forwards;
+        }
+
+        @keyframes particleExplode {
+            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+            100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+        }
+
+        /* Swipe card container */
+        .swipe-container {
+            width: 100%;
+            max-width: 350px;
+            height: 280px;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .swipe-card {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-card);
+            border: 2px solid var(--border-glass);
+            border-radius: 24px;
+            backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            cursor: grab;
+            user-select: none;
+            transition: box-shadow 0.3s ease;
+            touch-action: none;
+        }
+
+        .swipe-card:active {
+            cursor: grabbing;
+        }
+
+        .swipe-card.dragging {
+            transition: none;
+        }
+
+        .swipe-card .question-text {
+            font-size: 1.3rem;
+            font-weight: 500;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .swipe-indicators {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 350px;
+            margin-top: 20px;
+            padding: 0 10px;
+        }
+
+        .swipe-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .swipe-indicator.left { color: var(--coral); }
+        .swipe-indicator.up { color: var(--electric-blue); }
+        .swipe-indicator.right { color: var(--mint); }
+
+        .swipe-hint {
+            position: absolute;
+            font-size: 1.5rem;
+            font-weight: 700;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .swipe-hint.agree {
+            right: 20px;
+            top: 20px;
+            color: var(--mint);
+        }
+
+        .swipe-hint.disagree {
+            left: 20px;
+            top: 20px;
+            color: var(--coral);
+        }
+
+        .swipe-hint.skip {
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--electric-blue);
+        }
+
+        /* Dial container for practice questions */
+        .dial-container {
+            width: 280px;
+            height: 280px;
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .dial-ring {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 3px solid var(--border-glass);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dial-segment {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            transform-origin: 100% 100%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dial-segment:hover {
+            filter: brightness(1.2);
+        }
+
+        .dial-segment.selected {
+            filter: brightness(1.4);
+        }
+
+        .dial-segment-label {
+            position: absolute;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-align: center;
+            max-width: 80px;
+            pointer-events: none;
+        }
+
+        .dial-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background: var(--bg-dark);
+            border-radius: 50%;
+            border: 3px solid var(--mint);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+            padding: 10px;
+            box-shadow: 0 0 30px var(--mint-glow);
+        }
+
+        .dial-handle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 8px;
+            height: 120px;
+            background: linear-gradient(to top, var(--mint), var(--electric-blue));
+            border-radius: 4px;
+            transform-origin: bottom center;
+            transform: translateX(-50%);
+            cursor: grab;
+            box-shadow: 0 0 20px var(--mint-glow);
+            touch-action: none;
+        }
+
+        .dial-handle:active {
+            cursor: grabbing;
+        }
+
+        .dial-handle::after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--mint);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--mint-glow);
+        }
+
+        /* Completion section */
+        .completion {
+            text-align: center;
+        }
+
+        .completion-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            animation: celebratePulse 1s ease-in-out infinite;
+        }
+
+        @keyframes celebratePulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.1) rotate(-5deg); }
+            75% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        .completion h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--mint), var(--electric-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+
+        .completion p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            max-width: 400px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+            max-width: 400px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 20px 15px;
+            backdrop-filter: blur(20px);
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--mint);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .landing h1 {
+                font-size: 2rem;
+            }
+
+            .landing h2 {
+                font-size: 1rem;
+            }
+
+            .demo-card {
+                padding: 30px 20px;
+            }
+
+            .bubble-container {
+                height: 350px;
+            }
+
+            .bubble {
+                padding: 15px 18px;
+                font-size: 0.85rem;
+                max-width: 160px;
+            }
+
+            .swipe-container {
+                max-width: 300px;
+                height: 240px;
+            }
+
+            .dial-container {
+                width: 250px;
+                height: 250px;
+            }
+        }
+
+        /* Question text styling */
+        .knowledge-question-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 20px;
+            max-width: 500px;
+            line-height: 1.5;
+        }
+
+        /* Practice question text */
+        .practice-question-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 10px;
+            max-width: 400px;
+        }
+
+        /* Segment dial for practice */
+        .segment-dial {
+            width: 280px;
+            height: 280px;
+            position: relative;
+        }
+
+        .segment-option {
+            position: absolute;
+            width: 120px;
+            height: 50px;
+            background: var(--bg-card);
+            border: 2px solid var(--border-glass);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 8px;
+        }
+
+        .segment-option:hover {
+            border-color: var(--mint);
+            background: rgba(0, 229, 160, 0.1);
+        }
+
+        .segment-option.selected {
+            border-color: var(--mint);
+            background: rgba(0, 229, 160, 0.2);
+            box-shadow: 0 0 25px var(--mint-glow);
+        }
+
+        /* Circular options layout */
+        .circular-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            max-width: 400px;
+        }
+
+        .circular-option {
+            padding: 15px 20px;
+            background: var(--bg-card);
+            border: 2px solid var(--border-glass);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .circular-option:hover {
+            border-color: var(--mint);
+            transform: scale(1.05);
+        }
+
+        .circular-option.selected {
+            border-color: var(--mint);
+            background: linear-gradient(135deg, rgba(0, 229, 160, 0.3), rgba(0, 194, 255, 0.2));
+            box-shadow: 0 0 25px var(--mint-glow);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+    <div class="particles" id="particles"></div>
+    
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="app" id="app">
+        <!-- Landing Section -->
+        <section class="section landing" id="landing">
+            <div class="landing-logo">🦷</div>
+            <h1>GumSync</h1>
+            <h2>Debugging Gum Health in Bangalore's IT Workforce</h2>
+            <button class="start-btn" id="startBtn">Begin Survey</button>
+        </section>
+
+        <!-- Demographics Section -->
+        <section class="section hidden" id="demographics">
+            <div class="section-header">
+                <div class="section-badge">About You</div>
+                <h1 class="section-title">Let's get to know you</h1>
+                <p class="section-subtitle">Quick questions about yourself</p>
+            </div>
+            <div class="question-counter">Question <span id="demoCounter">1</span> of <span>9</span></div>
+            <div class="demo-card" id="demoCard">
+                <!-- Questions will be injected here -->
+            </div>
+        </section>
+
+        <!-- Knowledge Section -->
+        <section class="section hidden" id="knowledge">
+            <div class="section-header">
+                <div class="section-badge">Knowledge</div>
+                <h1 class="section-title">Pop the right bubble!</h1>
+                <p class="section-subtitle">Tap the correct answer</p>
+            </div>
+            <div class="question-counter">Question <span id="knowledgeCounter">1</span> of <span>10</span></div>
+            <p class="knowledge-question-text" id="knowledgeQuestionText"></p>
+            <div class="bubble-container" id="bubbleContainer">
+                <!-- Bubbles will be injected here -->
+            </div>
+        </section>
+
+        <!-- Attitude Section -->
+        <section class="section hidden" id="attitude">
+            <div class="section-header">
+                <div class="section-badge">Attitude</div>
+                <h1 class="section-title">Swipe your opinion</h1>
+                <p class="section-subtitle">Drag right to agree, left to disagree</p>
+            </div>
+            <div class="question-counter">Question <span id="attitudeCounter">1</span> of <span>10</span></div>
+            <div class="swipe-container" id="swipeContainer">
+                <!-- Swipe card will be injected here -->
+            </div>
+            <div class="swipe-indicators">
+                <div class="swipe-indicator left">← Disagree</div>
+                <div class="swipe-indicator up">↑ Skip</div>
+                <div class="swipe-indicator right">Agree →</div>
+            </div>
+        </section>
+
+        <!-- Practice Section -->
+        <section class="section hidden" id="practice">
+            <div class="section-header">
+                <div class="section-badge">Practice</div>
+                <h1 class="section-title">Your daily habits</h1>
+                <p class="section-subtitle">Select your answer</p>
+            </div>
+            <div class="question-counter">Question <span id="practiceCounter">1</span> of <span>10</span></div>
+            <p class="practice-question-text" id="practiceQuestionText"></p>
+            <div class="circular-options" id="practiceOptions">
+                <!-- Options will be injected here -->
+            </div>
+            <div class="nav-buttons" style="max-width: 400px; width: 100%; margin-top: 30px;">
+                <button class="nav-btn secondary" id="practicePrev" style="display: none;">Back</button>
+                <button class="nav-btn primary" id="practiceNext" disabled>Next</button>
+            </div>
+        </section>
+
+        <!-- Completion Section -->
+        <section class="section hidden" id="completion">
+            <div class="completion">
+                <div class="completion-icon">🎉</div>
+                <h1>Survey Complete!</h1>
+                <p>Thank you for participating in the periodontal health survey. Your responses have been saved.</p>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="statQuestions">39</div>
+                        <div class="stat-label">Questions</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="statTime">--</div>
+                        <div class="stat-label">Minutes</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="statScore">--</div>
+                        <div class="stat-label">Knowledge</div>
+                    </div>
+                </div>
+                <button class="start-btn" onclick="location.reload()">Start Over</button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // =====================================================
+        // AUDIO SYSTEM - Web Audio API Sound Generator
+        // =====================================================
+        class AudioSystem {
+            constructor() {
+                this.context = null;
+                this.initialized = false;
+            }
+
+            init() {
+                if (this.initialized) return;
+                try {
+                    this.context = new (window.AudioContext || window.webkitAudioContext)();
+                    this.initialized = true;
+                } catch (e) {
+                    console.warn('Web Audio API not supported');
+                }
+            }
+
+            // Pop sound - satisfying bubble pop
+            playPop() {
+                if (!this.context) return;
+                const now = this.context.currentTime;
+                
+                // Main pop oscillator
+                const osc = this.context.createOscillator();
+                const gain = this.context.createGain();
+                
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(400, now);
+                osc.frequency.exponentialRampToValueAtTime(100, now + 0.15);
+                
+                gain.gain.setValueAtTime(0.4, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.15);
+                
+                osc.connect(gain);
+                gain.connect(this.context.destination);
+                
+                osc.start(now);
+                osc.stop(now + 0.15);
+
+                // Add noise burst for texture
+                const bufferSize = this.context.sampleRate * 0.05;
+                const buffer = this.context.createBuffer(1, bufferSize, this.context.sampleRate);
+                const data = buffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                    data[i] = (Math.random() * 2 - 1) * (1 - i / bufferSize);
+                }
+                
+                const noise = this.context.createBufferSource();
+                const noiseGain = this.context.createGain();
+                const filter = this.context.createBiquadFilter();
+                
+                noise.buffer = buffer;
+                filter.type = 'highpass';
+                filter.frequency.value = 1000;
+                noiseGain.gain.setValueAtTime(0.15, now);
+                noiseGain.gain.exponentialRampToValueAtTime(0.01, now + 0.05);
+                
+                noise.connect(filter);
+                filter.connect(noiseGain);
+                noiseGain.connect(this.context.destination);
+                
+                noise.start(now);
+            }
+
+            // Whoosh sound - for swipe cards
+            playWhoosh() {
+                if (!this.context) return;
+                const now = this.context.currentTime;
+                
+                const bufferSize = this.context.sampleRate * 0.3;
+                const buffer = this.context.createBuffer(1, bufferSize, this.context.sampleRate);
+                const data = buffer.getChannelData(0);
+                
+                for (let i = 0; i < bufferSize; i++) {
+                    const envelope = Math.sin(Math.PI * i / bufferSize);
+                    data[i] = (Math.random() * 2 - 1) * envelope;
+                }
+                
+                const noise = this.context.createBufferSource();
+                const gain = this.context.createGain();
+                const filter = this.context.createBiquadFilter();
+                
+                noise.buffer = buffer;
+                filter.type = 'bandpass';
+                filter.frequency.setValueAtTime(500, now);
+                filter.frequency.exponentialRampToValueAtTime(2000, now + 0.15);
+                filter.frequency.exponentialRampToValueAtTime(300, now + 0.3);
+                filter.Q.value = 1;
+                
+                gain.gain.setValueAtTime(0.2, now);
+                gain.gain.linearRampToValueAtTime(0.3, now + 0.1);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+                
+                noise.connect(filter);
+                filter.connect(gain);
+                gain.connect(this.context.destination);
+                
+                noise.start(now);
+            }
+
+            // Click sound - for selections
+            playClick() {
+                if (!this.context) return;
+                const now = this.context.currentTime;
+                
+                const osc = this.context.createOscillator();
+                const gain = this.context.createGain();
+                
+                osc.type = 'square';
+                osc.frequency.setValueAtTime(1800, now);
+                osc.frequency.exponentialRampToValueAtTime(600, now + 0.03);
+                
+                gain.gain.setValueAtTime(0.15, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.03);
+                
+                osc.connect(gain);
+                gain.connect(this.context.destination);
+                
+                osc.start(now);
+                osc.stop(now + 0.03);
+            }
+
+            // Tick sound - for dial movements
+            playTick() {
+                if (!this.context) return;
+                const now = this.context.currentTime;
+                
+                const osc = this.context.createOscillator();
+                const gain = this.context.createGain();
+                
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(2400, now);
+                
+                gain.gain.setValueAtTime(0.1, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.02);
+                
+                osc.connect(gain);
+                gain.connect(this.context.destination);
+                
+                osc.start(now);
+                osc.stop(now + 0.02);
+            }
+
+            // Success sound - for completion
+            playSuccess() {
+                if (!this.context) return;
+                const now = this.context.currentTime;
+                
+                const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+                
+                notes.forEach((freq, i) => {
+                    const osc = this.context.createOscillator();
+                    const gain = this.context.createGain();
+                    
+                    osc.type = 'sine';
+                    osc.frequency.value = freq;
+                    
+                    const startTime = now + i * 0.1;
+                    gain.gain.setValueAtTime(0, startTime);
+                    gain.gain.linearRampToValueAtTime(0.2, startTime + 0.05);
+                    gain.gain.exponentialRampToValueAtTime(0.01, startTime + 0.4);
+                    
+                    osc.connect(gain);
+                    gain.connect(this.context.destination);
+                    
+                    osc.start(startTime);
+                    osc.stop(startTime + 0.4);
+                });
+            }
+        }
+
+        const audio = new AudioSystem();
+
+        // =====================================================
+        // HAPTIC FEEDBACK
+        // =====================================================
+        function haptic(type = 'light') {
+            if (!navigator.vibrate) return;
+            
+            switch (type) {
+                case 'light':
+                    navigator.vibrate(10);
+                    break;
+                case 'medium':
+                    navigator.vibrate(30);
+                    break;
+                case 'heavy':
+                    navigator.vibrate(50);
+                    break;
+                case 'success':
+                    navigator.vibrate([30, 50, 30, 50, 100]);
+                    break;
+            }
+        }
+
+        // =====================================================
+        // SURVEY DATA
+        // =====================================================
+        const surveyData = {
+            demographics: [
+                { id: 'age', type: 'input', label: 'What is your age?', placeholder: 'Enter your age' },
+                { id: 'gender', type: 'options', label: 'What is your gender?', options: ['Male', 'Female', 'Prefer not to say', 'Other'] },
+                { id: 'experience', type: 'input', label: 'Years of work experience?', placeholder: 'Enter years' },
+                { id: 'locality', type: 'input', label: 'Locality / area of residence?', placeholder: 'Enter your area' },
+                { id: 'workType', type: 'options', label: 'Type of work?', options: ['Full time', 'Hybrid', 'Work from home (Remote)'] },
+                { id: 'designation', type: 'input', label: 'What is your designation?', placeholder: 'Enter designation' },
+                { id: 'gumTreatment', type: 'options', label: 'Have you undergone any gum treatment?', options: ['Yes', 'No'] },
+                { id: 'treatments', type: 'checkbox', label: 'If yes, please tick the treatments done:', options: ['Cleaning (Scaling)', 'Deep cleaning (Root planing)', 'Flap surgeries', 'None'], condition: (responses) => responses.gumTreatment === 'Yes' },
+                { id: 'otherTreatments', type: 'input', label: 'Others please specify:', placeholder: 'Other treatments (optional)', optional: true }
+            ],
+            knowledge: [
+                { 
+                    id: 'k1', 
+                    question: 'What is dental plaque?',
+                    options: ['Hard mineral deposit on the teeth', 'A soft film of bacteria and food debris on the teeth', 'Stains caused by coffee or tea', 'Protective layer on the enamel'],
+                    correct: 1
+                },
+                { 
+                    id: 'k2', 
+                    question: 'What is dental calculus (tartar)?',
+                    options: ['Hard mineral deposit on the teeth', 'Stains caused by coffee or tea', 'A soft film of bacteria and food debris', 'Protective layer on the enamel'],
+                    correct: 0
+                },
+                { 
+                    id: 'k3', 
+                    question: 'Which of the following is an early sign of gum infection?',
+                    options: ['White spots on the teeth', 'Dry mouth', 'Bleeding gums while brushing', 'Jaw pain'],
+                    correct: 2
+                },
+                { 
+                    id: 'k4', 
+                    question: 'What is the primary cause of early gum disease?',
+                    options: ['Dental plaque accumulation', 'Poor brushing technique', 'Tooth decay', 'Lack of calcium'],
+                    correct: 0
+                },
+                { 
+                    id: 'k5', 
+                    question: 'What is one of the main causes of bad breath?',
+                    options: ['Frequent brushing', 'Chewing gum', 'Cold beverages', 'Gum disease'],
+                    correct: 3
+                },
+                { 
+                    id: 'k6', 
+                    question: 'Which dietary choice contributes most to poor gum health?',
+                    options: ['Processed sugary foods and drinks', 'Leafy greens', 'Dairy products', 'Whole grains'],
+                    correct: 0
+                },
+                { 
+                    id: 'k7', 
+                    question: 'Which vitamin helps keep your gums healthy?',
+                    options: ['Vitamin A', 'Vitamin B', 'Vitamin C', 'Vitamin D'],
+                    correct: 2
+                },
+                { 
+                    id: 'k8', 
+                    question: 'How is gum disease linked to general health?',
+                    options: ['It boosts immunity', 'It can contribute to heart disease and diabetes', 'It lowers blood sugar levels', 'It only affects the mouth and teeth'],
+                    correct: 1
+                },
+                { 
+                    id: 'k9', 
+                    question: 'What is a common oral health consequence of prolonged stress?',
+                    options: ['Increased salivary flow', 'Improved oral hygiene habits', 'Strengthening of tooth enamel', 'Development of gum disease due to inflammation'],
+                    correct: 3
+                },
+                { 
+                    id: 'k10', 
+                    question: 'Which dental specialty focuses on prevention and treatment of gum disease?',
+                    options: ['Orthodontics', 'Prosthodontics', 'Periodontics', 'Endodontics'],
+                    correct: 2
+                }
+            ],
+            attitude: [
+                { id: 'a1', statement: 'Neglecting oral hygiene develops gum disease.' },
+                { id: 'a2', statement: 'Bleeding gums should not be ignored.' },
+                { id: 'a3', statement: 'Attending workplace awareness programs will improve gum health.' },
+                { id: 'a4', statement: 'Maintaining oral hygiene is equally important as maintaining physical fitness.' },
+                { id: 'a5', statement: 'Visiting a dentist is necessary only when I have pain or discomfort.' },
+                { id: 'a6', statement: 'Poor gum health can negatively affect my confidence or social interactions.' },
+                { id: 'a7', statement: 'Oral hygiene aids like floss or mouthwash can be used if recommended by a dentist.' },
+                { id: 'a8', statement: 'Oral hygiene maintenance is time consuming and difficult to follow.' },
+                { id: 'a9', statement: 'Workplace stress can have an impact on my gum and oral health.' },
+                { id: 'a10', statement: 'Investing in preventive dental care is better than spending on treatment later.' }
+            ],
+            practice: [
+                { 
+                    id: 'p1', 
+                    question: 'How many times do you brush your teeth in a day?',
+                    options: ['Twice a day', 'Thrice a day', 'Once a day', 'Occasionally']
+                },
+                { 
+                    id: 'p2', 
+                    question: 'In what direction do you brush your teeth?',
+                    options: ['Circular', 'Vertical', 'Horizontal', 'Mixed']
+                },
+                { 
+                    id: 'p3', 
+                    question: 'What type of toothbrush do you use?',
+                    options: ['Soft', 'Ultrasoft', 'Medium', 'Hard']
+                },
+                { 
+                    id: 'p4', 
+                    question: 'When do you brush your teeth?',
+                    options: ['Only morning', 'Only night', 'Both morning and night', 'After lunch and breakfast']
+                },
+                { 
+                    id: 'p5', 
+                    question: 'For how long do you brush your teeth?',
+                    options: ['Less than 1 minute', '1-3 minutes', '3-5 minutes', 'More than 5 minutes']
+                },
+                { 
+                    id: 'p6', 
+                    question: 'Do you rinse your mouth with water after each meal?',
+                    options: ['Yes, everytime', 'Occasionally', 'Never', 'Only after dinner']
+                },
+                { 
+                    id: 'p7', 
+                    question: 'Do you use any aids for cleaning apart from toothbrush and paste?',
+                    options: ['Tongue scraper', 'Dental floss', 'Toothpick', 'Both scraper and floss']
+                },
+                { 
+                    id: 'p8', 
+                    question: 'How often do you change your toothbrush?',
+                    options: ['Once in 3 months', 'Once in 6 months', 'Once in a year', 'When bristles wear out']
+                },
+                { 
+                    id: 'p9', 
+                    question: 'When did you last visit your dentist?',
+                    options: ['Never', '0-6 months ago', '7-12 months ago', 'More than a year']
+                },
+                { 
+                    id: 'p10', 
+                    question: 'Do you consume gutka/pan/alcohol/cigarettes?',
+                    options: ['Yes', 'No', 'Sometimes', 'Have quit']
+                }
+            ]
+        };
+
+        // =====================================================
+        // STATE MANAGEMENT
+        // =====================================================
+        const state = {
+            currentSection: 'landing',
+            demographics: { currentQuestion: 0, responses: {} },
+            knowledge: { currentQuestion: 0, responses: {}, score: 0 },
+            attitude: { currentQuestion: 0, responses: {} },
+            practice: { currentQuestion: 0, responses: {} },
+            startTime: null,
+            totalQuestions: 39
+        };
+
+        // =====================================================
+        // UTILITY FUNCTIONS
+        // =====================================================
+        function updateProgress() {
+            let completed = 0;
+            
+            // Count completed demographics
+            completed += Object.keys(state.demographics.responses).length;
+            
+            // Count completed knowledge
+            completed += Object.keys(state.knowledge.responses).length;
+            
+            // Count completed attitude
+            completed += Object.keys(state.attitude.responses).length;
+            
+            // Count completed practice
+            completed += Object.keys(state.practice.responses).length;
+            
+            const progress = (completed / state.totalQuestions) * 100;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+        }
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+            state.currentSection = sectionId;
+        }
+
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.animationDelay = `${Math.random() * 20}s`;
+                particle.style.background = Math.random() > 0.5 ? 'var(--mint)' : 'var(--electric-blue)';
+                container.appendChild(particle);
+            }
+        }
+
+        // =====================================================
+        // DEMOGRAPHICS WIZARD
+        // =====================================================
+        function renderDemographicsQuestion() {
+            const container = document.getElementById('demoCard');
+            const questionIndex = state.demographics.currentQuestion;
+            const question = surveyData.demographics[questionIndex];
+            
+            // Check condition
+            if (question.condition && !question.condition(state.demographics.responses)) {
+                // Skip this question
+                if (questionIndex < surveyData.demographics.length - 1) {
+                    state.demographics.currentQuestion++;
+                    renderDemographicsQuestion();
+                } else {
+                    transitionToKnowledge();
+                }
+                return;
+            }
+            
+            document.getElementById('demoCounter').textContent = questionIndex + 1;
+            
+            let html = `<div class="demo-question active">
+                <label class="demo-label">${question.label}</label>`;
+            
+            if (question.type === 'input') {
+                const value = state.demographics.responses[question.id] || '';
+                html += `<input type="text" class="demo-input" id="demoInput" 
+                    placeholder="${question.placeholder}" value="${value}" 
+                    ${question.optional ? '' : 'required'}>`;
+            } else if (question.type === 'options') {
+                html += '<div class="demo-options">';
+                question.options.forEach(opt => {
+                    const selected = state.demographics.responses[question.id] === opt ? 'selected' : '';
+                    html += `<button class="demo-option ${selected}" data-value="${opt}">${opt}</button>`;
+                });
+                html += '</div>';
+            } else if (question.type === 'checkbox') {
+                html += '<div class="demo-checkbox-group">';
+                const selectedItems = state.demographics.responses[question.id] || [];
+                question.options.forEach(opt => {
+                    const checked = selectedItems.includes(opt) ? 'checked' : '';
+                    html += `<label class="demo-checkbox ${checked}" data-value="${opt}">
+                        <input type="checkbox" ${checked}>
+                        <span class="checkmark"></span>
+                        <span>${opt}</span>
+                    </label>`;
+                });
+                html += '</div>';
+            }
+            
+            html += `<div class="nav-buttons">
+                ${questionIndex > 0 ? '<button class="nav-btn secondary" id="demoPrev">Back</button>' : ''}
+                <button class="nav-btn primary" id="demoNext">${questionIndex === surveyData.demographics.length - 1 ? 'Continue' : 'Next'}</button>
+            </div></div>`;
+            
+            container.innerHTML = html;
+            
+            // Add event listeners
+            setupDemographicsListeners(question);
+        }
+
+        function setupDemographicsListeners(question) {
+            const nextBtn = document.getElementById('demoNext');
+            const prevBtn = document.getElementById('demoPrev');
+            
+            // Validate and enable/disable next button
+            function validateInput() {
+                if (question.optional) {
+                    nextBtn.disabled = false;
+                    return;
+                }
+                
+                if (question.type === 'input') {
+                    const input = document.getElementById('demoInput');
+                    nextBtn.disabled = !input.value.trim();
+                } else if (question.type === 'options') {
+                    nextBtn.disabled = !state.demographics.responses[question.id];
+                } else if (question.type === 'checkbox') {
+                    const selected = state.demographics.responses[question.id] || [];
+                    nextBtn.disabled = selected.length === 0;
+                }
+            }
+            
+            validateInput();
+            
+            // Input handler
+            if (question.type === 'input') {
+                const input = document.getElementById('demoInput');
+                input.focus();
+                input.addEventListener('input', () => {
+                    state.demographics.responses[question.id] = input.value;
+                    validateInput();
+                });
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' && !nextBtn.disabled) {
+                        nextBtn.click();
+                    }
+                });
+            }
+            
+            // Option buttons
+            document.querySelectorAll('.demo-option').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    audio.playClick();
+                    haptic('medium');
+                    
+                    document.querySelectorAll('.demo-option').forEach(b => b.classList.remove('selected'));
+                    btn.classList.add('selected');
+                    state.demographics.responses[question.id] = btn.dataset.value;
+                    validateInput();
+                    updateProgress();
+                    
+                    // Auto-advance after short delay
+                    setTimeout(() => {
+                        if (!nextBtn.disabled) nextBtn.click();
+                    }, 300);
+                });
+            });
+            
+            // Checkbox handlers
+            document.querySelectorAll('.demo-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('click', () => {
+                    audio.playClick();
+                    haptic('light');
+                    
+                    checkbox.classList.toggle('checked');
+                    const value = checkbox.dataset.value;
+                    let selected = state.demographics.responses[question.id] || [];
+                    
+                    if (checkbox.classList.contains('checked')) {
+                        if (value === 'None') {
+                            selected = ['None'];
+                            document.querySelectorAll('.demo-checkbox').forEach(cb => {
+                                if (cb.dataset.value !== 'None') cb.classList.remove('checked');
+                            });
+                        } else {
+                            selected = selected.filter(v => v !== 'None');
+                            document.querySelector('.demo-checkbox[data-value="None"]')?.classList.remove('checked');
+                            selected.push(value);
+                        }
+                    } else {
+                        selected = selected.filter(v => v !== value);
+                    }
+                    
+                    state.demographics.responses[question.id] = selected;
+                    validateInput();
+                    updateProgress();
+                });
+            });
+            
+            // Navigation
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    audio.playClick();
+                    haptic('light');
+                    state.demographics.currentQuestion--;
+                    renderDemographicsQuestion();
+                });
+            }
+            
+            nextBtn.addEventListener('click', () => {
+                audio.playClick();
+                haptic('medium');
+                
+                // Save input value if applicable
+                if (question.type === 'input') {
+                    const input = document.getElementById('demoInput');
+                    state.demographics.responses[question.id] = input.value;
+                }
+                
+                updateProgress();
+                
+                if (state.demographics.currentQuestion < surveyData.demographics.length - 1) {
+                    state.demographics.currentQuestion++;
+                    renderDemographicsQuestion();
+                } else {
+                    transitionToKnowledge();
+                }
+            });
+        }
+
+        function transitionToKnowledge() {
+            showSection('knowledge');
+            renderKnowledgeQuestion();
+        }
+
+        // =====================================================
+        // KNOWLEDGE - BUBBLE POP
+        // =====================================================
+        function renderKnowledgeQuestion() {
+            const questionIndex = state.knowledge.currentQuestion;
+            const question = surveyData.knowledge[questionIndex];
+            
+            document.getElementById('knowledgeCounter').textContent = questionIndex + 1;
+            document.getElementById('knowledgeQuestionText').textContent = question.question;
+            
+            const container = document.getElementById('bubbleContainer');
+            container.innerHTML = '';
+            
+            // Position bubbles in a nice layout
+            const positions = [
+                { left: '10%', top: '15%' },
+                { left: '55%', top: '10%' },
+                { left: '5%', top: '55%' },
+                { left: '50%', top: '60%' }
+            ];
+            
+            question.options.forEach((opt, i) => {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                bubble.textContent = opt;
+                bubble.style.left = positions[i].left;
+                bubble.style.top = positions[i].top;
+                bubble.dataset.index = i;
+                
+                bubble.addEventListener('click', () => handleBubblePop(bubble, i, question));
+                
+                container.appendChild(bubble);
+            });
+        }
+
+        function handleBubblePop(bubble, selectedIndex, question) {
+            if (bubble.classList.contains('popped') || bubble.classList.contains('fade')) return;
+            
+            audio.playPop();
+            haptic('medium');
+            
+            // Create particle explosion
+            createPopParticles(bubble);
+            
+            // Mark selection
+            const isCorrect = selectedIndex === question.correct;
+            
+            // Animate bubbles
+            document.querySelectorAll('.bubble').forEach((b, i) => {
+                if (i === selectedIndex) {
+                    b.classList.add('popped');
+                } else if (i === question.correct) {
+                    setTimeout(() => {
+                        b.classList.add('correct');
+                    }, 400);
+                } else {
+                    b.classList.add('fade');
+                }
+            });
+            
+            // Record response
+            state.knowledge.responses[question.id] = selectedIndex;
+            if (isCorrect) state.knowledge.score++;
+            updateProgress();
+            
+            // Move to next question
+            setTimeout(() => {
+                if (state.knowledge.currentQuestion < surveyData.knowledge.length - 1) {
+                    state.knowledge.currentQuestion++;
+                    renderKnowledgeQuestion();
+                } else {
+                    transitionToAttitude();
+                }
+            }, 1000);
+        }
+
+        function createPopParticles(bubble) {
+            const rect = bubble.getBoundingClientRect();
+            const containerRect = document.getElementById('bubbleContainer').getBoundingClientRect();
+            
+            const centerX = rect.left - containerRect.left + rect.width / 2;
+            const centerY = rect.top - containerRect.top + rect.height / 2;
+            
+            const colors = ['var(--mint)', 'var(--electric-blue)', 'var(--purple)', '#fff'];
+            
+            for (let i = 0; i < 12; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'pop-particle';
+                particle.style.left = `${centerX}px`;
+                particle.style.top = `${centerY}px`;
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                const angle = (i / 12) * Math.PI * 2;
+                const distance = 50 + Math.random() * 50;
+                particle.style.setProperty('--tx', `${Math.cos(angle) * distance}px`);
+                particle.style.setProperty('--ty', `${Math.sin(angle) * distance}px`);
+                
+                document.getElementById('bubbleContainer').appendChild(particle);
+                
+                setTimeout(() => particle.remove(), 600);
+            }
+        }
+
+        function transitionToAttitude() {
+            showSection('attitude');
+            renderAttitudeCard();
+        }
+
+        // =====================================================
+        // ATTITUDE - SWIPE CARDS
+        // =====================================================
+        function renderAttitudeCard() {
+            const questionIndex = state.attitude.currentQuestion;
+            const question = surveyData.attitude[questionIndex];
+            
+            document.getElementById('attitudeCounter').textContent = questionIndex + 1;
+            
+            const container = document.getElementById('swipeContainer');
+            container.innerHTML = '';
+            
+            const card = document.createElement('div');
+            card.className = 'swipe-card';
+            card.innerHTML = `
+                <span class="swipe-hint agree">Agree</span>
+                <span class="swipe-hint disagree">Disagree</span>
+                <span class="swipe-hint skip">Skip</span>
+                <p class="question-text">${question.statement}</p>
+            `;
+            
+            container.appendChild(card);
+            
+            setupSwipeListeners(card, question);
+        }
+
+        function setupSwipeListeners(card, question) {
+            let startX = 0, startY = 0;
+            let currentX = 0, currentY = 0;
+            let isDragging = false;
+            
+            function onStart(e) {
+                isDragging = true;
+                card.classList.add('dragging');
+                const point = e.touches ? e.touches[0] : e;
+                startX = point.clientX;
+                startY = point.clientY;
+            }
+            
+            function onMove(e) {
+                if (!isDragging) return;
+                e.preventDefault();
+                
+                const point = e.touches ? e.touches[0] : e;
+                currentX = point.clientX - startX;
+                currentY = point.clientY - startY;
+                
+                const rotation = currentX * 0.1;
+                card.style.transform = `translate(${currentX}px, ${currentY}px) rotate(${rotation}deg)`;
+                
+                // Update visual hints
+                const agreeHint = card.querySelector('.swipe-hint.agree');
+                const disagreeHint = card.querySelector('.swipe-hint.disagree');
+                const skipHint = card.querySelector('.swipe-hint.skip');
+                
+                agreeHint.style.opacity = Math.min(currentX / 100, 1);
+                disagreeHint.style.opacity = Math.min(-currentX / 100, 1);
+                skipHint.style.opacity = Math.min(-currentY / 80, 1);
+                
+                // Update card glow
+                if (currentX > 50) {
+                    card.style.boxShadow = `0 0 ${Math.min(currentX / 2, 40)}px var(--mint-glow)`;
+                } else if (currentX < -50) {
+                    card.style.boxShadow = `0 0 ${Math.min(-currentX / 2, 40)}px var(--coral-glow)`;
+                } else if (currentY < -50) {
+                    card.style.boxShadow = `0 0 ${Math.min(-currentY / 2, 40)}px var(--blue-glow)`;
+                } else {
+                    card.style.boxShadow = '';
+                }
+            }
+            
+            function onEnd() {
+                if (!isDragging) return;
+                isDragging = false;
+                card.classList.remove('dragging');
+                
+                const threshold = 100;
+                const upThreshold = 80;
+                
+                let response = null;
+                let flyDirection = { x: 0, y: 0 };
+                
+                if (currentY < -upThreshold && Math.abs(currentX) < threshold) {
+                    // Skip
+                    response = 'skip';
+                    flyDirection = { x: 0, y: -1000 };
+                } else if (currentX > threshold) {
+                    // Agree (determine intensity)
+                    response = currentX > 200 ? 'Strongly Agree' : 'Agree';
+                    flyDirection = { x: 1000, y: 0 };
+                } else if (currentX < -threshold) {
+                    // Disagree
+                    response = currentX < -200 ? 'Strongly Disagree' : 'Disagree';
+                    flyDirection = { x: -1000, y: 0 };
+                }
+                
+                if (response) {
+                    audio.playWhoosh();
+                    haptic('medium');
+                    
+                    // Fly away animation
+                    card.style.transition = 'transform 0.3s ease-out, opacity 0.3s ease-out';
+                    card.style.transform = `translate(${flyDirection.x}px, ${flyDirection.y}px) rotate(${flyDirection.x * 0.03}deg)`;
+                    card.style.opacity = '0';
+                    
+                    // Record response
+                    if (response !== 'skip') {
+                        state.attitude.responses[question.id] = response;
+                    }
+                    updateProgress();
+                    
+                    // Next card
+                    setTimeout(() => {
+                        if (state.attitude.currentQuestion < surveyData.attitude.length - 1) {
+                            state.attitude.currentQuestion++;
+                            renderAttitudeCard();
+                        } else {
+                            transitionToPractice();
+                        }
+                    }, 300);
+                } else {
+                    // Snap back
+                    card.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease';
+                    card.style.transform = '';
+                    card.style.boxShadow = '';
+                    
+                    card.querySelectorAll('.swipe-hint').forEach(h => h.style.opacity = '0');
+                    
+                    currentX = 0;
+                    currentY = 0;
+                }
+            }
+            
+            // Mouse events
+            card.addEventListener('mousedown', onStart);
+            document.addEventListener('mousemove', onMove);
+            document.addEventListener('mouseup', onEnd);
+            
+            // Touch events
+            card.addEventListener('touchstart', onStart, { passive: true });
+            card.addEventListener('touchmove', onMove, { passive: false });
+            card.addEventListener('touchend', onEnd);
+        }
+
+        function transitionToPractice() {
+            showSection('practice');
+            renderPracticeQuestion();
+        }
+
+        // =====================================================
+        // PRACTICE - CIRCULAR OPTIONS
+        // =====================================================
+        function renderPracticeQuestion() {
+            const questionIndex = state.practice.currentQuestion;
+            const question = surveyData.practice[questionIndex];
+            
+            document.getElementById('practiceCounter').textContent = questionIndex + 1;
+            document.getElementById('practiceQuestionText').textContent = question.question;
+            
+            const container = document.getElementById('practiceOptions');
+            container.innerHTML = '';
+            
+            question.options.forEach((opt, i) => {
+                const option = document.createElement('button');
+                option.className = 'circular-option';
+                option.textContent = opt;
+                option.dataset.index = i;
+                
+                if (state.practice.responses[question.id] === i) {
+                    option.classList.add('selected');
+                }
+                
+                option.addEventListener('click', () => {
+                    audio.playClick();
+                    haptic('medium');
+                    
+                    container.querySelectorAll('.circular-option').forEach(o => o.classList.remove('selected'));
+                    option.classList.add('selected');
+                    
+                    state.practice.responses[question.id] = i;
+                    updateProgress();
+                    
+                    document.getElementById('practiceNext').disabled = false;
+                });
+                
+                container.appendChild(option);
+            });
+            
+            // Update navigation
+            const prevBtn = document.getElementById('practicePrev');
+            const nextBtn = document.getElementById('practiceNext');
+            
+            prevBtn.style.display = questionIndex > 0 ? 'block' : 'none';
+            nextBtn.textContent = questionIndex === surveyData.practice.length - 1 ? 'Finish' : 'Next';
+            nextBtn.disabled = state.practice.responses[question.id] === undefined;
+        }
+
+        function setupPracticeNavigation() {
+            document.getElementById('practicePrev').addEventListener('click', () => {
+                audio.playClick();
+                haptic('light');
+                state.practice.currentQuestion--;
+                renderPracticeQuestion();
+            });
+            
+            document.getElementById('practiceNext').addEventListener('click', () => {
+                audio.playClick();
+                haptic('medium');
+                
+                if (state.practice.currentQuestion < surveyData.practice.length - 1) {
+                    state.practice.currentQuestion++;
+                    renderPracticeQuestion();
+                } else {
+                    finishSurvey();
+                }
+            });
+        }
+
+        // =====================================================
+        // COMPLETION
+        // =====================================================
+        function finishSurvey() {
+            audio.playSuccess();
+            haptic('success');
+            
+            // Calculate stats
+            const endTime = Date.now();
+            const minutes = Math.round((endTime - state.startTime) / 60000);
+            const knowledgePercent = Math.round((state.knowledge.score / surveyData.knowledge.length) * 100);
+            
+            // Save to localStorage
+            const surveyResponse = {
+                id: `gumsync_${Date.now()}`,
+                timestamp: new Date().toISOString(),
+                duration: minutes,
+                demographics: state.demographics.responses,
+                knowledge: {
+                    responses: state.knowledge.responses,
+                    score: state.knowledge.score,
+                    total: surveyData.knowledge.length
+                },
+                attitude: state.attitude.responses,
+                practice: state.practice.responses
+            };
+            
+            localStorage.setItem('gumsync_responses', JSON.stringify(surveyResponse));
+            
+            // Update UI
+            document.getElementById('statTime').textContent = minutes || '<1';
+            document.getElementById('statScore').textContent = `${knowledgePercent}%`;
+            
+            showSection('completion');
+            document.getElementById('progressBar').style.width = '100%';
+        }
+
+        // =====================================================
+        // INITIALIZATION
+        // =====================================================
+        function init() {
+            createParticles();
+            
+            document.getElementById('startBtn').addEventListener('click', () => {
+                audio.init();
+                audio.playClick();
+                haptic('medium');
+                
+                state.startTime = Date.now();
+                showSection('demographics');
+                renderDemographicsQuestion();
+            });
+            
+            setupPracticeNavigation();
+        }
+
+        // Start the app
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
+
