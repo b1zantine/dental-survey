@@ -562,8 +562,9 @@
             padding: 30px;
             cursor: grab;
             user-select: none;
-            transition: box-shadow 0.3s ease;
             touch-action: none;
+            will-change: transform;
+            transform: translateZ(0);
         }
 
         .swipe-card:active {
@@ -571,7 +572,18 @@
         }
 
         .swipe-card.dragging {
-            transition: none;
+            transition: none !important;
+        }
+
+        .swipe-card.releasing {
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                        box-shadow 0.3s ease,
+                        opacity 0.3s ease;
+        }
+
+        .swipe-card.snapping {
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                        box-shadow 0.3s ease;
         }
 
         .swipe-card .question-text {
@@ -583,9 +595,11 @@
 
         .swipe-indicators {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px 16px;
             width: 100%;
-            max-width: 350px;
+            max-width: 400px;
             margin-top: 20px;
             padding: 0 10px;
         }
@@ -593,42 +607,55 @@
         .swipe-indicator {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 0.85rem;
+            gap: 6px;
+            font-size: 0.75rem;
             color: var(--text-muted);
+            padding: 6px 10px;
+            background: var(--bg-glass);
+            border-radius: 20px;
+            border: 1px solid var(--border-glass);
         }
 
-        .swipe-indicator.left { color: var(--coral); }
-        .swipe-indicator.up { color: var(--electric-blue); }
-        .swipe-indicator.right { color: var(--mint); }
+        .swipe-indicator.far-left { color: #FF4444; border-color: rgba(255, 68, 68, 0.3); }
+        .swipe-indicator.left { color: var(--coral); border-color: rgba(255, 107, 107, 0.3); }
+        .swipe-indicator.right { color: var(--mint); border-color: rgba(0, 229, 160, 0.3); }
+        .swipe-indicator.far-right { color: #00FF88; border-color: rgba(0, 255, 136, 0.3); }
 
         .swipe-hint {
             position: absolute;
-            font-size: 1.5rem;
+            font-size: 1rem;
             font-weight: 700;
             opacity: 0;
-            transition: opacity 0.2s ease;
+            transition: opacity 0.15s ease;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
+            pointer-events: none;
         }
 
         .swipe-hint.agree {
-            right: 20px;
-            top: 20px;
+            right: 15px;
+            top: 15px;
             color: var(--mint);
         }
 
+        .swipe-hint.strongly-agree {
+            right: 15px;
+            bottom: 15px;
+            color: #00FF88;
+            font-size: 0.85rem;
+        }
+
         .swipe-hint.disagree {
-            left: 20px;
-            top: 20px;
+            left: 15px;
+            top: 15px;
             color: var(--coral);
         }
 
-        .swipe-hint.skip {
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--electric-blue);
+        .swipe-hint.strongly-disagree {
+            left: 15px;
+            bottom: 15px;
+            color: #FF4444;
+            font-size: 0.85rem;
         }
 
         /* Dial container for practice questions */
@@ -914,6 +941,132 @@
             background: linear-gradient(135deg, rgba(0, 229, 160, 0.3), rgba(0, 194, 255, 0.2));
             box-shadow: 0 0 25px var(--mint-glow);
         }
+
+        /* Resume Modal */
+        .resume-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            animation: fadeIn 0.3s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .resume-modal {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .resume-modal-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .resume-modal h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .resume-modal p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .resume-modal-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .resume-btn {
+            padding: 16px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Outfit', sans-serif;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .resume-btn.primary {
+            background: linear-gradient(135deg, var(--mint), var(--electric-blue));
+            color: var(--bg-dark);
+        }
+
+        .resume-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px var(--mint-glow);
+        }
+
+        .resume-btn.secondary {
+            background: var(--bg-glass);
+            border: 2px solid var(--border-glass);
+            color: var(--text-primary);
+        }
+
+        .resume-btn.secondary:hover {
+            border-color: var(--text-secondary);
+        }
+
+        .resume-progress-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: var(--bg-glass);
+            border-radius: 12px;
+        }
+
+        .resume-stat {
+            text-align: center;
+        }
+
+        .resume-stat-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--mint);
+        }
+
+        .resume-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
     </style>
 </head>
 <body>
@@ -965,16 +1118,17 @@
             <div class="section-header">
                 <div class="section-badge">Attitude</div>
                 <h1 class="section-title">Swipe your opinion</h1>
-                <p class="section-subtitle">Drag right to agree, left to disagree</p>
+                <p class="section-subtitle">Swipe further for stronger feelings</p>
             </div>
             <div class="question-counter">Question <span id="attitudeCounter">1</span> of <span>10</span></div>
             <div class="swipe-container" id="swipeContainer">
                 <!-- Swipe card will be injected here -->
             </div>
             <div class="swipe-indicators">
+                <div class="swipe-indicator far-left">⟪ Strongly Disagree</div>
                 <div class="swipe-indicator left">← Disagree</div>
-                <div class="swipe-indicator up">↑ Skip</div>
                 <div class="swipe-indicator right">Agree →</div>
+                <div class="swipe-indicator far-right">Strongly Agree ⟫</div>
             </div>
         </section>
 
@@ -1198,6 +1352,86 @@
         const audio = new AudioSystem();
 
         // =====================================================
+        // GOOGLE SHEETS INTEGRATION
+        // =====================================================
+        const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyjy_2VIEM_TNEEakFfe704qFheLEbrLD3WcBnpEpdvSXO6KvCSTDfU7eGUU-NEP5jPbw/exec'; // Replace with your deployed Apps Script URL
+
+        async function submitToGoogleSheets(data) {
+            if (GOOGLE_SHEETS_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+                console.warn('Google Sheets URL not configured. Data saved to localStorage only.');
+                return { success: false, reason: 'not_configured' };
+            }
+
+            try {
+                // Flatten the data for spreadsheet columns
+                const flatData = {
+                    timestamp: data.timestamp,
+                    duration: data.duration,
+                    // Demographics
+                    age: data.demographics.age || '',
+                    gender: data.demographics.gender || '',
+                    experience: data.demographics.experience || '',
+                    locality: data.demographics.locality || '',
+                    workType: data.demographics.workType || '',
+                    designation: data.demographics.designation || '',
+                    gumTreatment: data.demographics.gumTreatment || '',
+                    treatments: Array.isArray(data.demographics.treatments) ? data.demographics.treatments.join(', ') : '',
+                    treatments_other: data.demographics.treatments_other || '',
+                    // Knowledge
+                    knowledgeScore: data.knowledge.score,
+                    knowledgeTotal: data.knowledge.total,
+                    k1: data.knowledge.responses.k1 ?? '',
+                    k2: data.knowledge.responses.k2 ?? '',
+                    k3: data.knowledge.responses.k3 ?? '',
+                    k4: data.knowledge.responses.k4 ?? '',
+                    k5: data.knowledge.responses.k5 ?? '',
+                    k6: data.knowledge.responses.k6 ?? '',
+                    k7: data.knowledge.responses.k7 ?? '',
+                    k8: data.knowledge.responses.k8 ?? '',
+                    k9: data.knowledge.responses.k9 ?? '',
+                    k10: data.knowledge.responses.k10 ?? '',
+                    // Attitude
+                    a1: data.attitude.a1 || '',
+                    a2: data.attitude.a2 || '',
+                    a3: data.attitude.a3 || '',
+                    a4: data.attitude.a4 || '',
+                    a5: data.attitude.a5 || '',
+                    a6: data.attitude.a6 || '',
+                    a7: data.attitude.a7 || '',
+                    a8: data.attitude.a8 || '',
+                    a9: data.attitude.a9 || '',
+                    a10: data.attitude.a10 || '',
+                    // Practice
+                    p1: data.practice.p1 ?? '',
+                    p2: data.practice.p2 ?? '',
+                    p3: data.practice.p3 ?? '',
+                    p4: data.practice.p4 ?? '',
+                    p5: data.practice.p5 ?? '',
+                    p6: data.practice.p6 ?? '',
+                    p7: data.practice.p7 ?? '',
+                    p8: data.practice.p8 ?? '',
+                    p9: data.practice.p9 ?? '',
+                    p10: data.practice.p10 ?? ''
+                };
+
+                const response = await fetch(GOOGLE_SHEETS_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // Apps Script requires this
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(flatData)
+                });
+
+                console.log('Survey data submitted to Google Sheets');
+                return { success: true };
+            } catch (error) {
+                console.error('Failed to submit to Google Sheets:', error);
+                return { success: false, reason: 'network_error', error };
+            }
+        }
+
+        // =====================================================
         // HAPTIC FEEDBACK
         // =====================================================
         function haptic(type = 'light') {
@@ -1375,6 +1609,143 @@
         };
 
         // =====================================================
+        // SESSION PERSISTENCE
+        // =====================================================
+        const SESSION_KEY = 'gumsync_session';
+
+        function saveStateToStorage() {
+            const sessionData = {
+                currentSection: state.currentSection,
+                demographics: state.demographics,
+                knowledge: state.knowledge,
+                attitude: state.attitude,
+                practice: state.practice,
+                startTime: state.startTime,
+                savedAt: Date.now()
+            };
+            localStorage.setItem(SESSION_KEY, JSON.stringify(sessionData));
+        }
+
+        function loadStateFromStorage() {
+            try {
+                const saved = localStorage.getItem(SESSION_KEY);
+                if (!saved) return null;
+                
+                const sessionData = JSON.parse(saved);
+                
+                // Check if session is older than 24 hours
+                const hoursSinceSave = (Date.now() - sessionData.savedAt) / (1000 * 60 * 60);
+                if (hoursSinceSave > 24) {
+                    localStorage.removeItem(SESSION_KEY);
+                    return null;
+                }
+                
+                return sessionData;
+            } catch (e) {
+                console.error('Failed to load session:', e);
+                return null;
+            }
+        }
+
+        function restoreState(sessionData) {
+            state.currentSection = sessionData.currentSection;
+            state.demographics = sessionData.demographics;
+            state.knowledge = sessionData.knowledge;
+            state.attitude = sessionData.attitude;
+            state.practice = sessionData.practice;
+            state.startTime = sessionData.startTime;
+        }
+
+        function clearSession() {
+            localStorage.removeItem(SESSION_KEY);
+        }
+
+        function showResumeModal(sessionData) {
+            // Calculate progress info
+            const totalAnswered = 
+                Object.keys(sessionData.demographics.responses).length +
+                Object.keys(sessionData.knowledge.responses).length +
+                Object.keys(sessionData.attitude.responses).length +
+                Object.keys(sessionData.practice.responses).length;
+            
+            const progressPercent = Math.round((totalAnswered / state.totalQuestions) * 100);
+            
+            // Create modal
+            const overlay = document.createElement('div');
+            overlay.className = 'resume-modal-overlay';
+            overlay.innerHTML = `
+                <div class="resume-modal">
+                    <div class="resume-modal-icon">📋</div>
+                    <h2>Continue Survey?</h2>
+                    <p>You have an unfinished survey. Would you like to continue where you left off?</p>
+                    <div class="resume-progress-info">
+                        <div class="resume-stat">
+                            <div class="resume-stat-value">${totalAnswered}/${state.totalQuestions}</div>
+                            <div class="resume-stat-label">Questions</div>
+                        </div>
+                        <div class="resume-stat">
+                            <div class="resume-stat-value">${progressPercent}%</div>
+                            <div class="resume-stat-label">Complete</div>
+                        </div>
+                    </div>
+                    <div class="resume-modal-buttons">
+                        <button class="resume-btn primary" id="resumeContinue">Continue Survey</button>
+                        <button class="resume-btn secondary" id="resumeRestart">Start Fresh</button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(overlay);
+            
+            // Handle continue
+            document.getElementById('resumeContinue').addEventListener('click', () => {
+                audio.init();
+                audio.playClick();
+                haptic('medium');
+                
+                // Restore state
+                restoreState(sessionData);
+                updateProgress();
+                
+                // Navigate to the correct section and render
+                overlay.remove();
+                navigateToCurrentSection();
+            });
+            
+            // Handle restart
+            document.getElementById('resumeRestart').addEventListener('click', () => {
+                audio.init();
+                audio.playClick();
+                haptic('light');
+                
+                clearSession();
+                overlay.remove();
+                // Stay on landing page
+            });
+        }
+
+        function navigateToCurrentSection() {
+            const section = state.currentSection;
+            
+            if (section === 'demographics') {
+                showSection('demographics');
+                renderDemographicsQuestion();
+            } else if (section === 'knowledge') {
+                showSection('knowledge');
+                renderKnowledgeQuestion();
+            } else if (section === 'attitude') {
+                showSection('attitude');
+                renderAttitudeCard();
+            } else if (section === 'practice') {
+                showSection('practice');
+                renderPracticeQuestion();
+            } else {
+                // Default to landing
+                showSection('landing');
+            }
+        }
+
+        // =====================================================
         // UTILITY FUNCTIONS
         // =====================================================
         function updateProgress() {
@@ -1547,6 +1918,7 @@
                     btn.classList.add('selected');
                     state.demographics.responses[question.id] = btn.dataset.value;
                     updateProgress();
+                    saveStateToStorage();
                     
                     // Auto-advance after short delay
                     setTimeout(() => {
@@ -1642,6 +2014,7 @@
                     state.demographics.responses[question.id] = selected;
                     validateInput();
                     updateProgress();
+                    saveStateToStorage();
                 });
             });
             
@@ -1682,6 +2055,7 @@
                     }
                     
                     updateProgress();
+                    saveStateToStorage();
                     
                     if (state.demographics.currentQuestion < surveyData.demographics.length - 1) {
                         state.demographics.currentQuestion++;
@@ -1694,6 +2068,8 @@
         }
 
         function transitionToKnowledge() {
+            state.currentSection = 'knowledge';
+            saveStateToStorage();
             showSection('knowledge');
             renderKnowledgeQuestion();
         }
@@ -1762,6 +2138,7 @@
             state.knowledge.responses[question.id] = selectedIndex;
             if (isCorrect) state.knowledge.score++;
             updateProgress();
+            saveStateToStorage();
             
             // Move to next question
             setTimeout(() => {
@@ -1802,6 +2179,8 @@
         }
 
         function transitionToAttitude() {
+            state.currentSection = 'attitude';
+            saveStateToStorage();
             showSection('attitude');
             renderAttitudeCard();
         }
@@ -1822,8 +2201,9 @@
             card.className = 'swipe-card';
             card.innerHTML = `
                 <span class="swipe-hint agree">Agree</span>
+                <span class="swipe-hint strongly-agree">Strongly Agree</span>
                 <span class="swipe-hint disagree">Disagree</span>
-                <span class="swipe-hint skip">Skip</span>
+                <span class="swipe-hint strongly-disagree">Strongly Disagree</span>
                 <p class="question-text">${question.statement}</p>
             `;
             
@@ -1836,45 +2216,139 @@
             let startX = 0, startY = 0;
             let currentX = 0, currentY = 0;
             let isDragging = false;
+            let animationFrameId = null;
+            
+            // Velocity tracking for momentum
+            let velocityX = 0;
+            let velocityY = 0;
+            let lastX = 0;
+            let lastY = 0;
+            let lastTime = 0;
+            
+            // Thresholds
+            const THRESHOLD_NORMAL = 80;
+            const THRESHOLD_STRONG = 160;
+            const VELOCITY_THRESHOLD = 0.5;
+            
+            function getPoint(e) {
+                return e.touches ? e.touches[0] : e;
+            }
             
             function onStart(e) {
                 isDragging = true;
                 card.classList.add('dragging');
-                const point = e.touches ? e.touches[0] : e;
+                card.classList.remove('releasing', 'snapping');
+                
+                const point = getPoint(e);
                 startX = point.clientX;
                 startY = point.clientY;
+                lastX = startX;
+                lastY = startY;
+                lastTime = Date.now();
+                velocityX = 0;
+                velocityY = 0;
+                
+                // Cancel any ongoing animation
+                if (animationFrameId) {
+                    cancelAnimationFrame(animationFrameId);
+                }
+            }
+            
+            function updateCard() {
+                if (!isDragging) return;
+                
+                // Smooth rotation based on horizontal movement
+                const rotation = currentX * 0.08;
+                const scale = 1 + Math.min(Math.abs(currentX) / 800, 0.05);
+                
+                card.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) rotate(${rotation}deg) scale(${scale})`;
+                
+                // Get hint elements
+                const agreeHint = card.querySelector('.swipe-hint.agree');
+                const stronglyAgreeHint = card.querySelector('.swipe-hint.strongly-agree');
+                const disagreeHint = card.querySelector('.swipe-hint.disagree');
+                const stronglyDisagreeHint = card.querySelector('.swipe-hint.strongly-disagree');
+                
+                // Calculate hint opacities based on distance
+                const absX = Math.abs(currentX);
+                
+                if (currentX > 0) {
+                    // Moving right - agree direction
+                    if (absX > THRESHOLD_STRONG) {
+                        agreeHint.style.opacity = '0.3';
+                        stronglyAgreeHint.style.opacity = Math.min((absX - THRESHOLD_STRONG) / 80, 1);
+                    } else {
+                        agreeHint.style.opacity = Math.min(absX / THRESHOLD_NORMAL, 1);
+                        stronglyAgreeHint.style.opacity = '0';
+                    }
+                    disagreeHint.style.opacity = '0';
+                    stronglyDisagreeHint.style.opacity = '0';
+                } else if (currentX < 0) {
+                    // Moving left - disagree direction
+                    if (absX > THRESHOLD_STRONG) {
+                        disagreeHint.style.opacity = '0.3';
+                        stronglyDisagreeHint.style.opacity = Math.min((absX - THRESHOLD_STRONG) / 80, 1);
+                    } else {
+                        disagreeHint.style.opacity = Math.min(absX / THRESHOLD_NORMAL, 1);
+                        stronglyDisagreeHint.style.opacity = '0';
+                    }
+                    agreeHint.style.opacity = '0';
+                    stronglyAgreeHint.style.opacity = '0';
+                } else {
+                    // Centered
+                    agreeHint.style.opacity = '0';
+                    stronglyAgreeHint.style.opacity = '0';
+                    disagreeHint.style.opacity = '0';
+                    stronglyDisagreeHint.style.opacity = '0';
+                }
+                
+                // Update card glow based on position and intensity
+                if (currentX > THRESHOLD_STRONG) {
+                    card.style.boxShadow = `0 0 50px rgba(0, 255, 136, 0.5)`;
+                    card.style.borderColor = '#00FF88';
+                } else if (currentX > THRESHOLD_NORMAL / 2) {
+                    const intensity = Math.min((currentX - THRESHOLD_NORMAL / 2) / 100, 1);
+                    card.style.boxShadow = `0 0 ${30 * intensity}px var(--mint-glow)`;
+                    card.style.borderColor = `rgba(0, 229, 160, ${0.5 + intensity * 0.5})`;
+                } else if (currentX < -THRESHOLD_STRONG) {
+                    card.style.boxShadow = `0 0 50px rgba(255, 68, 68, 0.5)`;
+                    card.style.borderColor = '#FF4444';
+                } else if (currentX < -THRESHOLD_NORMAL / 2) {
+                    const intensity = Math.min((-currentX - THRESHOLD_NORMAL / 2) / 100, 1);
+                    card.style.boxShadow = `0 0 ${30 * intensity}px var(--coral-glow)`;
+                    card.style.borderColor = `rgba(255, 107, 107, ${0.5 + intensity * 0.5})`;
+                } else {
+                    card.style.boxShadow = '';
+                    card.style.borderColor = '';
+                }
             }
             
             function onMove(e) {
                 if (!isDragging) return;
                 e.preventDefault();
                 
-                const point = e.touches ? e.touches[0] : e;
+                const point = getPoint(e);
+                const now = Date.now();
+                const dt = now - lastTime;
+                
                 currentX = point.clientX - startX;
                 currentY = point.clientY - startY;
                 
-                const rotation = currentX * 0.1;
-                card.style.transform = `translate(${currentX}px, ${currentY}px) rotate(${rotation}deg)`;
-                
-                // Update visual hints
-                const agreeHint = card.querySelector('.swipe-hint.agree');
-                const disagreeHint = card.querySelector('.swipe-hint.disagree');
-                const skipHint = card.querySelector('.swipe-hint.skip');
-                
-                agreeHint.style.opacity = Math.min(currentX / 100, 1);
-                disagreeHint.style.opacity = Math.min(-currentX / 100, 1);
-                skipHint.style.opacity = Math.min(-currentY / 80, 1);
-                
-                // Update card glow
-                if (currentX > 50) {
-                    card.style.boxShadow = `0 0 ${Math.min(currentX / 2, 40)}px var(--mint-glow)`;
-                } else if (currentX < -50) {
-                    card.style.boxShadow = `0 0 ${Math.min(-currentX / 2, 40)}px var(--coral-glow)`;
-                } else if (currentY < -50) {
-                    card.style.boxShadow = `0 0 ${Math.min(-currentY / 2, 40)}px var(--blue-glow)`;
-                } else {
-                    card.style.boxShadow = '';
+                // Calculate velocity (pixels per millisecond)
+                if (dt > 0) {
+                    velocityX = (point.clientX - lastX) / dt;
+                    velocityY = (point.clientY - lastY) / dt;
                 }
+                
+                lastX = point.clientX;
+                lastY = point.clientY;
+                lastTime = now;
+                
+                // Use RAF for smooth updates
+                if (animationFrameId) {
+                    cancelAnimationFrame(animationFrameId);
+                }
+                animationFrameId = requestAnimationFrame(updateCard);
             }
             
             function onEnd() {
@@ -1882,60 +2356,77 @@
                 isDragging = false;
                 card.classList.remove('dragging');
                 
-                const threshold = 100;
-                const upThreshold = 80;
+                if (animationFrameId) {
+                    cancelAnimationFrame(animationFrameId);
+                }
+                
+                // Determine response based on position AND velocity
+                const absX = Math.abs(currentX);
+                const effectiveX = currentX + velocityX * 150; // Project position based on velocity
+                const absEffectiveX = Math.abs(effectiveX);
                 
                 let response = null;
                 let flyDirection = { x: 0, y: 0 };
                 
-                if (currentY < -upThreshold && Math.abs(currentX) < threshold) {
-                    // Skip
-                    response = 'skip';
-                    flyDirection = { x: 0, y: -1000 };
-                } else if (currentX > threshold) {
-                    // Agree (determine intensity)
-                    response = currentX > 200 ? 'Strongly Agree' : 'Agree';
-                    flyDirection = { x: 1000, y: 0 };
-                } else if (currentX < -threshold) {
-                    // Disagree
-                    response = currentX < -200 ? 'Strongly Disagree' : 'Disagree';
-                    flyDirection = { x: -1000, y: 0 };
+                // Check if swipe was decisive (position or velocity)
+                const isDecisive = absX > THRESHOLD_NORMAL || Math.abs(velocityX) > VELOCITY_THRESHOLD;
+                
+                if (isDecisive) {
+                    if (effectiveX > 0) {
+                        // Agree direction
+                        response = absEffectiveX > THRESHOLD_STRONG || absX > THRESHOLD_STRONG ? 'Strongly Agree' : 'Agree';
+                        flyDirection = { x: 1000 + Math.abs(velocityX) * 500, y: currentY };
+                    } else {
+                        // Disagree direction
+                        response = absEffectiveX > THRESHOLD_STRONG || absX > THRESHOLD_STRONG ? 'Strongly Disagree' : 'Disagree';
+                        flyDirection = { x: -1000 - Math.abs(velocityX) * 500, y: currentY };
+                    }
                 }
                 
                 if (response) {
                     audio.playWhoosh();
                     haptic('medium');
                     
-                    // Fly away animation
-                    card.style.transition = 'transform 0.3s ease-out, opacity 0.3s ease-out';
-                    card.style.transform = `translate(${flyDirection.x}px, ${flyDirection.y}px) rotate(${flyDirection.x * 0.03}deg)`;
+                    // Fly away animation with momentum
+                    card.classList.add('releasing');
+                    const rotation = flyDirection.x * 0.02;
+                    card.style.transform = `translate3d(${flyDirection.x}px, ${flyDirection.y}px, 0) rotate(${rotation}deg)`;
                     card.style.opacity = '0';
                     
                     // Record response
-                    if (response !== 'skip') {
-                        state.attitude.responses[question.id] = response;
-                    }
+                    state.attitude.responses[question.id] = response;
                     updateProgress();
+                    saveStateToStorage();
                     
                     // Next card
                     setTimeout(() => {
+                        // Clean up event listeners
+                        document.removeEventListener('mousemove', onMove);
+                        document.removeEventListener('mouseup', onEnd);
+                        
                         if (state.attitude.currentQuestion < surveyData.attitude.length - 1) {
                             state.attitude.currentQuestion++;
                             renderAttitudeCard();
                         } else {
                             transitionToPractice();
                         }
-                    }, 300);
+                    }, 350);
                 } else {
-                    // Snap back
-                    card.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease';
+                    // Snap back with spring animation
+                    card.classList.add('snapping');
                     card.style.transform = '';
                     card.style.boxShadow = '';
+                    card.style.borderColor = '';
                     
                     card.querySelectorAll('.swipe-hint').forEach(h => h.style.opacity = '0');
                     
                     currentX = 0;
                     currentY = 0;
+                    
+                    // Remove snapping class after animation
+                    setTimeout(() => {
+                        card.classList.remove('snapping');
+                    }, 500);
                 }
             }
             
@@ -1944,13 +2435,16 @@
             document.addEventListener('mousemove', onMove);
             document.addEventListener('mouseup', onEnd);
             
-            // Touch events
+            // Touch events with proper passive handling
             card.addEventListener('touchstart', onStart, { passive: true });
             card.addEventListener('touchmove', onMove, { passive: false });
-            card.addEventListener('touchend', onEnd);
+            card.addEventListener('touchend', onEnd, { passive: true });
+            card.addEventListener('touchcancel', onEnd, { passive: true });
         }
 
         function transitionToPractice() {
+            state.currentSection = 'practice';
+            saveStateToStorage();
             showSection('practice');
             renderPracticeQuestion();
         }
@@ -1987,6 +2481,7 @@
                     
                     state.practice.responses[question.id] = i;
                     updateProgress();
+                    saveStateToStorage();
                     
                     document.getElementById('practiceNext').disabled = false;
                 });
@@ -2027,7 +2522,7 @@
         // =====================================================
         // COMPLETION
         // =====================================================
-        function finishSurvey() {
+        async function finishSurvey() {
             audio.playSuccess();
             haptic('success');
             
@@ -2036,7 +2531,7 @@
             const minutes = Math.round((endTime - state.startTime) / 60000);
             const knowledgePercent = Math.round((state.knowledge.score / surveyData.knowledge.length) * 100);
             
-            // Save to localStorage
+            // Prepare survey response data
             const surveyResponse = {
                 id: `gumsync_${Date.now()}`,
                 timestamp: new Date().toISOString(),
@@ -2051,7 +2546,14 @@
                 practice: state.practice.responses
             };
             
-            localStorage.setItem('gumsync_responses', JSON.stringify(surveyResponse));
+            // Save completed response to localStorage
+            localStorage.setItem('gumsync_completed_response', JSON.stringify(surveyResponse));
+            
+            // Clear the in-progress session
+            localStorage.removeItem('gumsync_session');
+            
+            // Submit to Google Sheets
+            await submitToGoogleSheets(surveyResponse);
             
             // Update UI
             document.getElementById('statTime').textContent = minutes || '<1';
@@ -2067,12 +2569,24 @@
         function init() {
             createParticles();
             
+            // Check for existing session
+            const existingSession = loadStateFromStorage();
+            if (existingSession && existingSession.currentSection !== 'landing') {
+                showResumeModal(existingSession);
+            }
+            
             document.getElementById('startBtn').addEventListener('click', () => {
                 audio.init();
                 audio.playClick();
                 haptic('medium');
                 
+                // Clear any existing session when starting fresh
+                clearSession();
+                
                 state.startTime = Date.now();
+                state.currentSection = 'demographics';
+                saveStateToStorage();
+                
                 showSection('demographics');
                 renderDemographicsQuestion();
             });
