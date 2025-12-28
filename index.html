@@ -846,34 +846,44 @@
             max-width: 400px;
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-bottom: 30px;
-            max-width: 400px;
+        /* Loader spinner */
+        .loader-spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid var(--border-glass);
+            border-top-color: var(--mint);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
         }
 
-        .stat-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glass);
-            border-radius: 16px;
-            padding: 20px 15px;
-            backdrop-filter: blur(20px);
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
-        .stat-value {
-            font-size: 1.8rem;
-            font-weight: 700;
+        /* Completion states */
+        .completion-state {
+            text-align: center;
+        }
+
+        .completion-state.hidden {
+            display: none;
+        }
+
+        /* Button group for error state */
+        .completion-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        /* Secondary button style */
+        .start-btn.secondary {
+            background: transparent;
+            border: 2px solid var(--mint);
             color: var(--mint);
-        }
-
-        .stat-label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 5px;
         }
 
         /* Responsive adjustments */
@@ -1207,22 +1217,27 @@
             <div class="completion">
                 <div class="completion-icon">🎉</div>
                 <h1>Survey Complete!</h1>
-                <p>Thank you for participating in the periodontal health survey. Your responses have been saved.</p>
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-value" id="statQuestions">38</div>
-                        <div class="stat-label">Questions</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="statTime">--</div>
-                        <div class="stat-label">Minutes</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="statScore">--</div>
-                        <div class="stat-label">Knowledge</div>
+                <p>Thank you for participating in the periodontal health survey.</p>
+                <!-- Loading state -->
+                <div id="completionLoading" class="completion-state">
+                    <div class="loader-spinner"></div>
+                    <p>Saving your responses...</p>
+                </div>
+                
+                <!-- Success state (hidden initially) -->
+                <div id="completionSuccess" class="completion-state hidden">
+                    <p>Your response has been recorded.</p>
+                    <button class="start-btn" onclick="location.reload()">Start Over</button>
+                </div>
+                
+                <!-- Error state (hidden initially) -->
+                <div id="completionError" class="completion-state hidden">
+                    <p>Failed to save your response. Please try again.</p>
+                    <div class="completion-buttons">
+                        <button class="start-btn" id="retryBtn">Try Saving Again</button>
+                        <button class="start-btn secondary" onclick="location.reload()">Start Over</button>
                     </div>
                 </div>
-                <button class="start-btn" onclick="location.reload()">Start Over</button>
             </div>
         </section>
     </div>
@@ -1675,7 +1690,21 @@
         // =====================================================
         const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyjy_2VIEM_TNEEakFfe704qFheLEbrLD3WcBnpEpdvSXO6KvCSTDfU7eGUU-NEP5jPbw/exec'; // Replace with your deployed Apps Script URL
 
-        async function submitToGoogleSheets(data) {
+        // Save failed responses to localStorage for developer recovery
+        function saveFailedResponse(surveyResponse, error) {
+            const failedResponses = JSON.parse(localStorage.getItem('gumsync_failed_responses') || '[]');
+            failedResponses.push({
+                response: surveyResponse,
+                failedAt: new Date().toISOString(),
+                error: error?.message || 'Unknown error'
+            });
+            localStorage.setItem('gumsync_failed_responses', JSON.stringify(failedResponses));
+            console.error('Failed response saved to localStorage under "gumsync_failed_responses"');
+        }
+
+        async function submitToGoogleSheets(data, retryCount = 0) {
+            const MAX_RETRIES = 2;
+            
             if (GOOGLE_SHEETS_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
                 console.warn('Google Sheets URL not configured. Data saved to localStorage only.');
                 return { success: false, reason: 'not_configured' };
@@ -1745,7 +1774,14 @@
                 console.log('Survey data submitted to Google Sheets');
                 return { success: true };
             } catch (error) {
-                console.error('Failed to submit to Google Sheets:', error);
+                console.error(`Submission failed (attempt ${retryCount + 1}):`, error);
+                
+                if (retryCount < MAX_RETRIES) {
+                    console.log(`Retrying... (${retryCount + 1}/${MAX_RETRIES})`);
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                    return submitToGoogleSheets(data, retryCount + 1);
+                }
+                
                 return { success: false, reason: 'network_error', error };
             }
         }
@@ -3035,17 +3071,27 @@
         // =====================================================
         // COMPLETION
         // =====================================================
+        let pendingSurveyResponse = null; // Store for retry
+
         async function finishSurvey() {
             audio.playSuccess();
             haptic('success');
             
+            // Show completion section with loading state immediately
+            showSection('completion');
+            document.getElementById('progressBar').style.width = '100%';
+            
+            // Reset states
+            document.getElementById('completionLoading').classList.remove('hidden');
+            document.getElementById('completionSuccess').classList.add('hidden');
+            document.getElementById('completionError').classList.add('hidden');
+            
             // Calculate stats
             const endTime = Date.now();
             const minutes = Math.round((endTime - state.startTime) / 60000);
-            const knowledgePercent = Math.round((state.knowledge.score / surveyData.knowledge.length) * 100);
             
             // Prepare survey response data
-            const surveyResponse = {
+            pendingSurveyResponse = {
                 id: `gumsync_${Date.now()}`,
                 timestamp: new Date().toISOString(),
                 duration: minutes,
@@ -3060,20 +3106,31 @@
             };
             
             // Save completed response to localStorage
-            localStorage.setItem('gumsync_completed_response', JSON.stringify(surveyResponse));
+            localStorage.setItem('gumsync_completed_response', JSON.stringify(pendingSurveyResponse));
             
             // Clear the in-progress session
             localStorage.removeItem('gumsync_session');
             
-            // Submit to Google Sheets
-            await submitToGoogleSheets(surveyResponse);
+            // Submit and handle result
+            await attemptSubmission();
+        }
+
+        async function attemptSubmission() {
+            // Show loading state
+            document.getElementById('completionLoading').classList.remove('hidden');
+            document.getElementById('completionSuccess').classList.add('hidden');
+            document.getElementById('completionError').classList.add('hidden');
             
-            // Update UI
-            document.getElementById('statTime').textContent = minutes || '<1';
-            document.getElementById('statScore').textContent = `${knowledgePercent}%`;
+            const result = await submitToGoogleSheets(pendingSurveyResponse);
             
-            showSection('completion');
-            document.getElementById('progressBar').style.width = '100%';
+            document.getElementById('completionLoading').classList.add('hidden');
+            
+            if (result.success) {
+                document.getElementById('completionSuccess').classList.remove('hidden');
+            } else {
+                saveFailedResponse(pendingSurveyResponse, result.error);
+                document.getElementById('completionError').classList.remove('hidden');
+            }
         }
 
         // =====================================================
@@ -3103,6 +3160,9 @@
                 showSection('demographics');
                 renderDemographicsQuestion();
             });
+            
+            // Handle retry button click
+            document.getElementById('retryBtn').addEventListener('click', attemptSubmission);
             
             // Handle window resize for bubble physics
             window.addEventListener('resize', () => {
