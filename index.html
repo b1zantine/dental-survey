@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>GumSync - Debugging Gum Health</title>
+    <title>Periodontal Survey among Bangalore's IT professionals</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -928,8 +928,8 @@
         <!-- Landing Section -->
         <section class="section landing" id="landing">
             <div class="landing-logo">🦷</div>
-            <h1>GumSync</h1>
-            <h2>Debugging Gum Health in Bangalore's IT Workforce</h2>
+            <h1>Periodontal Survey</h1>
+            <h2>Periodontal Health Awareness among IT Professionals in Bangalore: A Cross-Sectional Survey</h2>
             <button class="start-btn" id="startBtn">Begin Survey</button>
         </section>
 
@@ -940,7 +940,7 @@
                 <h1 class="section-title">Let's get to know you</h1>
                 <p class="section-subtitle">Quick questions about yourself</p>
             </div>
-            <div class="question-counter">Question <span id="demoCounter">1</span> of <span>9</span></div>
+            <div class="question-counter">Question <span id="demoCounter">1</span> of <span>8</span></div>
             <div class="demo-card" id="demoCard">
                 <!-- Questions will be injected here -->
             </div>
@@ -1004,7 +1004,7 @@
                 <p>Thank you for participating in the periodontal health survey. Your responses have been saved.</p>
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-value" id="statQuestions">39</div>
+                        <div class="stat-value" id="statQuestions">38</div>
                         <div class="stat-label">Questions</div>
                     </div>
                     <div class="stat-card">
@@ -1224,15 +1224,14 @@
         // =====================================================
         const surveyData = {
             demographics: [
-                { id: 'age', type: 'input', label: 'What is your age?', placeholder: 'Enter your age' },
+                { id: 'age', type: 'options', label: 'What is your age?', options: ['20-30 years', '30-40 years', '40-50 years', '50-60 years'] },
                 { id: 'gender', type: 'options', label: 'What is your gender?', options: ['Male', 'Female', 'Prefer not to say', 'Other'] },
-                { id: 'experience', type: 'input', label: 'Years of work experience?', placeholder: 'Enter years' },
+                { id: 'experience', type: 'options', label: 'Years of work experience?', options: ['0-3 years', '3-6 years', '6-10 years', '10-15 years', '15+ years'] },
                 { id: 'locality', type: 'input', label: 'Locality / area of residence?', placeholder: 'Enter your area' },
                 { id: 'workType', type: 'options', label: 'Type of work?', options: ['Full time', 'Hybrid', 'Work from home (Remote)'] },
                 { id: 'designation', type: 'input', label: 'What is your designation?', placeholder: 'Enter designation' },
                 { id: 'gumTreatment', type: 'options', label: 'Have you undergone any gum treatment?', options: ['Yes', 'No'] },
-                { id: 'treatments', type: 'checkbox', label: 'If yes, please tick the treatments done:', options: ['Cleaning (Scaling)', 'Deep cleaning (Root planing)', 'Flap surgeries', 'None'], condition: (responses) => responses.gumTreatment === 'Yes' },
-                { id: 'otherTreatments', type: 'input', label: 'Others please specify:', placeholder: 'Other treatments (optional)', optional: true }
+                { id: 'treatments', type: 'checkbox_with_other', label: 'If yes, please tick the treatments done:', options: ['Cleaning (Scaling)', 'Deep cleaning (Root planing)', 'Flap surgeries', 'None'], otherPlaceholder: 'Others please specify (optional)', condition: (responses) => responses.gumTreatment === 'Yes' }
             ],
             knowledge: [
                 { 
@@ -1372,7 +1371,7 @@
             attitude: { currentQuestion: 0, responses: {} },
             practice: { currentQuestion: 0, responses: {} },
             startTime: null,
-            totalQuestions: 39
+            totalQuestions: 38
         };
 
         // =====================================================
@@ -1452,7 +1451,7 @@
                     html += `<button class="demo-option ${selected}" data-value="${opt}">${opt}</button>`;
                 });
                 html += '</div>';
-            } else if (question.type === 'checkbox') {
+            } else if (question.type === 'checkbox' || question.type === 'checkbox_with_other') {
                 html += '<div class="demo-checkbox-group">';
                 const selectedItems = state.demographics.responses[question.id] || [];
                 question.options.forEach(opt => {
@@ -1464,11 +1463,23 @@
                     </label>`;
                 });
                 html += '</div>';
+                
+                // Add "Others please specify" input for checkbox_with_other type
+                if (question.type === 'checkbox_with_other') {
+                    const otherValue = state.demographics.responses[question.id + '_other'] || '';
+                    html += `<input type="text" class="demo-input" id="demoOtherInput" 
+                        placeholder="${question.otherPlaceholder || 'Others please specify (optional)'}" 
+                        value="${otherValue}" style="margin-top: 15px;">`;
+                }
             }
             
-            html += `<div class="nav-buttons">
+            // For options type, don't show Next button (auto-advance handles it)
+            // For input and checkbox types, show navigation
+            const showNextButton = question.type !== 'options';
+            
+            html += `<div class="nav-buttons" ${!showNextButton && questionIndex === 0 ? 'style="display: none;"' : ''}>
                 ${questionIndex > 0 ? '<button class="nav-btn secondary" id="demoPrev">Back</button>' : ''}
-                <button class="nav-btn primary" id="demoNext">${questionIndex === surveyData.demographics.length - 1 ? 'Continue' : 'Next'}</button>
+                ${showNextButton ? `<button class="nav-btn primary" id="demoNext">${questionIndex === surveyData.demographics.length - 1 ? 'Continue' : 'Next'}</button>` : (questionIndex > 0 ? '' : '')}
             </div></div>`;
             
             container.innerHTML = html;
@@ -1483,6 +1494,8 @@
             
             // Validate and enable/disable next button
             function validateInput() {
+                if (!nextBtn) return; // No next button for options type
+                
                 if (question.optional) {
                     nextBtn.disabled = false;
                     return;
@@ -1493,7 +1506,7 @@
                     nextBtn.disabled = !input.value.trim();
                 } else if (question.type === 'options') {
                     nextBtn.disabled = !state.demographics.responses[question.id];
-                } else if (question.type === 'checkbox') {
+                } else if (question.type === 'checkbox' || question.type === 'checkbox_with_other') {
                     const selected = state.demographics.responses[question.id] || [];
                     nextBtn.disabled = selected.length === 0;
                 }
@@ -1510,13 +1523,21 @@
                     validateInput();
                 });
                 input.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' && !nextBtn.disabled) {
+                    if (e.key === 'Enter' && nextBtn && !nextBtn.disabled) {
                         nextBtn.click();
                     }
                 });
             }
             
-            // Option buttons
+            // "Others" input handler for checkbox_with_other
+            const otherInput = document.getElementById('demoOtherInput');
+            if (otherInput) {
+                otherInput.addEventListener('input', () => {
+                    state.demographics.responses[question.id + '_other'] = otherInput.value;
+                });
+            }
+            
+            // Option buttons - auto advance, no next button needed
             document.querySelectorAll('.demo-option').forEach(btn => {
                 btn.addEventListener('click', () => {
                     audio.playClick();
@@ -1525,39 +1546,97 @@
                     document.querySelectorAll('.demo-option').forEach(b => b.classList.remove('selected'));
                     btn.classList.add('selected');
                     state.demographics.responses[question.id] = btn.dataset.value;
-                    validateInput();
                     updateProgress();
                     
                     // Auto-advance after short delay
                     setTimeout(() => {
-                        if (!nextBtn.disabled) nextBtn.click();
+                        if (state.demographics.currentQuestion < surveyData.demographics.length - 1) {
+                            state.demographics.currentQuestion++;
+                            renderDemographicsQuestion();
+                        } else {
+                            transitionToKnowledge();
+                        }
                     }, 300);
                 });
             });
             
             // Checkbox handlers
             document.querySelectorAll('.demo-checkbox').forEach(checkbox => {
-                checkbox.addEventListener('click', () => {
+                checkbox.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
                     audio.playClick();
                     haptic('light');
                     
-                    checkbox.classList.toggle('checked');
                     const value = checkbox.dataset.value;
                     let selected = state.demographics.responses[question.id] || [];
+                    const isCurrentlyChecked = checkbox.classList.contains('checked');
                     
-                    if (checkbox.classList.contains('checked')) {
+                    if (!isCurrentlyChecked) {
+                        // Checking this checkbox
                         if (value === 'None') {
+                            // If selecting "None", uncheck all others and disable them
                             selected = ['None'];
                             document.querySelectorAll('.demo-checkbox').forEach(cb => {
-                                if (cb.dataset.value !== 'None') cb.classList.remove('checked');
+                                if (cb.dataset.value !== 'None') {
+                                    cb.classList.remove('checked');
+                                    cb.style.opacity = '0.5';
+                                    cb.style.pointerEvents = 'none';
+                                }
                             });
+                            checkbox.classList.add('checked');
+                            // Disable "Others" text field when None is selected
+                            if (otherInput) {
+                                otherInput.disabled = true;
+                                otherInput.style.opacity = '0.5';
+                                otherInput.value = '';
+                                state.demographics.responses[question.id + '_other'] = '';
+                            }
                         } else {
+                            // Selecting a treatment option
                             selected = selected.filter(v => v !== 'None');
-                            document.querySelector('.demo-checkbox[data-value="None"]')?.classList.remove('checked');
-                            selected.push(value);
+                            const noneCheckbox = document.querySelector('.demo-checkbox[data-value="None"]');
+                            if (noneCheckbox) {
+                                noneCheckbox.classList.remove('checked');
+                            }
+                            // Re-enable all checkboxes
+                            document.querySelectorAll('.demo-checkbox').forEach(cb => {
+                                cb.style.opacity = '1';
+                                cb.style.pointerEvents = 'auto';
+                            });
+                            if (!selected.includes(value)) {
+                                selected.push(value);
+                            }
+                            checkbox.classList.add('checked');
+                            // Disable "Others" text field when a treatment is selected
+                            if (otherInput) {
+                                otherInput.disabled = true;
+                                otherInput.style.opacity = '0.5';
+                                otherInput.value = '';
+                                state.demographics.responses[question.id + '_other'] = '';
+                            }
                         }
                     } else {
+                        // Unchecking this checkbox
+                        checkbox.classList.remove('checked');
                         selected = selected.filter(v => v !== value);
+                        
+                        if (value === 'None') {
+                            // Re-enable all checkboxes when unchecking None
+                            document.querySelectorAll('.demo-checkbox').forEach(cb => {
+                                cb.style.opacity = '1';
+                                cb.style.pointerEvents = 'auto';
+                            });
+                        }
+                        
+                        // Only enable "Others" text field if nothing is selected at all
+                        if (otherInput) {
+                            if (selected.length === 0) {
+                                otherInput.disabled = false;
+                                otherInput.style.opacity = '1';
+                            }
+                        }
                     }
                     
                     state.demographics.responses[question.id] = selected;
@@ -1565,6 +1644,16 @@
                     updateProgress();
                 });
             });
+            
+            // Initialize "Others" field state based on current selections
+            // "Others" is only enabled when NO checkbox is selected at all
+            if (otherInput && (question.type === 'checkbox' || question.type === 'checkbox_with_other')) {
+                const selected = state.demographics.responses[question.id] || [];
+                if (selected.length > 0) {
+                    otherInput.disabled = true;
+                    otherInput.style.opacity = '0.5';
+                }
+            }
             
             // Navigation
             if (prevBtn) {
@@ -1576,25 +1665,32 @@
                 });
             }
             
-            nextBtn.addEventListener('click', () => {
-                audio.playClick();
-                haptic('medium');
-                
-                // Save input value if applicable
-                if (question.type === 'input') {
-                    const input = document.getElementById('demoInput');
-                    state.demographics.responses[question.id] = input.value;
-                }
-                
-                updateProgress();
-                
-                if (state.demographics.currentQuestion < surveyData.demographics.length - 1) {
-                    state.demographics.currentQuestion++;
-                    renderDemographicsQuestion();
-                } else {
-                    transitionToKnowledge();
-                }
-            });
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    audio.playClick();
+                    haptic('medium');
+                    
+                    // Save input value if applicable
+                    if (question.type === 'input') {
+                        const input = document.getElementById('demoInput');
+                        state.demographics.responses[question.id] = input.value;
+                    }
+                    
+                    // Save "others" input if applicable
+                    if (question.type === 'checkbox_with_other' && otherInput) {
+                        state.demographics.responses[question.id + '_other'] = otherInput.value;
+                    }
+                    
+                    updateProgress();
+                    
+                    if (state.demographics.currentQuestion < surveyData.demographics.length - 1) {
+                        state.demographics.currentQuestion++;
+                        renderDemographicsQuestion();
+                    } else {
+                        transitionToKnowledge();
+                    }
+                });
+            }
         }
 
         function transitionToKnowledge() {
