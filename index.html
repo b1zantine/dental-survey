@@ -462,43 +462,74 @@
 
         .bubble {
             position: absolute;
-            padding: 20px 25px;
-            background: var(--bg-card);
-            border: 2px solid var(--border-glass);
-            border-radius: 20px;
-            backdrop-filter: blur(20px);
+            left: 0;
+            top: 0;
+            width: 130px;
+            height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            background: 
+                radial-gradient(ellipse 30% 20% at 30% 25%, rgba(255, 255, 255, 0.5) 0%, transparent 50%),
+                radial-gradient(ellipse 20% 15% at 70% 75%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(0, 229, 160, 0.15) 0%, rgba(0, 194, 255, 0.1) 40%, rgba(20, 28, 45, 0.9) 100%);
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            border-radius: 50%;
+            box-shadow: 
+                inset 0 -20px 40px rgba(0, 0, 0, 0.3),
+                inset 0 10px 30px rgba(255, 255, 255, 0.1),
+                0 5px 20px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(0, 229, 160, 0.1);
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: center;
-            font-size: 0.95rem;
-            max-width: 200px;
-            animation: bubbleFloat 3s ease-in-out infinite;
+            font-size: 0.8rem;
+            line-height: 1.3;
             user-select: none;
             outline: none;
             -webkit-tap-highlight-color: transparent;
+            will-change: transform;
+            transform: translate3d(0, 0, 0);
+            overflow: hidden;
+        }
+        
+        .bubble::before {
+            content: '';
+            position: absolute;
+            top: 8%;
+            left: 15%;
+            width: 35%;
+            height: 25%;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.6) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: rotate(-20deg);
+            pointer-events: none;
+        }
+        
+        .bubble::after {
+            content: '';
+            position: absolute;
+            bottom: 15%;
+            right: 15%;
+            width: 15%;
+            height: 10%;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.25) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
         }
 
-        .bubble:nth-child(1) { animation-delay: 0s; }
-        .bubble:nth-child(2) { animation-delay: 0.5s; }
-        .bubble:nth-child(3) { animation-delay: 1s; }
-        .bubble:nth-child(4) { animation-delay: 1.5s; }
-
-        @keyframes bubbleFloat {
-            0%, 100% { 
-                transform: translateY(0) scale(1); 
-            }
-            50% { 
-                transform: translateY(-10px) scale(1); 
-            }
-        }
+        /* Brownian motion - bubbles are positioned via JS physics */
 
         /* Only apply hover on devices that support hover (not touch devices) */
         @media (hover: hover) {
             .bubble:hover:not(.popped):not(.fade):not(.correct):not(.incorrect) {
-                border-color: var(--mint);
-                box-shadow: 0 0 30px var(--mint-glow);
-                transform: translateY(-10px) scale(1.05);
-                animation: none;
+                border-color: rgba(0, 229, 160, 0.6);
+                box-shadow: 
+                    inset 0 -20px 40px rgba(0, 0, 0, 0.3),
+                    inset 0 10px 30px rgba(255, 255, 255, 0.15),
+                    0 5px 20px rgba(0, 0, 0, 0.3),
+                    0 0 40px rgba(0, 229, 160, 0.4),
+                    0 0 60px rgba(0, 229, 160, 0.2);
             }
         }
 
@@ -506,18 +537,14 @@
             outline: none;
         }
 
-        .bubble:active:not(.popped):not(.fade):not(.correct):not(.incorrect) {
-            transform: scale(0.98);
-        }
-
         .bubble.popped {
             animation: bubblePop 0.4s ease forwards;
         }
 
         @keyframes bubblePop {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.3); }
-            100% { transform: scale(0); opacity: 0; }
+            0% { scale: 1; opacity: 1; }
+            50% { scale: 1.3; }
+            100% { scale: 0; opacity: 0; }
         }
 
         .bubble.fade {
@@ -525,17 +552,28 @@
         }
 
         @keyframes bubbleFade {
-            to { opacity: 0.3; transform: scale(0.9); }
+            to { opacity: 0.3; scale: 0.9; }
         }
 
         .bubble.correct {
-            border-color: var(--mint);
-            background: rgba(0, 229, 160, 0.2);
+            border-color: rgba(0, 229, 160, 0.8);
+            background: 
+                radial-gradient(ellipse 30% 20% at 30% 25%, rgba(255, 255, 255, 0.5) 0%, transparent 50%),
+                radial-gradient(ellipse 20% 15% at 70% 75%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(0, 229, 160, 0.4) 0%, rgba(0, 229, 160, 0.2) 40%, rgba(20, 28, 45, 0.9) 100%);
+            box-shadow: 
+                inset 0 -20px 40px rgba(0, 0, 0, 0.3),
+                inset 0 10px 30px rgba(255, 255, 255, 0.1),
+                0 5px 20px rgba(0, 0, 0, 0.3),
+                0 0 50px rgba(0, 229, 160, 0.5);
         }
 
         .bubble.incorrect {
-            border-color: var(--coral);
-            background: rgba(255, 107, 107, 0.1);
+            border-color: rgba(255, 107, 107, 0.6);
+            background: 
+                radial-gradient(ellipse 30% 20% at 30% 25%, rgba(255, 255, 255, 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse 20% 15% at 70% 75%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255, 107, 107, 0.2) 0%, rgba(255, 107, 107, 0.1) 40%, rgba(20, 28, 45, 0.9) 100%);
         }
 
         /* Particle explosion for bubble pop */
@@ -1371,6 +1409,272 @@
         const audio = new AudioSystem();
 
         // =====================================================
+        // BROWNIAN MOTION PHYSICS ENGINE
+        // =====================================================
+        class BubblePhysics {
+            constructor(container) {
+                this.container = container;
+                this.bubbles = [];
+                this.animationId = null;
+                this.isRunning = false;
+                this.lastTime = 0;
+                
+                // Physics constants - tuned for smooth circular bubble motion
+                this.friction = 0.985;
+                this.brownianForce = 0.15;
+                this.collisionDamping = 0.8;
+                this.minSpeed = 0.1;
+                this.maxSpeed = 1.8;
+            }
+            
+            init(bubbleElements) {
+                const containerRect = this.container.getBoundingClientRect();
+                this.containerWidth = containerRect.width;
+                this.containerHeight = containerRect.height;
+                
+                const elements = Array.from(bubbleElements);
+                const count = elements.length;
+                
+                // Calculate grid positions to prevent initial overlap
+                // Use a 2x2 grid for 4 bubbles
+                const cols = 2;
+                const rows = Math.ceil(count / cols);
+                const cellWidth = this.containerWidth / cols;
+                const cellHeight = this.containerHeight / rows;
+                
+                this.bubbles = elements.map((el, i) => {
+                    const rect = el.getBoundingClientRect();
+                    const width = rect.width;
+                    const height = rect.height;
+                    
+                    // Grid-based positioning with some randomness within each cell
+                    const col = i % cols;
+                    const row = Math.floor(i / cols);
+                    
+                    // Center of the cell with padding
+                    const cellCenterX = col * cellWidth + cellWidth / 2;
+                    const cellCenterY = row * cellHeight + cellHeight / 2;
+                    
+                    // Add small random offset within safe bounds
+                    const maxOffsetX = (cellWidth - width) / 2 - 10;
+                    const maxOffsetY = (cellHeight - height) / 2 - 10;
+                    const offsetX = (Math.random() - 0.5) * Math.max(0, maxOffsetX);
+                    const offsetY = (Math.random() - 0.5) * Math.max(0, maxOffsetY);
+                    
+                    const x = Math.max(5, Math.min(this.containerWidth - width - 5, cellCenterX - width / 2 + offsetX));
+                    const y = Math.max(5, Math.min(this.containerHeight - height - 5, cellCenterY - height / 2 + offsetY));
+                    
+                    return {
+                        el,
+                        x,
+                        y,
+                        vx: (Math.random() - 0.5) * 1.5,
+                        vy: (Math.random() - 0.5) * 1.5,
+                        width,
+                        height,
+                        radius: Math.max(width, height) / 2,
+                        mass: width * height / 5000,
+                        isPopped: false
+                    };
+                });
+                
+                // Apply initial positions using transform only
+                this.bubbles.forEach(b => {
+                    b.el.style.transform = `translate3d(${b.x}px, ${b.y}px, 0)`;
+                });
+            }
+            
+            start() {
+                if (this.isRunning) return;
+                this.isRunning = true;
+                this.lastTime = performance.now();
+                this.animate();
+            }
+            
+            stop() {
+                this.isRunning = false;
+                if (this.animationId) {
+                    cancelAnimationFrame(this.animationId);
+                    this.animationId = null;
+                }
+            }
+            
+            animate() {
+                if (!this.isRunning) return;
+                
+                const currentTime = performance.now();
+                const deltaTime = Math.min((currentTime - this.lastTime) / 16.67, 2); // Normalize to ~60fps, cap at 2x
+                this.lastTime = currentTime;
+                
+                // Update each bubble
+                this.bubbles.forEach(bubble => {
+                    if (bubble.isPopped) return;
+                    
+                    // Apply Brownian motion (random forces)
+                    bubble.vx += (Math.random() - 0.5) * this.brownianForce * deltaTime;
+                    bubble.vy += (Math.random() - 0.5) * this.brownianForce * deltaTime;
+                    
+                    // Apply friction
+                    bubble.vx *= Math.pow(this.friction, deltaTime);
+                    bubble.vy *= Math.pow(this.friction, deltaTime);
+                    
+                    // Clamp velocity
+                    const speed = Math.sqrt(bubble.vx * bubble.vx + bubble.vy * bubble.vy);
+                    if (speed > this.maxSpeed) {
+                        bubble.vx = (bubble.vx / speed) * this.maxSpeed;
+                        bubble.vy = (bubble.vy / speed) * this.maxSpeed;
+                    }
+                    
+                    // Ensure minimum movement for liveliness
+                    if (speed < this.minSpeed && Math.random() < 0.1) {
+                        const angle = Math.random() * Math.PI * 2;
+                        bubble.vx += Math.cos(angle) * this.minSpeed;
+                        bubble.vy += Math.sin(angle) * this.minSpeed;
+                    }
+                    
+                    // Update position
+                    bubble.x += bubble.vx * deltaTime;
+                    bubble.y += bubble.vy * deltaTime;
+                });
+                
+                // Check collisions between bubbles
+                this.checkBubbleCollisions();
+                
+                // Check wall collisions and apply positions
+                this.bubbles.forEach(bubble => {
+                    if (bubble.isPopped) return;
+                    
+                    // Wall collisions with bounce
+                    if (bubble.x < 0) {
+                        bubble.x = 0;
+                        bubble.vx = Math.abs(bubble.vx) * this.collisionDamping;
+                    } else if (bubble.x + bubble.width > this.containerWidth) {
+                        bubble.x = this.containerWidth - bubble.width;
+                        bubble.vx = -Math.abs(bubble.vx) * this.collisionDamping;
+                    }
+                    
+                    if (bubble.y < 0) {
+                        bubble.y = 0;
+                        bubble.vy = Math.abs(bubble.vy) * this.collisionDamping;
+                    } else if (bubble.y + bubble.height > this.containerHeight) {
+                        bubble.y = this.containerHeight - bubble.height;
+                        bubble.vy = -Math.abs(bubble.vy) * this.collisionDamping;
+                    }
+                    
+                    // Apply transform for smooth rendering (translate3d for GPU acceleration)
+                    bubble.el.style.transform = `translate3d(${bubble.x}px, ${bubble.y}px, 0)`;
+                });
+                
+                this.animationId = requestAnimationFrame(() => this.animate());
+            }
+            
+            checkBubbleCollisions() {
+                // Run multiple iterations to fully resolve overlaps
+                for (let iteration = 0; iteration < 3; iteration++) {
+                    for (let i = 0; i < this.bubbles.length; i++) {
+                        for (let j = i + 1; j < this.bubbles.length; j++) {
+                            const b1 = this.bubbles[i];
+                            const b2 = this.bubbles[j];
+                            
+                            if (b1.isPopped || b2.isPopped) continue;
+                            
+                            // Calculate centers (bubbles are now circular)
+                            const c1x = b1.x + b1.width / 2;
+                            const c1y = b1.y + b1.height / 2;
+                            const c2x = b2.x + b2.width / 2;
+                            const c2y = b2.y + b2.height / 2;
+                            
+                            // Distance between centers
+                            const dx = c2x - c1x;
+                            const dy = c2y - c1y;
+                            const distance = Math.sqrt(dx * dx + dy * dy);
+                            
+                            // Minimum distance before collision (full radius for circles)
+                            const minDist = b1.radius + b2.radius;
+                        
+                        if (distance < minDist && distance > 0) {
+                            // Collision detected - calculate response
+                            const nx = dx / distance; // Normal vector
+                            const ny = dy / distance;
+                            
+                            // Relative velocity
+                            const dvx = b1.vx - b2.vx;
+                            const dvy = b1.vy - b2.vy;
+                            
+                            // Relative velocity along normal
+                            const dvn = dvx * nx + dvy * ny;
+                            
+                            // Don't resolve if velocities are separating
+                            if (dvn > 0) continue;
+                            
+                            // Calculate impulse (with mass consideration)
+                            const totalMass = b1.mass + b2.mass;
+                            const impulse = (2 * dvn) / totalMass * this.collisionDamping;
+                            
+                            // Apply impulse
+                            b1.vx -= impulse * b2.mass * nx;
+                            b1.vy -= impulse * b2.mass * ny;
+                            b2.vx += impulse * b1.mass * nx;
+                            b2.vy += impulse * b1.mass * ny;
+                            
+                            // Separate overlapping bubbles
+                            const overlap = minDist - distance;
+                            const separationX = (overlap / 2 + 1) * nx;
+                            const separationY = (overlap / 2 + 1) * ny;
+                            
+                            b1.x -= separationX;
+                            b1.y -= separationY;
+                            b2.x += separationX;
+                            b2.y += separationY;
+                            
+                            // Add small random impulse for more organic feel
+                            b1.vx += (Math.random() - 0.5) * 0.3;
+                            b1.vy += (Math.random() - 0.5) * 0.3;
+                            b2.vx += (Math.random() - 0.5) * 0.3;
+                            b2.vy += (Math.random() - 0.5) * 0.3;
+                        }
+                    }
+                }
+                } // End iteration loop
+            }
+            
+            markPopped(element) {
+                const bubble = this.bubbles.find(b => b.el === element);
+                if (bubble) {
+                    bubble.isPopped = true;
+                }
+            }
+            
+            // Freeze all bubbles in place - stops physics but preserves current positions
+            freeze() {
+                this.isRunning = false;
+                if (this.animationId) {
+                    cancelAnimationFrame(this.animationId);
+                    this.animationId = null;
+                }
+                // Positions are already applied via transform, so bubbles stay where they are
+            }
+            
+            resize() {
+                const containerRect = this.container.getBoundingClientRect();
+                this.containerWidth = containerRect.width;
+                this.containerHeight = containerRect.height;
+                
+                // Ensure bubbles are within new bounds
+                this.bubbles.forEach(bubble => {
+                    if (bubble.x + bubble.width > this.containerWidth) {
+                        bubble.x = this.containerWidth - bubble.width;
+                    }
+                    if (bubble.y + bubble.height > this.containerHeight) {
+                        bubble.y = this.containerHeight - bubble.height;
+                    }
+                });
+            }
+        }
+        
+        let bubblePhysics = null;
+
+        // =====================================================
         // GOOGLE SHEETS INTEGRATION
         // =====================================================
         const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyjy_2VIEM_TNEEakFfe704qFheLEbrLD3WcBnpEpdvSXO6KvCSTDfU7eGUU-NEP5jPbw/exec'; // Replace with your deployed Apps Script URL
@@ -2104,6 +2408,13 @@
             document.getElementById('knowledgeQuestionText').textContent = question.question;
             
             const container = document.getElementById('bubbleContainer');
+            
+            // Stop existing physics simulation
+            if (bubblePhysics) {
+                bubblePhysics.stop();
+                bubblePhysics = null;
+            }
+            
             container.innerHTML = '';
             
             // Clear any active element focus
@@ -2111,26 +2422,16 @@
                 document.activeElement.blur();
             }
             
-            // Position bubbles in a nice layout
-            const positions = [
-                { left: '10%', top: '15%' },
-                { left: '55%', top: '10%' },
-                { left: '5%', top: '55%' },
-                { left: '50%', top: '60%' }
-            ];
-            
+            // Create bubbles (positions will be set by physics engine)
             question.options.forEach((opt, i) => {
                 const bubble = document.createElement('div');
                 bubble.className = 'bubble';
                 bubble.textContent = opt;
-                bubble.style.left = positions[i].left;
-                bubble.style.top = positions[i].top;
                 bubble.dataset.index = i;
                 
                 // Explicitly reset any potential styling
                 bubble.style.borderColor = '';
                 bubble.style.boxShadow = '';
-                bubble.style.transform = '';
                 
                 bubble.addEventListener('click', () => handleBubblePop(bubble, i, question));
                 
@@ -2141,6 +2442,13 @@
                 
                 container.appendChild(bubble);
             });
+            
+            // Initialize and start physics simulation after bubbles are rendered
+            requestAnimationFrame(() => {
+                bubblePhysics = new BubblePhysics(container);
+                bubblePhysics.init(container.querySelectorAll('.bubble'));
+                bubblePhysics.start();
+            });
         }
 
         function handleBubblePop(bubble, selectedIndex, question) {
@@ -2149,26 +2457,25 @@
             audio.playPop();
             haptic('medium');
             
+            // Freeze all bubbles in their current positions before stopping physics
+            if (bubblePhysics) {
+                bubblePhysics.freeze();
+            }
+            
             // Create particle explosion
             createPopParticles(bubble);
             
-            // Mark selection
-            const isCorrect = selectedIndex === question.correct;
-            
-            // Animate bubbles
+            // Only pop the clicked bubble, fade others
             document.querySelectorAll('.bubble').forEach((b, i) => {
                 if (i === selectedIndex) {
                     b.classList.add('popped');
-                } else if (i === question.correct) {
-                    setTimeout(() => {
-                        b.classList.add('correct');
-                    }, 400);
                 } else {
                     b.classList.add('fade');
                 }
             });
             
-            // Record response
+            // Record response (still track correctness for scoring)
+            const isCorrect = selectedIndex === question.correct;
             state.knowledge.responses[question.id] = selectedIndex;
             if (isCorrect) state.knowledge.score++;
             updateProgress();
@@ -2176,6 +2483,8 @@
             
             // Move to next question
             setTimeout(() => {
+                bubblePhysics = null;
+                
                 if (state.knowledge.currentQuestion < surveyData.knowledge.length - 1) {
                     state.knowledge.currentQuestion++;
                     renderKnowledgeQuestion();
@@ -2186,8 +2495,9 @@
         }
 
         function createPopParticles(bubble) {
+            const container = document.getElementById('bubbleContainer');
             const rect = bubble.getBoundingClientRect();
-            const containerRect = document.getElementById('bubbleContainer').getBoundingClientRect();
+            const containerRect = container.getBoundingClientRect();
             
             const centerX = rect.left - containerRect.left + rect.width / 2;
             const centerY = rect.top - containerRect.top + rect.height / 2;
@@ -2206,13 +2516,19 @@
                 particle.style.setProperty('--tx', `${Math.cos(angle) * distance}px`);
                 particle.style.setProperty('--ty', `${Math.sin(angle) * distance}px`);
                 
-                document.getElementById('bubbleContainer').appendChild(particle);
+                container.appendChild(particle);
                 
                 setTimeout(() => particle.remove(), 600);
             }
         }
 
         function transitionToAttitude() {
+            // Clean up physics
+            if (bubblePhysics) {
+                bubblePhysics.stop();
+                bubblePhysics = null;
+            }
+            
             state.currentSection = 'attitude';
             saveStateToStorage();
             showSection('attitude');
@@ -2626,6 +2942,13 @@
             });
             
             setupPracticeNavigation();
+            
+            // Handle window resize for bubble physics
+            window.addEventListener('resize', () => {
+                if (bubblePhysics) {
+                    bubblePhysics.resize();
+                }
+            });
         }
 
         // Start the app
