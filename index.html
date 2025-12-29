@@ -1859,7 +1859,7 @@
                 { id: 'workType', type: 'options', label: 'Type of work?', options: ['Full time', 'Hybrid', 'Work from home (Remote)'] },
                 { id: 'designation', type: 'input', label: 'What is your designation?', placeholder: 'Enter designation' },
                 { id: 'gumTreatment', type: 'options', label: 'Have you undergone any gum treatment?', options: ['Yes', 'No'] },
-                { id: 'treatments', type: 'checkbox_with_other', label: 'If yes, please tick the treatments done:', options: ['Cleaning (Scaling)', 'Deep cleaning (Root planing)', 'Flap surgeries', 'None'], otherPlaceholder: 'Others please specify (optional)', condition: (responses) => responses.gumTreatment === 'Yes' }
+                { id: 'treatments', type: 'checkbox_with_other', label: 'If yes, please tick the treatments done:', options: ['Cleaning (Scaling)', 'Deep cleaning (Root planing)', 'Flap surgeries'], otherPlaceholder: 'Others please specify (optional)', condition: (responses) => responses.gumTreatment === 'Yes' }
             ],
             knowledge: [
                 { 
@@ -2301,7 +2301,9 @@
                     nextBtn.disabled = !state.demographics.responses[question.id];
                 } else if (question.type === 'checkbox' || question.type === 'checkbox_with_other') {
                     const selected = state.demographics.responses[question.id] || [];
-                    nextBtn.disabled = selected.length === 0;
+                    const otherValue = state.demographics.responses[question.id + '_other'] || '';
+                    // Valid if either checkboxes are selected OR "others" field has content
+                    nextBtn.disabled = selected.length === 0 && !otherValue.trim();
                 }
             }
             
@@ -2327,6 +2329,7 @@
             if (otherInput) {
                 otherInput.addEventListener('input', () => {
                     state.demographics.responses[question.id + '_other'] = otherInput.value;
+                    validateInput();
                 });
             }
             
@@ -2369,68 +2372,14 @@
                     
                     if (!isCurrentlyChecked) {
                         // Checking this checkbox
-                        if (value === 'None') {
-                            // If selecting "None", uncheck all others and disable them
-                            selected = ['None'];
-                            document.querySelectorAll('.demo-checkbox').forEach(cb => {
-                                if (cb.dataset.value !== 'None') {
-                                    cb.classList.remove('checked');
-                                    cb.style.opacity = '0.5';
-                                    cb.style.pointerEvents = 'none';
-                                }
-                            });
-                            checkbox.classList.add('checked');
-                            // Disable "Others" text field when None is selected
-                            if (otherInput) {
-                                otherInput.disabled = true;
-                                otherInput.style.opacity = '0.5';
-                                otherInput.value = '';
-                                state.demographics.responses[question.id + '_other'] = '';
-                            }
-                        } else {
-                            // Selecting a treatment option
-                            selected = selected.filter(v => v !== 'None');
-                            const noneCheckbox = document.querySelector('.demo-checkbox[data-value="None"]');
-                            if (noneCheckbox) {
-                                noneCheckbox.classList.remove('checked');
-                            }
-                            // Re-enable all checkboxes
-                            document.querySelectorAll('.demo-checkbox').forEach(cb => {
-                                cb.style.opacity = '1';
-                                cb.style.pointerEvents = 'auto';
-                            });
-                            if (!selected.includes(value)) {
-                                selected.push(value);
-                            }
-                            checkbox.classList.add('checked');
-                            // Disable "Others" text field when a treatment is selected
-                            if (otherInput) {
-                                otherInput.disabled = true;
-                                otherInput.style.opacity = '0.5';
-                                otherInput.value = '';
-                                state.demographics.responses[question.id + '_other'] = '';
-                            }
+                        if (!selected.includes(value)) {
+                            selected.push(value);
                         }
+                        checkbox.classList.add('checked');
                     } else {
                         // Unchecking this checkbox
                         checkbox.classList.remove('checked');
                         selected = selected.filter(v => v !== value);
-                        
-                        if (value === 'None') {
-                            // Re-enable all checkboxes when unchecking None
-                            document.querySelectorAll('.demo-checkbox').forEach(cb => {
-                                cb.style.opacity = '1';
-                                cb.style.pointerEvents = 'auto';
-                            });
-                        }
-                        
-                        // Only enable "Others" text field if nothing is selected at all
-                        if (otherInput) {
-                            if (selected.length === 0) {
-                                otherInput.disabled = false;
-                                otherInput.style.opacity = '1';
-                            }
-                        }
                     }
                     
                     state.demographics.responses[question.id] = selected;
@@ -2439,16 +2388,6 @@
                     saveStateToStorage();
                 });
             });
-            
-            // Initialize "Others" field state based on current selections
-            // "Others" is only enabled when NO checkbox is selected at all
-            if (otherInput && (question.type === 'checkbox' || question.type === 'checkbox_with_other')) {
-                const selected = state.demographics.responses[question.id] || [];
-                if (selected.length > 0) {
-                    otherInput.disabled = true;
-                    otherInput.style.opacity = '0.5';
-                }
-            }
             
             // Navigation
             if (prevBtn) {
