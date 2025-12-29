@@ -1199,6 +1199,9 @@
             <div class="bubble-container" id="bubbleContainer">
                 <!-- Bubbles will be injected here -->
             </div>
+            <div class="attitude-nav">
+                <button class="nav-btn secondary" id="knowledgeBack" style="display: none;">← Back</button>
+            </div>
         </section>
 
         <!-- Attitude Section -->
@@ -1232,6 +1235,9 @@
             <p class="practice-question-text" id="practiceQuestionText"></p>
             <div class="bubble-container" id="practiceOptions">
                 <!-- Bubbles will be injected here -->
+            </div>
+            <div class="attitude-nav">
+                <button class="nav-btn secondary" id="practiceBack" style="display: none;">← Back</button>
             </div>
         </section>
 
@@ -2110,6 +2116,7 @@
                 renderDemographicsQuestion();
             } else if (section === 'knowledge') {
                 showSection('knowledge');
+                setupKnowledgeBackButton();
                 renderKnowledgeQuestion();
             } else if (section === 'attitude') {
                 showSection('attitude');
@@ -2117,6 +2124,7 @@
                 renderAttitudeCard();
             } else if (section === 'practice') {
                 showSection('practice');
+                setupPracticeBackButton();
                 renderPracticeQuestion();
             } else {
                 // Default to landing
@@ -2450,6 +2458,7 @@
             state.currentSection = 'knowledge';
             saveStateToStorage();
             showSection('knowledge');
+            setupKnowledgeBackButton();
             renderKnowledgeQuestion();
         }
 
@@ -2462,6 +2471,12 @@
             
             document.getElementById('knowledgeCounter').textContent = questionIndex + 1;
             document.getElementById('knowledgeQuestionText').textContent = question.question;
+            
+            // Show/hide back button based on question index
+            const backBtn = document.getElementById('knowledgeBack');
+            if (backBtn) {
+                backBtn.style.display = questionIndex > 0 ? 'block' : 'none';
+            }
             
             const container = document.getElementById('bubbleContainer');
             
@@ -2646,6 +2661,63 @@
                         updateProgress();
                         saveStateToStorage();
                         renderAttitudeCard();
+                    }
+                });
+            }
+        }
+
+        function setupKnowledgeBackButton() {
+            const backBtn = document.getElementById('knowledgeBack');
+            if (backBtn) {
+                backBtn.addEventListener('click', () => {
+                    if (state.knowledge.currentQuestion > 0) {
+                        audio.playClick();
+                        haptic('light');
+                        
+                        // Get the current question (the one we're about to go back from)
+                        const currentQuestion = surveyData.knowledge[state.knowledge.currentQuestion];
+                        
+                        // Check if the current response was correct and decrement score if needed
+                        if (state.knowledge.responses[currentQuestion.id] !== undefined) {
+                            const wasCorrect = state.knowledge.responses[currentQuestion.id] === currentQuestion.correct;
+                            if (wasCorrect && state.knowledge.score > 0) {
+                                state.knowledge.score--;
+                            }
+                        }
+                        
+                        // Go back to previous question
+                        state.knowledge.currentQuestion--;
+                        
+                        // Clear the response for the current question (the one we're going back to)
+                        const previousQuestion = surveyData.knowledge[state.knowledge.currentQuestion];
+                        delete state.knowledge.responses[previousQuestion.id];
+                        
+                        updateProgress();
+                        saveStateToStorage();
+                        renderKnowledgeQuestion();
+                    }
+                });
+            }
+        }
+
+        function setupPracticeBackButton() {
+            const backBtn = document.getElementById('practiceBack');
+            if (backBtn) {
+                backBtn.addEventListener('click', () => {
+                    if (state.practice.currentQuestion > 0) {
+                        audio.playClick();
+                        haptic('light');
+                        
+                        // Go back to previous question
+                        state.practice.currentQuestion--;
+                        
+                        // Clear the response for the current question (the one we're going back to)
+                        const previousQuestion = surveyData.practice[state.practice.currentQuestion];
+                        delete state.practice.responses[previousQuestion.id];
+                        
+                        updateProgress();
+                        saveStateToStorage();
+                        renderPracticeQuestion();
                     }
                 });
             }
@@ -2962,6 +3034,7 @@
             state.currentSection = 'practice';
             saveStateToStorage();
             showSection('practice');
+            setupPracticeBackButton();
             renderPracticeQuestion();
         }
 
@@ -2974,6 +3047,12 @@
             
             document.getElementById('practiceCounter').textContent = questionIndex + 1;
             document.getElementById('practiceQuestionText').textContent = question.question;
+            
+            // Show/hide back button based on question index
+            const backBtn = document.getElementById('practiceBack');
+            if (backBtn) {
+                backBtn.style.display = questionIndex > 0 ? 'block' : 'none';
+            }
             
             const container = document.getElementById('practiceOptions');
             
