@@ -2183,6 +2183,31 @@
         }
 
         // =====================================================
+        // GOOGLE ANALYTICS TRACKING
+        // =====================================================
+        function trackEvent(eventName, parameters = {}) {
+            if (typeof gtag === 'function') {
+                gtag('event', eventName, parameters);
+                console.log('GA Event:', eventName, parameters);
+            }
+        }
+
+        function trackQuestionAnswer(section, questionId, questionNumber) {
+            trackEvent('question_answered', {
+                section: section,
+                question_id: questionId,
+                question_number: questionNumber
+            });
+        }
+
+        function trackSectionComplete(section, questionsCount) {
+            trackEvent('section_complete', {
+                section: section,
+                questions_count: questionsCount
+            });
+        }
+
+        // =====================================================
         // DEMOGRAPHICS WIZARD
         // =====================================================
         function renderDemographicsQuestion() {
@@ -2451,6 +2476,9 @@
                         state.demographics.responses[question.id + '_other'] = otherInput.value;
                     }
                     
+                    // Track question answer
+                    trackQuestionAnswer('demographics', question.id, state.demographics.currentQuestion + 1);
+                    
                     updateProgress();
                     saveStateToStorage();
                     
@@ -2465,6 +2493,9 @@
         }
 
         function transitionToKnowledge() {
+            // Track demographics section completion
+            trackSectionComplete('demographics', surveyData.demographics.length);
+            
             state.currentSection = 'knowledge';
             saveStateToStorage();
             showSection('knowledge');
@@ -2559,6 +2590,10 @@
             const isCorrect = selectedIndex === question.correct;
             state.knowledge.responses[question.id] = selectedIndex;
             if (isCorrect) state.knowledge.score++;
+            
+            // Track question answer
+            trackQuestionAnswer('knowledge', question.id, state.knowledge.currentQuestion + 1);
+            
             updateProgress();
             saveStateToStorage();
             
@@ -2609,6 +2644,9 @@
                 bubblePhysics.stop();
                 bubblePhysics = null;
             }
+            
+            // Track knowledge section completion
+            trackSectionComplete('knowledge', surveyData.knowledge.length);
             
             state.currentSection = 'attitude';
             saveStateToStorage();
@@ -2985,6 +3023,10 @@
                     
                     // Record response
                     state.attitude.responses[question.id] = response;
+                    
+                    // Track question answer
+                    trackQuestionAnswer('attitude', question.id, state.attitude.currentQuestion + 1);
+                    
                     updateProgress();
                     saveStateToStorage();
                     
@@ -3041,6 +3083,9 @@
         }
 
         function transitionToPractice() {
+            // Track attitude section completion
+            trackSectionComplete('attitude', surveyData.attitude.length);
+            
             state.currentSection = 'practice';
             saveStateToStorage();
             showSection('practice');
@@ -3134,6 +3179,10 @@
             
             // Record response
             state.practice.responses[question.id] = selectedIndex;
+            
+            // Track question answer
+            trackQuestionAnswer('practice', question.id, state.practice.currentQuestion + 1);
+            
             updateProgress();
             saveStateToStorage();
             
@@ -3184,6 +3233,15 @@
         let pendingSurveyResponse = null; // Store for retry
 
         async function finishSurvey() {
+            // Track practice section completion
+            trackSectionComplete('practice', surveyData.practice.length);
+            
+            // Track survey completion
+            trackEvent('survey_complete', {
+                total_questions: state.totalQuestions,
+                duration_ms: Date.now() - state.startTime
+            });
+            
             audio.playSuccess();
             haptic('success');
             
@@ -3266,6 +3324,11 @@
                 state.startTime = Date.now();
                 state.currentSection = 'demographics';
                 saveStateToStorage();
+                
+                // Track survey start
+                trackEvent('survey_start', {
+                    total_questions: state.totalQuestions
+                });
                 
                 showSection('demographics');
                 renderDemographicsQuestion();
