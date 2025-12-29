@@ -692,12 +692,9 @@
             justify-content: center;
         }
 
-        /* Response indicator at bottom of card */
+        /* Response indicator base styles */
         .swipe-response {
             position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
             font-size: 1.1rem;
             font-weight: 700;
             text-transform: uppercase;
@@ -708,10 +705,36 @@
             white-space: nowrap;
         }
         
-        .swipe-response.agree { color: var(--mint); }
-        .swipe-response.disagree { color: var(--coral); }
-        .swipe-response.strongly-agree { color: #00FF88; }
-        .swipe-response.strongly-disagree { color: #FF4444; }
+        /* Position indicators along respective edges */
+        .swipe-response.agree { 
+            color: var(--mint);
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%) rotate(90deg);
+            transform-origin: center center;
+        }
+        
+        .swipe-response.disagree { 
+            color: var(--coral);
+            left: -40px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg);
+            transform-origin: center center;
+        }
+        
+        .swipe-response.strongly-agree { 
+            color: #00FF88;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .swipe-response.strongly-disagree { 
+            color: #FF4444;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
         /* Dial container for practice questions */
         .dial-container {
@@ -2654,11 +2677,9 @@
             
             function showInstructionsAfterDelay() {
                 if (instructionTimer) clearTimeout(instructionTimer);
-                instructionTimer = setTimeout(() => {
-                    if (instructions && !isDragging) {
-                        instructions.classList.add('visible');
-                    }
-                }, 2000);
+                if (instructions && !isDragging) {
+                    instructions.classList.add('visible');
+                }
             }
             
             function hideInstructions() {
