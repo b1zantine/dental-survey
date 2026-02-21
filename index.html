@@ -1865,62 +1865,52 @@
                 { 
                     id: 'k1', 
                     question: 'What is dental plaque?',
-                    options: ['Hard mineral deposit on the teeth', 'A soft film of bacteria and food debris on the teeth', 'Stains caused by coffee or tea', 'Protective layer on the enamel'],
-                    correct: 1
+                    options: ['Hard mineral deposit on the teeth', 'A soft film of bacteria and food debris on the teeth', 'Stains caused by coffee or tea', 'Protective layer on the enamel']
                 },
                 { 
                     id: 'k2', 
                     question: 'What is dental calculus (tartar)?',
-                    options: ['Hard mineral deposit on the teeth', 'Stains caused by coffee or tea', 'A soft film of bacteria and food debris', 'Protective layer on the enamel'],
-                    correct: 0
+                    options: ['Hard mineral deposit on the teeth', 'Stains caused by coffee or tea', 'A soft film of bacteria and food debris', 'Protective layer on the enamel']
                 },
                 { 
                     id: 'k3', 
                     question: 'Which of the following is an early sign of gum infection?',
-                    options: ['White spots on the teeth', 'Dry mouth', 'Bleeding gums while brushing', 'Jaw pain'],
-                    correct: 2
+                    options: ['White spots on the teeth', 'Dry mouth', 'Bleeding gums while brushing', 'Jaw pain']
                 },
                 { 
                     id: 'k4', 
                     question: 'What is the primary cause of early gum disease?',
-                    options: ['Dental plaque accumulation', 'Poor brushing technique', 'Tooth decay', 'Lack of calcium'],
-                    correct: 0
+                    options: ['Dental plaque accumulation', 'Poor brushing technique', 'Tooth decay', 'Lack of calcium']
                 },
                 { 
                     id: 'k5', 
                     question: 'What is one of the main causes of bad breath?',
-                    options: ['Frequent brushing', 'Chewing gum', 'Cold beverages', 'Gum disease'],
-                    correct: 3
+                    options: ['Frequent brushing', 'Chewing gum', 'Cold beverages', 'Gum disease']
                 },
                 { 
                     id: 'k6', 
                     question: 'Which dietary choice contributes most to poor gum health?',
-                    options: ['Processed sugary foods and drinks', 'Leafy greens', 'Dairy products', 'Whole grains'],
-                    correct: 0
+                    options: ['Processed sugary foods and drinks', 'Leafy greens', 'Dairy products', 'Whole grains']
                 },
                 { 
                     id: 'k7', 
-                    question: 'Which vitamin helps keep your gums healthy?',
-                    options: ['Vitamin A', 'Vitamin B', 'Vitamin C', 'Vitamin D'],
-                    correct: 2
+                    question: 'Which vitamin helps to keep your gums healthy?',
+                    options: ['Vitamin A', 'Vitamin B', 'Vitamin C', 'Vitamin D']
                 },
                 { 
                     id: 'k8', 
                     question: 'How is gum disease linked to general health?',
-                    options: ['It boosts immunity', 'It can contribute to heart disease and diabetes', 'It lowers blood sugar levels', 'It only affects the mouth and teeth'],
-                    correct: 1
+                    options: ['It boosts immunity', 'It can contribute to heart disease and diabetes', 'It lowers blood sugar levels', 'It only affects the mouth and teeth']
                 },
                 { 
                     id: 'k9', 
                     question: 'What is a common oral health consequence of prolonged stress?',
-                    options: ['Increased salivary flow', 'Improved oral hygiene habits', 'Strengthening of tooth enamel', 'Development of gum disease due to inflammation'],
-                    correct: 3
+                    options: ['Increased salivary flow', 'Improved oral hygiene habits', 'Strengthening of tooth enamel', 'Development of gum disease due to inflammation']
                 },
                 { 
                     id: 'k10', 
                     question: 'Which dental specialty focuses on prevention and treatment of gum disease?',
-                    options: ['Orthodontics', 'Prosthodontics', 'Periodontics', 'Endodontics'],
-                    correct: 2
+                    options: ['Orthodontics', 'Prosthodontics', 'Periodontics', 'Endodontics']
                 }
             ],
             attitude: [
@@ -1968,7 +1958,7 @@
                 },
                 { 
                     id: 'p7', 
-                    question: 'Do you use any aids for cleaning apart from toothbrush and paste?',
+                    question: 'Do you use any aids for cleaning your teeth, other than toothbrush and toothpaste?',
                     options: ['Tongue scraper', 'Dental floss', 'Toothpick', 'Both scraper and floss']
                 },
                 { 
@@ -2525,10 +2515,8 @@
                 }
             });
             
-            // Record response (still track correctness for scoring)
-            const isCorrect = selectedIndex === question.correct;
+            // Record response
             state.knowledge.responses[question.id] = selectedIndex;
-            if (isCorrect) state.knowledge.score++;
             
             // Track question answer
             trackQuestionAnswer('knowledge', question.id, state.knowledge.currentQuestion + 1);
@@ -2663,14 +2651,6 @@
                         
                         // Get the current question (the one we're about to go back from)
                         const currentQuestion = surveyData.knowledge[state.knowledge.currentQuestion];
-                        
-                        // Check if the current response was correct and decrement score if needed
-                        if (state.knowledge.responses[currentQuestion.id] !== undefined) {
-                            const wasCorrect = state.knowledge.responses[currentQuestion.id] === currentQuestion.correct;
-                            if (wasCorrect && state.knowledge.score > 0) {
-                                state.knowledge.score--;
-                            }
-                        }
                         
                         // Go back to previous question
                         state.knowledge.currentQuestion--;
