@@ -1,0 +1,10 @@
+metric,dataset,n,mean,sd,median,q1,q3,minimum,maximum
+knowledge_score,overall,251,6.363,2.356,6.0,4.0,8.0,1,10
+knowledge_score,observed,101,6.208,2.487,6.0,4.0,8.0,1,10
+knowledge_score,generated,150,6.467,2.266,7.0,4.25,8.0,1,10
+attitude_score,overall,251,27.267,4.644,28.0,24.0,30.0,16,38
+attitude_score,observed,101,27.109,4.935,28.0,24.0,30.0,16,38
+attitude_score,generated,150,27.373,4.45,27.5,25.0,30.0,16,38
+practice_index,overall,251,20.94,4.266,22.0,17.0,24.0,9,30
+practice_index,observed,101,20.891,4.465,22.0,17.0,25.0,10,30
+practice_index,generated,150,20.973,4.142,22.5,17.25,24.0,9,28

@@ -1,0 +1,46 @@
+comparison_type,subject,augmented_value,observed_value,direction_changed,note
+regression_term,knowledge_model | Age Range: 30-40 years vs 20-30 years,0.044057606325100196,0.42818203671670385,False,Coefficient direction was stable.
+regression_term,knowledge_model | Age Range: 40-50 years vs 20-30 years,1.4966719909924737,0.03809748491324605,False,Coefficient direction was stable.
+regression_term,knowledge_model | Age Range: 50-60 years vs 20-30 years,2.8159999637019584,1.9787201641229395,False,Coefficient direction was stable.
+regression_term,knowledge_model | Gender: Female vs Male,2.1112111969901735,2.1984816046480162,False,Coefficient direction was stable.
+regression_term,knowledge_model | Gender: Prefer not to say vs Male,3.8367202584848297,5.364795915401218,False,Coefficient direction was stable.
+regression_term,knowledge_model | Gender: Other vs Male,-4.912527974355443e-16,1.7794842818535585e-14,True,Sign changed between augmented and observed-only models.
+regression_term,knowledge_model | Professional Experience: 3-6 years vs 0-3 years,0.22395365541301504,0.00014345042175556433,False,Coefficient direction was stable.
+regression_term,knowledge_model | Professional Experience: 6-10 years vs 0-3 years,-0.3505586368897522,-0.8432180501081695,False,Coefficient direction was stable.
+regression_term,knowledge_model | Professional Experience: 10-15 years vs 0-3 years,1.2641453321844955,-0.07028981040033089,True,Sign changed between augmented and observed-only models.
+regression_term,knowledge_model | Professional Experience: 15+ years vs 0-3 years,-1.728077649536863,-1.4415749327990006,False,Coefficient direction was stable.
+regression_term,knowledge_model | Work Mode: Hybrid vs Full time,0.4064083981020229,0.5104396157502863,False,Coefficient direction was stable.
+regression_term,knowledge_model | Work Mode: Work from home (Remote) vs Full time,-0.6632469149931295,-0.1307742961163768,False,Coefficient direction was stable.
+regression_term,knowledge_model | Previous Treatment: Yes vs No,-0.22275248398073455,0.021792339691636187,True,Sign changed between augmented and observed-only models.
+regression_term,attitude_model | Age Range: 30-40 years vs 20-30 years,-2.65315208006719,-3.6224156279054447,False,Coefficient direction was stable.
+regression_term,attitude_model | Age Range: 40-50 years vs 20-30 years,-2.6312845999998586,-3.9909502423575445,False,Coefficient direction was stable.
+regression_term,attitude_model | Age Range: 50-60 years vs 20-30 years,-3.153069495163221,-4.313302091786218,False,Coefficient direction was stable.
+regression_term,attitude_model | Gender: Female vs Male,0.2203680748106973,0.04685458715969837,False,Coefficient direction was stable.
+regression_term,attitude_model | Gender: Prefer not to say vs Male,1.01108277965198,1.261999509830619,False,Coefficient direction was stable.
+regression_term,attitude_model | Gender: Other vs Male,1.5454615491423691e-15,2.998588513073031e-15,False,Coefficient direction was stable.
+regression_term,attitude_model | Professional Experience: 3-6 years vs 0-3 years,0.19884250476471066,0.17214218505716827,False,Coefficient direction was stable.
+regression_term,attitude_model | Professional Experience: 6-10 years vs 0-3 years,0.5187366588297095,0.35687046588537874,False,Coefficient direction was stable.
+regression_term,attitude_model | Professional Experience: 10-15 years vs 0-3 years,0.8272871757847593,2.0916067459172387,False,Coefficient direction was stable.
+regression_term,attitude_model | Professional Experience: 15+ years vs 0-3 years,0.8312942203768401,2.1064970886284544,False,Coefficient direction was stable.
+regression_term,attitude_model | Work Mode: Hybrid vs Full time,1.5675973661375755,0.7838827775258119,False,Coefficient direction was stable.
+regression_term,attitude_model | Work Mode: Work from home (Remote) vs Full time,3.2106625158862636,3.2166929353982607,False,Coefficient direction was stable.
+regression_term,attitude_model | Previous Treatment: Yes vs No,0.5712681845340307,1.100000635470213,False,Coefficient direction was stable.
+regression_term,attitude_model | Knowledge Score,0.6208576025674916,0.6850280827284972,False,Coefficient direction was stable.
+regression_term,practice_model | Age Range: 30-40 years vs 20-30 years,-0.7712411322732293,-0.3064837242311742,False,Coefficient direction was stable.
+regression_term,practice_model | Age Range: 40-50 years vs 20-30 years,-2.4763591990272915,-1.7790876339480404,False,Coefficient direction was stable.
+regression_term,practice_model | Age Range: 50-60 years vs 20-30 years,-5.844913434527369,-3.175789286706424,False,Coefficient direction was stable.
+regression_term,practice_model | Gender: Female vs Male,-1.1982407199471985,-0.3681020269949631,False,Coefficient direction was stable.
+regression_term,practice_model | Gender: Prefer not to say vs Male,-3.324641888317561,-3.45460634820357,False,Coefficient direction was stable.
+regression_term,practice_model | Gender: Other vs Male,4.048959192092877e-15,-2.0812302868016227e-15,True,Sign changed between augmented and observed-only models.
+regression_term,practice_model | Professional Experience: 3-6 years vs 0-3 years,2.5923357804353317,2.1482718239898415,False,Coefficient direction was stable.
+regression_term,practice_model | Professional Experience: 6-10 years vs 0-3 years,1.323928748810808,1.831597250706694,False,Coefficient direction was stable.
+regression_term,practice_model | Professional Experience: 10-15 years vs 0-3 years,-0.30844740843927276,-0.13896639669674649,False,Coefficient direction was stable.
+regression_term,practice_model | Professional Experience: 15+ years vs 0-3 years,4.5397198252332736,3.5563542112542637,False,Coefficient direction was stable.
+regression_term,practice_model | Work Mode: Hybrid vs Full time,0.017808151341713208,0.5566106697528164,False,Coefficient direction was stable.
+regression_term,practice_model | Work Mode: Work from home (Remote) vs Full time,-1.116951554879717,-1.6027538915213193,False,Coefficient direction was stable.
+regression_term,practice_model | Previous Treatment: Yes vs No,1.3715798425806387,2.198271268294268,False,Coefficient direction was stable.
+regression_term,practice_model | Knowledge Score,0.807814427393241,0.8790163340148536,False,Coefficient direction was stable.
+regression_term,practice_model | Attitude Score,0.12387174166296683,0.05252906967780188,False,Coefficient direction was stable.
+correlation,knowledge_score__attitude_score,0.31530990659363517,0.36293212945538234,False,Correlation direction was stable.
+correlation,knowledge_score__practice_index,0.38117318721310955,0.45995715926691144,False,Correlation direction was stable.
+correlation,attitude_score__practice_index,0.23943948622666514,0.19997476855018106,False,Correlation direction was stable.

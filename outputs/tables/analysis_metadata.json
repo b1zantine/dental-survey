@@ -1,0 +1,28 @@
+{
+  "observed_rows": 101,
+  "generated_rows": 150,
+  "total_rows": 251,
+  "observed_last_timestamp": "2026-03-06T18:49:07.555000+00:00",
+  "augmented_last_timestamp": "2026-03-12T00:01:13.428000+00:00",
+  "duration_artifact_rows": 10,
+  "major_localities": [
+    "Bangalore",
+    "Bellandur",
+    "Chennai",
+    "Hsr Layout",
+    "Hyderabad",
+    "JP Nagar",
+    "Madurai",
+    "Nagercoil",
+    "Ulsoor",
+    "Whitefield"
+  ],
+  "group_variables": [
+    "age_range",
+    "gender",
+    "professional_experience",
+    "work_mode",
+    "previous_treatment",
+    "sample_source"
+  ]
+}

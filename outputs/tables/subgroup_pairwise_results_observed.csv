@@ -1,0 +1,4 @@
+dataset,outcome,group_var,comparison,left_level,right_level,left_n,right_n,left_mean,right_mean,left_median,right_median,statistic,raw_p_value,effect_size,effect_size_name,holm_p_value
+observed,knowledge_score,gender,Male vs Female,Male,Female,68,32,5.4411764705882355,7.71875,5.5,8.0,504.0,1.4147375428658893e-05,-0.5367647058823529,Cliff's delta,4.244212628597668e-05
+observed,knowledge_score,gender,Male vs Prefer not to say,Male,Prefer not to say,68,1,5.4411764705882355,10.0,5.5,10.0,1.5,0.10536006990997139,-0.9558823529411765,Cliff's delta,0.21072013981994278
+observed,knowledge_score,gender,Female vs Prefer not to say,Female,Prefer not to say,32,1,7.71875,10.0,8.0,10.0,3.5,0.19965998440003885,-0.78125,Cliff's delta,0.21072013981994278

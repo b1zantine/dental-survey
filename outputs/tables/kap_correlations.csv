@@ -1,0 +1,7 @@
+dataset,pair,left_metric,right_metric,rho,p_value,ci_low,ci_high,n
+augmented,knowledge_score__attitude_score,knowledge_score,attitude_score,0.31530990659363517,3.374443755316761e-07,0.2035392038511681,0.4167920949102488,251
+augmented,knowledge_score__practice_index,knowledge_score,practice_index,0.38117318721310955,4.206155367373922e-10,0.26431529334974435,0.49083836296827915,251
+augmented,attitude_score__practice_index,attitude_score,practice_index,0.23943948622666514,0.0001279529325914354,0.12440743706803797,0.34824019914245735,251
+observed,knowledge_score__attitude_score,knowledge_score,attitude_score,0.36293212945538234,0.00019144700700982756,0.18794537415661314,0.5307226860268248,101
+observed,knowledge_score__practice_index,knowledge_score,practice_index,0.45995715926691144,1.304835134006718e-06,0.2828395670393427,0.6087356986649182,101
+observed,attitude_score__practice_index,attitude_score,practice_index,0.19997476855018106,0.044962322646583425,0.00041427733808245705,0.38331950708886786,101

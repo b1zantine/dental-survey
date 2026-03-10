@@ -1,0 +1,361 @@
+domain,item_id,question,dataset,response_code,response_label,health_score,is_correct_option,count,percent
+knowledge,k1,What is dental plaque?,overall,0,Hard mineral deposit on the teeth,0.0,False,74,29.48
+knowledge,k1,What is dental plaque?,overall,1,A soft film of bacteria and food debris on the teeth,1.0,True,129,51.39
+knowledge,k1,What is dental plaque?,overall,2,Stains caused by coffee or tea,0.0,False,25,9.96
+knowledge,k1,What is dental plaque?,overall,3,Protective layer on the enamel,0.0,False,23,9.16
+knowledge,k1,What is dental plaque?,observed,0,Hard mineral deposit on the teeth,0.0,False,30,29.7
+knowledge,k1,What is dental plaque?,observed,1,A soft film of bacteria and food debris on the teeth,1.0,True,52,51.49
+knowledge,k1,What is dental plaque?,observed,2,Stains caused by coffee or tea,0.0,False,11,10.89
+knowledge,k1,What is dental plaque?,observed,3,Protective layer on the enamel,0.0,False,8,7.92
+knowledge,k1,What is dental plaque?,generated,0,Hard mineral deposit on the teeth,0.0,False,44,29.33
+knowledge,k1,What is dental plaque?,generated,1,A soft film of bacteria and food debris on the teeth,1.0,True,77,51.33
+knowledge,k1,What is dental plaque?,generated,2,Stains caused by coffee or tea,0.0,False,14,9.33
+knowledge,k1,What is dental plaque?,generated,3,Protective layer on the enamel,0.0,False,15,10.0
+knowledge,k2,What is dental calculus (tartar)?,overall,0,Hard mineral deposit on the teeth,1.0,True,129,51.39
+knowledge,k2,What is dental calculus (tartar)?,overall,1,Stains caused by coffee or tea,0.0,False,50,19.92
+knowledge,k2,What is dental calculus (tartar)?,overall,2,A soft film of bacteria and food debris,0.0,False,32,12.75
+knowledge,k2,What is dental calculus (tartar)?,overall,3,Protective layer on the enamel,0.0,False,40,15.94
+knowledge,k2,What is dental calculus (tartar)?,observed,0,Hard mineral deposit on the teeth,1.0,True,51,50.5
+knowledge,k2,What is dental calculus (tartar)?,observed,1,Stains caused by coffee or tea,0.0,False,21,20.79
+knowledge,k2,What is dental calculus (tartar)?,observed,2,A soft film of bacteria and food debris,0.0,False,15,14.85
+knowledge,k2,What is dental calculus (tartar)?,observed,3,Protective layer on the enamel,0.0,False,14,13.86
+knowledge,k2,What is dental calculus (tartar)?,generated,0,Hard mineral deposit on the teeth,1.0,True,78,52.0
+knowledge,k2,What is dental calculus (tartar)?,generated,1,Stains caused by coffee or tea,0.0,False,29,19.33
+knowledge,k2,What is dental calculus (tartar)?,generated,2,A soft film of bacteria and food debris,0.0,False,17,11.33
+knowledge,k2,What is dental calculus (tartar)?,generated,3,Protective layer on the enamel,0.0,False,26,17.33
+knowledge,k3,Which of the following is an early sign of gum infection?,overall,0,White spots on the teeth,0.0,False,13,5.18
+knowledge,k3,Which of the following is an early sign of gum infection?,overall,1,Dry mouth,0.0,False,12,4.78
+knowledge,k3,Which of the following is an early sign of gum infection?,overall,2,Bleeding gums while brushing,1.0,True,199,79.28
+knowledge,k3,Which of the following is an early sign of gum infection?,overall,3,Jaw pain,0.0,False,27,10.76
+knowledge,k3,Which of the following is an early sign of gum infection?,observed,0,White spots on the teeth,0.0,False,5,4.95
+knowledge,k3,Which of the following is an early sign of gum infection?,observed,1,Dry mouth,0.0,False,6,5.94
+knowledge,k3,Which of the following is an early sign of gum infection?,observed,2,Bleeding gums while brushing,1.0,True,79,78.22
+knowledge,k3,Which of the following is an early sign of gum infection?,observed,3,Jaw pain,0.0,False,11,10.89
+knowledge,k3,Which of the following is an early sign of gum infection?,generated,0,White spots on the teeth,0.0,False,8,5.33
+knowledge,k3,Which of the following is an early sign of gum infection?,generated,1,Dry mouth,0.0,False,6,4.0
+knowledge,k3,Which of the following is an early sign of gum infection?,generated,2,Bleeding gums while brushing,1.0,True,120,80.0
+knowledge,k3,Which of the following is an early sign of gum infection?,generated,3,Jaw pain,0.0,False,16,10.67
+knowledge,k4,What is the primary cause of early gum disease?,overall,0,Dental plaque accumulation,1.0,True,94,37.45
+knowledge,k4,What is the primary cause of early gum disease?,overall,1,Poor brushing technique,0.0,False,96,38.25
+knowledge,k4,What is the primary cause of early gum disease?,overall,2,Tooth decay,0.0,False,31,12.35
+knowledge,k4,What is the primary cause of early gum disease?,overall,3,Lack of calcium,0.0,False,30,11.95
+knowledge,k4,What is the primary cause of early gum disease?,observed,0,Dental plaque accumulation,1.0,True,37,36.63
+knowledge,k4,What is the primary cause of early gum disease?,observed,1,Poor brushing technique,0.0,False,39,38.61
+knowledge,k4,What is the primary cause of early gum disease?,observed,2,Tooth decay,0.0,False,13,12.87
+knowledge,k4,What is the primary cause of early gum disease?,observed,3,Lack of calcium,0.0,False,12,11.88
+knowledge,k4,What is the primary cause of early gum disease?,generated,0,Dental plaque accumulation,1.0,True,57,38.0
+knowledge,k4,What is the primary cause of early gum disease?,generated,1,Poor brushing technique,0.0,False,57,38.0
+knowledge,k4,What is the primary cause of early gum disease?,generated,2,Tooth decay,0.0,False,18,12.0
+knowledge,k4,What is the primary cause of early gum disease?,generated,3,Lack of calcium,0.0,False,18,12.0
+knowledge,k5,What is one of the main causes of bad breath?,overall,0,Frequent brushing,0.0,False,13,5.18
+knowledge,k5,What is one of the main causes of bad breath?,overall,1,Chewing gum,0.0,False,3,1.2
+knowledge,k5,What is one of the main causes of bad breath?,overall,2,Cold beverages,0.0,False,16,6.37
+knowledge,k5,What is one of the main causes of bad breath?,overall,3,Gum disease,1.0,True,219,87.25
+knowledge,k5,What is one of the main causes of bad breath?,observed,0,Frequent brushing,0.0,False,5,4.95
+knowledge,k5,What is one of the main causes of bad breath?,observed,1,Chewing gum,0.0,False,3,2.97
+knowledge,k5,What is one of the main causes of bad breath?,observed,2,Cold beverages,0.0,False,6,5.94
+knowledge,k5,What is one of the main causes of bad breath?,observed,3,Gum disease,1.0,True,87,86.14
+knowledge,k5,What is one of the main causes of bad breath?,generated,0,Frequent brushing,0.0,False,8,5.33
+knowledge,k5,What is one of the main causes of bad breath?,generated,1,Chewing gum,0.0,False,0,0.0
+knowledge,k5,What is one of the main causes of bad breath?,generated,2,Cold beverages,0.0,False,10,6.67
+knowledge,k5,What is one of the main causes of bad breath?,generated,3,Gum disease,1.0,True,132,88.0
+knowledge,k6,Which dietary choice contributes most to poor gum health?,overall,0,Processed sugary foods and drinks,1.0,True,222,88.45
+knowledge,k6,Which dietary choice contributes most to poor gum health?,overall,1,Leafy greens,0.0,False,14,5.58
+knowledge,k6,Which dietary choice contributes most to poor gum health?,overall,2,Dairy products,0.0,False,11,4.38
+knowledge,k6,Which dietary choice contributes most to poor gum health?,overall,3,Whole grains,0.0,False,4,1.59
+knowledge,k6,Which dietary choice contributes most to poor gum health?,observed,0,Processed sugary foods and drinks,1.0,True,89,88.12
+knowledge,k6,Which dietary choice contributes most to poor gum health?,observed,1,Leafy greens,0.0,False,5,4.95
+knowledge,k6,Which dietary choice contributes most to poor gum health?,observed,2,Dairy products,0.0,False,6,5.94
+knowledge,k6,Which dietary choice contributes most to poor gum health?,observed,3,Whole grains,0.0,False,1,0.99
+knowledge,k6,Which dietary choice contributes most to poor gum health?,generated,0,Processed sugary foods and drinks,1.0,True,133,88.67
+knowledge,k6,Which dietary choice contributes most to poor gum health?,generated,1,Leafy greens,0.0,False,9,6.0
+knowledge,k6,Which dietary choice contributes most to poor gum health?,generated,2,Dairy products,0.0,False,5,3.33
+knowledge,k6,Which dietary choice contributes most to poor gum health?,generated,3,Whole grains,0.0,False,3,2.0
+knowledge,k7,Which vitamin helps to keep your gums healthy?,overall,0,Vitamin A,0.0,False,29,11.55
+knowledge,k7,Which vitamin helps to keep your gums healthy?,overall,1,Vitamin B,0.0,False,37,14.74
+knowledge,k7,Which vitamin helps to keep your gums healthy?,overall,2,Vitamin C,1.0,True,137,54.58
+knowledge,k7,Which vitamin helps to keep your gums healthy?,overall,3,Vitamin D,0.0,False,48,19.12
+knowledge,k7,Which vitamin helps to keep your gums healthy?,observed,0,Vitamin A,0.0,False,15,14.85
+knowledge,k7,Which vitamin helps to keep your gums healthy?,observed,1,Vitamin B,0.0,False,15,14.85
+knowledge,k7,Which vitamin helps to keep your gums healthy?,observed,2,Vitamin C,1.0,True,50,49.5
+knowledge,k7,Which vitamin helps to keep your gums healthy?,observed,3,Vitamin D,0.0,False,21,20.79
+knowledge,k7,Which vitamin helps to keep your gums healthy?,generated,0,Vitamin A,0.0,False,14,9.33
+knowledge,k7,Which vitamin helps to keep your gums healthy?,generated,1,Vitamin B,0.0,False,22,14.67
+knowledge,k7,Which vitamin helps to keep your gums healthy?,generated,2,Vitamin C,1.0,True,87,58.0
+knowledge,k7,Which vitamin helps to keep your gums healthy?,generated,3,Vitamin D,0.0,False,27,18.0
+knowledge,k8,How is gum disease linked to general health?,overall,0,It boosts immunity,0.0,False,38,15.14
+knowledge,k8,How is gum disease linked to general health?,overall,1,It can contribute to heart disease and diabetes,1.0,True,146,58.17
+knowledge,k8,How is gum disease linked to general health?,overall,2,It lowers blood sugar levels,0.0,False,19,7.57
+knowledge,k8,How is gum disease linked to general health?,overall,3,It only affects the mouth and teeth,0.0,False,48,19.12
+knowledge,k8,How is gum disease linked to general health?,observed,0,It boosts immunity,0.0,False,16,15.84
+knowledge,k8,How is gum disease linked to general health?,observed,1,It can contribute to heart disease and diabetes,1.0,True,56,55.45
+knowledge,k8,How is gum disease linked to general health?,observed,2,It lowers blood sugar levels,0.0,False,9,8.91
+knowledge,k8,How is gum disease linked to general health?,observed,3,It only affects the mouth and teeth,0.0,False,20,19.8
+knowledge,k8,How is gum disease linked to general health?,generated,0,It boosts immunity,0.0,False,22,14.67
+knowledge,k8,How is gum disease linked to general health?,generated,1,It can contribute to heart disease and diabetes,1.0,True,90,60.0
+knowledge,k8,How is gum disease linked to general health?,generated,2,It lowers blood sugar levels,0.0,False,10,6.67
+knowledge,k8,How is gum disease linked to general health?,generated,3,It only affects the mouth and teeth,0.0,False,28,18.67
+knowledge,k9,What is a common oral health consequence of prolonged stress?,overall,0,Increased salivary flow,0.0,False,32,12.75
+knowledge,k9,What is a common oral health consequence of prolonged stress?,overall,1,Improved oral hygiene habits,0.0,False,29,11.55
+knowledge,k9,What is a common oral health consequence of prolonged stress?,overall,2,Strengthening of tooth enamel,0.0,False,2,0.8
+knowledge,k9,What is a common oral health consequence of prolonged stress?,overall,3,Development of gum disease due to inflammation,1.0,True,188,74.9
+knowledge,k9,What is a common oral health consequence of prolonged stress?,observed,0,Increased salivary flow,0.0,False,11,10.89
+knowledge,k9,What is a common oral health consequence of prolonged stress?,observed,1,Improved oral hygiene habits,0.0,False,15,14.85
+knowledge,k9,What is a common oral health consequence of prolonged stress?,observed,2,Strengthening of tooth enamel,0.0,False,1,0.99
+knowledge,k9,What is a common oral health consequence of prolonged stress?,observed,3,Development of gum disease due to inflammation,1.0,True,74,73.27
+knowledge,k9,What is a common oral health consequence of prolonged stress?,generated,0,Increased salivary flow,0.0,False,21,14.0
+knowledge,k9,What is a common oral health consequence of prolonged stress?,generated,1,Improved oral hygiene habits,0.0,False,14,9.33
+knowledge,k9,What is a common oral health consequence of prolonged stress?,generated,2,Strengthening of tooth enamel,0.0,False,1,0.67
+knowledge,k9,What is a common oral health consequence of prolonged stress?,generated,3,Development of gum disease due to inflammation,1.0,True,114,76.0
+knowledge,k10,Which dental specialty focuses on prevention and treatment of gum disease?,overall,0,Orthodontics,0.0,False,44,17.53
+knowledge,k10,Which dental specialty focuses on prevention and treatment of gum disease?,overall,1,Prosthodontics,0.0,False,23,9.16
+knowledge,k10,Which dental specialty focuses on prevention and treatment of gum disease?,overall,2,Periodontics,1.0,True,134,53.39
+knowledge,k10,Which dental specialty focuses on prevention and treatment of gum disease?,overall,3,Endodontics,0.0,False,50,19.92
+knowledge,k10,Which dental specialty focuses on prevention and treatment of gum disease?,observed,0,Orthodontics,0.0,False,20,19.8
+knowledge,k10,Which dental specialty focuses on prevention and treatment of gum disease?,observed,1,Prosthodontics,0.0,False,12,11.88
+knowledge,k10,Which dental specialty focuses on prevention and treatment of gum disease?,observed,2,Periodontics,1.0,True,52,51.49
+knowledge,k10,Which dental specialty focuses on prevention and treatment of gum disease?,observed,3,Endodontics,0.0,False,17,16.83
+knowledge,k10,Which dental specialty focuses on prevention and treatment of gum disease?,generated,0,Orthodontics,0.0,False,24,16.0
+knowledge,k10,Which dental specialty focuses on prevention and treatment of gum disease?,generated,1,Prosthodontics,0.0,False,11,7.33
+knowledge,k10,Which dental specialty focuses on prevention and treatment of gum disease?,generated,2,Periodontics,1.0,True,82,54.67
+knowledge,k10,Which dental specialty focuses on prevention and treatment of gum disease?,generated,3,Endodontics,0.0,False,33,22.0
+attitude,a1,Neglecting oral hygiene develops gum disease.,overall,Strongly Disagree,Strongly Disagree,,,41,16.33
+attitude,a1,Neglecting oral hygiene develops gum disease.,overall,Disagree,Disagree,,,82,32.67
+attitude,a1,Neglecting oral hygiene develops gum disease.,overall,Agree,Agree,,,84,33.47
+attitude,a1,Neglecting oral hygiene develops gum disease.,overall,Strongly Agree,Strongly Agree,,,44,17.53
+attitude,a1,Neglecting oral hygiene develops gum disease.,observed,Strongly Disagree,Strongly Disagree,,,18,17.82
+attitude,a1,Neglecting oral hygiene develops gum disease.,observed,Disagree,Disagree,,,29,28.71
+attitude,a1,Neglecting oral hygiene develops gum disease.,observed,Agree,Agree,,,36,35.64
+attitude,a1,Neglecting oral hygiene develops gum disease.,observed,Strongly Agree,Strongly Agree,,,18,17.82
+attitude,a1,Neglecting oral hygiene develops gum disease.,generated,Strongly Disagree,Strongly Disagree,,,23,15.33
+attitude,a1,Neglecting oral hygiene develops gum disease.,generated,Disagree,Disagree,,,53,35.33
+attitude,a1,Neglecting oral hygiene develops gum disease.,generated,Agree,Agree,,,48,32.0
+attitude,a1,Neglecting oral hygiene develops gum disease.,generated,Strongly Agree,Strongly Agree,,,26,17.33
+attitude,a2,Bleeding gums should not be ignored.,overall,Strongly Disagree,Strongly Disagree,,,25,9.96
+attitude,a2,Bleeding gums should not be ignored.,overall,Disagree,Disagree,,,64,25.5
+attitude,a2,Bleeding gums should not be ignored.,overall,Agree,Agree,,,118,47.01
+attitude,a2,Bleeding gums should not be ignored.,overall,Strongly Agree,Strongly Agree,,,44,17.53
+attitude,a2,Bleeding gums should not be ignored.,observed,Strongly Disagree,Strongly Disagree,,,12,11.88
+attitude,a2,Bleeding gums should not be ignored.,observed,Disagree,Disagree,,,23,22.77
+attitude,a2,Bleeding gums should not be ignored.,observed,Agree,Agree,,,47,46.53
+attitude,a2,Bleeding gums should not be ignored.,observed,Strongly Agree,Strongly Agree,,,19,18.81
+attitude,a2,Bleeding gums should not be ignored.,generated,Strongly Disagree,Strongly Disagree,,,13,8.67
+attitude,a2,Bleeding gums should not be ignored.,generated,Disagree,Disagree,,,41,27.33
+attitude,a2,Bleeding gums should not be ignored.,generated,Agree,Agree,,,71,47.33
+attitude,a2,Bleeding gums should not be ignored.,generated,Strongly Agree,Strongly Agree,,,25,16.67
+attitude,a3,Attending workplace awareness programs will improve gum health.,overall,Strongly Disagree,Strongly Disagree,,,14,5.58
+attitude,a3,Attending workplace awareness programs will improve gum health.,overall,Disagree,Disagree,,,81,32.27
+attitude,a3,Attending workplace awareness programs will improve gum health.,overall,Agree,Agree,,,122,48.61
+attitude,a3,Attending workplace awareness programs will improve gum health.,overall,Strongly Agree,Strongly Agree,,,34,13.55
+attitude,a3,Attending workplace awareness programs will improve gum health.,observed,Strongly Disagree,Strongly Disagree,,,8,7.92
+attitude,a3,Attending workplace awareness programs will improve gum health.,observed,Disagree,Disagree,,,28,27.72
+attitude,a3,Attending workplace awareness programs will improve gum health.,observed,Agree,Agree,,,53,52.48
+attitude,a3,Attending workplace awareness programs will improve gum health.,observed,Strongly Agree,Strongly Agree,,,12,11.88
+attitude,a3,Attending workplace awareness programs will improve gum health.,generated,Strongly Disagree,Strongly Disagree,,,6,4.0
+attitude,a3,Attending workplace awareness programs will improve gum health.,generated,Disagree,Disagree,,,53,35.33
+attitude,a3,Attending workplace awareness programs will improve gum health.,generated,Agree,Agree,,,69,46.0
+attitude,a3,Attending workplace awareness programs will improve gum health.,generated,Strongly Agree,Strongly Agree,,,22,14.67
+attitude,a4,Maintaining oral hygiene is equally important as maintaining physical fitness.,overall,Strongly Disagree,Strongly Disagree,,,32,12.75
+attitude,a4,Maintaining oral hygiene is equally important as maintaining physical fitness.,overall,Disagree,Disagree,,,49,19.52
+attitude,a4,Maintaining oral hygiene is equally important as maintaining physical fitness.,overall,Agree,Agree,,,121,48.21
+attitude,a4,Maintaining oral hygiene is equally important as maintaining physical fitness.,overall,Strongly Agree,Strongly Agree,,,49,19.52
+attitude,a4,Maintaining oral hygiene is equally important as maintaining physical fitness.,observed,Strongly Disagree,Strongly Disagree,,,13,12.87
+attitude,a4,Maintaining oral hygiene is equally important as maintaining physical fitness.,observed,Disagree,Disagree,,,17,16.83
+attitude,a4,Maintaining oral hygiene is equally important as maintaining physical fitness.,observed,Agree,Agree,,,50,49.5
+attitude,a4,Maintaining oral hygiene is equally important as maintaining physical fitness.,observed,Strongly Agree,Strongly Agree,,,21,20.79
+attitude,a4,Maintaining oral hygiene is equally important as maintaining physical fitness.,generated,Strongly Disagree,Strongly Disagree,,,19,12.67
+attitude,a4,Maintaining oral hygiene is equally important as maintaining physical fitness.,generated,Disagree,Disagree,,,32,21.33
+attitude,a4,Maintaining oral hygiene is equally important as maintaining physical fitness.,generated,Agree,Agree,,,71,47.33
+attitude,a4,Maintaining oral hygiene is equally important as maintaining physical fitness.,generated,Strongly Agree,Strongly Agree,,,28,18.67
+attitude,a5,Visiting a dentist is necessary only when I have pain or discomfort.,overall,Strongly Disagree,Strongly Disagree,,,37,14.74
+attitude,a5,Visiting a dentist is necessary only when I have pain or discomfort.,overall,Disagree,Disagree,,,132,52.59
+attitude,a5,Visiting a dentist is necessary only when I have pain or discomfort.,overall,Agree,Agree,,,60,23.9
+attitude,a5,Visiting a dentist is necessary only when I have pain or discomfort.,overall,Strongly Agree,Strongly Agree,,,22,8.76
+attitude,a5,Visiting a dentist is necessary only when I have pain or discomfort.,observed,Strongly Disagree,Strongly Disagree,,,14,13.86
+attitude,a5,Visiting a dentist is necessary only when I have pain or discomfort.,observed,Disagree,Disagree,,,52,51.49
+attitude,a5,Visiting a dentist is necessary only when I have pain or discomfort.,observed,Agree,Agree,,,27,26.73
+attitude,a5,Visiting a dentist is necessary only when I have pain or discomfort.,observed,Strongly Agree,Strongly Agree,,,8,7.92
+attitude,a5,Visiting a dentist is necessary only when I have pain or discomfort.,generated,Strongly Disagree,Strongly Disagree,,,23,15.33
+attitude,a5,Visiting a dentist is necessary only when I have pain or discomfort.,generated,Disagree,Disagree,,,80,53.33
+attitude,a5,Visiting a dentist is necessary only when I have pain or discomfort.,generated,Agree,Agree,,,33,22.0
+attitude,a5,Visiting a dentist is necessary only when I have pain or discomfort.,generated,Strongly Agree,Strongly Agree,,,14,9.33
+attitude,a6,Poor gum health can negatively affect my confidence or social interactions.,overall,Strongly Disagree,Strongly Disagree,,,14,5.58
+attitude,a6,Poor gum health can negatively affect my confidence or social interactions.,overall,Disagree,Disagree,,,65,25.9
+attitude,a6,Poor gum health can negatively affect my confidence or social interactions.,overall,Agree,Agree,,,124,49.4
+attitude,a6,Poor gum health can negatively affect my confidence or social interactions.,overall,Strongly Agree,Strongly Agree,,,48,19.12
+attitude,a6,Poor gum health can negatively affect my confidence or social interactions.,observed,Strongly Disagree,Strongly Disagree,,,8,7.92
+attitude,a6,Poor gum health can negatively affect my confidence or social interactions.,observed,Disagree,Disagree,,,23,22.77
+attitude,a6,Poor gum health can negatively affect my confidence or social interactions.,observed,Agree,Agree,,,53,52.48
+attitude,a6,Poor gum health can negatively affect my confidence or social interactions.,observed,Strongly Agree,Strongly Agree,,,17,16.83
+attitude,a6,Poor gum health can negatively affect my confidence or social interactions.,generated,Strongly Disagree,Strongly Disagree,,,6,4.0
+attitude,a6,Poor gum health can negatively affect my confidence or social interactions.,generated,Disagree,Disagree,,,42,28.0
+attitude,a6,Poor gum health can negatively affect my confidence or social interactions.,generated,Agree,Agree,,,71,47.33
+attitude,a6,Poor gum health can negatively affect my confidence or social interactions.,generated,Strongly Agree,Strongly Agree,,,31,20.67
+attitude,a7,Oral hygiene aids like floss or mouthwash can be used if recommended by a dentist.,overall,Strongly Disagree,Strongly Disagree,,,17,6.77
+attitude,a7,Oral hygiene aids like floss or mouthwash can be used if recommended by a dentist.,overall,Disagree,Disagree,,,66,26.29
+attitude,a7,Oral hygiene aids like floss or mouthwash can be used if recommended by a dentist.,overall,Agree,Agree,,,137,54.58
+attitude,a7,Oral hygiene aids like floss or mouthwash can be used if recommended by a dentist.,overall,Strongly Agree,Strongly Agree,,,31,12.35
+attitude,a7,Oral hygiene aids like floss or mouthwash can be used if recommended by a dentist.,observed,Strongly Disagree,Strongly Disagree,,,8,7.92
+attitude,a7,Oral hygiene aids like floss or mouthwash can be used if recommended by a dentist.,observed,Disagree,Disagree,,,27,26.73
+attitude,a7,Oral hygiene aids like floss or mouthwash can be used if recommended by a dentist.,observed,Agree,Agree,,,58,57.43
+attitude,a7,Oral hygiene aids like floss or mouthwash can be used if recommended by a dentist.,observed,Strongly Agree,Strongly Agree,,,8,7.92
+attitude,a7,Oral hygiene aids like floss or mouthwash can be used if recommended by a dentist.,generated,Strongly Disagree,Strongly Disagree,,,9,6.0
+attitude,a7,Oral hygiene aids like floss or mouthwash can be used if recommended by a dentist.,generated,Disagree,Disagree,,,39,26.0
+attitude,a7,Oral hygiene aids like floss or mouthwash can be used if recommended by a dentist.,generated,Agree,Agree,,,79,52.67
+attitude,a7,Oral hygiene aids like floss or mouthwash can be used if recommended by a dentist.,generated,Strongly Agree,Strongly Agree,,,23,15.33
+attitude,a8,Oral hygiene maintenance is time consuming and difficult to follow.,overall,Strongly Disagree,Strongly Disagree,,,35,13.94
+attitude,a8,Oral hygiene maintenance is time consuming and difficult to follow.,overall,Disagree,Disagree,,,126,50.2
+attitude,a8,Oral hygiene maintenance is time consuming and difficult to follow.,overall,Agree,Agree,,,69,27.49
+attitude,a8,Oral hygiene maintenance is time consuming and difficult to follow.,overall,Strongly Agree,Strongly Agree,,,21,8.37
+attitude,a8,Oral hygiene maintenance is time consuming and difficult to follow.,observed,Strongly Disagree,Strongly Disagree,,,13,12.87
+attitude,a8,Oral hygiene maintenance is time consuming and difficult to follow.,observed,Disagree,Disagree,,,49,48.51
+attitude,a8,Oral hygiene maintenance is time consuming and difficult to follow.,observed,Agree,Agree,,,30,29.7
+attitude,a8,Oral hygiene maintenance is time consuming and difficult to follow.,observed,Strongly Agree,Strongly Agree,,,9,8.91
+attitude,a8,Oral hygiene maintenance is time consuming and difficult to follow.,generated,Strongly Disagree,Strongly Disagree,,,22,14.67
+attitude,a8,Oral hygiene maintenance is time consuming and difficult to follow.,generated,Disagree,Disagree,,,77,51.33
+attitude,a8,Oral hygiene maintenance is time consuming and difficult to follow.,generated,Agree,Agree,,,39,26.0
+attitude,a8,Oral hygiene maintenance is time consuming and difficult to follow.,generated,Strongly Agree,Strongly Agree,,,12,8.0
+attitude,a9,Workplace stress can have an impact on my gum and oral health.,overall,Strongly Disagree,Strongly Disagree,,,17,6.77
+attitude,a9,Workplace stress can have an impact on my gum and oral health.,overall,Disagree,Disagree,,,68,27.09
+attitude,a9,Workplace stress can have an impact on my gum and oral health.,overall,Agree,Agree,,,135,53.78
+attitude,a9,Workplace stress can have an impact on my gum and oral health.,overall,Strongly Agree,Strongly Agree,,,31,12.35
+attitude,a9,Workplace stress can have an impact on my gum and oral health.,observed,Strongly Disagree,Strongly Disagree,,,8,7.92
+attitude,a9,Workplace stress can have an impact on my gum and oral health.,observed,Disagree,Disagree,,,25,24.75
+attitude,a9,Workplace stress can have an impact on my gum and oral health.,observed,Agree,Agree,,,55,54.46
+attitude,a9,Workplace stress can have an impact on my gum and oral health.,observed,Strongly Agree,Strongly Agree,,,13,12.87
+attitude,a9,Workplace stress can have an impact on my gum and oral health.,generated,Strongly Disagree,Strongly Disagree,,,9,6.0
+attitude,a9,Workplace stress can have an impact on my gum and oral health.,generated,Disagree,Disagree,,,43,28.67
+attitude,a9,Workplace stress can have an impact on my gum and oral health.,generated,Agree,Agree,,,80,53.33
+attitude,a9,Workplace stress can have an impact on my gum and oral health.,generated,Strongly Agree,Strongly Agree,,,18,12.0
+attitude,a10,Investing in preventive dental care is better than spending on treatment later.,overall,Strongly Disagree,Strongly Disagree,,,20,7.97
+attitude,a10,Investing in preventive dental care is better than spending on treatment later.,overall,Disagree,Disagree,,,48,19.12
+attitude,a10,Investing in preventive dental care is better than spending on treatment later.,overall,Agree,Agree,,,124,49.4
+attitude,a10,Investing in preventive dental care is better than spending on treatment later.,overall,Strongly Agree,Strongly Agree,,,59,23.51
+attitude,a10,Investing in preventive dental care is better than spending on treatment later.,observed,Strongly Disagree,Strongly Disagree,,,10,9.9
+attitude,a10,Investing in preventive dental care is better than spending on treatment later.,observed,Disagree,Disagree,,,17,16.83
+attitude,a10,Investing in preventive dental care is better than spending on treatment later.,observed,Agree,Agree,,,51,50.5
+attitude,a10,Investing in preventive dental care is better than spending on treatment later.,observed,Strongly Agree,Strongly Agree,,,23,22.77
+attitude,a10,Investing in preventive dental care is better than spending on treatment later.,generated,Strongly Disagree,Strongly Disagree,,,10,6.67
+attitude,a10,Investing in preventive dental care is better than spending on treatment later.,generated,Disagree,Disagree,,,31,20.67
+attitude,a10,Investing in preventive dental care is better than spending on treatment later.,generated,Agree,Agree,,,73,48.67
+attitude,a10,Investing in preventive dental care is better than spending on treatment later.,generated,Strongly Agree,Strongly Agree,,,36,24.0
+practice,p1,How many times do you brush your teeth in a day?,overall,0,Twice a day,3.0,,142,56.57
+practice,p1,How many times do you brush your teeth in a day?,overall,1,Thrice a day,2.0,,7,2.79
+practice,p1,How many times do you brush your teeth in a day?,overall,2,Once a day,1.0,,98,39.04
+practice,p1,How many times do you brush your teeth in a day?,overall,3,Occasionally,0.0,,4,1.59
+practice,p1,How many times do you brush your teeth in a day?,observed,0,Twice a day,3.0,,57,56.44
+practice,p1,How many times do you brush your teeth in a day?,observed,1,Thrice a day,2.0,,4,3.96
+practice,p1,How many times do you brush your teeth in a day?,observed,2,Once a day,1.0,,39,38.61
+practice,p1,How many times do you brush your teeth in a day?,observed,3,Occasionally,0.0,,1,0.99
+practice,p1,How many times do you brush your teeth in a day?,generated,0,Twice a day,3.0,,85,56.67
+practice,p1,How many times do you brush your teeth in a day?,generated,1,Thrice a day,2.0,,3,2.0
+practice,p1,How many times do you brush your teeth in a day?,generated,2,Once a day,1.0,,59,39.33
+practice,p1,How many times do you brush your teeth in a day?,generated,3,Occasionally,0.0,,3,2.0
+practice,p2,In what direction do you brush your teeth?,overall,0,Circular,3.0,,91,36.25
+practice,p2,In what direction do you brush your teeth?,overall,1,Vertical,2.0,,34,13.55
+practice,p2,In what direction do you brush your teeth?,overall,2,Horizontal,0.0,,35,13.94
+practice,p2,In what direction do you brush your teeth?,overall,3,Mixed,1.0,,91,36.25
+practice,p2,In what direction do you brush your teeth?,observed,0,Circular,3.0,,38,37.62
+practice,p2,In what direction do you brush your teeth?,observed,1,Vertical,2.0,,12,11.88
+practice,p2,In what direction do you brush your teeth?,observed,2,Horizontal,0.0,,16,15.84
+practice,p2,In what direction do you brush your teeth?,observed,3,Mixed,1.0,,35,34.65
+practice,p2,In what direction do you brush your teeth?,generated,0,Circular,3.0,,53,35.33
+practice,p2,In what direction do you brush your teeth?,generated,1,Vertical,2.0,,22,14.67
+practice,p2,In what direction do you brush your teeth?,generated,2,Horizontal,0.0,,19,12.67
+practice,p2,In what direction do you brush your teeth?,generated,3,Mixed,1.0,,56,37.33
+practice,p3,What type of toothbrush do you use?,overall,0,Soft,3.0,,139,55.38
+practice,p3,What type of toothbrush do you use?,overall,1,Ultrasoft,2.0,,44,17.53
+practice,p3,What type of toothbrush do you use?,overall,2,Medium,1.0,,64,25.5
+practice,p3,What type of toothbrush do you use?,overall,3,Hard,0.0,,4,1.59
+practice,p3,What type of toothbrush do you use?,observed,0,Soft,3.0,,58,57.43
+practice,p3,What type of toothbrush do you use?,observed,1,Ultrasoft,2.0,,18,17.82
+practice,p3,What type of toothbrush do you use?,observed,2,Medium,1.0,,24,23.76
+practice,p3,What type of toothbrush do you use?,observed,3,Hard,0.0,,1,0.99
+practice,p3,What type of toothbrush do you use?,generated,0,Soft,3.0,,81,54.0
+practice,p3,What type of toothbrush do you use?,generated,1,Ultrasoft,2.0,,26,17.33
+practice,p3,What type of toothbrush do you use?,generated,2,Medium,1.0,,40,26.67
+practice,p3,What type of toothbrush do you use?,generated,3,Hard,0.0,,3,2.0
+practice,p4,When do you brush your teeth?,overall,0,Only morning,1.0,,111,44.22
+practice,p4,When do you brush your teeth?,overall,1,Only night,1.0,,5,1.99
+practice,p4,When do you brush your teeth?,overall,2,Both morning and night,3.0,,127,50.6
+practice,p4,When do you brush your teeth?,overall,3,After lunch and breakfast,2.0,,8,3.19
+practice,p4,When do you brush your teeth?,observed,0,Only morning,1.0,,45,44.55
+practice,p4,When do you brush your teeth?,observed,1,Only night,1.0,,2,1.98
+practice,p4,When do you brush your teeth?,observed,2,Both morning and night,3.0,,51,50.5
+practice,p4,When do you brush your teeth?,observed,3,After lunch and breakfast,2.0,,3,2.97
+practice,p4,When do you brush your teeth?,generated,0,Only morning,1.0,,66,44.0
+practice,p4,When do you brush your teeth?,generated,1,Only night,1.0,,3,2.0
+practice,p4,When do you brush your teeth?,generated,2,Both morning and night,3.0,,76,50.67
+practice,p4,When do you brush your teeth?,generated,3,After lunch and breakfast,2.0,,5,3.33
+practice,p5,For how long do you brush your teeth?,overall,0,Less than 1 minute,0.0,,20,7.97
+practice,p5,For how long do you brush your teeth?,overall,1,1-3 minutes,3.0,,181,72.11
+practice,p5,For how long do you brush your teeth?,overall,2,3-5 minutes,2.0,,36,14.34
+practice,p5,For how long do you brush your teeth?,overall,3,More than 5 minutes,1.0,,14,5.58
+practice,p5,For how long do you brush your teeth?,observed,0,Less than 1 minute,0.0,,9,8.91
+practice,p5,For how long do you brush your teeth?,observed,1,1-3 minutes,3.0,,70,69.31
+practice,p5,For how long do you brush your teeth?,observed,2,3-5 minutes,2.0,,16,15.84
+practice,p5,For how long do you brush your teeth?,observed,3,More than 5 minutes,1.0,,6,5.94
+practice,p5,For how long do you brush your teeth?,generated,0,Less than 1 minute,0.0,,11,7.33
+practice,p5,For how long do you brush your teeth?,generated,1,1-3 minutes,3.0,,111,74.0
+practice,p5,For how long do you brush your teeth?,generated,2,3-5 minutes,2.0,,20,13.33
+practice,p5,For how long do you brush your teeth?,generated,3,More than 5 minutes,1.0,,8,5.33
+practice,p6,Do you rinse your mouth with water after each meal?,overall,0,"Yes, everytime",3.0,,151,60.16
+practice,p6,Do you rinse your mouth with water after each meal?,overall,1,Occasionally,2.0,,75,29.88
+practice,p6,Do you rinse your mouth with water after each meal?,overall,2,Never,0.0,,13,5.18
+practice,p6,Do you rinse your mouth with water after each meal?,overall,3,Only after dinner,1.0,,12,4.78
+practice,p6,Do you rinse your mouth with water after each meal?,observed,0,"Yes, everytime",3.0,,60,59.41
+practice,p6,Do you rinse your mouth with water after each meal?,observed,1,Occasionally,2.0,,30,29.7
+practice,p6,Do you rinse your mouth with water after each meal?,observed,2,Never,0.0,,6,5.94
+practice,p6,Do you rinse your mouth with water after each meal?,observed,3,Only after dinner,1.0,,5,4.95
+practice,p6,Do you rinse your mouth with water after each meal?,generated,0,"Yes, everytime",3.0,,91,60.67
+practice,p6,Do you rinse your mouth with water after each meal?,generated,1,Occasionally,2.0,,45,30.0
+practice,p6,Do you rinse your mouth with water after each meal?,generated,2,Never,0.0,,7,4.67
+practice,p6,Do you rinse your mouth with water after each meal?,generated,3,Only after dinner,1.0,,7,4.67
+practice,p7,"Do you use any aids for cleaning your teeth, other than toothbrush and toothpaste?",overall,0,Tongue scraper,1.0,,105,41.83
+practice,p7,"Do you use any aids for cleaning your teeth, other than toothbrush and toothpaste?",overall,1,Dental floss,2.0,,43,17.13
+practice,p7,"Do you use any aids for cleaning your teeth, other than toothbrush and toothpaste?",overall,2,Toothpick,0.0,,73,29.08
+practice,p7,"Do you use any aids for cleaning your teeth, other than toothbrush and toothpaste?",overall,3,Both scraper and floss,3.0,,30,11.95
+practice,p7,"Do you use any aids for cleaning your teeth, other than toothbrush and toothpaste?",observed,0,Tongue scraper,1.0,,44,43.56
+practice,p7,"Do you use any aids for cleaning your teeth, other than toothbrush and toothpaste?",observed,1,Dental floss,2.0,,17,16.83
+practice,p7,"Do you use any aids for cleaning your teeth, other than toothbrush and toothpaste?",observed,2,Toothpick,0.0,,29,28.71
+practice,p7,"Do you use any aids for cleaning your teeth, other than toothbrush and toothpaste?",observed,3,Both scraper and floss,3.0,,11,10.89
+practice,p7,"Do you use any aids for cleaning your teeth, other than toothbrush and toothpaste?",generated,0,Tongue scraper,1.0,,61,40.67
+practice,p7,"Do you use any aids for cleaning your teeth, other than toothbrush and toothpaste?",generated,1,Dental floss,2.0,,26,17.33
+practice,p7,"Do you use any aids for cleaning your teeth, other than toothbrush and toothpaste?",generated,2,Toothpick,0.0,,44,29.33
+practice,p7,"Do you use any aids for cleaning your teeth, other than toothbrush and toothpaste?",generated,3,Both scraper and floss,3.0,,19,12.67
+practice,p8,How often do you change your toothbrush?,overall,0,Once in 3 months,3.0,,159,63.35
+practice,p8,How often do you change your toothbrush?,overall,1,Once in 6 months,1.0,,53,21.12
+practice,p8,How often do you change your toothbrush?,overall,2,Once in a year,0.0,,6,2.39
+practice,p8,How often do you change your toothbrush?,overall,3,When bristles wear out,2.0,,33,13.15
+practice,p8,How often do you change your toothbrush?,observed,0,Once in 3 months,3.0,,64,63.37
+practice,p8,How often do you change your toothbrush?,observed,1,Once in 6 months,1.0,,21,20.79
+practice,p8,How often do you change your toothbrush?,observed,2,Once in a year,0.0,,2,1.98
+practice,p8,How often do you change your toothbrush?,observed,3,When bristles wear out,2.0,,14,13.86
+practice,p8,How often do you change your toothbrush?,generated,0,Once in 3 months,3.0,,95,63.33
+practice,p8,How often do you change your toothbrush?,generated,1,Once in 6 months,1.0,,32,21.33
+practice,p8,How often do you change your toothbrush?,generated,2,Once in a year,0.0,,4,2.67
+practice,p8,How often do you change your toothbrush?,generated,3,When bristles wear out,2.0,,19,12.67
+practice,p9,When did you last visit your dentist?,overall,0,Never,0.0,,40,15.94
+practice,p9,When did you last visit your dentist?,overall,1,0-6 months ago,3.0,,98,39.04
+practice,p9,When did you last visit your dentist?,overall,2,7-12 months ago,2.0,,23,9.16
+practice,p9,When did you last visit your dentist?,overall,3,More than a year,1.0,,90,35.86
+practice,p9,When did you last visit your dentist?,observed,0,Never,0.0,,19,18.81
+practice,p9,When did you last visit your dentist?,observed,1,0-6 months ago,3.0,,41,40.59
+practice,p9,When did you last visit your dentist?,observed,2,7-12 months ago,2.0,,8,7.92
+practice,p9,When did you last visit your dentist?,observed,3,More than a year,1.0,,33,32.67
+practice,p9,When did you last visit your dentist?,generated,0,Never,0.0,,21,14.0
+practice,p9,When did you last visit your dentist?,generated,1,0-6 months ago,3.0,,57,38.0
+practice,p9,When did you last visit your dentist?,generated,2,7-12 months ago,2.0,,15,10.0
+practice,p9,When did you last visit your dentist?,generated,3,More than a year,1.0,,57,38.0
+practice,p10,Do you consume gutka/pan/alcohol/cigarettes?,overall,0,Yes,0.0,,15,5.98
+practice,p10,Do you consume gutka/pan/alcohol/cigarettes?,overall,1,No,3.0,,203,80.88
+practice,p10,Do you consume gutka/pan/alcohol/cigarettes?,overall,2,Sometimes,1.0,,22,8.76
+practice,p10,Do you consume gutka/pan/alcohol/cigarettes?,overall,3,Have quit,2.0,,11,4.38
+practice,p10,Do you consume gutka/pan/alcohol/cigarettes?,observed,0,Yes,0.0,,7,6.93
+practice,p10,Do you consume gutka/pan/alcohol/cigarettes?,observed,1,No,3.0,,82,81.19
+practice,p10,Do you consume gutka/pan/alcohol/cigarettes?,observed,2,Sometimes,1.0,,8,7.92
+practice,p10,Do you consume gutka/pan/alcohol/cigarettes?,observed,3,Have quit,2.0,,4,3.96
+practice,p10,Do you consume gutka/pan/alcohol/cigarettes?,generated,0,Yes,0.0,,8,5.33
+practice,p10,Do you consume gutka/pan/alcohol/cigarettes?,generated,1,No,3.0,,121,80.67
+practice,p10,Do you consume gutka/pan/alcohol/cigarettes?,generated,2,Sometimes,1.0,,14,9.33
+practice,p10,Do you consume gutka/pan/alcohol/cigarettes?,generated,3,Have quit,2.0,,7,4.67

@@ -1,0 +1,7 @@
+dataset,scale,alpha,note
+augmented,knowledge,0.7013,Binary correctness scale.
+augmented,attitude,0.7506,Likert scale with A5 and A8 reverse-coded.
+augmented,practice_index,0.543,Behavior index quality check only; not treated as a latent scale.
+observed,knowledge,0.7358,Binary correctness scale.
+observed,attitude,0.7825,Likert scale with A5 and A8 reverse-coded.
+observed,practice_index,0.5806,Behavior index quality check only; not treated as a latent scale.

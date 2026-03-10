@@ -1,0 +1,8 @@
+- Biggest knowledge gaps in the augmented sample were K4 (37.5% correct, What is the primary cause of early gum disease?); K1 (51.4% correct, What is dental plaque?); K2 (51.4% correct, What is dental calculus (tartar)?).
+- Knowledge aligned positively with attitude (rho=0.315, 95% CI 0.204 to 0.417) and practice (rho=0.381, 95% CI 0.264 to 0.491).
+- Weakest knowledge score groups among categories with n>=10: Age range: 40-50 years (mean 6.07, n=14); Gender: Male (mean 5.73, n=170); Professional experience: 15+ years (mean 5.24, n=21).
+- Weakest attitude score groups among categories with n>=10: Age range: 30-40 years (mean 25.97, n=77); Gender: Male (mean 26.71, n=170); Professional experience: 15+ years (mean 26.24, n=21).
+- Weakest practice index groups among categories with n>=10: Age range: 30-40 years (mean 20.39, n=77); Gender: Male (mean 20.69, n=170); Professional experience: 10-15 years (mean 20.03, n=37).
+- Prior treatment showed yes > no for practice (p=0.103, effect=-0.146).
+- Sensitivity analysis found direction changes in 4 comparisons, including knowledge_model | Gender: Other vs Male; knowledge_model | Professional Experience: 10-15 years vs 0-3 years; knowledge_model | Previous Treatment: Yes vs No.
+- All augmented-sample inferential findings should be presented as exploratory because 150 appended rows are synthetic augmentations beyond the 101 observed survey responses.

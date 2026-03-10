@@ -1,0 +1,21 @@
+dataset,treatment_group,count,percent
+overall,No treatment specified,199,79.28
+overall,Cleaning (Scaling),24,9.56
+overall,"Cleaning (Scaling), Deep cleaning (Root planing)",11,4.38
+overall,Deep cleaning (Root planing),11,4.38
+overall,"Cleaning (Scaling), Deep cleaning (Root planing), Other: Root canal",3,1.2
+overall,Other: Got a tooth cap because it was half broken,2,0.8
+overall,"Deep cleaning (Root planing), Other: Implant",1,0.4
+observed,No treatment specified,79,78.22
+observed,Cleaning (Scaling),10,9.9
+observed,Deep cleaning (Root planing),5,4.95
+observed,"Cleaning (Scaling), Deep cleaning (Root planing)",4,3.96
+observed,"Deep cleaning (Root planing), Other: Implant",1,0.99
+observed,Other: Got a tooth cap because it was half broken,1,0.99
+observed,"Cleaning (Scaling), Deep cleaning (Root planing), Other: Root canal",1,0.99
+generated,No treatment specified,120,80.0
+generated,Cleaning (Scaling),14,9.33
+generated,"Cleaning (Scaling), Deep cleaning (Root planing)",7,4.67
+generated,Deep cleaning (Root planing),6,4.0
+generated,"Cleaning (Scaling), Deep cleaning (Root planing), Other: Root canal",2,1.33
+generated,Other: Got a tooth cap because it was half broken,1,0.67
