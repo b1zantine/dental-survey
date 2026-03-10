@@ -1,0 +1,58 @@
+locality,normalized_input,geo_scope,city_cluster,locality_detail,mapping_reason
+Bangalore,bangalore,Bangalore,Bangalore,Bangalore (Unspecified),exact Bangalore mapping: Bangalore (Unspecified)
+Banglore,banglore,Bangalore,Bangalore,Bangalore (Unspecified),exact Bangalore mapping: Bangalore (Unspecified)
+Bengaluru,bengaluru,Bangalore,Bangalore,Bangalore (Unspecified),exact Bangalore mapping: Bangalore (Unspecified)
+Bellandur,bellandur,Bangalore,Bangalore,Bellandur,exact Bangalore mapping: Bellandur
+Bommanahalli,bommanahalli,Bangalore,Bangalore,Bommanahalli,exact Bangalore mapping: Bommanahalli
+CV Raman Nagar,cv raman nagar,Bangalore,Bangalore,CV Raman Nagar,exact Bangalore mapping: CV Raman Nagar
+Chikkanayakanahalli,chikkanayakanahalli,Bangalore,Bangalore,Chikkanayakanahalli,exact Bangalore mapping: Chikkanayakanahalli
+DODDABALLAPURA,doddaballapura,Bangalore,Bangalore,Doddaballapura,exact Bangalore mapping: Doddaballapura
+Gottigere,gottigere,Bangalore,Bangalore,Gottigere,exact Bangalore mapping: Gottigere
+HAL,hal,Bangalore,Bangalore,HAL,exact Bangalore mapping: HAL
+HSR Layout,hsr layout,Bangalore,Bangalore,HSR Layout,exact Bangalore mapping: HSR Layout
+HSR layout,hsr layout,Bangalore,Bangalore,HSR Layout,exact Bangalore mapping: HSR Layout
+Hsr layout,hsr layout,Bangalore,Bangalore,HSR Layout,exact Bangalore mapping: HSR Layout
+Haralur,haralur,Bangalore,Bangalore,Harlur,exact Bangalore mapping: Harlur
+"Harlur,Bangalore",harlur bangalore,Bangalore,Bangalore,Harlur,exact Bangalore mapping: Harlur
+Hebbal,hebbal,Bangalore,Bangalore,Hebbal,exact Bangalore mapping: Hebbal
+Horamavu,horamavu,Bangalore,Bangalore,Horamavu,exact Bangalore mapping: Horamavu
+Indiranagar,indiranagar,Bangalore,Bangalore,Indiranagar,exact Bangalore mapping: Indiranagar
+JP Nagar,jp nagar,Bangalore,Bangalore,JP Nagar,exact Bangalore mapping: JP Nagar
+JP Nagara,jp nagara,Bangalore,Bangalore,JP Nagar,exact Bangalore mapping: JP Nagar
+Jp Nagar,jp nagar,Bangalore,Bangalore,JP Nagar,exact Bangalore mapping: JP Nagar
+Jp nagar,jp nagar,Bangalore,Bangalore,JP Nagar,exact Bangalore mapping: JP Nagar
+Jp nagar 2nd phase,jp nagar 2nd phase,Bangalore,Bangalore,JP Nagar,exact Bangalore mapping: JP Nagar
+Kengeri,kengeri,Bangalore,Bangalore,Kengeri,exact Bangalore mapping: Kengeri
+Koramangala,koramangala,Bangalore,Bangalore,Koramangala,exact Bangalore mapping: Koramangala
+Madiwala,madiwala,Bangalore,Bangalore,Madiwala,exact Bangalore mapping: Madiwala
+Marathahalli,marathahalli,Bangalore,Bangalore,Marathahalli,exact Bangalore mapping: Marathahalli
+"RR nagar, Bangalore",rr nagar bangalore,Bangalore,Bangalore,RR Nagar,exact Bangalore mapping: RR Nagar
+Ramamurthy Nagar Bangalore,ramamurthy nagar bangalore,Bangalore,Bangalore,Ramamurthy Nagar,exact Bangalore mapping: Ramamurthy Nagar
+Shanti Nagar,shanti nagar,Bangalore,Bangalore,Shanti Nagar,exact Bangalore mapping: Shanti Nagar
+Ulsoor,ulsoor,Bangalore,Bangalore,Ulsoor,exact Bangalore mapping: Ulsoor
+Whitefield,whitefield,Bangalore,Bangalore,Whitefield,exact Bangalore mapping: Whitefield
+Yelahanka,yelahanka,Bangalore,Bangalore,Yelahanka,exact Bangalore mapping: Yelahanka
+Yeshwantpur,yeshwantpur,Bangalore,Bangalore,Yeshwantpur,exact Bangalore mapping: Yeshwantpur
+Bijapur,bijapur,Outside Bangalore,Bijapur,Bijapur,outside Bangalore or no Bangalore marker
+Chennai,chennai,Outside Bangalore,Chennai,Chennai,outside Bangalore or no Bangalore marker
+Chromepet,chromepet,Outside Bangalore,Chromepet,Chromepet,outside Bangalore or no Bangalore marker
+Coimbatore,coimbatore,Outside Bangalore,Coimbatore,Coimbatore,outside Bangalore or no Bangalore marker
+Erode,erode,Outside Bangalore,Erode,Erode,outside Bangalore or no Bangalore marker
+Guduvancheri,guduvancheri,Outside Bangalore,Guduvancheri,Guduvancheri,outside Bangalore or no Bangalore marker
+Guduvanchery,guduvanchery,Outside Bangalore,Guduvancheri,Guduvancheri,outside Bangalore or no Bangalore marker
+Hosur,hosur,Outside Bangalore,Hosur,Hosur,outside Bangalore or no Bangalore marker
+Hyderabad,hyderabad,Outside Bangalore,Hyderabad,Hyderabad,outside Bangalore or no Bangalore marker
+Kolkata,kolkata,Outside Bangalore,Kolkata,Kolkata,outside Bangalore or no Bangalore marker
+Kovilpatti,kovilpatti,Outside Bangalore,Kovilpatti,Kovilpatti,outside Bangalore or no Bangalore marker
+Madhavaram,madhavaram,Outside Bangalore,Madhavaram,Madhavaram,outside Bangalore or no Bangalore marker
+Madurai,madurai,Outside Bangalore,Madurai,Madurai,outside Bangalore or no Bangalore marker
+Marthandam,marthandam,Outside Bangalore,Marthandam,Marthandam,outside Bangalore or no Bangalore marker
+Nagercoil,nagercoil,Outside Bangalore,Nagercoil,Nagercoil,outside Bangalore or no Bangalore marker
+Neyveli,neyveli,Outside Bangalore,Neyveli,Neyveli,outside Bangalore or no Bangalore marker
+Pune,pune,Outside Bangalore,Pune,Pune,outside Bangalore or no Bangalore marker
+Salem,salem,Outside Bangalore,Salem,Salem,outside Bangalore or no Bangalore marker
+Sivakasi,sivakasi,Outside Bangalore,Sivakasi,Sivakasi,outside Bangalore or no Bangalore marker
+Tenkasi,tenkasi,Outside Bangalore,Tenkasi,Tenkasi,outside Bangalore or no Bangalore marker
+Thanjavur,thanjavur,Outside Bangalore,Thanjavur,Thanjavur,outside Bangalore or no Bangalore marker
+Trichy,trichy,Outside Bangalore,Trichy,Trichy,outside Bangalore or no Bangalore marker
+United States of America,united states of america,Outside Bangalore,United States of America,United States of America,outside Bangalore or no Bangalore marker

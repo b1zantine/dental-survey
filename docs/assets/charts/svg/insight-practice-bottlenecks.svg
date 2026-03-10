@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="450" viewBox="0 0 1120 450" role="img" aria-labelledby="practice-items-with-the-lowest-best-practice-share-title practice-items-with-the-lowest-best-practice-share-subtitle">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f1a24" flood-opacity="0.08" />
+    </filter>
+    
+  </defs>
+  <style>
+  .title { font: 700 30px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .subtitle { font: 500 15px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .axis { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .label { font: 600 15px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .labelMuted { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .value { font: 700 14px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .small { font: 500 12px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .grid { stroke: #d7ddd7; stroke-width: 1; stroke-dasharray: 2 6; }
+  .axisLine { stroke: #5f6c77; stroke-width: 1.25; }
+</style>
+  <rect x="0" y="0" width="1120" height="450" rx="30" fill="#fcfaf5" />
+  <rect x="16" y="16" width="1088" height="418" rx="26" fill="#f7f3ea" stroke="#d7ddd7" />
+  <text id="practice-items-with-the-lowest-best-practice-share-title" class="title" x="52" y="68"><tspan x="52" dy="0">Practice items with the lowest</tspan><tspan x="52" dy="34">best-practice share</tspan></text>
+  <text id="practice-items-with-the-lowest-best-practice-share-subtitle" class="subtitle" x="52" y="130"><tspan x="52" dy="0">Lower bars indicate the hardest routines to sustain.</tspan></text>
+  <line class="grid" x1="360" x2="360" y1="134" y2="402" /><text class="axis" text-anchor="middle" x="360" y="430">0.0%</text><line class="grid" x1="530" x2="530" y1="134" y2="402" /><text class="axis" text-anchor="middle" x="530" y="430">25.0%</text><line class="grid" x1="700" x2="700" y1="134" y2="402" /><text class="axis" text-anchor="middle" x="700" y="430">50.0%</text><line class="grid" x1="870" x2="870" y1="134" y2="402" /><text class="axis" text-anchor="middle" x="870" y="430">75.0%</text><line class="grid" x1="1040" x2="1040" y1="134" y2="402" /><text class="axis" text-anchor="middle" x="1040" y="430">100.0%</text><rect x="360" y="150" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="150" width="81.6" height="22" rx="11" fill="#1c7c74" /><text class="label" text-anchor="start" x="44" y="166"><tspan x="44" dy="0">Cleaning aids</tspan></text><text class="value" x="453.6" y="166">12.0%</text><rect x="360" y="204" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="204" width="246.84" height="22" rx="11" fill="rgb(131, 174, 158)" /><text class="label" text-anchor="start" x="44" y="220"><tspan x="44" dy="0">Brushing direction</tspan></text><text class="value" x="618.84" y="220">36.3%</text><rect x="360" y="258" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="258" width="265.2" height="22" rx="11" fill="rgb(121, 169, 153)" /><text class="label" text-anchor="start" x="44" y="274"><tspan x="44" dy="0">Dental visit</tspan></text><text class="value" x="637.2" y="274">39.0%</text><rect x="360" y="312" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="312" width="344.08" height="22" rx="11" fill="rgb(110, 164, 149)" /><text class="label" text-anchor="start" x="44" y="328"><tspan x="44" dy="0">Brushing timing</tspan></text><text class="value" x="716.0799999999999" y="328">50.6%</text><rect x="360" y="366" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="366" width="376.71999999999997" height="22" rx="11" fill="rgb(100, 159, 145)" /><text class="label" text-anchor="start" x="44" y="382"><tspan x="44" dy="0">Brush softness</tspan></text><text class="value" x="748.72" y="382">55.4%</text>
+</svg>

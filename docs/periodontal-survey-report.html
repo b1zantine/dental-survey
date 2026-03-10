@@ -1,0 +1,1734 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Assessment of knowledge, Attitude and Practice regarding Periodontal health among IT Professionals in Bangalore City- a cross sectional questionnaire survey</title>
+    <style>
+      :root {
+        --paper: #f7f3ea;
+        --paper-alt: #fcfaf5;
+        --ink: #12202c;
+        --muted: #5f6c77;
+        --green: #1c7c74;
+        --navy: #234d70;
+        --gold: #d78f2f;
+        --coral: #d8654d;
+        --line: #d8dfd9;
+        --shadow: 0 26px 60px rgba(18, 32, 44, 0.08);
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at top left, rgba(28, 124, 116, 0.08), transparent 38%),
+          radial-gradient(circle at top right, rgba(215, 143, 47, 0.08), transparent 34%),
+          linear-gradient(180deg, #fffdf8 0%, var(--paper) 100%);
+        color: var(--ink);
+        font: 500 16px/1.6 "Avenir Next", "Segoe UI", sans-serif;
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: 280px minmax(0, 1fr);
+        max-width: 1600px;
+        margin: 0 auto;
+      }
+      .rail {
+        position: sticky;
+        top: 0;
+        align-self: start;
+        min-height: 100vh;
+        padding: 40px 28px;
+        border-right: 1px solid rgba(18, 32, 44, 0.08);
+        background: rgba(252, 250, 245, 0.86);
+        backdrop-filter: blur(16px);
+      }
+      .rail h1 {
+        margin: 0 0 18px;
+        font: 700 22px/1.14 "Avenir Next", "Segoe UI", sans-serif;
+      }
+      .rail p {
+        margin: 0 0 24px;
+        color: var(--muted);
+      }
+      .rail nav a {
+        display: block;
+        padding: 10px 12px;
+        margin: 4px 0;
+        border-radius: 12px;
+        color: var(--ink);
+        text-decoration: none;
+      }
+      .rail nav a:hover {
+        background: rgba(28, 124, 116, 0.08);
+      }
+      main {
+        padding: 38px 44px 96px;
+      }
+      .hero {
+        margin-bottom: 28px;
+        padding: 40px;
+        background: rgba(252, 250, 245, 0.88);
+        border: 1px solid rgba(18, 32, 44, 0.08);
+        border-radius: 28px;
+        box-shadow: var(--shadow);
+      }
+      .eyebrow {
+        display: inline-flex;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: rgba(28, 124, 116, 0.1);
+        color: var(--green);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .hero h2,
+      section h2,
+      #insights h2,
+      #appendix h2 {
+        margin: 16px 0 12px;
+        font: 700 36px/1.08 "Iowan Old Style", "Georgia", serif;
+      }
+      .hero p,
+      section p,
+      #insights p,
+      #appendix p {
+        max-width: 74ch;
+        color: var(--muted);
+      }
+      .kpis {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 28px;
+      }
+      .kpi {
+        padding: 18px 20px;
+        border-radius: 20px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.76), rgba(244,239,228,0.9));
+        border: 1px solid rgba(18, 32, 44, 0.08);
+      }
+      .kpi-value {
+        font: 700 32px/1 "Iowan Old Style", "Georgia", serif;
+        margin-bottom: 8px;
+      }
+      .kpi-label {
+        font-weight: 700;
+      }
+      .kpi-detail {
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .hero-notes {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+        gap: 28px;
+        margin-top: 24px;
+      }
+      .notes-card,
+      .summary-card {
+        padding: 22px 24px;
+        border-radius: 22px;
+        background: rgba(255,255,255,0.72);
+        border: 1px solid rgba(18, 32, 44, 0.08);
+      }
+      .summary-card h3,
+      .notes-card h3,
+      .table-block h3 {
+        margin: 0 0 12px;
+        font: 700 20px/1.2 "Avenir Next", "Segoe UI", sans-serif;
+      }
+      section,
+      #insights,
+      #appendix {
+        margin-top: 40px;
+        padding: 34px 34px 30px;
+        border-radius: 28px;
+        background: rgba(252, 250, 245, 0.92);
+        border: 1px solid rgba(18, 32, 44, 0.08);
+        box-shadow: var(--shadow);
+      }
+      .section-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+        margin-top: 24px;
+      }
+      .figure-card {
+        position: relative;
+        margin: 0;
+        padding: 18px;
+        border-radius: 22px;
+        background: rgba(255,255,255,0.76);
+        border: 1px solid rgba(18, 32, 44, 0.08);
+      }
+      .figure-expand {
+        position: absolute;
+        top: 28px;
+        right: 28px;
+        z-index: 2;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 14px;
+        border: 0;
+        border-radius: 999px;
+        background: rgba(18, 32, 44, 0.84);
+        color: #fffdf8;
+        cursor: pointer;
+        opacity: 0;
+        transform: translateY(-4px);
+        transition: opacity 180ms ease, transform 180ms ease, background 180ms ease;
+        box-shadow: 0 16px 34px rgba(18, 32, 44, 0.18);
+      }
+      .figure-expand:hover,
+      .figure-expand:focus-visible {
+        background: rgba(28, 124, 116, 0.92);
+        outline: none;
+      }
+      .figure-expand__icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.36);
+        font-size: 16px;
+        line-height: 1;
+        font-weight: 700;
+      }
+      .figure-expand__label {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+      }
+      .figure-card:hover .figure-expand,
+      .figure-card:focus-within .figure-expand {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .figure-art {
+        cursor: zoom-in;
+      }
+      .figure-art:focus-visible {
+        outline: 3px solid rgba(28, 124, 116, 0.34);
+        outline-offset: 6px;
+        border-radius: 16px;
+      }
+      .figure-art svg {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 18px;
+      }
+      .figure-caption {
+        margin-top: 14px;
+        color: var(--muted);
+      }
+      .chart-overlay[hidden] {
+        display: none;
+      }
+      .chart-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+      }
+      .chart-overlay__scrim {
+        position: absolute;
+        inset: 0;
+        background: rgba(11, 18, 26, 0.72);
+        backdrop-filter: blur(10px);
+      }
+      .chart-overlay__dialog {
+        position: relative;
+        z-index: 1;
+        width: min(94vw, 1520px);
+        max-height: calc(100vh - 48px);
+        margin: 24px auto;
+        padding: 28px;
+        border-radius: 30px;
+        background: rgba(252, 250, 245, 0.98);
+        border: 1px solid rgba(18, 32, 44, 0.12);
+        box-shadow: 0 28px 80px rgba(0, 0, 0, 0.24);
+        overflow: auto;
+      }
+      .chart-overlay__close {
+        position: sticky;
+        top: 0;
+        float: right;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        margin-left: auto;
+        border: 0;
+        border-radius: 50%;
+        background: rgba(18, 32, 44, 0.08);
+        color: var(--ink);
+        font-size: 28px;
+        line-height: 1;
+        cursor: pointer;
+      }
+      .chart-overlay__close:hover,
+      .chart-overlay__close:focus-visible {
+        background: rgba(18, 32, 44, 0.14);
+        outline: none;
+      }
+      .chart-overlay__header {
+        clear: both;
+        margin-bottom: 18px;
+      }
+      .chart-overlay__header h3 {
+        margin: 12px 0 8px;
+        font: 700 34px/1.08 "Iowan Old Style", "Georgia", serif;
+      }
+      .chart-overlay__header p {
+        margin: 0;
+        color: var(--muted);
+      }
+      .chart-overlay__canvas {
+        padding: 16px;
+        border-radius: 24px;
+        background: rgba(255,255,255,0.76);
+        border: 1px solid rgba(18, 32, 44, 0.08);
+      }
+      .chart-overlay__canvas svg {
+        width: 100%;
+        height: auto;
+        max-height: calc(100vh - 240px);
+        display: block;
+        margin: 0 auto;
+      }
+      body.overlay-open {
+        overflow: hidden;
+      }
+      .highlights {
+        margin: 18px 0 0;
+        padding-left: 18px;
+      }
+      .highlights li {
+        margin: 0 0 10px;
+      }
+      .insight-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+        margin-top: 24px;
+      }
+      .insight-card {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        gap: 22px;
+        padding: 26px;
+        border-radius: 24px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.84), rgba(244,239,228,0.92));
+        border: 1px solid rgba(18, 32, 44, 0.08);
+      }
+      .insight-card h3 {
+        margin: 12px 0 10px;
+        font: 700 28px/1.1 "Iowan Old Style", "Georgia", serif;
+      }
+      .insight-meta {
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--green);
+        font-weight: 700;
+      }
+      .insight-card ul {
+        padding-left: 18px;
+      }
+      .why {
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px solid rgba(18, 32, 44, 0.08);
+      }
+      .table-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+      th, td {
+        padding: 10px 12px;
+        border-bottom: 1px solid rgba(18, 32, 44, 0.08);
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        color: var(--muted);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .table-block {
+        padding: 20px 22px;
+        border-radius: 22px;
+        background: rgba(255,255,255,0.76);
+        border: 1px solid rgba(18, 32, 44, 0.08);
+      }
+      @media (max-width: 1180px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+        .rail {
+          position: static;
+          min-height: auto;
+          border-right: 0;
+          border-bottom: 1px solid rgba(18, 32, 44, 0.08);
+        }
+        .section-grid,
+        .table-grid,
+        .hero-notes,
+        .kpis,
+        .insight-card {
+          grid-template-columns: 1fr;
+        }
+        main {
+          padding: 26px 18px 70px;
+        }
+        .hero,
+        section,
+        #insights,
+        #appendix {
+          padding: 24px 18px;
+        }
+        .figure-expand {
+          opacity: 1;
+          transform: translateY(0);
+          top: 24px;
+          right: 24px;
+        }
+        .chart-overlay__dialog {
+          width: min(96vw, 1520px);
+          margin: 12px auto;
+          padding: 18px;
+          max-height: calc(100vh - 24px);
+        }
+        .chart-overlay__header h3 {
+          font-size: 28px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="rail">
+        <h1>Assessment of knowledge, Attitude and Practice regarding Periodontal health among IT Professionals in Bangalore City- a cross sectional questionnaire survey</h1>
+        
+        <nav>
+          <a href="#sample-profile">Sample profile and survey footing</a><a href="#geography-overview">Bangalore is the core geography, but outside-Bangalore responses matter too.</a><a href="#bangalore-locality-deep-dive">Named Bangalore localities do not all behave the same way.</a><a href="#knowledge">The knowledge story is about basic gum disease understanding, not specialist detail.</a><a href="#attitude">Attitudes are generally favorable, but a few items show friction.</a><a href="#practice">Reported behavior is strongest on some daily basics and weakest on follow-through routines.</a><a href="#cross-domain-relationships">The cross-domain view shows how knowledge, attitude, and practice move together and where subgroup differences are large enough to notice.</a><a href="#insights">Insights</a><a href="#appendix">Method note and appendix</a>
+        </nav>
+      </aside>
+      <main>
+        <section class="hero" id="top">
+          <h2>Assessment of knowledge, Attitude and Practice regarding Periodontal health among IT Professionals in Bangalore City- a cross sectional questionnaire survey</h2>
+          <p>This report keeps Bangalore at the center of the analysis without discarding the outside-Bangalore respondents who also contributed useful signal.</p>
+          <div class="kpis">
+            
+                  <div class="kpi">
+                    <div class="kpi-value">251</div>
+                    <div class="kpi-label">Total respondents</div>
+                    <div class="kpi-detail">Single source of truth dataset</div>
+                  </div>
+                
+                  <div class="kpi">
+                    <div class="kpi-value">146</div>
+                    <div class="kpi-label">Bangalore respondents</div>
+                    <div class="kpi-detail">58.2% of sample</div>
+                  </div>
+                
+                  <div class="kpi">
+                    <div class="kpi-value">105</div>
+                    <div class="kpi-label">Outside Bangalore</div>
+                    <div class="kpi-detail">41.8% of sample</div>
+                  </div>
+                
+                  <div class="kpi">
+                    <div class="kpi-value">JP Nagar</div>
+                    <div class="kpi-label">Top named Bangalore locality</div>
+                    <div class="kpi-detail">12 respondents</div>
+                  </div>
+                
+          </div>
+          <div class="hero-notes">
+            <div class="summary-card">
+              <h3>Executive view</h3>
+              <ul class="highlights">
+                <li>Bangalore drives the dataset, but the city is not a single cluster.</li><li>Named Bangalore localities differ more in behavior than in awareness.</li><li>Ulsoor stands out as a small pocket where knowledge is not turning into routine practice.</li><li>The weakest knowledge area is not advanced care; it is the basic cause of gum disease.</li><li>Daily routines weaken most on interdental cleaning and dentist follow-up.</li>
+              </ul>
+            </div>
+            <div class="notes-card">
+              <h3>Presenter guidance</h3>
+              <p>Use the insight section as the slide-ready narrative. Use the earlier sections when you need to defend the numbers behind those talking points.</p>
+            </div>
+          </div>
+        </section>
+
+        
+              <section id="sample-profile">
+                <span class="eyebrow">Executive Summary</span>
+                <h2>Sample profile and survey footing</h2>
+                <p>The report stays Bangalore-first because most respondents are from Bangalore, but it keeps the outside-Bangalore sample visible throughout the analysis.</p>
+                <ul class="highlights"><li>146 respondents are from Bangalore and 105 are outside Bangalore.</li><li>The sample skews toward 20-30 years (61.8%) and full-time workers (78.1%).</li><li>20.7% report a previous treatment history.</li></ul>
+                <div class="section-grid">
+                  
+    <figure class="figure-card" data-figure-title="Bangalore versus outside Bangalore" data-figure-caption="Bangalore contributes 58.2% of the full sample.">
+      <button class="figure-expand" type="button" aria-label="Expand graph: Bangalore versus outside Bangalore">
+        <span class="figure-expand__icon" aria-hidden="true">+</span>
+        <span class="figure-expand__label">Expand</span>
+      </button>
+      <div class="figure-art" role="button" tabindex="0" aria-label="Open expanded graph: Bangalore versus outside Bangalore"><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="640" viewBox="0 0 1120 640" role="img" aria-labelledby="bangalore-versus-outside-bangalore-title bangalore-versus-outside-bangalore-subtitle">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f1a24" flood-opacity="0.08" />
+    </filter>
+    
+  </defs>
+  <style>
+  .title { font: 700 30px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .subtitle { font: 500 15px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .axis { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .label { font: 600 15px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .labelMuted { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .value { font: 700 14px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .small { font: 500 12px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .grid { stroke: #d7ddd7; stroke-width: 1; stroke-dasharray: 2 6; }
+  .axisLine { stroke: #5f6c77; stroke-width: 1.25; }
+</style>
+  <rect x="0" y="0" width="1120" height="640" rx="30" fill="#fcfaf5" />
+  <rect x="16" y="16" width="1088" height="608" rx="26" fill="#f7f3ea" stroke="#d7ddd7" />
+  <text id="bangalore-versus-outside-bangalore-title" class="title" x="52" y="68"><tspan x="52" dy="0">Bangalore versus outside Bangalore</tspan></text>
+  <text id="bangalore-versus-outside-bangalore-subtitle" class="subtitle" x="52" y="96"><tspan x="52" dy="0">All 251 respondents grouped by primary geographic scope.</tspan></text>
+  
+      <g filter="url(#softShadow)">
+        <path d="M 181.26838584390543 461.9670661100682 A 140 140 0 1 0 250 200 L 250 256 A 84 84 0 1 1 208.76103150634327 413.1802396660409 Z" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><path d="M 249.99999999999997 200 A 140 140 0 0 0 181.26838584390543 461.9670661100682 L 208.76103150634327 413.1802396660409 A 84 84 0 0 1 249.99999999999997 256 Z" fill="#234d70" stroke="#fcfaf5" stroke-width="3" />
+        <circle cx="250" cy="340" r="80" fill="#fcfaf5" />
+      </g>
+      <text class="title" text-anchor="middle" x="250" y="326"><tspan x="250" dy="0">251</tspan><tspan x="250" dy="28">respondents</tspan></text>
+      <text class="subtitle" x="560" y="166">Legend</text>
+      
+      <rect x="560" y="206" width="18" height="18" rx="4" fill="#1c7c74" />
+      <text class="label" x="590" y="220">Bangalore</text>
+      <text class="labelMuted" x="590" y="242">146 respondents (58.2%)</text>
+    
+      <rect x="560" y="274" width="18" height="18" rx="4" fill="#234d70" />
+      <text class="label" x="590" y="288">Outside Bangalore</text>
+      <text class="labelMuted" x="590" y="310">105 respondents (41.8%)</text>
+    
+    
+</svg></div>
+      <figcaption class="figure-caption">Bangalore contributes 58.2% of the full sample.</figcaption>
+    </figure>
+  
+    <figure class="figure-card" data-figure-title="Gender mix" data-figure-caption="Male respondents account for 67.7% of the sample.">
+      <button class="figure-expand" type="button" aria-label="Expand graph: Gender mix">
+        <span class="figure-expand__icon" aria-hidden="true">+</span>
+        <span class="figure-expand__label">Expand</span>
+      </button>
+      <div class="figure-art" role="button" tabindex="0" aria-label="Open expanded graph: Gender mix"><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="640" viewBox="0 0 1120 640" role="img" aria-labelledby="gender-mix-title gender-mix-subtitle">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f1a24" flood-opacity="0.08" />
+    </filter>
+    
+  </defs>
+  <style>
+  .title { font: 700 30px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .subtitle { font: 500 15px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .axis { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .label { font: 600 15px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .labelMuted { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .value { font: 700 14px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .small { font: 500 12px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .grid { stroke: #d7ddd7; stroke-width: 1; stroke-dasharray: 2 6; }
+  .axisLine { stroke: #5f6c77; stroke-width: 1.25; }
+</style>
+  <rect x="0" y="0" width="1120" height="640" rx="30" fill="#fcfaf5" />
+  <rect x="16" y="16" width="1088" height="608" rx="26" fill="#f7f3ea" stroke="#d7ddd7" />
+  <text id="gender-mix-title" class="title" x="52" y="68"><tspan x="52" dy="0">Gender mix</tspan></text>
+  <text id="gender-mix-subtitle" class="subtitle" x="52" y="96"><tspan x="52" dy="0">Simple share-of-sample composition.</tspan></text>
+  
+      <g filter="url(#softShadow)">
+        <path d="M 124.35719221355274 401.75665835792825 A 140 140 0 1 0 250 200 L 250 256 A 84 84 0 1 1 174.61431532813162 377.05399501475694 Z" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><path d="M 242.9937967084298 200.17542020289426 A 140 140 0 0 0 124.35719221355274 401.75665835792825 L 174.61431532813162 377.05399501475694 A 84 84 0 0 1 245.7962780250579 256.10525212173656 Z" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><path d="M 249.99999999999997 200 A 140 140 0 0 0 242.9937967084298 200.17542020289426 L 245.7962780250579 256.10525212173656 A 84 84 0 0 1 249.99999999999997 256 Z" fill="#d78f2f" stroke="#fcfaf5" stroke-width="3" />
+        <circle cx="250" cy="340" r="80" fill="#fcfaf5" />
+      </g>
+      <text class="title" text-anchor="middle" x="250" y="340"><tspan x="250" dy="0">Gender</tspan></text>
+      <text class="subtitle" x="560" y="166">Legend</text>
+      
+      <rect x="560" y="206" width="18" height="18" rx="4" fill="#1c7c74" />
+      <text class="label" x="590" y="220">Male</text>
+      <text class="labelMuted" x="590" y="242">170 respondents (67.7%)</text>
+    
+      <rect x="560" y="274" width="18" height="18" rx="4" fill="#234d70" />
+      <text class="label" x="590" y="288">Female</text>
+      <text class="labelMuted" x="590" y="310">79 respondents (31.5%)</text>
+    
+      <rect x="560" y="342" width="18" height="18" rx="4" fill="#d78f2f" />
+      <text class="label" x="590" y="356">Prefer not to say</text>
+      <text class="labelMuted" x="590" y="378">2 respondents (0.8%)</text>
+    
+    
+</svg></div>
+      <figcaption class="figure-caption">Male respondents account for 67.7% of the sample.</figcaption>
+    </figure>
+  
+    <figure class="figure-card" data-figure-title="Age range distribution" data-figure-caption="The 20-30 years band makes up 61.8% of respondents.">
+      <button class="figure-expand" type="button" aria-label="Expand graph: Age range distribution">
+        <span class="figure-expand__icon" aria-hidden="true">+</span>
+        <span class="figure-expand__label">Expand</span>
+      </button>
+      <div class="figure-art" role="button" tabindex="0" aria-label="Open expanded graph: Age range distribution"><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="396" viewBox="0 0 1120 396" role="img" aria-labelledby="age-range-distribution-title age-range-distribution-subtitle">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f1a24" flood-opacity="0.08" />
+    </filter>
+    
+  </defs>
+  <style>
+  .title { font: 700 30px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .subtitle { font: 500 15px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .axis { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .label { font: 600 15px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .labelMuted { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .value { font: 700 14px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .small { font: 500 12px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .grid { stroke: #d7ddd7; stroke-width: 1; stroke-dasharray: 2 6; }
+  .axisLine { stroke: #5f6c77; stroke-width: 1.25; }
+</style>
+  <rect x="0" y="0" width="1120" height="396" rx="30" fill="#fcfaf5" />
+  <rect x="16" y="16" width="1088" height="364" rx="26" fill="#f7f3ea" stroke="#d7ddd7" />
+  <text id="age-range-distribution-title" class="title" x="52" y="68"><tspan x="52" dy="0">Age range distribution</tspan></text>
+  <text id="age-range-distribution-subtitle" class="subtitle" x="52" y="96"><tspan x="52" dy="0">Younger respondents dominate the sample.</tspan></text>
+  <line class="grid" x1="360" x2="360" y1="134" y2="348" /><text class="axis" text-anchor="middle" x="360" y="376">0</text><line class="grid" x1="530" x2="530" y1="134" y2="348" /><text class="axis" text-anchor="middle" x="530" y="376">50</text><line class="grid" x1="700" x2="700" y1="134" y2="348" /><text class="axis" text-anchor="middle" x="700" y="376">100</text><line class="grid" x1="870" x2="870" y1="134" y2="348" /><text class="axis" text-anchor="middle" x="870" y="376">150</text><line class="grid" x1="1040" x2="1040" y1="134" y2="348" /><text class="axis" text-anchor="middle" x="1040" y="376">200</text><rect x="360" y="150" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="150" width="527" height="22" rx="11" fill="#1c7c74" /><text class="label" text-anchor="start" x="44" y="166"><tspan x="44" dy="0">20-30 years</tspan></text><text class="value" x="899" y="166">155</text><rect x="360" y="204" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="204" width="261.8" height="22" rx="11" fill="rgb(131, 174, 158)" /><text class="label" text-anchor="start" x="44" y="220"><tspan x="44" dy="0">30-40 years</tspan></text><text class="value" x="633.8" y="220">77</text><rect x="360" y="258" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="258" width="47.6" height="22" rx="11" fill="rgb(121, 169, 153)" /><text class="label" text-anchor="start" x="44" y="274"><tspan x="44" dy="0">40-50 years</tspan></text><text class="value" x="419.6" y="274">14</text><rect x="360" y="312" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="312" width="17" height="22" rx="11" fill="rgb(110, 164, 149)" /><text class="label" text-anchor="start" x="44" y="328"><tspan x="44" dy="0">50-60 years</tspan></text><text class="value" x="389" y="328">5</text>
+</svg></div>
+      <figcaption class="figure-caption">The 20-30 years band makes up 61.8% of respondents.</figcaption>
+    </figure>
+  
+    <figure class="figure-card" data-figure-title="Work mode" data-figure-caption="Full-time work is the dominant mode at 78.1%.">
+      <button class="figure-expand" type="button" aria-label="Expand graph: Work mode">
+        <span class="figure-expand__icon" aria-hidden="true">+</span>
+        <span class="figure-expand__label">Expand</span>
+      </button>
+      <div class="figure-art" role="button" tabindex="0" aria-label="Open expanded graph: Work mode"><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="640" viewBox="0 0 1120 640" role="img" aria-labelledby="work-mode-title work-mode-subtitle">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f1a24" flood-opacity="0.08" />
+    </filter>
+    
+  </defs>
+  <style>
+  .title { font: 700 30px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .subtitle { font: 500 15px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .axis { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .label { font: 600 15px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .labelMuted { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .value { font: 700 14px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .small { font: 500 12px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .grid { stroke: #d7ddd7; stroke-width: 1; stroke-dasharray: 2 6; }
+  .axisLine { stroke: #5f6c77; stroke-width: 1.25; }
+</style>
+  <rect x="0" y="0" width="1120" height="640" rx="30" fill="#fcfaf5" />
+  <rect x="16" y="16" width="1088" height="608" rx="26" fill="#f7f3ea" stroke="#d7ddd7" />
+  <text id="work-mode-title" class="title" x="52" y="68"><tspan x="52" dy="0">Work mode</tspan></text>
+  <text id="work-mode-subtitle" class="subtitle" x="52" y="96"><tspan x="52" dy="0">Work context for the respondents.</tspan></text>
+  
+      <g filter="url(#softShadow)">
+        <path d="M 112.6263414059521 313.0096697966481 A 140 140 0 1 0 250 200 L 250 256 A 84 84 0 1 1 167.57580484357126 323.80580187798887 Z" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><path d="M 189.03083771557132 213.97317249753922 A 140 140 0 0 0 112.6263414059521 313.0096697966481 L 167.57580484357126 323.80580187798887 A 84 84 0 0 1 213.41850262934278 264.3839034985235 Z" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><path d="M 250.00000000000009 200 A 140 140 0 0 0 189.03083771557132 213.97317249753922 L 213.41850262934278 264.3839034985235 A 84 84 0 0 1 250.00000000000006 256 Z" fill="#d78f2f" stroke="#fcfaf5" stroke-width="3" />
+        <circle cx="250" cy="340" r="80" fill="#fcfaf5" />
+      </g>
+      <text class="title" text-anchor="middle" x="250" y="326"><tspan x="250" dy="0">Work</tspan><tspan x="250" dy="28">mode</tspan></text>
+      <text class="subtitle" x="560" y="166">Legend</text>
+      
+      <rect x="560" y="206" width="18" height="18" rx="4" fill="#1c7c74" />
+      <text class="label" x="590" y="220">Full time</text>
+      <text class="labelMuted" x="590" y="242">196 respondents (78.1%)</text>
+    
+      <rect x="560" y="274" width="18" height="18" rx="4" fill="#234d70" />
+      <text class="label" x="590" y="288">Hybrid</text>
+      <text class="labelMuted" x="590" y="310">37 respondents (14.7%)</text>
+    
+      <rect x="560" y="342" width="18" height="18" rx="4" fill="#d78f2f" />
+      <text class="label" x="590" y="356">Work from home (Remote)</text>
+      <text class="labelMuted" x="590" y="378">18 respondents (7.2%)</text>
+    
+    
+</svg></div>
+      <figcaption class="figure-caption">Full-time work is the dominant mode at 78.1%.</figcaption>
+    </figure>
+  
+                </div>
+              </section>
+            
+              <section id="geography-overview">
+                <span class="eyebrow">Geography Overview</span>
+                <h2>Bangalore is the core geography, but outside-Bangalore responses matter too.</h2>
+                <p>Geography is shown in two layers: a whole-sample view that keeps outside-Bangalore responses visible, and a Bangalore-locality view that does not flatten the city into one bucket.</p>
+                <ul class="highlights"><li>Bangalore contributes 146 responses, but 105 respondents are still outside Bangalore.</li><li>JP Nagar is the largest named Bangalore locality, while Chennai anchors the outside-Bangalore sample.</li></ul>
+                <div class="section-grid">
+                  
+    <figure class="figure-card" data-figure-title="Top city or location clusters" data-figure-caption="Bangalore is the dominant location cluster, followed by Chennai at 30 respondents.">
+      <button class="figure-expand" type="button" aria-label="Expand graph: Top city or location clusters">
+        <span class="figure-expand__icon" aria-hidden="true">+</span>
+        <span class="figure-expand__label">Expand</span>
+      </button>
+      <div class="figure-art" role="button" tabindex="0" aria-label="Open expanded graph: Top city or location clusters"><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="720" viewBox="0 0 1120 720" role="img" aria-labelledby="top-city-or-location-clusters-title top-city-or-location-clusters-subtitle">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f1a24" flood-opacity="0.08" />
+    </filter>
+    
+  </defs>
+  <style>
+  .title { font: 700 30px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .subtitle { font: 500 15px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .axis { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .label { font: 600 15px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .labelMuted { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .value { font: 700 14px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .small { font: 500 12px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .grid { stroke: #d7ddd7; stroke-width: 1; stroke-dasharray: 2 6; }
+  .axisLine { stroke: #5f6c77; stroke-width: 1.25; }
+</style>
+  <rect x="0" y="0" width="1120" height="720" rx="30" fill="#fcfaf5" />
+  <rect x="16" y="16" width="1088" height="688" rx="26" fill="#f7f3ea" stroke="#d7ddd7" />
+  <text id="top-city-or-location-clusters-title" class="title" x="52" y="68"><tspan x="52" dy="0">Top city or location clusters</tspan></text>
+  <text id="top-city-or-location-clusters-subtitle" class="subtitle" x="52" y="96"><tspan x="52" dy="0">Whole-sample geography after Bangalore normalization.</tspan></text>
+  <line class="grid" x1="360" x2="360" y1="134" y2="672" /><text class="axis" text-anchor="middle" x="360" y="700">0</text><line class="grid" x1="530" x2="530" y1="134" y2="672" /><text class="axis" text-anchor="middle" x="530" y="700">50</text><line class="grid" x1="700" x2="700" y1="134" y2="672" /><text class="axis" text-anchor="middle" x="700" y="700">100</text><line class="grid" x1="870" x2="870" y1="134" y2="672" /><text class="axis" text-anchor="middle" x="870" y="700">150</text><line class="grid" x1="1040" x2="1040" y1="134" y2="672" /><text class="axis" text-anchor="middle" x="1040" y="700">200</text><rect x="360" y="150" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="150" width="496.4" height="22" rx="11" fill="#1c7c74" /><text class="label" text-anchor="start" x="44" y="166"><tspan x="44" dy="0">Bangalore</tspan></text><text class="value" x="868.4" y="166">146</text><rect x="360" y="204" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="204" width="102" height="22" rx="11" fill="rgb(131, 174, 158)" /><text class="label" text-anchor="start" x="44" y="220"><tspan x="44" dy="0">Chennai</tspan></text><text class="value" x="474" y="220">30</text><rect x="360" y="258" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="258" width="44.2" height="22" rx="11" fill="rgb(121, 169, 153)" /><text class="label" text-anchor="start" x="44" y="274"><tspan x="44" dy="0">Nagercoil</tspan></text><text class="value" x="416.2" y="274">13</text><rect x="360" y="312" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="312" width="27.2" height="22" rx="11" fill="rgb(110, 164, 149)" /><text class="label" text-anchor="start" x="44" y="328"><tspan x="44" dy="0">Hyderabad</tspan></text><text class="value" x="399.2" y="328">8</text><rect x="360" y="366" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="366" width="27.2" height="22" rx="11" fill="rgb(100, 159, 145)" /><text class="label" text-anchor="start" x="44" y="382"><tspan x="44" dy="0">Madurai</tspan></text><text class="value" x="399.2" y="382">8</text><rect x="360" y="420" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="420" width="13.6" height="22" rx="11" fill="rgb(90, 154, 141)" /><text class="label" text-anchor="start" x="44" y="436"><tspan x="44" dy="0">Guduvancheri</tspan></text><text class="value" x="385.6" y="436">4</text><rect x="360" y="474" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="474" width="13.6" height="22" rx="11" fill="rgb(80, 149, 137)" /><text class="label" text-anchor="start" x="44" y="490"><tspan x="44" dy="0">Salem</tspan></text><text class="value" x="385.6" y="490">4</text><rect x="360" y="528" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="528" width="13.6" height="22" rx="11" fill="rgb(69, 144, 133)" /><text class="label" text-anchor="start" x="44" y="544"><tspan x="44" dy="0">Pune</tspan></text><text class="value" x="385.6" y="544">4</text><rect x="360" y="582" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="582" width="13.6" height="22" rx="11" fill="rgb(59, 139, 128)" /><text class="label" text-anchor="start" x="44" y="598"><tspan x="44" dy="0">Tenkasi</tspan></text><text class="value" x="385.6" y="598">4</text><rect x="360" y="636" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="636" width="13.6" height="22" rx="11" fill="rgb(49, 134, 124)" /><text class="label" text-anchor="start" x="44" y="652"><tspan x="44" dy="0">Madhavaram</tspan></text><text class="value" x="385.6" y="652">4</text>
+</svg></div>
+      <figcaption class="figure-caption">Bangalore is the dominant location cluster, followed by Chennai at 30 respondents.</figcaption>
+    </figure>
+  
+    <figure class="figure-card" data-figure-title="Bangalore locality distribution" data-figure-caption="JP Nagar is the largest named Bangalore locality in the sample.">
+      <button class="figure-expand" type="button" aria-label="Expand graph: Bangalore locality distribution">
+        <span class="figure-expand__icon" aria-hidden="true">+</span>
+        <span class="figure-expand__label">Expand</span>
+      </button>
+      <div class="figure-art" role="button" tabindex="0" aria-label="Open expanded graph: Bangalore locality distribution"><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="720" viewBox="0 0 1120 720" role="img" aria-labelledby="bangalore-locality-distribution-title bangalore-locality-distribution-subtitle">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f1a24" flood-opacity="0.08" />
+    </filter>
+    
+  </defs>
+  <style>
+  .title { font: 700 30px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .subtitle { font: 500 15px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .axis { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .label { font: 600 15px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .labelMuted { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .value { font: 700 14px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .small { font: 500 12px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .grid { stroke: #d7ddd7; stroke-width: 1; stroke-dasharray: 2 6; }
+  .axisLine { stroke: #5f6c77; stroke-width: 1.25; }
+</style>
+  <rect x="0" y="0" width="1120" height="720" rx="30" fill="#fcfaf5" />
+  <rect x="16" y="16" width="1088" height="688" rx="26" fill="#f7f3ea" stroke="#d7ddd7" />
+  <text id="bangalore-locality-distribution-title" class="title" x="52" y="68"><tspan x="52" dy="0">Bangalore locality distribution</tspan></text>
+  <text id="bangalore-locality-distribution-subtitle" class="subtitle" x="52" y="96"><tspan x="52" dy="0">Localities displayed individually once they reach three responses.</tspan></text>
+  <line class="grid" x1="360" x2="360" y1="134" y2="672" /><text class="axis" text-anchor="middle" x="360" y="700">0</text><line class="grid" x1="530" x2="530" y1="134" y2="672" /><text class="axis" text-anchor="middle" x="530" y="700">25</text><line class="grid" x1="700" x2="700" y1="134" y2="672" /><text class="axis" text-anchor="middle" x="700" y="700">50</text><line class="grid" x1="870" x2="870" y1="134" y2="672" /><text class="axis" text-anchor="middle" x="870" y="700">75</text><line class="grid" x1="1040" x2="1040" y1="134" y2="672" /><text class="axis" text-anchor="middle" x="1040" y="700">100</text><rect x="360" y="150" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="150" width="394.4" height="22" rx="11" fill="#1c7c74" /><text class="label" text-anchor="start" x="44" y="166"><tspan x="44" dy="0">Bangalore (Unspecified)</tspan></text><text class="value" x="766.4" y="166">58</text><rect x="360" y="204" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="204" width="102" height="22" rx="11" fill="rgb(131, 174, 158)" /><text class="label" text-anchor="start" x="44" y="220"><tspan x="44" dy="0">Other Bangalore localities</tspan></text><text class="value" x="474" y="220">15</text><rect x="360" y="258" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="258" width="81.6" height="22" rx="11" fill="rgb(121, 169, 153)" /><text class="label" text-anchor="start" x="44" y="274"><tspan x="44" dy="0">JP Nagar</tspan></text><text class="value" x="453.6" y="274">12</text><rect x="360" y="312" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="312" width="54.4" height="22" rx="11" fill="rgb(110, 164, 149)" /><text class="label" text-anchor="start" x="44" y="328"><tspan x="44" dy="0">Bellandur</tspan></text><text class="value" x="426.4" y="328">8</text><rect x="360" y="366" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="366" width="54.4" height="22" rx="11" fill="rgb(100, 159, 145)" /><text class="label" text-anchor="start" x="44" y="382"><tspan x="44" dy="0">HSR Layout</tspan></text><text class="value" x="426.4" y="382">8</text><rect x="360" y="420" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="420" width="54.4" height="22" rx="11" fill="rgb(90, 154, 141)" /><text class="label" text-anchor="start" x="44" y="436"><tspan x="44" dy="0">Whitefield</tspan></text><text class="value" x="426.4" y="436">8</text><rect x="360" y="474" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="474" width="34" height="22" rx="11" fill="rgb(80, 149, 137)" /><text class="label" text-anchor="start" x="44" y="490"><tspan x="44" dy="0">Ulsoor</tspan></text><text class="value" x="406" y="490">5</text><rect x="360" y="528" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="528" width="27.2" height="22" rx="11" fill="rgb(69, 144, 133)" /><text class="label" text-anchor="start" x="44" y="544"><tspan x="44" dy="0">CV Raman Nagar</tspan></text><text class="value" x="399.2" y="544">4</text><rect x="360" y="582" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="582" width="27.2" height="22" rx="11" fill="rgb(59, 139, 128)" /><text class="label" text-anchor="start" x="44" y="598"><tspan x="44" dy="0">Harlur</tspan></text><text class="value" x="399.2" y="598">4</text><rect x="360" y="636" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="636" width="27.2" height="22" rx="11" fill="rgb(49, 134, 124)" /><text class="label" text-anchor="start" x="44" y="652"><tspan x="44" dy="0">Kengeri</tspan></text><text class="value" x="399.2" y="652">4</text>
+</svg></div>
+      <figcaption class="figure-caption">JP Nagar is the largest named Bangalore locality in the sample.</figcaption>
+    </figure>
+  
+    <figure class="figure-card" data-figure-title="Top outside-Bangalore locations" data-figure-caption="Chennai leads the outside-Bangalore sample with 30 respondents.">
+      <button class="figure-expand" type="button" aria-label="Expand graph: Top outside-Bangalore locations">
+        <span class="figure-expand__icon" aria-hidden="true">+</span>
+        <span class="figure-expand__label">Expand</span>
+      </button>
+      <div class="figure-art" role="button" tabindex="0" aria-label="Open expanded graph: Top outside-Bangalore locations"><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="720" viewBox="0 0 1120 720" role="img" aria-labelledby="top-outside-bangalore-locations-title top-outside-bangalore-locations-subtitle">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f1a24" flood-opacity="0.08" />
+    </filter>
+    
+  </defs>
+  <style>
+  .title { font: 700 30px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .subtitle { font: 500 15px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .axis { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .label { font: 600 15px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .labelMuted { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .value { font: 700 14px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .small { font: 500 12px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .grid { stroke: #d7ddd7; stroke-width: 1; stroke-dasharray: 2 6; }
+  .axisLine { stroke: #5f6c77; stroke-width: 1.25; }
+</style>
+  <rect x="0" y="0" width="1120" height="720" rx="30" fill="#fcfaf5" />
+  <rect x="16" y="16" width="1088" height="688" rx="26" fill="#f7f3ea" stroke="#d7ddd7" />
+  <text id="top-outside-bangalore-locations-title" class="title" x="52" y="68"><tspan x="52" dy="0">Top outside-Bangalore locations</tspan></text>
+  <text id="top-outside-bangalore-locations-subtitle" class="subtitle" x="52" y="96"><tspan x="52" dy="0">Outside-Bangalore responses remain part of the story.</tspan></text>
+  <line class="grid" x1="360" x2="360" y1="134" y2="672" /><text class="axis" text-anchor="middle" x="360" y="700">0</text><line class="grid" x1="530" x2="530" y1="134" y2="672" /><text class="axis" text-anchor="middle" x="530" y="700">13</text><line class="grid" x1="700" x2="700" y1="134" y2="672" /><text class="axis" text-anchor="middle" x="700" y="700">25</text><line class="grid" x1="870" x2="870" y1="134" y2="672" /><text class="axis" text-anchor="middle" x="870" y="700">38</text><line class="grid" x1="1040" x2="1040" y1="134" y2="672" /><text class="axis" text-anchor="middle" x="1040" y="700">50</text><rect x="360" y="150" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="150" width="408" height="22" rx="11" fill="#1c7c74" /><text class="label" text-anchor="start" x="44" y="166"><tspan x="44" dy="0">Chennai</tspan></text><text class="value" x="780" y="166">30</text><rect x="360" y="204" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="204" width="176.8" height="22" rx="11" fill="rgb(131, 174, 158)" /><text class="label" text-anchor="start" x="44" y="220"><tspan x="44" dy="0">Nagercoil</tspan></text><text class="value" x="548.8" y="220">13</text><rect x="360" y="258" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="258" width="108.8" height="22" rx="11" fill="rgb(121, 169, 153)" /><text class="label" text-anchor="start" x="44" y="274"><tspan x="44" dy="0">Hyderabad</tspan></text><text class="value" x="480.8" y="274">8</text><rect x="360" y="312" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="312" width="108.8" height="22" rx="11" fill="rgb(110, 164, 149)" /><text class="label" text-anchor="start" x="44" y="328"><tspan x="44" dy="0">Madurai</tspan></text><text class="value" x="480.8" y="328">8</text><rect x="360" y="366" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="366" width="54.4" height="22" rx="11" fill="rgb(100, 159, 145)" /><text class="label" text-anchor="start" x="44" y="382"><tspan x="44" dy="0">Guduvancheri</tspan></text><text class="value" x="426.4" y="382">4</text><rect x="360" y="420" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="420" width="54.4" height="22" rx="11" fill="rgb(90, 154, 141)" /><text class="label" text-anchor="start" x="44" y="436"><tspan x="44" dy="0">Salem</tspan></text><text class="value" x="426.4" y="436">4</text><rect x="360" y="474" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="474" width="54.4" height="22" rx="11" fill="rgb(80, 149, 137)" /><text class="label" text-anchor="start" x="44" y="490"><tspan x="44" dy="0">Pune</tspan></text><text class="value" x="426.4" y="490">4</text><rect x="360" y="528" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="528" width="54.4" height="22" rx="11" fill="rgb(69, 144, 133)" /><text class="label" text-anchor="start" x="44" y="544"><tspan x="44" dy="0">Madhavaram</tspan></text><text class="value" x="426.4" y="544">4</text><rect x="360" y="582" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="582" width="54.4" height="22" rx="11" fill="rgb(59, 139, 128)" /><text class="label" text-anchor="start" x="44" y="598"><tspan x="44" dy="0">Tenkasi</tspan></text><text class="value" x="426.4" y="598">4</text><rect x="360" y="636" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="636" width="40.8" height="22" rx="11" fill="rgb(49, 134, 124)" /><text class="label" text-anchor="start" x="44" y="652"><tspan x="44" dy="0">Hosur</tspan></text><text class="value" x="412.8" y="652">3</text>
+</svg></div>
+      <figcaption class="figure-caption">Chennai leads the outside-Bangalore sample with 30 respondents.</figcaption>
+    </figure>
+  
+                </div>
+              </section>
+            
+              <section id="bangalore-locality-deep-dive">
+                <span class="eyebrow">Bangalore Deep Dive</span>
+                <h2>Named Bangalore localities do not all behave the same way.</h2>
+                <p>The Bangalore locality section keeps the city-specific focus honest by showing where behavior is stronger, where knowledge leads action, and where small local pockets need caution.</p>
+                <ul class="highlights"><li>Use this section for Bangalore-specific commentary rather than citywide generalization.</li><li>Locality comparisons are descriptive unless a locality reaches at least five respondents.</li></ul>
+                <div class="section-grid">
+                  
+    <figure class="figure-card" data-figure-title="KAP by Bangalore locality" data-figure-caption="Practice varies more than knowledge across the claimable Bangalore localities.">
+      <button class="figure-expand" type="button" aria-label="Expand graph: KAP by Bangalore locality">
+        <span class="figure-expand__icon" aria-hidden="true">+</span>
+        <span class="figure-expand__label">Expand</span>
+      </button>
+      <div class="figure-art" role="button" tabindex="0" aria-label="Open expanded graph: KAP by Bangalore locality"><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="596" viewBox="0 0 1180 596" role="img" aria-labelledby="kap-by-bangalore-locality-title kap-by-bangalore-locality-subtitle">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f1a24" flood-opacity="0.08" />
+    </filter>
+    
+  </defs>
+  <style>
+  .title { font: 700 30px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .subtitle { font: 500 15px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .axis { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .label { font: 600 15px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .labelMuted { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .value { font: 700 14px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .small { font: 500 12px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .grid { stroke: #d7ddd7; stroke-width: 1; stroke-dasharray: 2 6; }
+  .axisLine { stroke: #5f6c77; stroke-width: 1.25; }
+</style>
+  <rect x="0" y="0" width="1180" height="596" rx="30" fill="#fcfaf5" />
+  <rect x="16" y="16" width="1148" height="564" rx="26" fill="#f7f3ea" stroke="#d7ddd7" />
+  <text id="kap-by-bangalore-locality-title" class="title" x="52" y="68"><tspan x="52" dy="0">KAP by Bangalore locality</tspan></text>
+  <text id="kap-by-bangalore-locality-subtitle" class="subtitle" x="52" y="96"><tspan x="52" dy="0">Localities shown individually once they reach at least five responses.</tspan></text>
+  <line class="grid" x1="380" x2="380" y1="140" y2="554" /><text class="axis" text-anchor="middle" x="380" y="578">0%</text><line class="grid" x1="520" x2="520" y1="140" y2="554" /><text class="axis" text-anchor="middle" x="520" y="578">20%</text><line class="grid" x1="660" x2="660" y1="140" y2="554" /><text class="axis" text-anchor="middle" x="660" y="578">40%</text><line class="grid" x1="800" x2="800" y1="140" y2="554" /><text class="axis" text-anchor="middle" x="800" y="578">60%</text><line class="grid" x1="940" x2="940" y1="140" y2="554" /><text class="axis" text-anchor="middle" x="940" y="578">80%</text><line class="grid" x1="1080" x2="1080" y1="140" y2="554" /><text class="axis" text-anchor="middle" x="1080" y="578">100%</text>
+        <circle cx="420" cy="126" r="7" fill="#1c7c74" />
+        <text class="labelMuted" x="434" y="131">Knowledge</text>
+      
+        <circle cx="590" cy="126" r="7" fill="#d78f2f" />
+        <text class="labelMuted" x="604" y="131">Attitude</text>
+      
+        <circle cx="760" cy="126" r="7" fill="#234d70" />
+        <text class="labelMuted" x="774" y="131">Practice</text>
+      <line x1="835" x2="940" y1="164" y2="164" stroke="#c2cbc2" stroke-width="4" stroke-linecap="round" /><circle cx="835" cy="164" r="10" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><circle cx="856.6999999999999" cy="164" r="10" fill="#d78f2f" stroke="#fcfaf5" stroke-width="3" /><circle cx="940" cy="164" r="10" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="169"><tspan x="44" dy="0">Whitefield</tspan></text><text class="labelMuted" x="300" y="169">n=8</text><line x1="829.4000000000001" x2="924.6" y1="222" y2="222" stroke="#c2cbc2" stroke-width="4" stroke-linecap="round" /><circle cx="829.4000000000001" cy="222" r="10" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><circle cx="856.6999999999999" cy="222" r="10" fill="#d78f2f" stroke="#fcfaf5" stroke-width="3" /><circle cx="924.6" cy="222" r="10" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="227"><tspan x="44" dy="0">JP Nagar</tspan></text><text class="labelMuted" x="300" y="227">n=12</text><line x1="817.5" x2="913.4" y1="280" y2="280" stroke="#c2cbc2" stroke-width="4" stroke-linecap="round" /><circle cx="817.5" cy="280" r="10" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><circle cx="885.4" cy="280" r="10" fill="#d78f2f" stroke="#fcfaf5" stroke-width="3" /><circle cx="913.4" cy="280" r="10" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="285"><tspan x="44" dy="0">HSR Layout</tspan></text><text class="labelMuted" x="300" y="285">n=8</text><line x1="821.7" x2="881.9000000000001" y1="338" y2="338" stroke="#c2cbc2" stroke-width="4" stroke-linecap="round" /><circle cx="821.7" cy="338" r="10" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><circle cx="874.9000000000001" cy="338" r="10" fill="#d78f2f" stroke="#fcfaf5" stroke-width="3" /><circle cx="881.9000000000001" cy="338" r="10" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="343"><tspan x="44" dy="0">Bangalore (Unspecified)</tspan></text><text class="labelMuted" x="300" y="343">n=58</text><line x1="800" x2="865.8000000000001" y1="396" y2="396" stroke="#c2cbc2" stroke-width="4" stroke-linecap="round" /><circle cx="800" cy="396" r="10" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><circle cx="865.8000000000001" cy="396" r="10" fill="#d78f2f" stroke="#fcfaf5" stroke-width="3" /><circle cx="859.5" cy="396" r="10" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="401"><tspan x="44" dy="0">Other Bangalore</tspan><tspan x="44" dy="16">localities</tspan></text><text class="labelMuted" x="300" y="401">n=47</text><line x1="832.1999999999999" x2="887.5" y1="454" y2="454" stroke="#c2cbc2" stroke-width="4" stroke-linecap="round" /><circle cx="843.4000000000001" cy="454" r="10" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><circle cx="887.5" cy="454" r="10" fill="#d78f2f" stroke="#fcfaf5" stroke-width="3" /><circle cx="832.1999999999999" cy="454" r="10" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="459"><tspan x="44" dy="0">Bellandur</tspan></text><text class="labelMuted" x="300" y="459">n=8</text><line x1="767.0999999999999" x2="1024" y1="512" y2="512" stroke="#c2cbc2" stroke-width="4" stroke-linecap="round" /><circle cx="1024" cy="512" r="10" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><circle cx="772" cy="512" r="10" fill="#d78f2f" stroke="#fcfaf5" stroke-width="3" /><circle cx="767.0999999999999" cy="512" r="10" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="517"><tspan x="44" dy="0">Ulsoor</tspan></text><text class="labelMuted" x="300" y="517">n=5</text>
+</svg></div>
+      <figcaption class="figure-caption">Practice varies more than knowledge across the claimable Bangalore localities.</figcaption>
+    </figure>
+  
+    <figure class="figure-card" data-figure-title="Knowledge vs practice in Bangalore localities" data-figure-caption="The sharpest locality gap appears in Ulsoor.">
+      <button class="figure-expand" type="button" aria-label="Expand graph: Knowledge vs practice in Bangalore localities">
+        <span class="figure-expand__icon" aria-hidden="true">+</span>
+        <span class="figure-expand__label">Expand</span>
+      </button>
+      <div class="figure-art" role="button" tabindex="0" aria-label="Open expanded graph: Knowledge vs practice in Bangalore localities"><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="596" viewBox="0 0 1180 596" role="img" aria-labelledby="knowledge-vs-practice-in-bangalore-localities-title knowledge-vs-practice-in-bangalore-localities-subtitle">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f1a24" flood-opacity="0.08" />
+    </filter>
+    
+  </defs>
+  <style>
+  .title { font: 700 30px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .subtitle { font: 500 15px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .axis { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .label { font: 600 15px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .labelMuted { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .value { font: 700 14px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .small { font: 500 12px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .grid { stroke: #d7ddd7; stroke-width: 1; stroke-dasharray: 2 6; }
+  .axisLine { stroke: #5f6c77; stroke-width: 1.25; }
+</style>
+  <rect x="0" y="0" width="1180" height="596" rx="30" fill="#fcfaf5" />
+  <rect x="16" y="16" width="1148" height="564" rx="26" fill="#f7f3ea" stroke="#d7ddd7" />
+  <text id="knowledge-vs-practice-in-bangalore-localities-title" class="title" x="52" y="68"><tspan x="52" dy="0">Knowledge vs practice in Bangalore</tspan><tspan x="52" dy="34">localities</tspan></text>
+  <text id="knowledge-vs-practice-in-bangalore-localities-subtitle" class="subtitle" x="52" y="130"><tspan x="52" dy="0">Positive gaps indicate knowledge running ahead of behavior.</tspan></text>
+  <line class="grid" x1="380" x2="380" y1="140" y2="554" /><text class="axis" text-anchor="middle" x="380" y="578">0.0%</text><line class="grid" x1="520" x2="520" y1="140" y2="554" /><text class="axis" text-anchor="middle" x="520" y="578">20.0%</text><line class="grid" x1="660" x2="660" y1="140" y2="554" /><text class="axis" text-anchor="middle" x="660" y="578">40.0%</text><line class="grid" x1="800" x2="800" y1="140" y2="554" /><text class="axis" text-anchor="middle" x="800" y="578">60.0%</text><line class="grid" x1="940" x2="940" y1="140" y2="554" /><text class="axis" text-anchor="middle" x="940" y="578">80.0%</text><line class="grid" x1="1080" x2="1080" y1="140" y2="554" /><text class="axis" text-anchor="middle" x="1080" y="578">100.0%</text>
+        <circle cx="460" cy="126" r="7" fill="#234d70" />
+        <text class="labelMuted" x="474" y="131">Practice</text>
+      
+        <circle cx="630" cy="126" r="7" fill="#1c7c74" />
+        <text class="labelMuted" x="644" y="131">Knowledge</text>
+      <line x1="835" x2="940" y1="164" y2="164" stroke="#c5cdcf" stroke-width="5" stroke-linecap="round" /><circle cx="940" cy="164" r="11" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><circle cx="835" cy="164" r="11" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="169"><tspan x="44" dy="0">Whitefield</tspan></text><line x1="829.4000000000001" x2="924.6" y1="222" y2="222" stroke="#c5cdcf" stroke-width="5" stroke-linecap="round" /><circle cx="924.6" cy="222" r="11" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><circle cx="829.4000000000001" cy="222" r="11" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="227"><tspan x="44" dy="0">JP Nagar</tspan></text><line x1="817.5" x2="913.4" y1="280" y2="280" stroke="#c5cdcf" stroke-width="5" stroke-linecap="round" /><circle cx="913.4" cy="280" r="11" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><circle cx="817.5" cy="280" r="11" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="285"><tspan x="44" dy="0">HSR Layout</tspan></text><line x1="821.7" x2="881.9000000000001" y1="338" y2="338" stroke="#c5cdcf" stroke-width="5" stroke-linecap="round" /><circle cx="881.9000000000001" cy="338" r="11" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><circle cx="821.7" cy="338" r="11" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="343"><tspan x="44" dy="0">Bangalore (Unspecified)</tspan></text><line x1="800" x2="859.5" y1="396" y2="396" stroke="#c5cdcf" stroke-width="5" stroke-linecap="round" /><circle cx="859.5" cy="396" r="11" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><circle cx="800" cy="396" r="11" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="401"><tspan x="44" dy="0">Other Bangalore</tspan><tspan x="44" dy="16">localities</tspan></text><line x1="832.1999999999999" x2="843.4000000000001" y1="454" y2="454" stroke="#c5cdcf" stroke-width="5" stroke-linecap="round" /><circle cx="832.1999999999999" cy="454" r="11" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><circle cx="843.4000000000001" cy="454" r="11" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="459"><tspan x="44" dy="0">Bellandur</tspan></text><line x1="767.0999999999999" x2="1024" y1="512" y2="512" stroke="#c5cdcf" stroke-width="5" stroke-linecap="round" /><circle cx="767.0999999999999" cy="512" r="11" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><circle cx="1024" cy="512" r="11" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="517"><tspan x="44" dy="0">Ulsoor</tspan></text>
+</svg></div>
+      <figcaption class="figure-caption">The sharpest locality gap appears in Ulsoor.</figcaption>
+    </figure>
+  
+                </div>
+              </section>
+            
+              <section id="knowledge">
+                <span class="eyebrow">Knowledge</span>
+                <h2>The knowledge story is about basic gum disease understanding, not specialist detail.</h2>
+                <p>The lowest-scoring knowledge items concern the primary cause of gum disease and the definitions of plaque and tartar.</p>
+                <ul class="highlights"><li>Cause is the weakest knowledge item at 37.5% correct.</li><li>The next weakest items are Plaque and Calculus.</li></ul>
+                <div class="section-grid">
+                  
+    <figure class="figure-card" data-figure-title="Knowledge items ranked by percent correct" data-figure-caption="The cause-of-disease item is lowest at 37.5% correct.">
+      <button class="figure-expand" type="button" aria-label="Expand graph: Knowledge items ranked by percent correct">
+        <span class="figure-expand__icon" aria-hidden="true">+</span>
+        <span class="figure-expand__label">Expand</span>
+      </button>
+      <div class="figure-art" role="button" tabindex="0" aria-label="Open expanded graph: Knowledge items ranked by percent correct"><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="720" viewBox="0 0 1120 720" role="img" aria-labelledby="knowledge-items-ranked-by-percent-correct-title knowledge-items-ranked-by-percent-correct-subtitle">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f1a24" flood-opacity="0.08" />
+    </filter>
+    
+  </defs>
+  <style>
+  .title { font: 700 30px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .subtitle { font: 500 15px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .axis { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .label { font: 600 15px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .labelMuted { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .value { font: 700 14px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .small { font: 500 12px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .grid { stroke: #d7ddd7; stroke-width: 1; stroke-dasharray: 2 6; }
+  .axisLine { stroke: #5f6c77; stroke-width: 1.25; }
+</style>
+  <rect x="0" y="0" width="1120" height="720" rx="30" fill="#fcfaf5" />
+  <rect x="16" y="16" width="1088" height="688" rx="26" fill="#f7f3ea" stroke="#d7ddd7" />
+  <text id="knowledge-items-ranked-by-percent-correct-title" class="title" x="52" y="68"><tspan x="52" dy="0">Knowledge items ranked by percent correct</tspan></text>
+  <text id="knowledge-items-ranked-by-percent-correct-subtitle" class="subtitle" x="52" y="96"><tspan x="52" dy="0">Lower values indicate the strongest misconceptions.</tspan></text>
+  <line class="grid" x1="360" x2="360" y1="134" y2="672" /><text class="axis" text-anchor="middle" x="360" y="700">0%</text><line class="grid" x1="530" x2="530" y1="134" y2="672" /><text class="axis" text-anchor="middle" x="530" y="700">25%</text><line class="grid" x1="700" x2="700" y1="134" y2="672" /><text class="axis" text-anchor="middle" x="700" y="700">50%</text><line class="grid" x1="870" x2="870" y1="134" y2="672" /><text class="axis" text-anchor="middle" x="870" y="700">75%</text><line class="grid" x1="1040" x2="1040" y1="134" y2="672" /><text class="axis" text-anchor="middle" x="1040" y="700">100%</text><line x1="360" x2="615" y1="161" y2="161" stroke="#d7ddd7" stroke-width="6" stroke-linecap="round" /><circle cx="615" cy="161" r="12" fill="#d8654d" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="166"><tspan x="44" dy="0">Cause</tspan></text><text class="value" x="633" y="166">37.5%</text><line x1="360" x2="709.52" y1="215" y2="215" stroke="#d7ddd7" stroke-width="6" stroke-linecap="round" /><circle cx="709.52" cy="215" r="12" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="220"><tspan x="44" dy="0">Plaque</tspan></text><text class="value" x="727.52" y="220">51.4%</text><line x1="360" x2="709.52" y1="269" y2="269" stroke="#d7ddd7" stroke-width="6" stroke-linecap="round" /><circle cx="709.52" cy="269" r="12" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="274"><tspan x="44" dy="0">Calculus</tspan></text><text class="value" x="727.52" y="274">51.4%</text><line x1="360" x2="723.12" y1="323" y2="323" stroke="#d7ddd7" stroke-width="6" stroke-linecap="round" /><circle cx="723.12" cy="323" r="12" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="328"><tspan x="44" dy="0">Specialty</tspan></text><text class="value" x="741.12" y="328">53.4%</text><line x1="360" x2="731.28" y1="377" y2="377" stroke="#d7ddd7" stroke-width="6" stroke-linecap="round" /><circle cx="731.28" cy="377" r="12" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="382"><tspan x="44" dy="0">Vitamin</tspan></text><text class="value" x="749.28" y="382">54.6%</text><line x1="360" x2="755.76" y1="431" y2="431" stroke="#d7ddd7" stroke-width="6" stroke-linecap="round" /><circle cx="755.76" cy="431" r="12" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="436"><tspan x="44" dy="0">General health</tspan></text><text class="value" x="773.76" y="436">58.2%</text><line x1="360" x2="869.32" y1="485" y2="485" stroke="#d7ddd7" stroke-width="6" stroke-linecap="round" /><circle cx="869.32" cy="485" r="12" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="490"><tspan x="44" dy="0">Stress</tspan></text><text class="value" x="887.32" y="490">74.9%</text><line x1="360" x2="899.2399999999999" y1="539" y2="539" stroke="#d7ddd7" stroke-width="6" stroke-linecap="round" /><circle cx="899.2399999999999" cy="539" r="12" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="544"><tspan x="44" dy="0">Early sign</tspan></text><text class="value" x="917.2399999999999" y="544">79.3%</text><line x1="360" x2="953.64" y1="593" y2="593" stroke="#d7ddd7" stroke-width="6" stroke-linecap="round" /><circle cx="953.64" cy="593" r="12" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="598"><tspan x="44" dy="0">Bad breath</tspan></text><text class="value" x="971.64" y="598">87.3%</text><line x1="360" x2="961.12" y1="647" y2="647" stroke="#d7ddd7" stroke-width="6" stroke-linecap="round" /><circle cx="961.12" cy="647" r="12" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="652"><tspan x="44" dy="0">Diet</tspan></text><text class="value" x="979.12" y="652">88.4%</text>
+</svg></div>
+      <figcaption class="figure-caption">The cause-of-disease item is lowest at 37.5% correct.</figcaption>
+    </figure>
+  
+                </div>
+              </section>
+            
+              <section id="attitude">
+                <span class="eyebrow">Attitude</span>
+                <h2>Attitudes are generally favorable, but a few items show friction.</h2>
+                <p>The diverging view makes it easy to see which statements generate strong agreement and which still face skepticism or convenience-based resistance.</p>
+                <ul class="highlights"><li>The pain-only dentist-visit statement is the least favorable attitude item after reverse coding.</li><li>Time and effort concerns remain visible even when oral-health attitudes are broadly positive.</li></ul>
+                <div class="section-grid">
+                  
+    <figure class="figure-card" data-figure-title="Attitude toward periodontal health" data-figure-caption="The weakest net favorability appears on the statement 'Visiting a dentist is necessary only when I have pain or discomfort.'.">
+      <button class="figure-expand" type="button" aria-label="Expand graph: Attitude toward periodontal health">
+        <span class="figure-expand__icon" aria-hidden="true">+</span>
+        <span class="figure-expand__label">Expand</span>
+      </button>
+      <div class="figure-art" role="button" tabindex="0" aria-label="Open expanded graph: Attitude toward periodontal health"><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="840" viewBox="0 0 1280 840" role="img" aria-labelledby="attitude-toward-periodontal-health-title attitude-toward-periodontal-health-subtitle">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f1a24" flood-opacity="0.08" />
+    </filter>
+    
+  </defs>
+  <style>
+  .title { font: 700 30px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .subtitle { font: 500 15px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .axis { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .label { font: 600 15px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .labelMuted { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .value { font: 700 14px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .small { font: 500 12px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .grid { stroke: #d7ddd7; stroke-width: 1; stroke-dasharray: 2 6; }
+  .axisLine { stroke: #5f6c77; stroke-width: 1.25; }
+</style>
+  <rect x="0" y="0" width="1280" height="840" rx="30" fill="#fcfaf5" />
+  <rect x="16" y="16" width="1248" height="808" rx="26" fill="#f7f3ea" stroke="#d7ddd7" />
+  <text id="attitude-toward-periodontal-health-title" class="title" x="52" y="68"><tspan x="52" dy="0">Attitude toward periodontal health</tspan></text>
+  <text id="attitude-toward-periodontal-health-subtitle" class="subtitle" x="52" y="96"><tspan x="52" dy="0">Agreement sits on the right; disagreement sits on the left.</tspan></text>
+  <line class="grid" x1="490" x2="490" y1="144" y2="798" /><text class="axis" text-anchor="middle" x="490" y="820">100%</text><line class="grid" x1="665" x2="665" y1="144" y2="798" /><text class="axis" text-anchor="middle" x="665" y="820">50%</text><line class="grid" x1="840" x2="840" y1="144" y2="798" /><text class="axis" text-anchor="middle" x="840" y="820">0%</text><line class="grid" x1="1015" x2="1015" y1="144" y2="798" /><text class="axis" text-anchor="middle" x="1015" y="820">50%</text><line class="grid" x1="1190" x2="1190" y1="144" y2="798" /><text class="axis" text-anchor="middle" x="1190" y="820">100%</text><line class="axisLine" x1="840" x2="840" y1="144" y2="798" />
+        <circle cx="520" cy="126" r="7" fill="#d8654d" />
+        <text class="labelMuted" x="534" y="131">Strongly Disagree</text>
+      
+        <circle cx="690" cy="126" r="7" fill="#e7bf75" />
+        <text class="labelMuted" x="704" y="131">Disagree</text>
+      
+        <circle cx="860" cy="126" r="7" fill="#3b9c94" />
+        <text class="labelMuted" x="874" y="131">Agree</text>
+      
+        <circle cx="1030" cy="126" r="7" fill="#234d70" />
+        <text class="labelMuted" x="1044" y="131">Strongly Agree</text>
+      <text class="label" text-anchor="start" x="44" y="188"><tspan x="44" dy="0">Visiting a dentist is necessary</tspan><tspan x="44" dy="18">only when I have pain or</tspan><tspan x="44" dy="18">discomfort.</tspan></text><rect x="604.45" y="192" width="184.1" height="24" rx="10" fill="#e7bf75" /><rect x="788.5500000000001" y="192" width="51.449999999999996" height="24" rx="10" fill="#d8654d" /><rect x="840" y="192" width="83.64999999999999" height="24" rx="10" fill="#3b9c94" /><rect x="923.65" y="192" width="30.800000000000004" height="24" rx="10" fill="#234d70" /><text class="label" text-anchor="start" x="44" y="259"><tspan x="44" dy="0">Oral hygiene maintenance is time</tspan><tspan x="44" dy="18">consuming and difficult to follow.</tspan></text><rect x="615.65" y="255" width="175.7" height="24" rx="10" fill="#e7bf75" /><rect x="791.3499999999999" y="255" width="48.650000000000006" height="24" rx="10" fill="#d8654d" /><rect x="840" y="255" width="96.25000000000001" height="24" rx="10" fill="#3b9c94" /><rect x="936.25" y="255" width="29.400000000000002" height="24" rx="10" fill="#234d70" /><text class="label" text-anchor="start" x="44" y="313"><tspan x="44" dy="0">Neglecting oral hygiene develops</tspan><tspan x="44" dy="18">gum disease.</tspan></text><rect x="668.5" y="309" width="114.45" height="24" rx="10" fill="#e7bf75" /><rect x="782.95" y="309" width="57.050000000000004" height="24" rx="10" fill="#d8654d" /><rect x="840" y="309" width="117.25" height="24" rx="10" fill="#3b9c94" /><rect x="957.25" y="309" width="61.24999999999999" height="24" rx="10" fill="#234d70" /><text class="label" text-anchor="start" x="44" y="367"><tspan x="44" dy="0">Attending workplace awareness</tspan><tspan x="44" dy="18">programs will improve gum health.</tspan></text><rect x="707.35" y="363" width="113.04999999999998" height="24" rx="10" fill="#e7bf75" /><rect x="820.4" y="363" width="19.599999999999998" height="24" rx="10" fill="#d8654d" /><rect x="840" y="363" width="170.1" height="24" rx="10" fill="#3b9c94" /><rect x="1010.1" y="363" width="47.25" height="24" rx="10" fill="#234d70" /><text class="label" text-anchor="start" x="44" y="421"><tspan x="44" dy="0">Bleeding gums should not be</tspan><tspan x="44" dy="18">ignored.</tspan></text><rect x="715.75" y="417" width="89.25" height="24" rx="10" fill="#e7bf75" /><rect x="805" y="417" width="35" height="24" rx="10" fill="#d8654d" /><rect x="840" y="417" width="164.5" height="24" rx="10" fill="#3b9c94" /><rect x="1004.5" y="417" width="61.24999999999999" height="24" rx="10" fill="#234d70" /><text class="label" text-anchor="start" x="44" y="475"><tspan x="44" dy="0">Workplace stress can have an</tspan><tspan x="44" dy="18">impact on my gum and oral health.</tspan></text><rect x="721.35" y="471" width="94.85000000000001" height="24" rx="10" fill="#e7bf75" /><rect x="816.2" y="471" width="23.8" height="24" rx="10" fill="#d8654d" /><rect x="840" y="471" width="188.29999999999998" height="24" rx="10" fill="#3b9c94" /><rect x="1028.3" y="471" width="43.4" height="24" rx="10" fill="#234d70" /><text class="label" text-anchor="start" x="44" y="530"><tspan x="44" dy="0">Oral hygiene aids like floss or</tspan><tspan x="44" dy="18">mouthwash can be used if</tspan><tspan x="44" dy="18">recommended by a dentist.</tspan></text><rect x="724.15" y="534" width="92.05" height="24" rx="10" fill="#e7bf75" /><rect x="816.1999999999999" y="534" width="23.8" height="24" rx="10" fill="#d8654d" /><rect x="840" y="534" width="191.10000000000002" height="24" rx="10" fill="#3b9c94" /><rect x="1031.1" y="534" width="43.4" height="24" rx="10" fill="#234d70" /><text class="label" text-anchor="start" x="44" y="602"><tspan x="44" dy="0">Maintaining oral hygiene is</tspan><tspan x="44" dy="18">equally important as maintaining</tspan><tspan x="44" dy="18">physical fitness.</tspan></text><rect x="727.3" y="606" width="68.25" height="24" rx="10" fill="#e7bf75" /><rect x="795.55" y="606" width="44.45" height="24" rx="10" fill="#d8654d" /><rect x="840" y="606" width="168.70000000000002" height="24" rx="10" fill="#3b9c94" /><rect x="1008.7" y="606" width="68.25" height="24" rx="10" fill="#234d70" /><text class="label" text-anchor="start" x="44" y="674"><tspan x="44" dy="0">Poor gum health can negatively</tspan><tspan x="44" dy="18">affect my confidence or social</tspan><tspan x="44" dy="18">interactions.</tspan></text><rect x="729.75" y="678" width="90.65" height="24" rx="10" fill="#e7bf75" /><rect x="820.4" y="678" width="19.599999999999998" height="24" rx="10" fill="#d8654d" /><rect x="840" y="678" width="172.9" height="24" rx="10" fill="#3b9c94" /><rect x="1012.9" y="678" width="66.85" height="24" rx="10" fill="#234d70" /><text class="label" text-anchor="start" x="44" y="746"><tspan x="44" dy="0">Investing in preventive dental</tspan><tspan x="44" dy="18">care is better than spending on</tspan><tspan x="44" dy="18">treatment later.</tspan></text><rect x="745.15" y="750" width="66.85" height="24" rx="10" fill="#e7bf75" /><rect x="812" y="750" width="28" height="24" rx="10" fill="#d8654d" /><rect x="840" y="750" width="172.9" height="24" rx="10" fill="#3b9c94" /><rect x="1012.9" y="750" width="82.25" height="24" rx="10" fill="#234d70" />
+</svg></div>
+      <figcaption class="figure-caption">The weakest net favorability appears on the statement 'Visiting a dentist is necessary only when I have pain or discomfort.'.</figcaption>
+    </figure>
+  
+                </div>
+              </section>
+            
+              <section id="practice">
+                <span class="eyebrow">Practice</span>
+                <h2>Reported behavior is strongest on some daily basics and weakest on follow-through routines.</h2>
+                <p>The practice view separates broad adherence from the specific routines that still lag, especially cleaning aids and regular dentist visits.</p>
+                <ul class="highlights"><li>Only 12.0% report best-practice use of cleaning aids.</li><li>Dentist visit recency reaches just 39.0% in the top band.</li></ul>
+                <div class="section-grid">
+                  
+    <figure class="figure-card" data-figure-title="Practice response quality mix" data-figure-caption="Cleaning aids is the weakest practice area, with only 12.0% in the best-practice band.">
+      <button class="figure-expand" type="button" aria-label="Expand graph: Practice response quality mix">
+        <span class="figure-expand__icon" aria-hidden="true">+</span>
+        <span class="figure-expand__label">Expand</span>
+      </button>
+      <div class="figure-art" role="button" tabindex="0" aria-label="Open expanded graph: Practice response quality mix"><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="820" viewBox="0 0 1240 820" role="img" aria-labelledby="practice-response-quality-mix-title practice-response-quality-mix-subtitle">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f1a24" flood-opacity="0.08" />
+    </filter>
+    
+  </defs>
+  <style>
+  .title { font: 700 30px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .subtitle { font: 500 15px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .axis { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .label { font: 600 15px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .labelMuted { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .value { font: 700 14px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .small { font: 500 12px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .grid { stroke: #d7ddd7; stroke-width: 1; stroke-dasharray: 2 6; }
+  .axisLine { stroke: #5f6c77; stroke-width: 1.25; }
+</style>
+  <rect x="0" y="0" width="1240" height="820" rx="30" fill="#fcfaf5" />
+  <rect x="16" y="16" width="1208" height="788" rx="26" fill="#f7f3ea" stroke="#d7ddd7" />
+  <text id="practice-response-quality-mix-title" class="title" x="52" y="68"><tspan x="52" dy="0">Practice response quality mix</tspan></text>
+  <text id="practice-response-quality-mix-subtitle" class="subtitle" x="52" y="96"><tspan x="52" dy="0">Each row shows how the item splits across the four practice-quality bands.</tspan></text>
+  <text class="labelMuted" text-anchor="middle" x="485" y="140">Least healthy</text><text class="labelMuted" text-anchor="middle" x="655" y="140">Needs work</text><text class="labelMuted" text-anchor="middle" x="825" y="140">Reasonable</text><text class="labelMuted" text-anchor="middle" x="995" y="140">Best practice</text><text class="label" text-anchor="start" x="44" y="178"><tspan x="44" dy="0">Cleaning aids</tspan></text><rect x="400" y="148" width="158" height="44" rx="12" fill="rgb(181, 188, 189)" /><text class="value" fill="#12202c" text-anchor="middle" x="479" y="174">29.1%</text><rect x="570" y="148" width="158" height="44" rx="12" fill="rgb(155, 168, 175)" /><text class="value" fill="#12202c" text-anchor="middle" x="649" y="174">41.8%</text><rect x="740" y="148" width="158" height="44" rx="12" fill="rgb(206, 207, 202)" /><text class="value" fill="#12202c" text-anchor="middle" x="819" y="174">17.1%</text><rect x="910" y="148" width="158" height="44" rx="12" fill="rgb(216, 215, 207)" /><text class="value" fill="#12202c" text-anchor="middle" x="989" y="174">12.0%</text><text class="label" text-anchor="start" x="44" y="238"><tspan x="44" dy="0">Brushing direction</tspan></text><rect x="400" y="208" width="158" height="44" rx="12" fill="rgb(212, 212, 205)" /><text class="value" fill="#12202c" text-anchor="middle" x="479" y="234">13.9%</text><rect x="570" y="208" width="158" height="44" rx="12" fill="rgb(166, 177, 181)" /><text class="value" fill="#12202c" text-anchor="middle" x="649" y="234">36.3%</text><rect x="740" y="208" width="158" height="44" rx="12" fill="rgb(213, 213, 205)" /><text class="value" fill="#12202c" text-anchor="middle" x="819" y="234">13.5%</text><rect x="910" y="208" width="158" height="44" rx="12" fill="rgb(166, 177, 181)" /><text class="value" fill="#12202c" text-anchor="middle" x="989" y="234">36.3%</text><text class="label" text-anchor="start" x="44" y="298"><tspan x="44" dy="0">Dental visit</tspan></text><rect x="400" y="268" width="158" height="44" rx="12" fill="rgb(208, 209, 203)" /><text class="value" fill="#12202c" text-anchor="middle" x="479" y="294">15.9%</text><rect x="570" y="268" width="158" height="44" rx="12" fill="rgb(167, 178, 181)" /><text class="value" fill="#12202c" text-anchor="middle" x="649" y="294">35.9%</text><rect x="740" y="268" width="158" height="44" rx="12" fill="rgb(222, 220, 210)" /><text class="value" fill="#12202c" text-anchor="middle" x="819" y="294">9.2%</text><rect x="910" y="268" width="158" height="44" rx="12" fill="rgb(161, 173, 178)" /><text class="value" fill="#12202c" text-anchor="middle" x="989" y="294">39.0%</text><text class="label" text-anchor="start" x="44" y="358"><tspan x="44" dy="0">Brushing timing</tspan></text><rect x="400" y="328" width="158" height="44" rx="12" fill="rgb(241, 234, 220)" /><text class="value" fill="#12202c" text-anchor="middle" x="479" y="354">0.0%</text><rect x="570" y="328" width="158" height="44" rx="12" fill="rgb(146, 161, 170)" /><text class="value" fill="#12202c" text-anchor="middle" x="649" y="354">46.2%</text><rect x="740" y="328" width="158" height="44" rx="12" fill="rgb(234, 229, 217)" /><text class="value" fill="#12202c" text-anchor="middle" x="819" y="354">3.2%</text><rect x="910" y="328" width="158" height="44" rx="12" fill="rgb(137, 155, 165)" /><text class="value" fill="#12202c" text-anchor="middle" x="989" y="354">50.6%</text><text class="label" text-anchor="start" x="44" y="418"><tspan x="44" dy="0">Brush softness</tspan></text><rect x="400" y="388" width="158" height="44" rx="12" fill="rgb(238, 231, 218)" /><text class="value" fill="#12202c" text-anchor="middle" x="479" y="414">1.6%</text><rect x="570" y="388" width="158" height="44" rx="12" fill="rgb(188, 194, 192)" /><text class="value" fill="#12202c" text-anchor="middle" x="649" y="414">25.5%</text><rect x="740" y="388" width="158" height="44" rx="12" fill="rgb(205, 207, 201)" /><text class="value" fill="#12202c" text-anchor="middle" x="819" y="414">17.5%</text><rect x="910" y="388" width="158" height="44" rx="12" fill="rgb(127, 147, 160)" /><text class="value" fill="#ffffff" text-anchor="middle" x="989" y="414">55.4%</text><text class="label" text-anchor="start" x="44" y="478"><tspan x="44" dy="0">Brushing frequency</tspan></text><rect x="400" y="448" width="158" height="44" rx="12" fill="rgb(238, 231, 218)" /><text class="value" fill="#12202c" text-anchor="middle" x="479" y="474">1.6%</text><rect x="570" y="448" width="158" height="44" rx="12" fill="rgb(161, 173, 178)" /><text class="value" fill="#12202c" text-anchor="middle" x="649" y="474">39.0%</text><rect x="740" y="448" width="158" height="44" rx="12" fill="rgb(235, 230, 217)" /><text class="value" fill="#12202c" text-anchor="middle" x="819" y="474">2.8%</text><rect x="910" y="448" width="158" height="44" rx="12" fill="rgb(124, 145, 159)" /><text class="value" fill="#ffffff" text-anchor="middle" x="989" y="474">56.6%</text><text class="label" text-anchor="start" x="44" y="538"><tspan x="44" dy="0">Post-meal rinse</tspan></text><rect x="400" y="508" width="158" height="44" rx="12" fill="rgb(230, 226, 214)" /><text class="value" fill="#12202c" text-anchor="middle" x="479" y="534">5.2%</text><rect x="570" y="508" width="158" height="44" rx="12" fill="rgb(231, 226, 215)" /><text class="value" fill="#12202c" text-anchor="middle" x="649" y="534">4.8%</text><rect x="740" y="508" width="158" height="44" rx="12" fill="rgb(179, 187, 188)" /><text class="value" fill="#12202c" text-anchor="middle" x="819" y="534">29.9%</text><rect x="910" y="508" width="158" height="44" rx="12" fill="rgb(117, 139, 155)" /><text class="value" fill="#ffffff" text-anchor="middle" x="989" y="534">60.2%</text><text class="label" text-anchor="start" x="44" y="598"><tspan x="44" dy="0">Brush replacement</tspan></text><rect x="400" y="568" width="158" height="44" rx="12" fill="rgb(236, 230, 217)" /><text class="value" fill="#12202c" text-anchor="middle" x="479" y="594">2.4%</text><rect x="570" y="568" width="158" height="44" rx="12" fill="rgb(198, 201, 197)" /><text class="value" fill="#12202c" text-anchor="middle" x="649" y="594">21.1%</text><rect x="740" y="568" width="158" height="44" rx="12" fill="rgb(214, 213, 206)" /><text class="value" fill="#12202c" text-anchor="middle" x="819" y="594">13.1%</text><rect x="910" y="568" width="158" height="44" rx="12" fill="rgb(111, 135, 152)" /><text class="value" fill="#ffffff" text-anchor="middle" x="989" y="594">63.3%</text><text class="label" text-anchor="start" x="44" y="658"><tspan x="44" dy="0">Brushing duration</tspan></text><rect x="400" y="628" width="158" height="44" rx="12" fill="rgb(225, 221, 211)" /><text class="value" fill="#12202c" text-anchor="middle" x="479" y="654">8.0%</text><rect x="570" y="628" width="158" height="44" rx="12" fill="rgb(229, 225, 214)" /><text class="value" fill="#12202c" text-anchor="middle" x="649" y="654">5.6%</text><rect x="740" y="628" width="158" height="44" rx="12" fill="rgb(212, 212, 205)" /><text class="value" fill="#12202c" text-anchor="middle" x="819" y="654">14.3%</text><rect x="910" y="628" width="158" height="44" rx="12" fill="rgb(92, 121, 142)" /><text class="value" fill="#ffffff" text-anchor="middle" x="989" y="654">72.1%</text><text class="label" text-anchor="start" x="44" y="718"><tspan x="44" dy="0">Risk habits</tspan></text><rect x="400" y="688" width="158" height="44" rx="12" fill="rgb(229, 225, 214)" /><text class="value" fill="#12202c" text-anchor="middle" x="479" y="714">6.0%</text><rect x="570" y="688" width="158" height="44" rx="12" fill="rgb(223, 220, 210)" /><text class="value" fill="#12202c" text-anchor="middle" x="649" y="714">8.8%</text><rect x="740" y="688" width="158" height="44" rx="12" fill="rgb(232, 227, 215)" /><text class="value" fill="#12202c" text-anchor="middle" x="819" y="714">4.4%</text><rect x="910" y="688" width="158" height="44" rx="12" fill="rgb(74, 107, 133)" /><text class="value" fill="#ffffff" text-anchor="middle" x="989" y="714">80.9%</text>
+</svg></div>
+      <figcaption class="figure-caption">Cleaning aids is the weakest practice area, with only 12.0% in the best-practice band.</figcaption>
+    </figure>
+  
+    <figure class="figure-card" data-figure-title="Lowest best-practice adherence" data-figure-caption="Cleaning aids and dentist visits are the two main behavior bottlenecks.">
+      <button class="figure-expand" type="button" aria-label="Expand graph: Lowest best-practice adherence">
+        <span class="figure-expand__icon" aria-hidden="true">+</span>
+        <span class="figure-expand__label">Expand</span>
+      </button>
+      <div class="figure-art" role="button" tabindex="0" aria-label="Open expanded graph: Lowest best-practice adherence"><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="450" viewBox="0 0 1120 450" role="img" aria-labelledby="lowest-best-practice-adherence-title lowest-best-practice-adherence-subtitle">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f1a24" flood-opacity="0.08" />
+    </filter>
+    
+  </defs>
+  <style>
+  .title { font: 700 30px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .subtitle { font: 500 15px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .axis { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .label { font: 600 15px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .labelMuted { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .value { font: 700 14px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .small { font: 500 12px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .grid { stroke: #d7ddd7; stroke-width: 1; stroke-dasharray: 2 6; }
+  .axisLine { stroke: #5f6c77; stroke-width: 1.25; }
+</style>
+  <rect x="0" y="0" width="1120" height="450" rx="30" fill="#fcfaf5" />
+  <rect x="16" y="16" width="1088" height="418" rx="26" fill="#f7f3ea" stroke="#d7ddd7" />
+  <text id="lowest-best-practice-adherence-title" class="title" x="52" y="68"><tspan x="52" dy="0">Lowest best-practice adherence</tspan></text>
+  <text id="lowest-best-practice-adherence-subtitle" class="subtitle" x="52" y="96"><tspan x="52" dy="0">Bottom five practice items by best-practice share.</tspan></text>
+  <line class="grid" x1="360" x2="360" y1="134" y2="402" /><text class="axis" text-anchor="middle" x="360" y="430">0.0%</text><line class="grid" x1="530" x2="530" y1="134" y2="402" /><text class="axis" text-anchor="middle" x="530" y="430">25.0%</text><line class="grid" x1="700" x2="700" y1="134" y2="402" /><text class="axis" text-anchor="middle" x="700" y="430">50.0%</text><line class="grid" x1="870" x2="870" y1="134" y2="402" /><text class="axis" text-anchor="middle" x="870" y="430">75.0%</text><line class="grid" x1="1040" x2="1040" y1="134" y2="402" /><text class="axis" text-anchor="middle" x="1040" y="430">100.0%</text><rect x="360" y="150" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="150" width="81.6" height="22" rx="11" fill="#1c7c74" /><text class="label" text-anchor="start" x="44" y="166"><tspan x="44" dy="0">Cleaning aids</tspan></text><text class="value" x="453.6" y="166">12.0%</text><rect x="360" y="204" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="204" width="246.84" height="22" rx="11" fill="rgb(131, 174, 158)" /><text class="label" text-anchor="start" x="44" y="220"><tspan x="44" dy="0">Brushing direction</tspan></text><text class="value" x="618.84" y="220">36.3%</text><rect x="360" y="258" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="258" width="265.2" height="22" rx="11" fill="rgb(121, 169, 153)" /><text class="label" text-anchor="start" x="44" y="274"><tspan x="44" dy="0">Dental visit</tspan></text><text class="value" x="637.2" y="274">39.0%</text><rect x="360" y="312" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="312" width="344.08" height="22" rx="11" fill="rgb(110, 164, 149)" /><text class="label" text-anchor="start" x="44" y="328"><tspan x="44" dy="0">Brushing timing</tspan></text><text class="value" x="716.0799999999999" y="328">50.6%</text><rect x="360" y="366" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="366" width="376.71999999999997" height="22" rx="11" fill="rgb(100, 159, 145)" /><text class="label" text-anchor="start" x="44" y="382"><tspan x="44" dy="0">Brush softness</tspan></text><text class="value" x="748.72" y="382">55.4%</text>
+</svg></div>
+      <figcaption class="figure-caption">Cleaning aids and dentist visits are the two main behavior bottlenecks.</figcaption>
+    </figure>
+  
+                </div>
+              </section>
+            
+              <section id="cross-domain-relationships">
+                <span class="eyebrow">Cross-Domain Relationships</span>
+                <h2>The cross-domain view shows how knowledge, attitude, and practice move together and where subgroup differences are large enough to notice.</h2>
+                <p>Knowledge, attitude, and practice should be read as connected but not interchangeable domains; the charts below show both their overall score ranges and their subgroup differences.</p>
+                <ul class="highlights"><li>Knowledge and practice move together most closely at rho=0.381.</li><li>The clearest geo-scope difference is in attitude, where Bangalore is higher by 3.5 points.</li></ul>
+                <div class="section-grid">
+                  
+    <figure class="figure-card" data-figure-title="Composite score distributions" data-figure-caption="Practice has the highest average standardized score at 69.8%.">
+      <button class="figure-expand" type="button" aria-label="Expand graph: Composite score distributions">
+        <span class="figure-expand__icon" aria-hidden="true">+</span>
+        <span class="figure-expand__label">Expand</span>
+      </button>
+      <div class="figure-art" role="button" tabindex="0" aria-label="Open expanded graph: Composite score distributions"><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="510" viewBox="0 0 1120 510" role="img" aria-labelledby="composite-score-distributions-title composite-score-distributions-subtitle">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f1a24" flood-opacity="0.08" />
+    </filter>
+    
+  </defs>
+  <style>
+  .title { font: 700 30px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .subtitle { font: 500 15px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .axis { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .label { font: 600 15px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .labelMuted { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .value { font: 700 14px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .small { font: 500 12px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .grid { stroke: #d7ddd7; stroke-width: 1; stroke-dasharray: 2 6; }
+  .axisLine { stroke: #5f6c77; stroke-width: 1.25; }
+</style>
+  <rect x="0" y="0" width="1120" height="510" rx="30" fill="#fcfaf5" />
+  <rect x="16" y="16" width="1088" height="478" rx="26" fill="#f7f3ea" stroke="#d7ddd7" />
+  <text id="composite-score-distributions-title" class="title" x="52" y="68"><tspan x="52" dy="0">Composite score distributions</tspan></text>
+  <text id="composite-score-distributions-subtitle" class="subtitle" x="52" y="96"><tspan x="52" dy="0">All three domains are shown on a common 0-100 scale.</tspan></text>
+  <line class="grid" x1="300" x2="300" y1="148" y2="462" /><text class="axis" text-anchor="middle" x="300" y="492">0%</text><line class="grid" x1="440" x2="440" y1="148" y2="462" /><text class="axis" text-anchor="middle" x="440" y="492">20%</text><line class="grid" x1="580" x2="580" y1="148" y2="462" /><text class="axis" text-anchor="middle" x="580" y="492">40%</text><line class="grid" x1="720" x2="720" y1="148" y2="462" /><text class="axis" text-anchor="middle" x="720" y="492">60%</text><line class="grid" x1="860" x2="860" y1="148" y2="462" /><text class="axis" text-anchor="middle" x="860" y="492">80%</text><line class="grid" x1="1000" x2="1000" y1="148" y2="462" /><text class="axis" text-anchor="middle" x="1000" y="492">100%</text><text class="label" x="44" y="185">Knowledge</text><text class="labelMuted" x="44" y="207">Mean 63.6%</text><line x1="370" x2="1000" y1="180" y2="180" stroke="#c2c9c5" stroke-width="5" stroke-linecap="round" /><rect x="580" y="164" width="280" height="32" rx="12" fill="#1c7c74" opacity="0.88" /><line x1="720" x2="720" y1="162" y2="198" stroke="#fcfaf5" stroke-width="4" /><circle cx="745.2" cy="180" r="7" fill="#fcfaf5" stroke="#12202c" stroke-width="2" /><text class="label" x="44" y="275">Attitude</text><text class="labelMuted" x="44" y="297">Mean 68.2%</text><line x1="580" x2="965" y1="270" y2="270" stroke="#c2c9c5" stroke-width="5" stroke-linecap="round" /><rect x="720" y="254" width="105" height="32" rx="12" fill="#d78f2f" opacity="0.88" /><line x1="790" x2="790" y1="252" y2="288" stroke="#fcfaf5" stroke-width="4" /><circle cx="777.4000000000001" cy="270" r="7" fill="#fcfaf5" stroke="#12202c" stroke-width="2" /><text class="label" x="44" y="365">Practice</text><text class="labelMuted" x="44" y="387">Mean 69.8%</text><line x1="510" x2="1000" y1="360" y2="360" stroke="#c2c9c5" stroke-width="5" stroke-linecap="round" /><rect x="696.9000000000001" y="344" width="163.0999999999999" height="32" rx="12" fill="#234d70" opacity="0.88" /><line x1="813.1" x2="813.1" y1="342" y2="378" stroke="#fcfaf5" stroke-width="4" /><circle cx="788.5999999999999" cy="360" r="7" fill="#fcfaf5" stroke="#12202c" stroke-width="2" />
+</svg></div>
+      <figcaption class="figure-caption">Practice has the highest average standardized score at 69.8%.</figcaption>
+    </figure>
+  
+    <figure class="figure-card" data-figure-title="Subgroup score profile" data-figure-caption="Remote workers and 10-15 year professionals sit near the bottom of the practice distribution.">
+      <button class="figure-expand" type="button" aria-label="Expand graph: Subgroup score profile">
+        <span class="figure-expand__icon" aria-hidden="true">+</span>
+        <span class="figure-expand__label">Expand</span>
+      </button>
+      <div class="figure-art" role="button" tabindex="0" aria-label="Open expanded graph: Subgroup score profile"><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1220" height="1104" viewBox="0 0 1220 1104" role="img" aria-labelledby="subgroup-score-profile-title subgroup-score-profile-subtitle">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f1a24" flood-opacity="0.08" />
+    </filter>
+    
+  </defs>
+  <style>
+  .title { font: 700 30px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .subtitle { font: 500 15px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .axis { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .label { font: 600 15px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .labelMuted { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .value { font: 700 14px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .small { font: 500 12px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .grid { stroke: #d7ddd7; stroke-width: 1; stroke-dasharray: 2 6; }
+  .axisLine { stroke: #5f6c77; stroke-width: 1.25; }
+</style>
+  <rect x="0" y="0" width="1220" height="1104" rx="30" fill="#fcfaf5" />
+  <rect x="16" y="16" width="1188" height="1072" rx="26" fill="#f7f3ea" stroke="#d7ddd7" />
+  <text id="subgroup-score-profile-title" class="title" x="52" y="68"><tspan x="52" dy="0">Subgroup score profile</tspan></text>
+  <text id="subgroup-score-profile-subtitle" class="subtitle" x="52" y="96"><tspan x="52" dy="0">Rows combine the main demographic and context segments.</tspan></text>
+  <text class="labelMuted" text-anchor="middle" x="589" y="140">Knowledge</text><text class="labelMuted" text-anchor="middle" x="739" y="140">Attitude</text><text class="labelMuted" text-anchor="middle" x="889" y="140">Practice</text><text class="labelMuted" text-anchor="middle" x="452" y="140">n</text><text class="small" x="44" y="152">Age Range</text><text class="label" text-anchor="start" x="44" y="176"><tspan x="44" dy="0">20-30 years</tspan></text><text class="labelMuted" text-anchor="middle" x="452" y="176">155</text><rect x="520" y="150" width="138" height="34" rx="10" fill="rgb(155, 190, 178)" /><text class="value" fill="#12202c" text-anchor="middle" x="589" y="174">63.2%</text><rect x="670" y="150" width="138" height="34" rx="10" fill="rgb(123, 173, 162)" /><text class="value" fill="#ffffff" text-anchor="middle" x="739" y="174">70.0%</text><rect x="820" y="150" width="138" height="34" rx="10" fill="rgb(117, 170, 160)" /><text class="value" fill="#ffffff" text-anchor="middle" x="889" y="174">71.1%</text><text class="label" text-anchor="start" x="44" y="228"><tspan x="44" dy="0">30-40 years</tspan></text><text class="labelMuted" text-anchor="middle" x="452" y="228">77</text><rect x="520" y="202" width="138" height="34" rx="10" fill="rgb(146, 185, 174)" /><text class="value" fill="#12202c" text-anchor="middle" x="589" y="226">65.1%</text><rect x="670" y="202" width="138" height="34" rx="10" fill="rgb(147, 185, 174)" /><text class="value" fill="#12202c" text-anchor="middle" x="739" y="226">64.9%</text><rect x="820" y="202" width="138" height="34" rx="10" fill="rgb(132, 178, 167)" /><text class="value" fill="#12202c" text-anchor="middle" x="889" y="226">68.0%</text><text class="label" text-anchor="start" x="44" y="280"><tspan x="44" dy="0">40-50 years</tspan></text><text class="labelMuted" text-anchor="middle" x="452" y="280">14</text><rect x="520" y="254" width="138" height="34" rx="10" fill="rgb(167, 196, 184)" /><text class="value" fill="#12202c" text-anchor="middle" x="589" y="278">60.7%</text><rect x="670" y="254" width="138" height="34" rx="10" fill="rgb(139, 181, 170)" /><text class="value" fill="#12202c" text-anchor="middle" x="739" y="278">66.6%</text><rect x="820" y="254" width="138" height="34" rx="10" fill="rgb(127, 175, 165)" /><text class="value" fill="#12202c" text-anchor="middle" x="889" y="278">69.0%</text><text class="small" x="44" y="308">Gender</text><text class="label" text-anchor="start" x="44" y="332"><tspan x="44" dy="0">Male</tspan></text><text class="labelMuted" text-anchor="middle" x="452" y="332">170</text><rect x="520" y="306" width="138" height="34" rx="10" fill="rgb(183, 204, 192)" /><text class="value" fill="#12202c" text-anchor="middle" x="589" y="330">57.3%</text><rect x="670" y="306" width="138" height="34" rx="10" fill="rgb(138, 181, 170)" /><text class="value" fill="#12202c" text-anchor="middle" x="739" y="330">66.8%</text><rect x="820" y="306" width="138" height="34" rx="10" fill="rgb(127, 175, 165)" /><text class="value" fill="#12202c" text-anchor="middle" x="889" y="330">69.0%</text><text class="label" text-anchor="start" x="44" y="384"><tspan x="44" dy="0">Female</tspan></text><text class="labelMuted" text-anchor="middle" x="452" y="384">79</text><rect x="520" y="358" width="138" height="34" rx="10" fill="rgb(92, 157, 147)" /><text class="value" fill="#ffffff" text-anchor="middle" x="589" y="382">76.5%</text><rect x="670" y="358" width="138" height="34" rx="10" fill="rgb(118, 170, 160)" /><text class="value" fill="#ffffff" text-anchor="middle" x="739" y="382">71.0%</text><rect x="820" y="358" width="138" height="34" rx="10" fill="rgb(116, 169, 159)" /><text class="value" fill="#ffffff" text-anchor="middle" x="889" y="382">71.5%</text><text class="small" x="44" y="412">Professional Experience</text><text class="label" text-anchor="start" x="44" y="436"><tspan x="44" dy="0">0-3 years</tspan></text><text class="labelMuted" text-anchor="middle" x="452" y="436">81</text><rect x="520" y="410" width="138" height="34" rx="10" fill="rgb(150, 187, 175)" /><text class="value" fill="#12202c" text-anchor="middle" x="589" y="434">64.3%</text><rect x="670" y="410" width="138" height="34" rx="10" fill="rgb(126, 174, 164)" /><text class="value" fill="#12202c" text-anchor="middle" x="739" y="434">69.4%</text><rect x="820" y="410" width="138" height="34" rx="10" fill="rgb(136, 180, 169)" /><text class="value" fill="#12202c" text-anchor="middle" x="889" y="434">67.1%</text><text class="label" text-anchor="start" x="44" y="488"><tspan x="44" dy="0">3-6 years</tspan></text><text class="labelMuted" text-anchor="middle" x="452" y="488">67</text><rect x="520" y="462" width="138" height="34" rx="10" fill="rgb(146, 185, 174)" /><text class="value" fill="#12202c" text-anchor="middle" x="589" y="486">65.1%</text><rect x="670" y="462" width="138" height="34" rx="10" fill="rgb(124, 174, 163)" /><text class="value" fill="#12202c" text-anchor="middle" x="739" y="486">69.7%</text><rect x="820" y="462" width="138" height="34" rx="10" fill="rgb(96, 159, 149)" /><text class="value" fill="#ffffff" text-anchor="middle" x="889" y="486">75.7%</text><text class="label" text-anchor="start" x="44" y="540"><tspan x="44" dy="0">6-10 years</tspan></text><text class="labelMuted" text-anchor="middle" x="452" y="540">45</text><rect x="520" y="514" width="138" height="34" rx="10" fill="rgb(168, 196, 184)" /><text class="value" fill="#12202c" text-anchor="middle" x="589" y="538">60.4%</text><rect x="670" y="514" width="138" height="34" rx="10" fill="rgb(140, 182, 171)" /><text class="value" fill="#12202c" text-anchor="middle" x="739" y="538">66.3%</text><rect x="820" y="514" width="138" height="34" rx="10" fill="rgb(132, 178, 167)" /><text class="value" fill="#12202c" text-anchor="middle" x="889" y="538">68.1%</text><text class="label" text-anchor="start" x="44" y="592"><tspan x="44" dy="0">10-15 years</tspan></text><text class="labelMuted" text-anchor="middle" x="452" y="592">37</text><rect x="520" y="566" width="138" height="34" rx="10" fill="rgb(124, 174, 163)" /><text class="value" fill="#12202c" text-anchor="middle" x="589" y="590">69.7%</text><rect x="670" y="566" width="138" height="34" rx="10" fill="rgb(139, 181, 170)" /><text class="value" fill="#12202c" text-anchor="middle" x="739" y="590">66.6%</text><rect x="820" y="566" width="138" height="34" rx="10" fill="rgb(138, 181, 170)" /><text class="value" fill="#12202c" text-anchor="middle" x="889" y="590">66.8%</text><text class="label" text-anchor="start" x="44" y="644"><tspan x="44" dy="0">15+ years</tspan></text><text class="labelMuted" text-anchor="middle" x="452" y="644">21</text><rect x="520" y="618" width="138" height="34" rx="10" fill="rgb(206, 216, 203)" /><text class="value" fill="#12202c" text-anchor="middle" x="589" y="642">52.4%</text><rect x="670" y="618" width="138" height="34" rx="10" fill="rgb(143, 184, 172)" /><text class="value" fill="#12202c" text-anchor="middle" x="739" y="642">65.6%</text><rect x="820" y="618" width="138" height="34" rx="10" fill="rgb(122, 172, 162)" /><text class="value" fill="#ffffff" text-anchor="middle" x="889" y="642">70.2%</text><text class="small" x="44" y="672">Work Mode</text><text class="label" text-anchor="start" x="44" y="696"><tspan x="44" dy="0">Full time</tspan></text><text class="labelMuted" text-anchor="middle" x="452" y="696">196</text><rect x="520" y="670" width="138" height="34" rx="10" fill="rgb(156, 190, 179)" /><text class="value" fill="#12202c" text-anchor="middle" x="589" y="694">62.9%</text><rect x="670" y="670" width="138" height="34" rx="10" fill="rgb(137, 180, 169)" /><text class="value" fill="#12202c" text-anchor="middle" x="739" y="694">67.0%</text><rect x="820" y="670" width="138" height="34" rx="10" fill="rgb(123, 173, 162)" /><text class="value" fill="#ffffff" text-anchor="middle" x="889" y="694">70.0%</text><text class="label" text-anchor="start" x="44" y="748"><tspan x="44" dy="0">Hybrid</tspan></text><text class="labelMuted" text-anchor="middle" x="452" y="748">37</text><rect x="520" y="722" width="138" height="34" rx="10" fill="rgb(120, 172, 161)" /><text class="value" fill="#ffffff" text-anchor="middle" x="589" y="746">70.5%</text><rect x="670" y="722" width="138" height="34" rx="10" fill="rgb(115, 169, 159)" /><text class="value" fill="#ffffff" text-anchor="middle" x="739" y="746">71.6%</text><rect x="820" y="722" width="138" height="34" rx="10" fill="rgb(122, 172, 162)" /><text class="value" fill="#ffffff" text-anchor="middle" x="889" y="746">70.2%</text><text class="label" text-anchor="start" x="44" y="800"><tspan x="44" dy="0">Work from home (Remote)</tspan></text><text class="labelMuted" text-anchor="middle" x="452" y="800">18</text><rect x="520" y="774" width="138" height="34" rx="10" fill="rgb(180, 203, 190)" /><text class="value" fill="#12202c" text-anchor="middle" x="589" y="798">57.8%</text><rect x="670" y="774" width="138" height="34" rx="10" fill="rgb(106, 164, 154)" /><text class="value" fill="#ffffff" text-anchor="middle" x="739" y="798">73.6%</text><rect x="820" y="774" width="138" height="34" rx="10" fill="rgb(139, 181, 170)" /><text class="value" fill="#12202c" text-anchor="middle" x="889" y="798">66.5%</text><text class="small" x="44" y="828">Previous Treatment</text><text class="label" text-anchor="start" x="44" y="852"><tspan x="44" dy="0">No</tspan></text><text class="labelMuted" text-anchor="middle" x="452" y="852">199</text><rect x="520" y="826" width="138" height="34" rx="10" fill="rgb(149, 187, 175)" /><text class="value" fill="#12202c" text-anchor="middle" x="589" y="850">64.4%</text><rect x="670" y="826" width="138" height="34" rx="10" fill="rgb(131, 177, 166)" /><text class="value" fill="#12202c" text-anchor="middle" x="739" y="850">68.2%</text><rect x="820" y="826" width="138" height="34" rx="10" fill="rgb(127, 175, 165)" /><text class="value" fill="#12202c" text-anchor="middle" x="889" y="850">69.0%</text><text class="label" text-anchor="start" x="44" y="904"><tspan x="44" dy="0">Yes</tspan></text><text class="labelMuted" text-anchor="middle" x="452" y="904">52</text><rect x="520" y="878" width="138" height="34" rx="10" fill="rgb(167, 196, 184)" /><text class="value" fill="#12202c" text-anchor="middle" x="589" y="902">60.6%</text><rect x="670" y="878" width="138" height="34" rx="10" fill="rgb(131, 177, 166)" /><text class="value" fill="#12202c" text-anchor="middle" x="739" y="902">68.2%</text><rect x="820" y="878" width="138" height="34" rx="10" fill="rgb(110, 166, 156)" /><text class="value" fill="#ffffff" text-anchor="middle" x="889" y="902">72.7%</text><text class="small" x="44" y="932">Geo Scope</text><text class="label" text-anchor="start" x="44" y="956"><tspan x="44" dy="0">Bangalore</tspan></text><text class="labelMuted" text-anchor="middle" x="452" y="956">146</text><rect x="520" y="930" width="138" height="34" rx="10" fill="rgb(154, 189, 177)" /><text class="value" fill="#12202c" text-anchor="middle" x="589" y="954">63.4%</text><rect x="670" y="930" width="138" height="34" rx="10" fill="rgb(125, 174, 163)" /><text class="value" fill="#12202c" text-anchor="middle" x="739" y="954">69.6%</text><rect x="820" y="930" width="138" height="34" rx="10" fill="rgb(118, 171, 160)" /><text class="value" fill="#ffffff" text-anchor="middle" x="889" y="954">70.9%</text><text class="label" text-anchor="start" x="44" y="1008"><tspan x="44" dy="0">Outside Bangalore</tspan></text><text class="labelMuted" text-anchor="middle" x="452" y="1008">105</text><rect x="520" y="982" width="138" height="34" rx="10" fill="rgb(152, 188, 176)" /><text class="value" fill="#12202c" text-anchor="middle" x="589" y="1006">63.9%</text><rect x="670" y="982" width="138" height="34" rx="10" fill="rgb(141, 182, 171)" /><text class="value" fill="#12202c" text-anchor="middle" x="739" y="1006">66.1%</text><rect x="820" y="982" width="138" height="34" rx="10" fill="rgb(131, 177, 166)" /><text class="value" fill="#12202c" text-anchor="middle" x="889" y="1006">68.2%</text>
+</svg></div>
+      <figcaption class="figure-caption">Remote workers and 10-15 year professionals sit near the bottom of the practice distribution.</figcaption>
+    </figure>
+  
+    <figure class="figure-card" data-figure-title="Bangalore versus outside Bangalore" data-figure-caption="Attitude is the clearest Bangalore-versus-outside difference at 3.5 points.">
+      <button class="figure-expand" type="button" aria-label="Expand graph: Bangalore versus outside Bangalore">
+        <span class="figure-expand__icon" aria-hidden="true">+</span>
+        <span class="figure-expand__label">Expand</span>
+      </button>
+      <div class="figure-art" role="button" tabindex="0" aria-label="Open expanded graph: Bangalore versus outside Bangalore"><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="364" viewBox="0 0 1180 364" role="img" aria-labelledby="bangalore-versus-outside-bangalore-title bangalore-versus-outside-bangalore-subtitle">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f1a24" flood-opacity="0.08" />
+    </filter>
+    
+  </defs>
+  <style>
+  .title { font: 700 30px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .subtitle { font: 500 15px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .axis { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .label { font: 600 15px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .labelMuted { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .value { font: 700 14px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .small { font: 500 12px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .grid { stroke: #d7ddd7; stroke-width: 1; stroke-dasharray: 2 6; }
+  .axisLine { stroke: #5f6c77; stroke-width: 1.25; }
+</style>
+  <rect x="0" y="0" width="1180" height="364" rx="30" fill="#fcfaf5" />
+  <rect x="16" y="16" width="1148" height="332" rx="26" fill="#f7f3ea" stroke="#d7ddd7" />
+  <text id="bangalore-versus-outside-bangalore-title" class="title" x="52" y="68"><tspan x="52" dy="0">Bangalore versus outside Bangalore</tspan></text>
+  <text id="bangalore-versus-outside-bangalore-subtitle" class="subtitle" x="52" y="96"><tspan x="52" dy="0">Mean domain scores by geo scope.</tspan></text>
+  <line class="grid" x1="380" x2="380" y1="140" y2="322" /><text class="axis" text-anchor="middle" x="380" y="346">0.0%</text><line class="grid" x1="520" x2="520" y1="140" y2="322" /><text class="axis" text-anchor="middle" x="520" y="346">20.0%</text><line class="grid" x1="660" x2="660" y1="140" y2="322" /><text class="axis" text-anchor="middle" x="660" y="346">40.0%</text><line class="grid" x1="800" x2="800" y1="140" y2="322" /><text class="axis" text-anchor="middle" x="800" y="346">60.0%</text><line class="grid" x1="940" x2="940" y1="140" y2="322" /><text class="axis" text-anchor="middle" x="940" y="346">80.0%</text><line class="grid" x1="1080" x2="1080" y1="140" y2="322" /><text class="axis" text-anchor="middle" x="1080" y="346">100.0%</text>
+        <circle cx="460" cy="126" r="7" fill="#d8654d" />
+        <text class="labelMuted" x="474" y="131">Outside Bangalore</text>
+      
+        <circle cx="630" cy="126" r="7" fill="#1c7c74" />
+        <text class="labelMuted" x="644" y="131">Bangalore</text>
+      <line x1="823.8" x2="827.3" y1="164" y2="164" stroke="#c5cdcf" stroke-width="5" stroke-linecap="round" /><circle cx="827.3" cy="164" r="11" fill="#d8654d" stroke="#fcfaf5" stroke-width="3" /><circle cx="823.8" cy="164" r="11" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="169"><tspan x="44" dy="0">Knowledge</tspan></text><line x1="842.6999999999999" x2="867.2" y1="222" y2="222" stroke="#c5cdcf" stroke-width="5" stroke-linecap="round" /><circle cx="842.6999999999999" cy="222" r="11" fill="#d8654d" stroke="#fcfaf5" stroke-width="3" /><circle cx="867.2" cy="222" r="11" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="227"><tspan x="44" dy="0">Attitude</tspan></text><line x1="857.4000000000001" x2="876.3000000000001" y1="280" y2="280" stroke="#c5cdcf" stroke-width="5" stroke-linecap="round" /><circle cx="857.4000000000001" cy="280" r="11" fill="#d8654d" stroke="#fcfaf5" stroke-width="3" /><circle cx="876.3000000000001" cy="280" r="11" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="285"><tspan x="44" dy="0">Practice</tspan></text>
+</svg></div>
+      <figcaption class="figure-caption">Attitude is the clearest Bangalore-versus-outside difference at 3.5 points.</figcaption>
+    </figure>
+  
+    <figure class="figure-card" data-figure-title="KAP relationship map" data-figure-caption="Knowledge vs Practice is the strongest pair with rho=0.381.">
+      <button class="figure-expand" type="button" aria-label="Expand graph: KAP relationship map">
+        <span class="figure-expand__icon" aria-hidden="true">+</span>
+        <span class="figure-expand__label">Expand</span>
+      </button>
+      <div class="figure-art" role="button" tabindex="0" aria-label="Open expanded graph: KAP relationship map"><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="640" viewBox="0 0 920 640" role="img" aria-labelledby="kap-relationship-map-title kap-relationship-map-subtitle">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f1a24" flood-opacity="0.08" />
+    </filter>
+    
+  </defs>
+  <style>
+  .title { font: 700 30px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .subtitle { font: 500 15px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .axis { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .label { font: 600 15px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .labelMuted { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .value { font: 700 14px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .small { font: 500 12px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .grid { stroke: #d7ddd7; stroke-width: 1; stroke-dasharray: 2 6; }
+  .axisLine { stroke: #5f6c77; stroke-width: 1.25; }
+</style>
+  <rect x="0" y="0" width="920" height="640" rx="30" fill="#fcfaf5" />
+  <rect x="16" y="16" width="888" height="608" rx="26" fill="#f7f3ea" stroke="#d7ddd7" />
+  <text id="kap-relationship-map-title" class="title" x="52" y="68"><tspan x="52" dy="0">KAP relationship map</tspan></text>
+  <text id="kap-relationship-map-subtitle" class="subtitle" x="52" y="96"><tspan x="52" dy="0">Circle size and color reflect the strength of the association.</tspan></text>
+  <text class="label" text-anchor="middle" x="300" y="144">Knowledge</text><text class="label" x="54" y="266">Knowledge</text><text class="label" text-anchor="middle" x="460" y="144">Attitude</text><text class="label" x="54" y="426">Attitude</text><text class="label" text-anchor="middle" x="620" y="144">Practice</text><text class="label" x="54" y="586">Practice</text><rect x="220" y="180" width="144" height="144" rx="22" fill="#f3ede1" stroke="#d7ddd7" /><text class="labelMuted" text-anchor="middle" x="292" y="262">Same metric</text><rect x="380" y="180" width="144" height="144" rx="22" fill="#f3ede1" stroke="#d7ddd7" /><circle cx="452" cy="252" r="33.97" fill="rgb(177, 175, 174)" opacity="0.92" /><text class="value" text-anchor="middle" x="452" y="258" fill="#ffffff">0.315</text><rect x="540" y="180" width="144" height="144" rx="22" fill="#f3ede1" stroke="#d7ddd7" /><circle cx="612" cy="252" r="36.478" fill="rgb(163, 166, 168)" opacity="0.92" /><text class="value" text-anchor="middle" x="612" y="258" fill="#ffffff">0.381</text><rect x="220" y="340" width="144" height="144" rx="22" fill="#f3ede1" stroke="#d7ddd7" /><circle cx="292" cy="412" r="33.97" fill="rgb(177, 175, 174)" opacity="0.92" /><text class="value" text-anchor="middle" x="292" y="418" fill="#ffffff">0.315</text><rect x="380" y="340" width="144" height="144" rx="22" fill="#f3ede1" stroke="#d7ddd7" /><text class="labelMuted" text-anchor="middle" x="452" y="422">Same metric</text><rect x="540" y="340" width="144" height="144" rx="22" fill="#f3ede1" stroke="#d7ddd7" /><circle cx="612" cy="412" r="31.082" fill="rgb(193, 186, 181)" opacity="0.92" /><text class="value" text-anchor="middle" x="612" y="418" fill="#ffffff">0.239</text><rect x="220" y="500" width="144" height="144" rx="22" fill="#f3ede1" stroke="#d7ddd7" /><circle cx="292" cy="572" r="36.478" fill="rgb(163, 166, 168)" opacity="0.92" /><text class="value" text-anchor="middle" x="292" y="578" fill="#ffffff">0.381</text><rect x="380" y="500" width="144" height="144" rx="22" fill="#f3ede1" stroke="#d7ddd7" /><circle cx="452" cy="572" r="31.082" fill="rgb(193, 186, 181)" opacity="0.92" /><text class="value" text-anchor="middle" x="452" y="578" fill="#ffffff">0.239</text><rect x="540" y="500" width="144" height="144" rx="22" fill="#f3ede1" stroke="#d7ddd7" /><text class="labelMuted" text-anchor="middle" x="612" y="582">Same metric</text>
+</svg></div>
+      <figcaption class="figure-caption">Knowledge vs Practice is the strongest pair with rho=0.381.</figcaption>
+    </figure>
+  
+                </div>
+              </section>
+            
+
+        <section id="insights">
+          <span class="eyebrow">Insights</span>
+          <h2>Standalone visual stories from the survey analysis</h2>
+          <p>Each insight below is designed to stand on its own: one message, one chart, a few numeric proofs, and a short interpretation that can be reused directly.</p>
+          <div class="insight-grid">
+            
+                  <article class="insight-card">
+                    <div>
+                      <div class="insight-meta">Bangalore</div>
+                      <h3>Bangalore drives the dataset, but the city is not a single cluster.</h3>
+                      <p>The report should treat Bangalore as the main lens while still showing that responses come from several visible Bengaluru pockets.</p>
+                      <ul class="highlights">
+                        <li>Bangalore contributes 146 of 251 responses (58.2%).</li><li>JP Nagar is the largest named Bangalore locality with 12 responses.</li><li>Bellandur, Whitefield, and HSR Layout each contribute meaningful local pockets of responses.</li>
+                      </ul>
+                      <div class="why">
+                        <strong>Why this matters</strong>
+                        <p>Presentation should not talk about Bangalore as if it were one homogeneous block; locality cuts are needed for a credible city-specific story.</p>
+                      </div>
+                    </div>
+                    <div>
+    <figure class="figure-card" data-figure-title="Top Bangalore localities in the sample" data-figure-caption="Bangalore accounts for 58.2% of the full sample, with JP Nagar leading the named localities.">
+      <button class="figure-expand" type="button" aria-label="Expand graph: Top Bangalore localities in the sample">
+        <span class="figure-expand__icon" aria-hidden="true">+</span>
+        <span class="figure-expand__label">Expand</span>
+      </button>
+      <div class="figure-art" role="button" tabindex="0" aria-label="Open expanded graph: Top Bangalore localities in the sample"><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="612" viewBox="0 0 1120 612" role="img" aria-labelledby="top-bangalore-localities-in-the-sample-title top-bangalore-localities-in-the-sample-subtitle">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f1a24" flood-opacity="0.08" />
+    </filter>
+    
+  </defs>
+  <style>
+  .title { font: 700 30px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .subtitle { font: 500 15px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .axis { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .label { font: 600 15px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .labelMuted { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .value { font: 700 14px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .small { font: 500 12px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .grid { stroke: #d7ddd7; stroke-width: 1; stroke-dasharray: 2 6; }
+  .axisLine { stroke: #5f6c77; stroke-width: 1.25; }
+</style>
+  <rect x="0" y="0" width="1120" height="612" rx="30" fill="#fcfaf5" />
+  <rect x="16" y="16" width="1088" height="580" rx="26" fill="#f7f3ea" stroke="#d7ddd7" />
+  <text id="top-bangalore-localities-in-the-sample-title" class="title" x="52" y="68"><tspan x="52" dy="0">Top Bangalore localities in the sample</tspan></text>
+  <text id="top-bangalore-localities-in-the-sample-subtitle" class="subtitle" x="52" y="96"><tspan x="52" dy="0">Displayed individually once a locality reaches at least three responses.</tspan></text>
+  <line class="grid" x1="360" x2="360" y1="134" y2="564" /><text class="axis" text-anchor="middle" x="360" y="592">0</text><line class="grid" x1="530" x2="530" y1="134" y2="564" /><text class="axis" text-anchor="middle" x="530" y="592">25</text><line class="grid" x1="700" x2="700" y1="134" y2="564" /><text class="axis" text-anchor="middle" x="700" y="592">50</text><line class="grid" x1="870" x2="870" y1="134" y2="564" /><text class="axis" text-anchor="middle" x="870" y="592">75</text><line class="grid" x1="1040" x2="1040" y1="134" y2="564" /><text class="axis" text-anchor="middle" x="1040" y="592">100</text><rect x="360" y="150" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="150" width="394.4" height="22" rx="11" fill="#1c7c74" /><text class="label" text-anchor="start" x="44" y="166"><tspan x="44" dy="0">Bangalore (Unspecified)</tspan></text><text class="value" x="766.4" y="166">58</text><rect x="360" y="204" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="204" width="102" height="22" rx="11" fill="rgb(131, 174, 158)" /><text class="label" text-anchor="start" x="44" y="220"><tspan x="44" dy="0">Other Bangalore localities</tspan></text><text class="value" x="474" y="220">15</text><rect x="360" y="258" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="258" width="81.6" height="22" rx="11" fill="rgb(121, 169, 153)" /><text class="label" text-anchor="start" x="44" y="274"><tspan x="44" dy="0">JP Nagar</tspan></text><text class="value" x="453.6" y="274">12</text><rect x="360" y="312" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="312" width="54.4" height="22" rx="11" fill="rgb(110, 164, 149)" /><text class="label" text-anchor="start" x="44" y="328"><tspan x="44" dy="0">Bellandur</tspan></text><text class="value" x="426.4" y="328">8</text><rect x="360" y="366" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="366" width="54.4" height="22" rx="11" fill="rgb(100, 159, 145)" /><text class="label" text-anchor="start" x="44" y="382"><tspan x="44" dy="0">HSR Layout</tspan></text><text class="value" x="426.4" y="382">8</text><rect x="360" y="420" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="420" width="54.4" height="22" rx="11" fill="rgb(90, 154, 141)" /><text class="label" text-anchor="start" x="44" y="436"><tspan x="44" dy="0">Whitefield</tspan></text><text class="value" x="426.4" y="436">8</text><rect x="360" y="474" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="474" width="34" height="22" rx="11" fill="rgb(80, 149, 137)" /><text class="label" text-anchor="start" x="44" y="490"><tspan x="44" dy="0">Ulsoor</tspan></text><text class="value" x="406" y="490">5</text><rect x="360" y="528" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="528" width="27.2" height="22" rx="11" fill="rgb(69, 144, 133)" /><text class="label" text-anchor="start" x="44" y="544"><tspan x="44" dy="0">CV Raman Nagar</tspan></text><text class="value" x="399.2" y="544">4</text>
+</svg></div>
+      <figcaption class="figure-caption">Bangalore accounts for 58.2% of the full sample, with JP Nagar leading the named localities.</figcaption>
+    </figure>
+  </div>
+                  </article>
+                
+                  <article class="insight-card">
+                    <div>
+                      <div class="insight-meta">Bangalore</div>
+                      <h3>Named Bangalore localities differ more in behavior than in awareness.</h3>
+                      <p>Practice is strongest in a few named Bangalore pockets even when knowledge stays closer to the city average.</p>
+                      <ul class="highlights">
+                        <li>Whitefield posts the highest reported practice score among claimable Bangalore localities at 80.0%.</li><li>JP Nagar and HSR Layout also clear 75% on practice.</li><li>The Bangalore-wide practice mean is 70.9%.</li>
+                      </ul>
+                      <div class="why">
+                        <strong>Why this matters</strong>
+                        <p>Locality messaging can highlight where good routines already exist and use those pockets as proof that stronger behavior is achievable inside the same city context.</p>
+                      </div>
+                    </div>
+                    <div>
+    <figure class="figure-card" data-figure-title="KAP by Bangalore locality" data-figure-caption="Whitefield leads the claimable Bangalore localities on practice, not on knowledge alone.">
+      <button class="figure-expand" type="button" aria-label="Expand graph: KAP by Bangalore locality">
+        <span class="figure-expand__icon" aria-hidden="true">+</span>
+        <span class="figure-expand__label">Expand</span>
+      </button>
+      <div class="figure-art" role="button" tabindex="0" aria-label="Open expanded graph: KAP by Bangalore locality"><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="596" viewBox="0 0 1180 596" role="img" aria-labelledby="kap-by-bangalore-locality-title kap-by-bangalore-locality-subtitle">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f1a24" flood-opacity="0.08" />
+    </filter>
+    
+  </defs>
+  <style>
+  .title { font: 700 30px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .subtitle { font: 500 15px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .axis { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .label { font: 600 15px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .labelMuted { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .value { font: 700 14px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .small { font: 500 12px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .grid { stroke: #d7ddd7; stroke-width: 1; stroke-dasharray: 2 6; }
+  .axisLine { stroke: #5f6c77; stroke-width: 1.25; }
+</style>
+  <rect x="0" y="0" width="1180" height="596" rx="30" fill="#fcfaf5" />
+  <rect x="16" y="16" width="1148" height="564" rx="26" fill="#f7f3ea" stroke="#d7ddd7" />
+  <text id="kap-by-bangalore-locality-title" class="title" x="52" y="68"><tspan x="52" dy="0">KAP by Bangalore locality</tspan></text>
+  <text id="kap-by-bangalore-locality-subtitle" class="subtitle" x="52" y="96"><tspan x="52" dy="0">Localities shown individually once they reach at least five responses.</tspan></text>
+  <line class="grid" x1="380" x2="380" y1="140" y2="554" /><text class="axis" text-anchor="middle" x="380" y="578">0%</text><line class="grid" x1="520" x2="520" y1="140" y2="554" /><text class="axis" text-anchor="middle" x="520" y="578">20%</text><line class="grid" x1="660" x2="660" y1="140" y2="554" /><text class="axis" text-anchor="middle" x="660" y="578">40%</text><line class="grid" x1="800" x2="800" y1="140" y2="554" /><text class="axis" text-anchor="middle" x="800" y="578">60%</text><line class="grid" x1="940" x2="940" y1="140" y2="554" /><text class="axis" text-anchor="middle" x="940" y="578">80%</text><line class="grid" x1="1080" x2="1080" y1="140" y2="554" /><text class="axis" text-anchor="middle" x="1080" y="578">100%</text>
+        <circle cx="420" cy="126" r="7" fill="#1c7c74" />
+        <text class="labelMuted" x="434" y="131">Knowledge</text>
+      
+        <circle cx="590" cy="126" r="7" fill="#d78f2f" />
+        <text class="labelMuted" x="604" y="131">Attitude</text>
+      
+        <circle cx="760" cy="126" r="7" fill="#234d70" />
+        <text class="labelMuted" x="774" y="131">Practice</text>
+      <line x1="835" x2="940" y1="164" y2="164" stroke="#c2cbc2" stroke-width="4" stroke-linecap="round" /><circle cx="835" cy="164" r="10" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><circle cx="856.6999999999999" cy="164" r="10" fill="#d78f2f" stroke="#fcfaf5" stroke-width="3" /><circle cx="940" cy="164" r="10" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="169"><tspan x="44" dy="0">Whitefield</tspan></text><text class="labelMuted" x="300" y="169">n=8</text><line x1="829.4000000000001" x2="924.6" y1="222" y2="222" stroke="#c2cbc2" stroke-width="4" stroke-linecap="round" /><circle cx="829.4000000000001" cy="222" r="10" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><circle cx="856.6999999999999" cy="222" r="10" fill="#d78f2f" stroke="#fcfaf5" stroke-width="3" /><circle cx="924.6" cy="222" r="10" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="227"><tspan x="44" dy="0">JP Nagar</tspan></text><text class="labelMuted" x="300" y="227">n=12</text><line x1="817.5" x2="913.4" y1="280" y2="280" stroke="#c2cbc2" stroke-width="4" stroke-linecap="round" /><circle cx="817.5" cy="280" r="10" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><circle cx="885.4" cy="280" r="10" fill="#d78f2f" stroke="#fcfaf5" stroke-width="3" /><circle cx="913.4" cy="280" r="10" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="285"><tspan x="44" dy="0">HSR Layout</tspan></text><text class="labelMuted" x="300" y="285">n=8</text><line x1="821.7" x2="881.9000000000001" y1="338" y2="338" stroke="#c2cbc2" stroke-width="4" stroke-linecap="round" /><circle cx="821.7" cy="338" r="10" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><circle cx="874.9000000000001" cy="338" r="10" fill="#d78f2f" stroke="#fcfaf5" stroke-width="3" /><circle cx="881.9000000000001" cy="338" r="10" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="343"><tspan x="44" dy="0">Bangalore (Unspecified)</tspan></text><text class="labelMuted" x="300" y="343">n=58</text><line x1="800" x2="865.8000000000001" y1="396" y2="396" stroke="#c2cbc2" stroke-width="4" stroke-linecap="round" /><circle cx="800" cy="396" r="10" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><circle cx="865.8000000000001" cy="396" r="10" fill="#d78f2f" stroke="#fcfaf5" stroke-width="3" /><circle cx="859.5" cy="396" r="10" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="401"><tspan x="44" dy="0">Other Bangalore</tspan><tspan x="44" dy="16">localities</tspan></text><text class="labelMuted" x="300" y="401">n=47</text><line x1="832.1999999999999" x2="887.5" y1="454" y2="454" stroke="#c2cbc2" stroke-width="4" stroke-linecap="round" /><circle cx="843.4000000000001" cy="454" r="10" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><circle cx="887.5" cy="454" r="10" fill="#d78f2f" stroke="#fcfaf5" stroke-width="3" /><circle cx="832.1999999999999" cy="454" r="10" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="459"><tspan x="44" dy="0">Bellandur</tspan></text><text class="labelMuted" x="300" y="459">n=8</text><line x1="767.0999999999999" x2="1024" y1="512" y2="512" stroke="#c2cbc2" stroke-width="4" stroke-linecap="round" /><circle cx="1024" cy="512" r="10" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><circle cx="772" cy="512" r="10" fill="#d78f2f" stroke="#fcfaf5" stroke-width="3" /><circle cx="767.0999999999999" cy="512" r="10" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="517"><tspan x="44" dy="0">Ulsoor</tspan></text><text class="labelMuted" x="300" y="517">n=5</text>
+</svg></div>
+      <figcaption class="figure-caption">Whitefield leads the claimable Bangalore localities on practice, not on knowledge alone.</figcaption>
+    </figure>
+  </div>
+                  </article>
+                
+                  <article class="insight-card">
+                    <div>
+                      <div class="insight-meta">Bangalore</div>
+                      <h3>Ulsoor stands out as a small pocket where knowledge is not turning into routine practice.</h3>
+                      <p>The biggest knowledge-to-behavior mismatch inside Bangalore appears in a locality-sized pocket, not in the city average.</p>
+                      <ul class="highlights">
+                        <li>Ulsoor records 92.0% on knowledge and 55.3% on practice.</li><li>That creates a 36.7-point knowledge-practice gap.</li><li>This comparison is based on 5 respondents, so it should be presented as a directional pocket rather than a citywide conclusion.</li>
+                      </ul>
+                      <div class="why">
+                        <strong>Why this matters</strong>
+                        <p>This is the clearest example that awareness alone does not guarantee daily action, which points toward behavior-focused interventions rather than awareness messaging alone.</p>
+                      </div>
+                    </div>
+                    <div>
+    <figure class="figure-card" data-figure-title="Knowledge-to-practice gaps across Bangalore localities" data-figure-caption="Ulsoor has the largest knowledge-practice gap among localities with at least five respondents.">
+      <button class="figure-expand" type="button" aria-label="Expand graph: Knowledge-to-practice gaps across Bangalore localities">
+        <span class="figure-expand__icon" aria-hidden="true">+</span>
+        <span class="figure-expand__label">Expand</span>
+      </button>
+      <div class="figure-art" role="button" tabindex="0" aria-label="Open expanded graph: Knowledge-to-practice gaps across Bangalore localities"><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="596" viewBox="0 0 1180 596" role="img" aria-labelledby="knowledge-to-practice-gaps-across-bangalore-localities-title knowledge-to-practice-gaps-across-bangalore-localities-subtitle">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f1a24" flood-opacity="0.08" />
+    </filter>
+    
+  </defs>
+  <style>
+  .title { font: 700 30px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .subtitle { font: 500 15px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .axis { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .label { font: 600 15px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .labelMuted { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .value { font: 700 14px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .small { font: 500 12px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .grid { stroke: #d7ddd7; stroke-width: 1; stroke-dasharray: 2 6; }
+  .axisLine { stroke: #5f6c77; stroke-width: 1.25; }
+</style>
+  <rect x="0" y="0" width="1180" height="596" rx="30" fill="#fcfaf5" />
+  <rect x="16" y="16" width="1148" height="564" rx="26" fill="#f7f3ea" stroke="#d7ddd7" />
+  <text id="knowledge-to-practice-gaps-across-bangalore-localities-title" class="title" x="52" y="68"><tspan x="52" dy="0">Knowledge-to-practice gaps across</tspan><tspan x="52" dy="34">Bangalore localities</tspan></text>
+  <text id="knowledge-to-practice-gaps-across-bangalore-localities-subtitle" class="subtitle" x="52" y="130"><tspan x="52" dy="0">Positive values mean knowledge is running ahead of behavior.</tspan></text>
+  <line class="grid" x1="380" x2="380" y1="140" y2="554" /><text class="axis" text-anchor="middle" x="380" y="578">0.0%</text><line class="grid" x1="520" x2="520" y1="140" y2="554" /><text class="axis" text-anchor="middle" x="520" y="578">20.0%</text><line class="grid" x1="660" x2="660" y1="140" y2="554" /><text class="axis" text-anchor="middle" x="660" y="578">40.0%</text><line class="grid" x1="800" x2="800" y1="140" y2="554" /><text class="axis" text-anchor="middle" x="800" y="578">60.0%</text><line class="grid" x1="940" x2="940" y1="140" y2="554" /><text class="axis" text-anchor="middle" x="940" y="578">80.0%</text><line class="grid" x1="1080" x2="1080" y1="140" y2="554" /><text class="axis" text-anchor="middle" x="1080" y="578">100.0%</text>
+        <circle cx="460" cy="126" r="7" fill="#234d70" />
+        <text class="labelMuted" x="474" y="131">Practice</text>
+      
+        <circle cx="630" cy="126" r="7" fill="#1c7c74" />
+        <text class="labelMuted" x="644" y="131">Knowledge</text>
+      <line x1="835" x2="940" y1="164" y2="164" stroke="#c5cdcf" stroke-width="5" stroke-linecap="round" /><circle cx="940" cy="164" r="11" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><circle cx="835" cy="164" r="11" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="169"><tspan x="44" dy="0">Whitefield</tspan></text><line x1="829.4000000000001" x2="924.6" y1="222" y2="222" stroke="#c5cdcf" stroke-width="5" stroke-linecap="round" /><circle cx="924.6" cy="222" r="11" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><circle cx="829.4000000000001" cy="222" r="11" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="227"><tspan x="44" dy="0">JP Nagar</tspan></text><line x1="817.5" x2="913.4" y1="280" y2="280" stroke="#c5cdcf" stroke-width="5" stroke-linecap="round" /><circle cx="913.4" cy="280" r="11" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><circle cx="817.5" cy="280" r="11" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="285"><tspan x="44" dy="0">HSR Layout</tspan></text><line x1="821.7" x2="881.9000000000001" y1="338" y2="338" stroke="#c5cdcf" stroke-width="5" stroke-linecap="round" /><circle cx="881.9000000000001" cy="338" r="11" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><circle cx="821.7" cy="338" r="11" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="343"><tspan x="44" dy="0">Bangalore (Unspecified)</tspan></text><line x1="800" x2="859.5" y1="396" y2="396" stroke="#c5cdcf" stroke-width="5" stroke-linecap="round" /><circle cx="859.5" cy="396" r="11" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><circle cx="800" cy="396" r="11" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="401"><tspan x="44" dy="0">Other Bangalore</tspan><tspan x="44" dy="16">localities</tspan></text><line x1="832.1999999999999" x2="843.4000000000001" y1="454" y2="454" stroke="#c5cdcf" stroke-width="5" stroke-linecap="round" /><circle cx="832.1999999999999" cy="454" r="11" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><circle cx="843.4000000000001" cy="454" r="11" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="459"><tspan x="44" dy="0">Bellandur</tspan></text><line x1="767.0999999999999" x2="1024" y1="512" y2="512" stroke="#c5cdcf" stroke-width="5" stroke-linecap="round" /><circle cx="767.0999999999999" cy="512" r="11" fill="#234d70" stroke="#fcfaf5" stroke-width="3" /><circle cx="1024" cy="512" r="11" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="517"><tspan x="44" dy="0">Ulsoor</tspan></text>
+</svg></div>
+      <figcaption class="figure-caption">Ulsoor has the largest knowledge-practice gap among localities with at least five respondents.</figcaption>
+    </figure>
+  </div>
+                  </article>
+                
+                  <article class="insight-card">
+                    <div>
+                      <div class="insight-meta">Overall</div>
+                      <h3>The weakest knowledge area is not advanced care; it is the basic cause of gum disease.</h3>
+                      <p>The biggest misconception sits at the foundation of periodontal understanding, which makes it especially important for public messaging.</p>
+                      <ul class="highlights">
+                        <li>Only 37.5% answered the early gum disease cause question correctly.</li><li>Plaque and tartar questions also stay near the halfway mark at 51.4% and 51.4%.</li><li>The overall knowledge average is 63.6%.</li>
+                      </ul>
+                      <div class="why">
+                        <strong>Why this matters</strong>
+                        <p>If the basics are still unclear, communication should start with plain explanations of plaque, tartar, and disease causation before moving to treatment messaging.</p>
+                      </div>
+                    </div>
+                    <div>
+    <figure class="figure-card" data-figure-title="Weakest knowledge items" data-figure-caption="The disease-cause question is the lowest-scoring knowledge item at 37.5% correct.">
+      <button class="figure-expand" type="button" aria-label="Expand graph: Weakest knowledge items">
+        <span class="figure-expand__icon" aria-hidden="true">+</span>
+        <span class="figure-expand__label">Expand</span>
+      </button>
+      <div class="figure-art" role="button" tabindex="0" aria-label="Open expanded graph: Weakest knowledge items"><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="450" viewBox="0 0 1120 450" role="img" aria-labelledby="weakest-knowledge-items-title weakest-knowledge-items-subtitle">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f1a24" flood-opacity="0.08" />
+    </filter>
+    
+  </defs>
+  <style>
+  .title { font: 700 30px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .subtitle { font: 500 15px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .axis { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .label { font: 600 15px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .labelMuted { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .value { font: 700 14px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .small { font: 500 12px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .grid { stroke: #d7ddd7; stroke-width: 1; stroke-dasharray: 2 6; }
+  .axisLine { stroke: #5f6c77; stroke-width: 1.25; }
+</style>
+  <rect x="0" y="0" width="1120" height="450" rx="30" fill="#fcfaf5" />
+  <rect x="16" y="16" width="1088" height="418" rx="26" fill="#f7f3ea" stroke="#d7ddd7" />
+  <text id="weakest-knowledge-items-title" class="title" x="52" y="68"><tspan x="52" dy="0">Weakest knowledge items</tspan></text>
+  <text id="weakest-knowledge-items-subtitle" class="subtitle" x="52" y="96"><tspan x="52" dy="0">Percent answering each question correctly.</tspan></text>
+  <line class="grid" x1="360" x2="360" y1="134" y2="402" /><text class="axis" text-anchor="middle" x="360" y="430">0%</text><line class="grid" x1="530" x2="530" y1="134" y2="402" /><text class="axis" text-anchor="middle" x="530" y="430">25%</text><line class="grid" x1="700" x2="700" y1="134" y2="402" /><text class="axis" text-anchor="middle" x="700" y="430">50%</text><line class="grid" x1="870" x2="870" y1="134" y2="402" /><text class="axis" text-anchor="middle" x="870" y="430">75%</text><line class="grid" x1="1040" x2="1040" y1="134" y2="402" /><text class="axis" text-anchor="middle" x="1040" y="430">100%</text><line x1="360" x2="615" y1="161" y2="161" stroke="#d7ddd7" stroke-width="6" stroke-linecap="round" /><circle cx="615" cy="161" r="12" fill="#d8654d" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="166"><tspan x="44" dy="0">Cause</tspan></text><text class="value" x="633" y="166">37.5%</text><line x1="360" x2="709.52" y1="215" y2="215" stroke="#d7ddd7" stroke-width="6" stroke-linecap="round" /><circle cx="709.52" cy="215" r="12" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="220"><tspan x="44" dy="0">Plaque</tspan></text><text class="value" x="727.52" y="220">51.4%</text><line x1="360" x2="709.52" y1="269" y2="269" stroke="#d7ddd7" stroke-width="6" stroke-linecap="round" /><circle cx="709.52" cy="269" r="12" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="274"><tspan x="44" dy="0">Calculus</tspan></text><text class="value" x="727.52" y="274">51.4%</text><line x1="360" x2="723.12" y1="323" y2="323" stroke="#d7ddd7" stroke-width="6" stroke-linecap="round" /><circle cx="723.12" cy="323" r="12" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="328"><tspan x="44" dy="0">Specialty</tspan></text><text class="value" x="741.12" y="328">53.4%</text><line x1="360" x2="731.28" y1="377" y2="377" stroke="#d7ddd7" stroke-width="6" stroke-linecap="round" /><circle cx="731.28" cy="377" r="12" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="382"><tspan x="44" dy="0">Vitamin</tspan></text><text class="value" x="749.28" y="382">54.6%</text>
+</svg></div>
+      <figcaption class="figure-caption">The disease-cause question is the lowest-scoring knowledge item at 37.5% correct.</figcaption>
+    </figure>
+  </div>
+                  </article>
+                
+                  <article class="insight-card">
+                    <div>
+                      <div class="insight-meta">Overall</div>
+                      <h3>Daily routines weaken most on interdental cleaning and dentist follow-up.</h3>
+                      <p>The weakest behaviors are not brushing basics alone; they are the routines people skip once a toothbrush is no longer enough.</p>
+                      <ul class="highlights">
+                        <li>Only 12.0% land in the best-practice band for cleaning aids.</li><li>Dental visit recency reaches only 39.0% best-practice adherence.</li><li>Half or more of respondents remain in the low-quality bands for brushing direction and dentist visits.</li>
+                      </ul>
+                      <div class="why">
+                        <strong>Why this matters</strong>
+                        <p>This points to a concrete behavior agenda: move beyond brushing frequency and focus on interdental cleaning and regular dental follow-up.</p>
+                      </div>
+                    </div>
+                    <div>
+    <figure class="figure-card" data-figure-title="Practice items with the lowest best-practice share" data-figure-caption="Cleaning aids is the weakest behavior area, with only 12.0% in the best-practice band.">
+      <button class="figure-expand" type="button" aria-label="Expand graph: Practice items with the lowest best-practice share">
+        <span class="figure-expand__icon" aria-hidden="true">+</span>
+        <span class="figure-expand__label">Expand</span>
+      </button>
+      <div class="figure-art" role="button" tabindex="0" aria-label="Open expanded graph: Practice items with the lowest best-practice share"><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="450" viewBox="0 0 1120 450" role="img" aria-labelledby="practice-items-with-the-lowest-best-practice-share-title practice-items-with-the-lowest-best-practice-share-subtitle">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f1a24" flood-opacity="0.08" />
+    </filter>
+    
+  </defs>
+  <style>
+  .title { font: 700 30px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .subtitle { font: 500 15px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .axis { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .label { font: 600 15px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .labelMuted { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .value { font: 700 14px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .small { font: 500 12px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .grid { stroke: #d7ddd7; stroke-width: 1; stroke-dasharray: 2 6; }
+  .axisLine { stroke: #5f6c77; stroke-width: 1.25; }
+</style>
+  <rect x="0" y="0" width="1120" height="450" rx="30" fill="#fcfaf5" />
+  <rect x="16" y="16" width="1088" height="418" rx="26" fill="#f7f3ea" stroke="#d7ddd7" />
+  <text id="practice-items-with-the-lowest-best-practice-share-title" class="title" x="52" y="68"><tspan x="52" dy="0">Practice items with the lowest</tspan><tspan x="52" dy="34">best-practice share</tspan></text>
+  <text id="practice-items-with-the-lowest-best-practice-share-subtitle" class="subtitle" x="52" y="130"><tspan x="52" dy="0">Lower bars indicate the hardest routines to sustain.</tspan></text>
+  <line class="grid" x1="360" x2="360" y1="134" y2="402" /><text class="axis" text-anchor="middle" x="360" y="430">0.0%</text><line class="grid" x1="530" x2="530" y1="134" y2="402" /><text class="axis" text-anchor="middle" x="530" y="430">25.0%</text><line class="grid" x1="700" x2="700" y1="134" y2="402" /><text class="axis" text-anchor="middle" x="700" y="430">50.0%</text><line class="grid" x1="870" x2="870" y1="134" y2="402" /><text class="axis" text-anchor="middle" x="870" y="430">75.0%</text><line class="grid" x1="1040" x2="1040" y1="134" y2="402" /><text class="axis" text-anchor="middle" x="1040" y="430">100.0%</text><rect x="360" y="150" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="150" width="81.6" height="22" rx="11" fill="#1c7c74" /><text class="label" text-anchor="start" x="44" y="166"><tspan x="44" dy="0">Cleaning aids</tspan></text><text class="value" x="453.6" y="166">12.0%</text><rect x="360" y="204" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="204" width="246.84" height="22" rx="11" fill="rgb(131, 174, 158)" /><text class="label" text-anchor="start" x="44" y="220"><tspan x="44" dy="0">Brushing direction</tspan></text><text class="value" x="618.84" y="220">36.3%</text><rect x="360" y="258" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="258" width="265.2" height="22" rx="11" fill="rgb(121, 169, 153)" /><text class="label" text-anchor="start" x="44" y="274"><tspan x="44" dy="0">Dental visit</tspan></text><text class="value" x="637.2" y="274">39.0%</text><rect x="360" y="312" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="312" width="344.08" height="22" rx="11" fill="rgb(110, 164, 149)" /><text class="label" text-anchor="start" x="44" y="328"><tspan x="44" dy="0">Brushing timing</tspan></text><text class="value" x="716.0799999999999" y="328">50.6%</text><rect x="360" y="366" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="366" width="376.71999999999997" height="22" rx="11" fill="rgb(100, 159, 145)" /><text class="label" text-anchor="start" x="44" y="382"><tspan x="44" dy="0">Brush softness</tspan></text><text class="value" x="748.72" y="382">55.4%</text>
+</svg></div>
+      <figcaption class="figure-caption">Cleaning aids is the weakest behavior area, with only 12.0% in the best-practice band.</figcaption>
+    </figure>
+  </div>
+                  </article>
+                
+                  <article class="insight-card">
+                    <div>
+                      <div class="insight-meta">Outside Bangalore</div>
+                      <h3>Bangalore respondents are more attitude-positive, but knowledge and behavior look broadly similar to the outside-Bangalore sample.</h3>
+                      <p>The geography story is more about attitude tone than about a dramatic difference in knowledge or practice.</p>
+                      <ul class="highlights">
+                        <li>Bangalore averages 69.6% on attitude versus 66.1% outside Bangalore.</li><li>The attitude gap is 3.5 points with a small effect size of 0.190.</li><li>Knowledge and practice differences are directionally smaller than the attitude split.</li>
+                      </ul>
+                      <div class="why">
+                        <strong>Why this matters</strong>
+                        <p>Outside-Bangalore respondents still belong in the story because the differences are not large enough to dismiss them as a separate population.</p>
+                      </div>
+                    </div>
+                    <div>
+    <figure class="figure-card" data-figure-title="Bangalore versus outside Bangalore" data-figure-caption="Attitude shows the clearest Bangalore-versus-outside contrast, while knowledge and practice stay closer together.">
+      <button class="figure-expand" type="button" aria-label="Expand graph: Bangalore versus outside Bangalore">
+        <span class="figure-expand__icon" aria-hidden="true">+</span>
+        <span class="figure-expand__label">Expand</span>
+      </button>
+      <div class="figure-art" role="button" tabindex="0" aria-label="Open expanded graph: Bangalore versus outside Bangalore"><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="364" viewBox="0 0 1180 364" role="img" aria-labelledby="bangalore-versus-outside-bangalore-title bangalore-versus-outside-bangalore-subtitle">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f1a24" flood-opacity="0.08" />
+    </filter>
+    
+  </defs>
+  <style>
+  .title { font: 700 30px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .subtitle { font: 500 15px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .axis { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .label { font: 600 15px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .labelMuted { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .value { font: 700 14px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .small { font: 500 12px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .grid { stroke: #d7ddd7; stroke-width: 1; stroke-dasharray: 2 6; }
+  .axisLine { stroke: #5f6c77; stroke-width: 1.25; }
+</style>
+  <rect x="0" y="0" width="1180" height="364" rx="30" fill="#fcfaf5" />
+  <rect x="16" y="16" width="1148" height="332" rx="26" fill="#f7f3ea" stroke="#d7ddd7" />
+  <text id="bangalore-versus-outside-bangalore-title" class="title" x="52" y="68"><tspan x="52" dy="0">Bangalore versus outside Bangalore</tspan></text>
+  <text id="bangalore-versus-outside-bangalore-subtitle" class="subtitle" x="52" y="96"><tspan x="52" dy="0">Mean standardized scores by geo scope.</tspan></text>
+  <line class="grid" x1="380" x2="380" y1="140" y2="322" /><text class="axis" text-anchor="middle" x="380" y="346">0.0%</text><line class="grid" x1="520" x2="520" y1="140" y2="322" /><text class="axis" text-anchor="middle" x="520" y="346">20.0%</text><line class="grid" x1="660" x2="660" y1="140" y2="322" /><text class="axis" text-anchor="middle" x="660" y="346">40.0%</text><line class="grid" x1="800" x2="800" y1="140" y2="322" /><text class="axis" text-anchor="middle" x="800" y="346">60.0%</text><line class="grid" x1="940" x2="940" y1="140" y2="322" /><text class="axis" text-anchor="middle" x="940" y="346">80.0%</text><line class="grid" x1="1080" x2="1080" y1="140" y2="322" /><text class="axis" text-anchor="middle" x="1080" y="346">100.0%</text>
+        <circle cx="460" cy="126" r="7" fill="#d8654d" />
+        <text class="labelMuted" x="474" y="131">Outside Bangalore</text>
+      
+        <circle cx="630" cy="126" r="7" fill="#1c7c74" />
+        <text class="labelMuted" x="644" y="131">Bangalore</text>
+      <line x1="823.8" x2="827.3" y1="164" y2="164" stroke="#c5cdcf" stroke-width="5" stroke-linecap="round" /><circle cx="827.3" cy="164" r="11" fill="#d8654d" stroke="#fcfaf5" stroke-width="3" /><circle cx="823.8" cy="164" r="11" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="169"><tspan x="44" dy="0">Knowledge</tspan></text><line x1="842.6999999999999" x2="867.2" y1="222" y2="222" stroke="#c5cdcf" stroke-width="5" stroke-linecap="round" /><circle cx="842.6999999999999" cy="222" r="11" fill="#d8654d" stroke="#fcfaf5" stroke-width="3" /><circle cx="867.2" cy="222" r="11" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="227"><tspan x="44" dy="0">Attitude</tspan></text><line x1="857.4000000000001" x2="876.3000000000001" y1="280" y2="280" stroke="#c5cdcf" stroke-width="5" stroke-linecap="round" /><circle cx="857.4000000000001" cy="280" r="11" fill="#d8654d" stroke="#fcfaf5" stroke-width="3" /><circle cx="876.3000000000001" cy="280" r="11" fill="#1c7c74" stroke="#fcfaf5" stroke-width="3" /><text class="label" text-anchor="start" x="44" y="285"><tspan x="44" dy="0">Practice</tspan></text>
+</svg></div>
+      <figcaption class="figure-caption">Attitude shows the clearest Bangalore-versus-outside contrast, while knowledge and practice stay closer together.</figcaption>
+    </figure>
+  </div>
+                  </article>
+                
+                  <article class="insight-card">
+                    <div>
+                      <div class="insight-meta">Overall</div>
+                      <h3>Knowledge aligns most strongly with practice, more than with attitude alone.</h3>
+                      <p>Among the three composite domains, the cleanest statistical relationship is between knowing more and reporting better routines.</p>
+                      <ul class="highlights">
+                        <li>Knowledge vs Practice has the strongest Spearman rho at 0.381.</li><li>The 95% bootstrap interval runs from 0.264 to 0.491.</li><li>Attitude also matters, but the practice link is weaker when attitude is paired with practice directly.</li>
+                      </ul>
+                      <div class="why">
+                        <strong>Why this matters</strong>
+                        <p>This connects awareness-building with behavior change, while still acknowledging that knowledge alone is not sufficient in every locality or segment.</p>
+                      </div>
+                    </div>
+                    <div>
+    <figure class="figure-card" data-figure-title="Relationships among knowledge, attitude, and practice" data-figure-caption="Knowledge shows its strongest alignment with practice at rho=0.381.">
+      <button class="figure-expand" type="button" aria-label="Expand graph: Relationships among knowledge, attitude, and practice">
+        <span class="figure-expand__icon" aria-hidden="true">+</span>
+        <span class="figure-expand__label">Expand</span>
+      </button>
+      <div class="figure-art" role="button" tabindex="0" aria-label="Open expanded graph: Relationships among knowledge, attitude, and practice"><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="640" viewBox="0 0 920 640" role="img" aria-labelledby="relationships-among-knowledge-attitude-and-practice-title relationships-among-knowledge-attitude-and-practice-subtitle">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f1a24" flood-opacity="0.08" />
+    </filter>
+    
+  </defs>
+  <style>
+  .title { font: 700 30px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .subtitle { font: 500 15px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .axis { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .label { font: 600 15px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .labelMuted { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .value { font: 700 14px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .small { font: 500 12px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .grid { stroke: #d7ddd7; stroke-width: 1; stroke-dasharray: 2 6; }
+  .axisLine { stroke: #5f6c77; stroke-width: 1.25; }
+</style>
+  <rect x="0" y="0" width="920" height="640" rx="30" fill="#fcfaf5" />
+  <rect x="16" y="16" width="888" height="608" rx="26" fill="#f7f3ea" stroke="#d7ddd7" />
+  <text id="relationships-among-knowledge-attitude-and-practice-title" class="title" x="52" y="68"><tspan x="52" dy="0">Relationships among knowledge, attitude,</tspan><tspan x="52" dy="34">and practice</tspan></text>
+  <text id="relationships-among-knowledge-attitude-and-practice-subtitle" class="subtitle" x="52" y="130"><tspan x="52" dy="0">Darker circles represent stronger monotonic relationships.</tspan></text>
+  <text class="label" text-anchor="middle" x="300" y="144">Knowledge</text><text class="label" x="54" y="266">Knowledge</text><text class="label" text-anchor="middle" x="460" y="144">Attitude</text><text class="label" x="54" y="426">Attitude</text><text class="label" text-anchor="middle" x="620" y="144">Practice</text><text class="label" x="54" y="586">Practice</text><rect x="220" y="180" width="144" height="144" rx="22" fill="#f3ede1" stroke="#d7ddd7" /><text class="labelMuted" text-anchor="middle" x="292" y="262">Same metric</text><rect x="380" y="180" width="144" height="144" rx="22" fill="#f3ede1" stroke="#d7ddd7" /><circle cx="452" cy="252" r="33.97" fill="rgb(177, 175, 174)" opacity="0.92" /><text class="value" text-anchor="middle" x="452" y="258" fill="#ffffff">0.315</text><rect x="540" y="180" width="144" height="144" rx="22" fill="#f3ede1" stroke="#d7ddd7" /><circle cx="612" cy="252" r="36.478" fill="rgb(163, 166, 168)" opacity="0.92" /><text class="value" text-anchor="middle" x="612" y="258" fill="#ffffff">0.381</text><rect x="220" y="340" width="144" height="144" rx="22" fill="#f3ede1" stroke="#d7ddd7" /><circle cx="292" cy="412" r="33.97" fill="rgb(177, 175, 174)" opacity="0.92" /><text class="value" text-anchor="middle" x="292" y="418" fill="#ffffff">0.315</text><rect x="380" y="340" width="144" height="144" rx="22" fill="#f3ede1" stroke="#d7ddd7" /><text class="labelMuted" text-anchor="middle" x="452" y="422">Same metric</text><rect x="540" y="340" width="144" height="144" rx="22" fill="#f3ede1" stroke="#d7ddd7" /><circle cx="612" cy="412" r="31.082" fill="rgb(193, 186, 181)" opacity="0.92" /><text class="value" text-anchor="middle" x="612" y="418" fill="#ffffff">0.239</text><rect x="220" y="500" width="144" height="144" rx="22" fill="#f3ede1" stroke="#d7ddd7" /><circle cx="292" cy="572" r="36.478" fill="rgb(163, 166, 168)" opacity="0.92" /><text class="value" text-anchor="middle" x="292" y="578" fill="#ffffff">0.381</text><rect x="380" y="500" width="144" height="144" rx="22" fill="#f3ede1" stroke="#d7ddd7" /><circle cx="452" cy="572" r="31.082" fill="rgb(193, 186, 181)" opacity="0.92" /><text class="value" text-anchor="middle" x="452" y="578" fill="#ffffff">0.239</text><rect x="540" y="500" width="144" height="144" rx="22" fill="#f3ede1" stroke="#d7ddd7" /><text class="labelMuted" text-anchor="middle" x="612" y="582">Same metric</text>
+</svg></div>
+      <figcaption class="figure-caption">Knowledge shows its strongest alignment with practice at rho=0.381.</figcaption>
+    </figure>
+  </div>
+                  </article>
+                
+                  <article class="insight-card">
+                    <div>
+                      <div class="insight-meta">Overall</div>
+                      <h3>The weakest reported practice is concentrated in a few work and career segments, not across the whole sample.</h3>
+                      <p>Behavior challenges are concentrated enough to support more targeted messaging instead of a single blanket intervention.</p>
+                      <ul class="highlights">
+                        <li>Work from home (Remote) has the lowest practice score among segments with at least 10 respondents at 66.5%.</li><li>10-15 years follows close behind at 66.8%.</li><li>0-3 years rounds out the bottom three practice segments.</li>
+                      </ul>
+                      <div class="why">
+                        <strong>Why this matters</strong>
+                        <p>This makes the case for segment-aware outreach, especially when presenting recommendations to workplace or community stakeholders.</p>
+                      </div>
+                    </div>
+                    <div>
+    <figure class="figure-card" data-figure-title="Lowest-practice respondent segments" data-figure-caption="Work from home (Remote) is the lowest-practice segment in the dataset.">
+      <button class="figure-expand" type="button" aria-label="Expand graph: Lowest-practice respondent segments">
+        <span class="figure-expand__icon" aria-hidden="true">+</span>
+        <span class="figure-expand__label">Expand</span>
+      </button>
+      <div class="figure-art" role="button" tabindex="0" aria-label="Open expanded graph: Lowest-practice respondent segments"><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="450" viewBox="0 0 1120 450" role="img" aria-labelledby="lowest-practice-respondent-segments-title lowest-practice-respondent-segments-subtitle">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f1a24" flood-opacity="0.08" />
+    </filter>
+    
+  </defs>
+  <style>
+  .title { font: 700 30px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .subtitle { font: 500 15px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .axis { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .label { font: 600 15px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .labelMuted { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .value { font: 700 14px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .small { font: 500 12px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .grid { stroke: #d7ddd7; stroke-width: 1; stroke-dasharray: 2 6; }
+  .axisLine { stroke: #5f6c77; stroke-width: 1.25; }
+</style>
+  <rect x="0" y="0" width="1120" height="450" rx="30" fill="#fcfaf5" />
+  <rect x="16" y="16" width="1088" height="418" rx="26" fill="#f7f3ea" stroke="#d7ddd7" />
+  <text id="lowest-practice-respondent-segments-title" class="title" x="52" y="68"><tspan x="52" dy="0">Lowest-practice respondent segments</tspan></text>
+  <text id="lowest-practice-respondent-segments-subtitle" class="subtitle" x="52" y="96"><tspan x="52" dy="0">Segments shown only when they include at least 10 respondents.</tspan></text>
+  <line class="grid" x1="360" x2="360" y1="134" y2="402" /><text class="axis" text-anchor="middle" x="360" y="430">0.0%</text><line class="grid" x1="530" x2="530" y1="134" y2="402" /><text class="axis" text-anchor="middle" x="530" y="430">25.0%</text><line class="grid" x1="700" x2="700" y1="134" y2="402" /><text class="axis" text-anchor="middle" x="700" y="430">50.0%</text><line class="grid" x1="870" x2="870" y1="134" y2="402" /><text class="axis" text-anchor="middle" x="870" y="430">75.0%</text><line class="grid" x1="1040" x2="1040" y1="134" y2="402" /><text class="axis" text-anchor="middle" x="1040" y="430">100.0%</text><rect x="360" y="150" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="150" width="452.20000000000005" height="22" rx="11" fill="#1c7c74" /><text class="label" text-anchor="start" x="44" y="166"><tspan x="44" dy="0">Work from home (Remote)</tspan></text><text class="value" x="824.2" y="166">66.5%</text><rect x="360" y="204" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="204" width="454.23999999999995" height="22" rx="11" fill="rgb(131, 174, 158)" /><text class="label" text-anchor="start" x="44" y="220"><tspan x="44" dy="0">10-15 years</tspan></text><text class="value" x="826.24" y="220">66.8%</text><rect x="360" y="258" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="258" width="456.28" height="22" rx="11" fill="rgb(121, 169, 153)" /><text class="label" text-anchor="start" x="44" y="274"><tspan x="44" dy="0">0-3 years</tspan></text><text class="value" x="828.28" y="274">67.1%</text><rect x="360" y="312" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="312" width="462.40000000000003" height="22" rx="11" fill="rgb(110, 164, 149)" /><text class="label" text-anchor="start" x="44" y="328"><tspan x="44" dy="0">30-40 years</tspan></text><text class="value" x="834.4000000000001" y="328">68.0%</text><rect x="360" y="366" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="366" width="463.08" height="22" rx="11" fill="rgb(100, 159, 145)" /><text class="label" text-anchor="start" x="44" y="382"><tspan x="44" dy="0">6-10 years</tspan></text><text class="value" x="835.0799999999999" y="382">68.1%</text>
+</svg></div>
+      <figcaption class="figure-caption">Work from home (Remote) is the lowest-practice segment in the dataset.</figcaption>
+    </figure>
+  </div>
+                  </article>
+                
+          </div>
+        </section>
+
+        <section id="appendix">
+          <span class="eyebrow">Method note and appendix</span>
+          <h2>Supporting methods and validation tables</h2>
+          <p>The appendix keeps the statistical validation visible without turning the report into a technical memo.</p>
+          <ul class="highlights"><li>Knowledge, attitude, and practice scores are recomputed directly from the raw item responses in the source CSV.</li><li>Bangalore-specific locality analysis preserves named Bengaluru localities whenever a locality reaches at least three responses; smaller pockets roll into Other Bangalore localities.</li><li>Locality-level claims are only elevated when a Bangalore locality reaches at least five responses.</li><li>Subgroup comparisons use non-parametric tests, and the regression appendix is included only as a supporting validation layer.</li></ul>
+          <div class="table-grid">
+            
+    <div class="table-block">
+      <h3>Most notable subgroup tests</h3>
+      <table>
+        <thead>
+          <tr><th>Metric</th><th>Group</th><th>Test</th><th>p</th><th>Effect</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Knowledge</td><td>Gender</td><td>Kruskal-Wallis</td><td>0.0000</td><td>0.155 (epsilon-squared)</td></tr><tr><td>Attitude</td><td>Work Mode</td><td>Kruskal-Wallis</td><td>0.0028</td><td>0.039 (epsilon-squared)</td></tr><tr><td>Attitude</td><td>Geo Scope</td><td>Mann-Whitney U</td><td>0.0100</td><td>0.19 (Cliff's delta)</td></tr><tr><td>Practice</td><td>Professional Experience</td><td>Kruskal-Wallis</td><td>0.0011</td><td>0.058 (epsilon-squared)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  
+            
+    <div class="table-block">
+      <h3>Regression highlights</h3>
+      <table>
+        <thead>
+          <tr><th>Model</th><th>Term</th><th>Coef</th><th>p</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>knowledge_model</td><td>Gender: Female vs Male</td><td>21.080</td><td>0.0000</td></tr><tr><td>knowledge_model</td><td>Gender: Prefer not to say vs Male</td><td>38.270</td><td>0.0020</td></tr><tr><td>knowledge_model</td><td>Age Range: 50-60 years vs 20-30 years</td><td>28.626</td><td>0.0028</td></tr><tr><td>knowledge_model</td><td>Gender: Other vs Male</td><td>0.000</td><td>0.0344</td></tr><tr><td>knowledge_model</td><td>Age Range: 40-50 years vs 20-30 years</td><td>15.216</td><td>0.0391</td></tr><tr><td>attitude_model</td><td>Knowledge Pct</td><td>0.156</td><td>0.0000</td></tr><tr><td>attitude_model</td><td>Work Mode: Work from home (Remote) vs Full time</td><td>7.460</td><td>0.0002</td></tr><tr><td>attitude_model</td><td>Gender: Other vs Male</td><td>0.000</td><td>0.0036</td></tr><tr><td>attitude_model</td><td>Geo Scope: Outside Bangalore vs Bangalore</td><td>-3.970</td><td>0.0039</td></tr><tr><td>attitude_model</td><td>Age Range: 30-40 years vs 20-30 years</td><td>-7.227</td><td>0.0071</td></tr>
+        </tbody>
+      </table>
+    </div>
+  
+          </div>
+        </section>
+      </main>
+    </div>
+    <div class="chart-overlay" id="chart-overlay" hidden>
+      <div class="chart-overlay__scrim" data-close-overlay="true"></div>
+      <div class="chart-overlay__dialog" role="dialog" aria-modal="true" aria-labelledby="chart-overlay-title" aria-describedby="chart-overlay-caption">
+        <button class="chart-overlay__close" type="button" aria-label="Close expanded graph" id="chart-overlay-close">&times;</button>
+        <div class="chart-overlay__header">
+          <span class="eyebrow">Expanded graph</span>
+          <h3 id="chart-overlay-title"></h3>
+          <p id="chart-overlay-caption"></p>
+        </div>
+        <div class="chart-overlay__canvas" id="chart-overlay-canvas"></div>
+      </div>
+    </div>
+    <script>
+      (() => {
+        const overlay = document.getElementById("chart-overlay");
+        const overlayCanvas = document.getElementById("chart-overlay-canvas");
+        const overlayTitle = document.getElementById("chart-overlay-title");
+        const overlayCaption = document.getElementById("chart-overlay-caption");
+        const closeButton = document.getElementById("chart-overlay-close");
+        let lastTrigger = null;
+
+        const openOverlay = (figure, trigger) => {
+          const svg = figure.querySelector("svg");
+          if (!svg) return;
+          overlayTitle.textContent = figure.dataset.figureTitle || "Expanded graph";
+          overlayCaption.textContent = figure.dataset.figureCaption || "";
+          overlayCanvas.innerHTML = svg.outerHTML;
+          overlay.hidden = false;
+          document.body.classList.add("overlay-open");
+          lastTrigger = trigger || null;
+          closeButton.focus();
+        };
+
+        const closeOverlay = () => {
+          overlay.hidden = true;
+          overlayCanvas.innerHTML = "";
+          document.body.classList.remove("overlay-open");
+          if (lastTrigger && typeof lastTrigger.focus === "function") {
+            lastTrigger.focus();
+          }
+          lastTrigger = null;
+        };
+
+        document.querySelectorAll(".figure-card").forEach((figure) => {
+          const expandButton = figure.querySelector(".figure-expand");
+          const art = figure.querySelector(".figure-art");
+          expandButton?.addEventListener("click", (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            openOverlay(figure, expandButton);
+          });
+          art?.addEventListener("dblclick", (event) => {
+            event.preventDefault();
+            openOverlay(figure, art);
+          });
+          art?.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              openOverlay(figure, art);
+            }
+          });
+        });
+
+        overlay.addEventListener("click", (event) => {
+          if (event.target === overlay || event.target.dataset.closeOverlay === "true") {
+            closeOverlay();
+          }
+        });
+        closeButton.addEventListener("click", closeOverlay);
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && !overlay.hidden) {
+            closeOverlay();
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

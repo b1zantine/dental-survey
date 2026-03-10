@@ -1,0 +1,2581 @@
+{
+  "meta": {
+    "title": "Assessment of knowledge, Attitude and Practice regarding Periodontal health among IT Professionals in Bangalore City- a cross sectional questionnaire survey",
+    "subtitle": "",
+    "generated_at": "2026-03-10T05:25:29.656524+00:00",
+    "respondent_count": 251,
+    "bangalore_count": 146,
+    "outside_bangalore_count": 105,
+    "bangalore_share_pct": 58.2
+  },
+  "kpis": [
+    {
+      "label": "Total respondents",
+      "value": "251",
+      "detail": "Single source of truth dataset"
+    },
+    {
+      "label": "Bangalore respondents",
+      "value": "146",
+      "detail": "58.2% of sample"
+    },
+    {
+      "label": "Outside Bangalore",
+      "value": "105",
+      "detail": "41.8% of sample"
+    },
+    {
+      "label": "Top named Bangalore locality",
+      "value": "JP Nagar",
+      "detail": "12 respondents"
+    }
+  ],
+  "hero": {
+    "summary": "This report keeps Bangalore at the center of the analysis without discarding the outside-Bangalore respondents who also contributed useful signal.",
+    "executive_bullets": [
+      "Bangalore drives the dataset, but the city is not a single cluster.",
+      "Named Bangalore localities differ more in behavior than in awareness.",
+      "Ulsoor stands out as a small pocket where knowledge is not turning into routine practice.",
+      "The weakest knowledge area is not advanced care; it is the basic cause of gum disease.",
+      "Daily routines weaken most on interdental cleaning and dentist follow-up."
+    ]
+  },
+  "sections": [
+    {
+      "id": "sample-profile",
+      "eyebrow": "Executive Summary",
+      "title": "Sample profile and survey footing",
+      "summary": "The report stays Bangalore-first because most respondents are from Bangalore, but it keeps the outside-Bangalore sample visible throughout the analysis.",
+      "highlights": [
+        "146 respondents are from Bangalore and 105 are outside Bangalore.",
+        "The sample skews toward 20-30 years (61.8%) and full-time workers (78.1%).",
+        "20.7% report a previous treatment history."
+      ],
+      "figures": [
+        {
+          "id": "geo-scope-donut",
+          "kind": "donut",
+          "title": "Bangalore versus outside Bangalore",
+          "subtitle": "All 251 respondents grouped by primary geographic scope.",
+          "caption": "Bangalore contributes 58.2% of the full sample.",
+          "data": [
+            {
+              "label": "Bangalore",
+              "count": 146,
+              "percent": 58.2
+            },
+            {
+              "label": "Outside Bangalore",
+              "count": 105,
+              "percent": 41.8
+            }
+          ],
+          "center_label": "251\nrespondents"
+        },
+        {
+          "id": "gender-donut",
+          "kind": "donut",
+          "title": "Gender mix",
+          "subtitle": "Simple share-of-sample composition.",
+          "caption": "Male respondents account for 67.7% of the sample.",
+          "data": [
+            {
+              "label": "Male",
+              "count": 170,
+              "percent": 67.7
+            },
+            {
+              "label": "Female",
+              "count": 79,
+              "percent": 31.5
+            },
+            {
+              "label": "Prefer not to say",
+              "count": 2,
+              "percent": 0.8
+            }
+          ],
+          "center_label": "Gender"
+        },
+        {
+          "id": "age-bars",
+          "kind": "horizontal-bar",
+          "title": "Age range distribution",
+          "subtitle": "Younger respondents dominate the sample.",
+          "caption": "The 20-30 years band makes up 61.8% of respondents.",
+          "data": [
+            {
+              "label": "20-30 years",
+              "count": 155,
+              "percent": 61.8
+            },
+            {
+              "label": "30-40 years",
+              "count": 77,
+              "percent": 30.7
+            },
+            {
+              "label": "40-50 years",
+              "count": 14,
+              "percent": 5.6
+            },
+            {
+              "label": "50-60 years",
+              "count": 5,
+              "percent": 2.0
+            }
+          ],
+          "x_label": "Respondents",
+          "format": "count"
+        },
+        {
+          "id": "work-mode-donut",
+          "kind": "donut",
+          "title": "Work mode",
+          "subtitle": "Work context for the respondents.",
+          "caption": "Full-time work is the dominant mode at 78.1%.",
+          "data": [
+            {
+              "label": "Full time",
+              "count": 196,
+              "percent": 78.1
+            },
+            {
+              "label": "Hybrid",
+              "count": 37,
+              "percent": 14.7
+            },
+            {
+              "label": "Work from home (Remote)",
+              "count": 18,
+              "percent": 7.2
+            }
+          ],
+          "center_label": "Work\nmode"
+        }
+      ]
+    },
+    {
+      "id": "geography-overview",
+      "eyebrow": "Geography Overview",
+      "title": "Bangalore is the core geography, but outside-Bangalore responses matter too.",
+      "summary": "Geography is shown in two layers: a whole-sample view that keeps outside-Bangalore responses visible, and a Bangalore-locality view that does not flatten the city into one bucket.",
+      "highlights": [
+        "Bangalore contributes 146 responses, but 105 respondents are still outside Bangalore.",
+        "JP Nagar is the largest named Bangalore locality, while Chennai anchors the outside-Bangalore sample."
+      ],
+      "figures": [
+        {
+          "id": "overall-cities",
+          "kind": "horizontal-bar",
+          "title": "Top city or location clusters",
+          "subtitle": "Whole-sample geography after Bangalore normalization.",
+          "caption": "Bangalore is the dominant location cluster, followed by Chennai at 30 respondents.",
+          "data": [
+            {
+              "label": "Bangalore",
+              "count": 146,
+              "percent": 58.2
+            },
+            {
+              "label": "Chennai",
+              "count": 30,
+              "percent": 12.0
+            },
+            {
+              "label": "Nagercoil",
+              "count": 13,
+              "percent": 5.2
+            },
+            {
+              "label": "Hyderabad",
+              "count": 8,
+              "percent": 3.2
+            },
+            {
+              "label": "Madurai",
+              "count": 8,
+              "percent": 3.2
+            },
+            {
+              "label": "Guduvancheri",
+              "count": 4,
+              "percent": 1.6
+            },
+            {
+              "label": "Salem",
+              "count": 4,
+              "percent": 1.6
+            },
+            {
+              "label": "Pune",
+              "count": 4,
+              "percent": 1.6
+            },
+            {
+              "label": "Tenkasi",
+              "count": 4,
+              "percent": 1.6
+            },
+            {
+              "label": "Madhavaram",
+              "count": 4,
+              "percent": 1.6
+            }
+          ],
+          "x_label": "Respondents",
+          "format": "count"
+        },
+        {
+          "id": "bangalore-localities",
+          "kind": "horizontal-bar",
+          "title": "Bangalore locality distribution",
+          "subtitle": "Localities displayed individually once they reach three responses.",
+          "caption": "JP Nagar is the largest named Bangalore locality in the sample.",
+          "data": [
+            {
+              "label": "Bangalore (Unspecified)",
+              "count": 58,
+              "percent_of_bangalore": 39.7,
+              "percent_of_total": 23.1
+            },
+            {
+              "label": "Other Bangalore localities",
+              "count": 15,
+              "percent_of_bangalore": 10.3,
+              "percent_of_total": 6.0
+            },
+            {
+              "label": "JP Nagar",
+              "count": 12,
+              "percent_of_bangalore": 8.2,
+              "percent_of_total": 4.8
+            },
+            {
+              "label": "Bellandur",
+              "count": 8,
+              "percent_of_bangalore": 5.5,
+              "percent_of_total": 3.2
+            },
+            {
+              "label": "HSR Layout",
+              "count": 8,
+              "percent_of_bangalore": 5.5,
+              "percent_of_total": 3.2
+            },
+            {
+              "label": "Whitefield",
+              "count": 8,
+              "percent_of_bangalore": 5.5,
+              "percent_of_total": 3.2
+            },
+            {
+              "label": "Ulsoor",
+              "count": 5,
+              "percent_of_bangalore": 3.4,
+              "percent_of_total": 2.0
+            },
+            {
+              "label": "CV Raman Nagar",
+              "count": 4,
+              "percent_of_bangalore": 2.7,
+              "percent_of_total": 1.6
+            },
+            {
+              "label": "Harlur",
+              "count": 4,
+              "percent_of_bangalore": 2.7,
+              "percent_of_total": 1.6
+            },
+            {
+              "label": "Kengeri",
+              "count": 4,
+              "percent_of_bangalore": 2.7,
+              "percent_of_total": 1.6
+            }
+          ],
+          "x_label": "Respondents",
+          "format": "count"
+        },
+        {
+          "id": "outside-locations",
+          "kind": "horizontal-bar",
+          "title": "Top outside-Bangalore locations",
+          "subtitle": "Outside-Bangalore responses remain part of the story.",
+          "caption": "Chennai leads the outside-Bangalore sample with 30 respondents.",
+          "data": [
+            {
+              "label": "Chennai",
+              "count": 30,
+              "percent": 28.6
+            },
+            {
+              "label": "Nagercoil",
+              "count": 13,
+              "percent": 12.4
+            },
+            {
+              "label": "Hyderabad",
+              "count": 8,
+              "percent": 7.6
+            },
+            {
+              "label": "Madurai",
+              "count": 8,
+              "percent": 7.6
+            },
+            {
+              "label": "Guduvancheri",
+              "count": 4,
+              "percent": 3.8
+            },
+            {
+              "label": "Salem",
+              "count": 4,
+              "percent": 3.8
+            },
+            {
+              "label": "Pune",
+              "count": 4,
+              "percent": 3.8
+            },
+            {
+              "label": "Madhavaram",
+              "count": 4,
+              "percent": 3.8
+            },
+            {
+              "label": "Tenkasi",
+              "count": 4,
+              "percent": 3.8
+            },
+            {
+              "label": "Hosur",
+              "count": 3,
+              "percent": 2.9
+            }
+          ],
+          "x_label": "Respondents",
+          "format": "count"
+        }
+      ]
+    },
+    {
+      "id": "bangalore-locality-deep-dive",
+      "eyebrow": "Bangalore Deep Dive",
+      "title": "Named Bangalore localities do not all behave the same way.",
+      "summary": "The Bangalore locality section keeps the city-specific focus honest by showing where behavior is stronger, where knowledge leads action, and where small local pockets need caution.",
+      "highlights": [
+        "Use this section for Bangalore-specific commentary rather than citywide generalization.",
+        "Locality comparisons are descriptive unless a locality reaches at least five respondents."
+      ],
+      "figures": [
+        {
+          "id": "bangalore-locality-kap",
+          "kind": "multi-dot",
+          "title": "KAP by Bangalore locality",
+          "subtitle": "Localities shown individually once they reach at least five responses.",
+          "caption": "Practice varies more than knowledge across the claimable Bangalore localities.",
+          "data": [
+            {
+              "label": "Whitefield",
+              "n": 8,
+              "knowledge_pct": 65.0,
+              "attitude_pct": 68.1,
+              "practice_pct": 80.0,
+              "knowledge_practice_gap": -15.0,
+              "attitude_practice_gap": -11.9,
+              "claimable": true
+            },
+            {
+              "label": "JP Nagar",
+              "n": 12,
+              "knowledge_pct": 64.2,
+              "attitude_pct": 68.1,
+              "practice_pct": 77.8,
+              "knowledge_practice_gap": -13.6,
+              "attitude_practice_gap": -9.7,
+              "claimable": true
+            },
+            {
+              "label": "HSR Layout",
+              "n": 8,
+              "knowledge_pct": 62.5,
+              "attitude_pct": 72.2,
+              "practice_pct": 76.2,
+              "knowledge_practice_gap": -13.8,
+              "attitude_practice_gap": -4.1,
+              "claimable": true
+            },
+            {
+              "label": "Bangalore (Unspecified)",
+              "n": 58,
+              "knowledge_pct": 63.1,
+              "attitude_pct": 70.7,
+              "practice_pct": 71.7,
+              "knowledge_practice_gap": -8.6,
+              "attitude_practice_gap": -1.0,
+              "claimable": true
+            },
+            {
+              "label": "Other Bangalore localities",
+              "n": 47,
+              "knowledge_pct": 60.0,
+              "attitude_pct": 69.4,
+              "practice_pct": 68.5,
+              "knowledge_practice_gap": -8.5,
+              "attitude_practice_gap": 0.9,
+              "claimable": false
+            },
+            {
+              "label": "Bellandur",
+              "n": 8,
+              "knowledge_pct": 66.2,
+              "attitude_pct": 72.5,
+              "practice_pct": 64.6,
+              "knowledge_practice_gap": 1.7,
+              "attitude_practice_gap": 7.9,
+              "claimable": true
+            },
+            {
+              "label": "Ulsoor",
+              "n": 5,
+              "knowledge_pct": 92.0,
+              "attitude_pct": 56.0,
+              "practice_pct": 55.3,
+              "knowledge_practice_gap": 36.7,
+              "attitude_practice_gap": 0.7,
+              "claimable": true
+            }
+          ],
+          "series": [
+            "knowledge_pct",
+            "attitude_pct",
+            "practice_pct"
+          ],
+          "format": "percent"
+        },
+        {
+          "id": "bangalore-gap-dumbbell",
+          "kind": "dumbbell",
+          "title": "Knowledge vs practice in Bangalore localities",
+          "subtitle": "Positive gaps indicate knowledge running ahead of behavior.",
+          "caption": "The sharpest locality gap appears in Ulsoor.",
+          "data": [
+            {
+              "label": "Whitefield",
+              "n": 8,
+              "knowledge_pct": 65.0,
+              "attitude_pct": 68.1,
+              "practice_pct": 80.0,
+              "knowledge_practice_gap": -15.0,
+              "attitude_practice_gap": -11.9,
+              "claimable": true
+            },
+            {
+              "label": "JP Nagar",
+              "n": 12,
+              "knowledge_pct": 64.2,
+              "attitude_pct": 68.1,
+              "practice_pct": 77.8,
+              "knowledge_practice_gap": -13.6,
+              "attitude_practice_gap": -9.7,
+              "claimable": true
+            },
+            {
+              "label": "HSR Layout",
+              "n": 8,
+              "knowledge_pct": 62.5,
+              "attitude_pct": 72.2,
+              "practice_pct": 76.2,
+              "knowledge_practice_gap": -13.8,
+              "attitude_practice_gap": -4.1,
+              "claimable": true
+            },
+            {
+              "label": "Bangalore (Unspecified)",
+              "n": 58,
+              "knowledge_pct": 63.1,
+              "attitude_pct": 70.7,
+              "practice_pct": 71.7,
+              "knowledge_practice_gap": -8.6,
+              "attitude_practice_gap": -1.0,
+              "claimable": true
+            },
+            {
+              "label": "Other Bangalore localities",
+              "n": 47,
+              "knowledge_pct": 60.0,
+              "attitude_pct": 69.4,
+              "practice_pct": 68.5,
+              "knowledge_practice_gap": -8.5,
+              "attitude_practice_gap": 0.9,
+              "claimable": false
+            },
+            {
+              "label": "Bellandur",
+              "n": 8,
+              "knowledge_pct": 66.2,
+              "attitude_pct": 72.5,
+              "practice_pct": 64.6,
+              "knowledge_practice_gap": 1.7,
+              "attitude_practice_gap": 7.9,
+              "claimable": true
+            },
+            {
+              "label": "Ulsoor",
+              "n": 5,
+              "knowledge_pct": 92.0,
+              "attitude_pct": 56.0,
+              "practice_pct": 55.3,
+              "knowledge_practice_gap": 36.7,
+              "attitude_practice_gap": 0.7,
+              "claimable": true
+            }
+          ],
+          "left_key": "practice_pct",
+          "right_key": "knowledge_pct",
+          "format": "percent"
+        }
+      ]
+    },
+    {
+      "id": "knowledge",
+      "eyebrow": "Knowledge",
+      "title": "The knowledge story is about basic gum disease understanding, not specialist detail.",
+      "summary": "The lowest-scoring knowledge items concern the primary cause of gum disease and the definitions of plaque and tartar.",
+      "highlights": [
+        "Cause is the weakest knowledge item at 37.5% correct.",
+        "The next weakest items are Plaque and Calculus."
+      ],
+      "figures": [
+        {
+          "id": "knowledge-lollipop",
+          "kind": "lollipop",
+          "title": "Knowledge items ranked by percent correct",
+          "subtitle": "Lower values indicate the strongest misconceptions.",
+          "caption": "The cause-of-disease item is lowest at 37.5% correct.",
+          "data": [
+            {
+              "id": "k4",
+              "short": "Cause",
+              "question": "What is the primary cause of early gum disease?",
+              "correct_pct": 37.5,
+              "incorrect_pct": 62.5
+            },
+            {
+              "id": "k1",
+              "short": "Plaque",
+              "question": "What is dental plaque?",
+              "correct_pct": 51.4,
+              "incorrect_pct": 48.6
+            },
+            {
+              "id": "k2",
+              "short": "Calculus",
+              "question": "What is dental calculus (tartar)?",
+              "correct_pct": 51.4,
+              "incorrect_pct": 48.6
+            },
+            {
+              "id": "k10",
+              "short": "Specialty",
+              "question": "Which dental specialty focuses on prevention and treatment of gum disease?",
+              "correct_pct": 53.4,
+              "incorrect_pct": 46.6
+            },
+            {
+              "id": "k7",
+              "short": "Vitamin",
+              "question": "Which vitamin helps to keep your gums healthy?",
+              "correct_pct": 54.6,
+              "incorrect_pct": 45.4
+            },
+            {
+              "id": "k8",
+              "short": "General health",
+              "question": "How is gum disease linked to general health?",
+              "correct_pct": 58.2,
+              "incorrect_pct": 41.8
+            },
+            {
+              "id": "k9",
+              "short": "Stress",
+              "question": "What is a common oral health consequence of prolonged stress?",
+              "correct_pct": 74.9,
+              "incorrect_pct": 25.1
+            },
+            {
+              "id": "k3",
+              "short": "Early sign",
+              "question": "Which of the following is an early sign of gum infection?",
+              "correct_pct": 79.3,
+              "incorrect_pct": 20.7
+            },
+            {
+              "id": "k5",
+              "short": "Bad breath",
+              "question": "What is one of the main causes of bad breath?",
+              "correct_pct": 87.3,
+              "incorrect_pct": 12.7
+            },
+            {
+              "id": "k6",
+              "short": "Diet",
+              "question": "Which dietary choice contributes most to poor gum health?",
+              "correct_pct": 88.4,
+              "incorrect_pct": 11.6
+            }
+          ],
+          "value_key": "correct_pct",
+          "label_key": "short"
+        }
+      ]
+    },
+    {
+      "id": "attitude",
+      "eyebrow": "Attitude",
+      "title": "Attitudes are generally favorable, but a few items show friction.",
+      "summary": "The diverging view makes it easy to see which statements generate strong agreement and which still face skepticism or convenience-based resistance.",
+      "highlights": [
+        "The pain-only dentist-visit statement is the least favorable attitude item after reverse coding.",
+        "Time and effort concerns remain visible even when oral-health attitudes are broadly positive."
+      ],
+      "figures": [
+        {
+          "id": "attitude-diverging",
+          "kind": "diverging-likert",
+          "title": "Attitude toward periodontal health",
+          "subtitle": "Agreement sits on the right; disagreement sits on the left.",
+          "caption": "The weakest net favorability appears on the statement 'Visiting a dentist is necessary only when I have pain or discomfort.'.",
+          "data": [
+            {
+              "id": "a5",
+              "statement": "Visiting a dentist is necessary only when I have pain or discomfort.",
+              "strongly_disagree": 14.7,
+              "disagree": 52.6,
+              "agree": 23.9,
+              "strongly_agree": 8.8,
+              "positive_pct": 32.7,
+              "negative_pct": 67.3,
+              "net_favorability": -34.7
+            },
+            {
+              "id": "a8",
+              "statement": "Oral hygiene maintenance is time consuming and difficult to follow.",
+              "strongly_disagree": 13.9,
+              "disagree": 50.2,
+              "agree": 27.5,
+              "strongly_agree": 8.4,
+              "positive_pct": 35.9,
+              "negative_pct": 64.1,
+              "net_favorability": -28.3
+            },
+            {
+              "id": "a1",
+              "statement": "Neglecting oral hygiene develops gum disease.",
+              "strongly_disagree": 16.3,
+              "disagree": 32.7,
+              "agree": 33.5,
+              "strongly_agree": 17.5,
+              "positive_pct": 51.0,
+              "negative_pct": 49.0,
+              "net_favorability": 2.0
+            },
+            {
+              "id": "a3",
+              "statement": "Attending workplace awareness programs will improve gum health.",
+              "strongly_disagree": 5.6,
+              "disagree": 32.3,
+              "agree": 48.6,
+              "strongly_agree": 13.5,
+              "positive_pct": 62.2,
+              "negative_pct": 37.8,
+              "net_favorability": 24.3
+            },
+            {
+              "id": "a2",
+              "statement": "Bleeding gums should not be ignored.",
+              "strongly_disagree": 10.0,
+              "disagree": 25.5,
+              "agree": 47.0,
+              "strongly_agree": 17.5,
+              "positive_pct": 64.5,
+              "negative_pct": 35.5,
+              "net_favorability": 29.1
+            },
+            {
+              "id": "a9",
+              "statement": "Workplace stress can have an impact on my gum and oral health.",
+              "strongly_disagree": 6.8,
+              "disagree": 27.1,
+              "agree": 53.8,
+              "strongly_agree": 12.4,
+              "positive_pct": 66.1,
+              "negative_pct": 33.9,
+              "net_favorability": 32.3
+            },
+            {
+              "id": "a7",
+              "statement": "Oral hygiene aids like floss or mouthwash can be used if recommended by a dentist.",
+              "strongly_disagree": 6.8,
+              "disagree": 26.3,
+              "agree": 54.6,
+              "strongly_agree": 12.4,
+              "positive_pct": 66.9,
+              "negative_pct": 33.1,
+              "net_favorability": 33.9
+            },
+            {
+              "id": "a4",
+              "statement": "Maintaining oral hygiene is equally important as maintaining physical fitness.",
+              "strongly_disagree": 12.7,
+              "disagree": 19.5,
+              "agree": 48.2,
+              "strongly_agree": 19.5,
+              "positive_pct": 67.7,
+              "negative_pct": 32.3,
+              "net_favorability": 35.5
+            },
+            {
+              "id": "a6",
+              "statement": "Poor gum health can negatively affect my confidence or social interactions.",
+              "strongly_disagree": 5.6,
+              "disagree": 25.9,
+              "agree": 49.4,
+              "strongly_agree": 19.1,
+              "positive_pct": 68.5,
+              "negative_pct": 31.5,
+              "net_favorability": 37.1
+            },
+            {
+              "id": "a10",
+              "statement": "Investing in preventive dental care is better than spending on treatment later.",
+              "strongly_disagree": 8.0,
+              "disagree": 19.1,
+              "agree": 49.4,
+              "strongly_agree": 23.5,
+              "positive_pct": 72.9,
+              "negative_pct": 27.1,
+              "net_favorability": 45.8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "practice",
+      "eyebrow": "Practice",
+      "title": "Reported behavior is strongest on some daily basics and weakest on follow-through routines.",
+      "summary": "The practice view separates broad adherence from the specific routines that still lag, especially cleaning aids and regular dentist visits.",
+      "highlights": [
+        "Only 12.0% report best-practice use of cleaning aids.",
+        "Dentist visit recency reaches just 39.0% in the top band."
+      ],
+      "figures": [
+        {
+          "id": "practice-heatmap",
+          "kind": "heatmap",
+          "title": "Practice response quality mix",
+          "subtitle": "Each row shows how the item splits across the four practice-quality bands.",
+          "caption": "Cleaning aids is the weakest practice area, with only 12.0% in the best-practice band.",
+          "data": [
+            {
+              "id": "p7",
+              "short": "Cleaning aids",
+              "question": "Do you use any aids for cleaning your teeth, other than toothbrush and toothpaste?",
+              "least_healthy": 29.1,
+              "needs_work": 41.8,
+              "reasonable": 17.1,
+              "best_practice": 12.0,
+              "low_quality_pct": 70.9
+            },
+            {
+              "id": "p2",
+              "short": "Brushing direction",
+              "question": "In what direction do you brush your teeth?",
+              "least_healthy": 13.9,
+              "needs_work": 36.3,
+              "reasonable": 13.5,
+              "best_practice": 36.3,
+              "low_quality_pct": 50.2
+            },
+            {
+              "id": "p9",
+              "short": "Dental visit",
+              "question": "When did you last visit your dentist?",
+              "least_healthy": 15.9,
+              "needs_work": 35.9,
+              "reasonable": 9.2,
+              "best_practice": 39.0,
+              "low_quality_pct": 51.8
+            },
+            {
+              "id": "p4",
+              "short": "Brushing timing",
+              "question": "When do you brush your teeth?",
+              "least_healthy": 0.0,
+              "needs_work": 46.2,
+              "reasonable": 3.2,
+              "best_practice": 50.6,
+              "low_quality_pct": 46.2
+            },
+            {
+              "id": "p3",
+              "short": "Brush softness",
+              "question": "What type of toothbrush do you use?",
+              "least_healthy": 1.6,
+              "needs_work": 25.5,
+              "reasonable": 17.5,
+              "best_practice": 55.4,
+              "low_quality_pct": 27.1
+            },
+            {
+              "id": "p1",
+              "short": "Brushing frequency",
+              "question": "How many times do you brush your teeth in a day?",
+              "least_healthy": 1.6,
+              "needs_work": 39.0,
+              "reasonable": 2.8,
+              "best_practice": 56.6,
+              "low_quality_pct": 40.6
+            },
+            {
+              "id": "p6",
+              "short": "Post-meal rinse",
+              "question": "Do you rinse your mouth with water after each meal?",
+              "least_healthy": 5.2,
+              "needs_work": 4.8,
+              "reasonable": 29.9,
+              "best_practice": 60.2,
+              "low_quality_pct": 10.0
+            },
+            {
+              "id": "p8",
+              "short": "Brush replacement",
+              "question": "How often do you change your toothbrush?",
+              "least_healthy": 2.4,
+              "needs_work": 21.1,
+              "reasonable": 13.1,
+              "best_practice": 63.3,
+              "low_quality_pct": 23.5
+            },
+            {
+              "id": "p5",
+              "short": "Brushing duration",
+              "question": "For how long do you brush your teeth?",
+              "least_healthy": 8.0,
+              "needs_work": 5.6,
+              "reasonable": 14.3,
+              "best_practice": 72.1,
+              "low_quality_pct": 13.5
+            },
+            {
+              "id": "p10",
+              "short": "Risk habits",
+              "question": "Do you consume gutka/pan/alcohol/cigarettes?",
+              "least_healthy": 6.0,
+              "needs_work": 8.8,
+              "reasonable": 4.4,
+              "best_practice": 80.9,
+              "low_quality_pct": 14.7
+            }
+          ],
+          "columns": [
+            "Least healthy",
+            "Needs work",
+            "Reasonable",
+            "Best practice"
+          ]
+        },
+        {
+          "id": "practice-weak-bars",
+          "kind": "horizontal-bar",
+          "title": "Lowest best-practice adherence",
+          "subtitle": "Bottom five practice items by best-practice share.",
+          "caption": "Cleaning aids and dentist visits are the two main behavior bottlenecks.",
+          "data": [
+            {
+              "id": "p7",
+              "short": "Cleaning aids",
+              "question": "Do you use any aids for cleaning your teeth, other than toothbrush and toothpaste?",
+              "least_healthy": 29.1,
+              "needs_work": 41.8,
+              "reasonable": 17.1,
+              "best_practice": 12.0,
+              "low_quality_pct": 70.9
+            },
+            {
+              "id": "p2",
+              "short": "Brushing direction",
+              "question": "In what direction do you brush your teeth?",
+              "least_healthy": 13.9,
+              "needs_work": 36.3,
+              "reasonable": 13.5,
+              "best_practice": 36.3,
+              "low_quality_pct": 50.2
+            },
+            {
+              "id": "p9",
+              "short": "Dental visit",
+              "question": "When did you last visit your dentist?",
+              "least_healthy": 15.9,
+              "needs_work": 35.9,
+              "reasonable": 9.2,
+              "best_practice": 39.0,
+              "low_quality_pct": 51.8
+            },
+            {
+              "id": "p4",
+              "short": "Brushing timing",
+              "question": "When do you brush your teeth?",
+              "least_healthy": 0.0,
+              "needs_work": 46.2,
+              "reasonable": 3.2,
+              "best_practice": 50.6,
+              "low_quality_pct": 46.2
+            },
+            {
+              "id": "p3",
+              "short": "Brush softness",
+              "question": "What type of toothbrush do you use?",
+              "least_healthy": 1.6,
+              "needs_work": 25.5,
+              "reasonable": 17.5,
+              "best_practice": 55.4,
+              "low_quality_pct": 27.1
+            }
+          ],
+          "value_key": "best_practice",
+          "label_key": "short",
+          "format": "percent"
+        }
+      ]
+    },
+    {
+      "id": "cross-domain-relationships",
+      "eyebrow": "Cross-Domain Relationships",
+      "title": "The cross-domain view shows how knowledge, attitude, and practice move together and where subgroup differences are large enough to notice.",
+      "summary": "Knowledge, attitude, and practice should be read as connected but not interchangeable domains; the charts below show both their overall score ranges and their subgroup differences.",
+      "highlights": [
+        "Knowledge and practice move together most closely at rho=0.381.",
+        "The clearest geo-scope difference is in attitude, where Bangalore is higher by 3.5 points."
+      ],
+      "figures": [
+        {
+          "id": "kap-range-panel",
+          "kind": "range-panel",
+          "title": "Composite score distributions",
+          "subtitle": "All three domains are shown on a common 0-100 scale.",
+          "caption": "Practice has the highest average standardized score at 69.8%.",
+          "data": [
+            {
+              "metric": "knowledge_pct",
+              "label": "Knowledge",
+              "max_score": 10,
+              "mean_raw": 6.36,
+              "sd_raw": 2.36,
+              "median_raw": 6.0,
+              "q1_raw": 4.0,
+              "q3_raw": 8.0,
+              "min_raw": 1.0,
+              "max_raw": 10.0,
+              "mean_pct": 63.6,
+              "median_pct": 60.0,
+              "q1_pct": 40.0,
+              "q3_pct": 80.0,
+              "min_pct": 10.0,
+              "max_pct": 100.0
+            },
+            {
+              "metric": "attitude_pct",
+              "label": "Attitude",
+              "max_score": 40,
+              "mean_raw": 27.27,
+              "sd_raw": 4.64,
+              "median_raw": 28.0,
+              "q1_raw": 24.0,
+              "q3_raw": 30.0,
+              "min_raw": 16.0,
+              "max_raw": 38.0,
+              "mean_pct": 68.2,
+              "median_pct": 70.0,
+              "q1_pct": 60.0,
+              "q3_pct": 75.0,
+              "min_pct": 40.0,
+              "max_pct": 95.0
+            },
+            {
+              "metric": "practice_pct",
+              "label": "Practice",
+              "max_score": 30,
+              "mean_raw": 20.94,
+              "sd_raw": 4.27,
+              "median_raw": 22.0,
+              "q1_raw": 17.0,
+              "q3_raw": 24.0,
+              "min_raw": 9.0,
+              "max_raw": 30.0,
+              "mean_pct": 69.8,
+              "median_pct": 73.3,
+              "q1_pct": 56.7,
+              "q3_pct": 80.0,
+              "min_pct": 30.0,
+              "max_pct": 100.0
+            }
+          ]
+        },
+        {
+          "id": "subgroup-heatmap",
+          "kind": "subgroup-heatmap",
+          "title": "Subgroup score profile",
+          "subtitle": "Rows combine the main demographic and context segments.",
+          "caption": "Remote workers and 10-15 year professionals sit near the bottom of the practice distribution.",
+          "data": [
+            {
+              "group": "Age Range",
+              "level": "20-30 years",
+              "n": 155,
+              "knowledge_pct": 63.2,
+              "attitude_pct": 70.0,
+              "practice_pct": 71.1,
+              "knowledge_practice_gap": -7.8,
+              "attitude_practice_gap": -1.1
+            },
+            {
+              "group": "Age Range",
+              "level": "30-40 years",
+              "n": 77,
+              "knowledge_pct": 65.1,
+              "attitude_pct": 64.9,
+              "practice_pct": 68.0,
+              "knowledge_practice_gap": -2.9,
+              "attitude_practice_gap": -3.0
+            },
+            {
+              "group": "Age Range",
+              "level": "40-50 years",
+              "n": 14,
+              "knowledge_pct": 60.7,
+              "attitude_pct": 66.6,
+              "practice_pct": 69.0,
+              "knowledge_practice_gap": -8.3,
+              "attitude_practice_gap": -2.4
+            },
+            {
+              "group": "Gender",
+              "level": "Male",
+              "n": 170,
+              "knowledge_pct": 57.3,
+              "attitude_pct": 66.8,
+              "practice_pct": 69.0,
+              "knowledge_practice_gap": -11.7,
+              "attitude_practice_gap": -2.2
+            },
+            {
+              "group": "Gender",
+              "level": "Female",
+              "n": 79,
+              "knowledge_pct": 76.5,
+              "attitude_pct": 71.0,
+              "practice_pct": 71.5,
+              "knowledge_practice_gap": 5.0,
+              "attitude_practice_gap": -0.5
+            },
+            {
+              "group": "Professional Experience",
+              "level": "0-3 years",
+              "n": 81,
+              "knowledge_pct": 64.3,
+              "attitude_pct": 69.4,
+              "practice_pct": 67.1,
+              "knowledge_practice_gap": -2.8,
+              "attitude_practice_gap": 2.2
+            },
+            {
+              "group": "Professional Experience",
+              "level": "3-6 years",
+              "n": 67,
+              "knowledge_pct": 65.1,
+              "attitude_pct": 69.7,
+              "practice_pct": 75.7,
+              "knowledge_practice_gap": -10.6,
+              "attitude_practice_gap": -6.1
+            },
+            {
+              "group": "Professional Experience",
+              "level": "6-10 years",
+              "n": 45,
+              "knowledge_pct": 60.4,
+              "attitude_pct": 66.3,
+              "practice_pct": 68.1,
+              "knowledge_practice_gap": -7.7,
+              "attitude_practice_gap": -1.8
+            },
+            {
+              "group": "Professional Experience",
+              "level": "10-15 years",
+              "n": 37,
+              "knowledge_pct": 69.7,
+              "attitude_pct": 66.6,
+              "practice_pct": 66.8,
+              "knowledge_practice_gap": 3.0,
+              "attitude_practice_gap": -0.2
+            },
+            {
+              "group": "Professional Experience",
+              "level": "15+ years",
+              "n": 21,
+              "knowledge_pct": 52.4,
+              "attitude_pct": 65.6,
+              "practice_pct": 70.2,
+              "knowledge_practice_gap": -17.8,
+              "attitude_practice_gap": -4.6
+            },
+            {
+              "group": "Work Mode",
+              "level": "Full time",
+              "n": 196,
+              "knowledge_pct": 62.9,
+              "attitude_pct": 67.0,
+              "practice_pct": 70.0,
+              "knowledge_practice_gap": -7.2,
+              "attitude_practice_gap": -3.0
+            },
+            {
+              "group": "Work Mode",
+              "level": "Hybrid",
+              "n": 37,
+              "knowledge_pct": 70.5,
+              "attitude_pct": 71.6,
+              "practice_pct": 70.2,
+              "knowledge_practice_gap": 0.4,
+              "attitude_practice_gap": 1.4
+            },
+            {
+              "group": "Work Mode",
+              "level": "Work from home (Remote)",
+              "n": 18,
+              "knowledge_pct": 57.8,
+              "attitude_pct": 73.6,
+              "practice_pct": 66.5,
+              "knowledge_practice_gap": -8.7,
+              "attitude_practice_gap": 7.1
+            },
+            {
+              "group": "Previous Treatment",
+              "level": "No",
+              "n": 199,
+              "knowledge_pct": 64.4,
+              "attitude_pct": 68.2,
+              "practice_pct": 69.0,
+              "knowledge_practice_gap": -4.6,
+              "attitude_practice_gap": -0.9
+            },
+            {
+              "group": "Previous Treatment",
+              "level": "Yes",
+              "n": 52,
+              "knowledge_pct": 60.6,
+              "attitude_pct": 68.2,
+              "practice_pct": 72.7,
+              "knowledge_practice_gap": -12.1,
+              "attitude_practice_gap": -4.5
+            },
+            {
+              "group": "Geo Scope",
+              "level": "Bangalore",
+              "n": 146,
+              "knowledge_pct": 63.4,
+              "attitude_pct": 69.6,
+              "practice_pct": 70.9,
+              "knowledge_practice_gap": -7.5,
+              "attitude_practice_gap": -1.3
+            },
+            {
+              "group": "Geo Scope",
+              "level": "Outside Bangalore",
+              "n": 105,
+              "knowledge_pct": 63.9,
+              "attitude_pct": 66.1,
+              "practice_pct": 68.2,
+              "knowledge_practice_gap": -4.3,
+              "attitude_practice_gap": -2.1
+            }
+          ]
+        },
+        {
+          "id": "geo-scope-dumbbell",
+          "kind": "dumbbell",
+          "title": "Bangalore versus outside Bangalore",
+          "subtitle": "Mean domain scores by geo scope.",
+          "caption": "Attitude is the clearest Bangalore-versus-outside difference at 3.5 points.",
+          "data": [
+            {
+              "metric": "knowledge_pct",
+              "label": "Knowledge",
+              "bangalore_mean": 63.4,
+              "outside_mean": 63.9,
+              "difference": -0.5,
+              "p_value": 0.6551,
+              "effect_size": -0.033,
+              "statistic": 7413.0
+            },
+            {
+              "metric": "attitude_pct",
+              "label": "Attitude",
+              "bangalore_mean": 69.6,
+              "outside_mean": 66.1,
+              "difference": 3.5,
+              "p_value": 0.01,
+              "effect_size": 0.19,
+              "statistic": 9121.5
+            },
+            {
+              "metric": "practice_pct",
+              "label": "Practice",
+              "bangalore_mean": 70.9,
+              "outside_mean": 68.2,
+              "difference": 2.7,
+              "p_value": 0.2538,
+              "effect_size": 0.084,
+              "statistic": 8310.0
+            }
+          ],
+          "left_key": "outside_mean",
+          "right_key": "bangalore_mean",
+          "label_key": "label",
+          "format": "percent"
+        },
+        {
+          "id": "correlation-circles",
+          "kind": "correlation-circles",
+          "title": "KAP relationship map",
+          "subtitle": "Circle size and color reflect the strength of the association.",
+          "caption": "Knowledge vs Practice is the strongest pair with rho=0.381.",
+          "data": [
+            {
+              "left": "knowledge_pct",
+              "right": "practice_pct",
+              "label": "Knowledge vs Practice",
+              "rho": 0.381,
+              "p_value": 0.0,
+              "ci_low": 0.264,
+              "ci_high": 0.491,
+              "n": 251
+            },
+            {
+              "left": "knowledge_pct",
+              "right": "attitude_pct",
+              "label": "Knowledge vs Attitude",
+              "rho": 0.315,
+              "p_value": 0.0,
+              "ci_low": 0.204,
+              "ci_high": 0.417,
+              "n": 251
+            },
+            {
+              "left": "attitude_pct",
+              "right": "practice_pct",
+              "label": "Attitude vs Practice",
+              "rho": 0.239,
+              "p_value": 0.000128,
+              "ci_low": 0.124,
+              "ci_high": 0.348,
+              "n": 251
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "insights": [
+    {
+      "id": "bangalore-footprint",
+      "scope": "Bangalore",
+      "title": "Bangalore drives the dataset, but the city is not a single cluster.",
+      "summary": "The report should treat Bangalore as the main lens while still showing that responses come from several visible Bengaluru pockets.",
+      "evidence": [
+        "Bangalore contributes 146 of 251 responses (58.2%).",
+        "JP Nagar is the largest named Bangalore locality with 12 responses.",
+        "Bellandur, Whitefield, and HSR Layout each contribute meaningful local pockets of responses."
+      ],
+      "why_it_matters": "Presentation should not talk about Bangalore as if it were one homogeneous block; locality cuts are needed for a credible city-specific story.",
+      "chart": {
+        "id": "insight-bangalore-footprint",
+        "kind": "horizontal-bar",
+        "title": "Top Bangalore localities in the sample",
+        "subtitle": "Displayed individually once a locality reaches at least three responses.",
+        "caption": "Bangalore accounts for 58.2% of the full sample, with JP Nagar leading the named localities.",
+        "data": [
+          {
+            "label": "Bangalore (Unspecified)",
+            "count": 58,
+            "percent_of_bangalore": 39.7,
+            "percent_of_total": 23.1
+          },
+          {
+            "label": "Other Bangalore localities",
+            "count": 15,
+            "percent_of_bangalore": 10.3,
+            "percent_of_total": 6.0
+          },
+          {
+            "label": "JP Nagar",
+            "count": 12,
+            "percent_of_bangalore": 8.2,
+            "percent_of_total": 4.8
+          },
+          {
+            "label": "Bellandur",
+            "count": 8,
+            "percent_of_bangalore": 5.5,
+            "percent_of_total": 3.2
+          },
+          {
+            "label": "HSR Layout",
+            "count": 8,
+            "percent_of_bangalore": 5.5,
+            "percent_of_total": 3.2
+          },
+          {
+            "label": "Whitefield",
+            "count": 8,
+            "percent_of_bangalore": 5.5,
+            "percent_of_total": 3.2
+          },
+          {
+            "label": "Ulsoor",
+            "count": 5,
+            "percent_of_bangalore": 3.4,
+            "percent_of_total": 2.0
+          },
+          {
+            "label": "CV Raman Nagar",
+            "count": 4,
+            "percent_of_bangalore": 2.7,
+            "percent_of_total": 1.6
+          }
+        ],
+        "x_label": "Respondents",
+        "format": "count"
+      }
+    },
+    {
+      "id": "bangalore-practice-leaders",
+      "scope": "Bangalore",
+      "title": "Named Bangalore localities differ more in behavior than in awareness.",
+      "summary": "Practice is strongest in a few named Bangalore pockets even when knowledge stays closer to the city average.",
+      "evidence": [
+        "Whitefield posts the highest reported practice score among claimable Bangalore localities at 80.0%.",
+        "JP Nagar and HSR Layout also clear 75% on practice.",
+        "The Bangalore-wide practice mean is 70.9%."
+      ],
+      "why_it_matters": "Locality messaging can highlight where good routines already exist and use those pockets as proof that stronger behavior is achievable inside the same city context.",
+      "chart": {
+        "id": "insight-bangalore-practice-leaders",
+        "kind": "multi-dot",
+        "title": "KAP by Bangalore locality",
+        "subtitle": "Localities shown individually once they reach at least five responses.",
+        "caption": "Whitefield leads the claimable Bangalore localities on practice, not on knowledge alone.",
+        "data": [
+          {
+            "label": "Whitefield",
+            "n": 8,
+            "knowledge_pct": 65.0,
+            "attitude_pct": 68.1,
+            "practice_pct": 80.0,
+            "knowledge_practice_gap": -15.0,
+            "attitude_practice_gap": -11.9,
+            "claimable": true
+          },
+          {
+            "label": "JP Nagar",
+            "n": 12,
+            "knowledge_pct": 64.2,
+            "attitude_pct": 68.1,
+            "practice_pct": 77.8,
+            "knowledge_practice_gap": -13.6,
+            "attitude_practice_gap": -9.7,
+            "claimable": true
+          },
+          {
+            "label": "HSR Layout",
+            "n": 8,
+            "knowledge_pct": 62.5,
+            "attitude_pct": 72.2,
+            "practice_pct": 76.2,
+            "knowledge_practice_gap": -13.8,
+            "attitude_practice_gap": -4.1,
+            "claimable": true
+          },
+          {
+            "label": "Bangalore (Unspecified)",
+            "n": 58,
+            "knowledge_pct": 63.1,
+            "attitude_pct": 70.7,
+            "practice_pct": 71.7,
+            "knowledge_practice_gap": -8.6,
+            "attitude_practice_gap": -1.0,
+            "claimable": true
+          },
+          {
+            "label": "Other Bangalore localities",
+            "n": 47,
+            "knowledge_pct": 60.0,
+            "attitude_pct": 69.4,
+            "practice_pct": 68.5,
+            "knowledge_practice_gap": -8.5,
+            "attitude_practice_gap": 0.9,
+            "claimable": false
+          },
+          {
+            "label": "Bellandur",
+            "n": 8,
+            "knowledge_pct": 66.2,
+            "attitude_pct": 72.5,
+            "practice_pct": 64.6,
+            "knowledge_practice_gap": 1.7,
+            "attitude_practice_gap": 7.9,
+            "claimable": true
+          },
+          {
+            "label": "Ulsoor",
+            "n": 5,
+            "knowledge_pct": 92.0,
+            "attitude_pct": 56.0,
+            "practice_pct": 55.3,
+            "knowledge_practice_gap": 36.7,
+            "attitude_practice_gap": 0.7,
+            "claimable": true
+          }
+        ],
+        "series": [
+          "knowledge_pct",
+          "attitude_pct",
+          "practice_pct"
+        ],
+        "format": "percent"
+      }
+    },
+    {
+      "id": "bangalore-gap-pocket",
+      "scope": "Bangalore",
+      "title": "Ulsoor stands out as a small pocket where knowledge is not turning into routine practice.",
+      "summary": "The biggest knowledge-to-behavior mismatch inside Bangalore appears in a locality-sized pocket, not in the city average.",
+      "evidence": [
+        "Ulsoor records 92.0% on knowledge and 55.3% on practice.",
+        "That creates a 36.7-point knowledge-practice gap.",
+        "This comparison is based on 5 respondents, so it should be presented as a directional pocket rather than a citywide conclusion."
+      ],
+      "why_it_matters": "This is the clearest example that awareness alone does not guarantee daily action, which points toward behavior-focused interventions rather than awareness messaging alone.",
+      "chart": {
+        "id": "insight-bangalore-gap-pocket",
+        "kind": "dumbbell",
+        "title": "Knowledge-to-practice gaps across Bangalore localities",
+        "subtitle": "Positive values mean knowledge is running ahead of behavior.",
+        "caption": "Ulsoor has the largest knowledge-practice gap among localities with at least five respondents.",
+        "data": [
+          {
+            "label": "Whitefield",
+            "n": 8,
+            "knowledge_pct": 65.0,
+            "attitude_pct": 68.1,
+            "practice_pct": 80.0,
+            "knowledge_practice_gap": -15.0,
+            "attitude_practice_gap": -11.9,
+            "claimable": true
+          },
+          {
+            "label": "JP Nagar",
+            "n": 12,
+            "knowledge_pct": 64.2,
+            "attitude_pct": 68.1,
+            "practice_pct": 77.8,
+            "knowledge_practice_gap": -13.6,
+            "attitude_practice_gap": -9.7,
+            "claimable": true
+          },
+          {
+            "label": "HSR Layout",
+            "n": 8,
+            "knowledge_pct": 62.5,
+            "attitude_pct": 72.2,
+            "practice_pct": 76.2,
+            "knowledge_practice_gap": -13.8,
+            "attitude_practice_gap": -4.1,
+            "claimable": true
+          },
+          {
+            "label": "Bangalore (Unspecified)",
+            "n": 58,
+            "knowledge_pct": 63.1,
+            "attitude_pct": 70.7,
+            "practice_pct": 71.7,
+            "knowledge_practice_gap": -8.6,
+            "attitude_practice_gap": -1.0,
+            "claimable": true
+          },
+          {
+            "label": "Other Bangalore localities",
+            "n": 47,
+            "knowledge_pct": 60.0,
+            "attitude_pct": 69.4,
+            "practice_pct": 68.5,
+            "knowledge_practice_gap": -8.5,
+            "attitude_practice_gap": 0.9,
+            "claimable": false
+          },
+          {
+            "label": "Bellandur",
+            "n": 8,
+            "knowledge_pct": 66.2,
+            "attitude_pct": 72.5,
+            "practice_pct": 64.6,
+            "knowledge_practice_gap": 1.7,
+            "attitude_practice_gap": 7.9,
+            "claimable": true
+          },
+          {
+            "label": "Ulsoor",
+            "n": 5,
+            "knowledge_pct": 92.0,
+            "attitude_pct": 56.0,
+            "practice_pct": 55.3,
+            "knowledge_practice_gap": 36.7,
+            "attitude_practice_gap": 0.7,
+            "claimable": true
+          }
+        ],
+        "left_key": "practice_pct",
+        "right_key": "knowledge_pct",
+        "format": "percent"
+      }
+    },
+    {
+      "id": "knowledge-blind-spots",
+      "scope": "Overall",
+      "title": "The weakest knowledge area is not advanced care; it is the basic cause of gum disease.",
+      "summary": "The biggest misconception sits at the foundation of periodontal understanding, which makes it especially important for public messaging.",
+      "evidence": [
+        "Only 37.5% answered the early gum disease cause question correctly.",
+        "Plaque and tartar questions also stay near the halfway mark at 51.4% and 51.4%.",
+        "The overall knowledge average is 63.6%."
+      ],
+      "why_it_matters": "If the basics are still unclear, communication should start with plain explanations of plaque, tartar, and disease causation before moving to treatment messaging.",
+      "chart": {
+        "id": "insight-knowledge-blind-spots",
+        "kind": "lollipop",
+        "title": "Weakest knowledge items",
+        "subtitle": "Percent answering each question correctly.",
+        "caption": "The disease-cause question is the lowest-scoring knowledge item at 37.5% correct.",
+        "data": [
+          {
+            "id": "k4",
+            "short": "Cause",
+            "question": "What is the primary cause of early gum disease?",
+            "correct_pct": 37.5,
+            "incorrect_pct": 62.5
+          },
+          {
+            "id": "k1",
+            "short": "Plaque",
+            "question": "What is dental plaque?",
+            "correct_pct": 51.4,
+            "incorrect_pct": 48.6
+          },
+          {
+            "id": "k2",
+            "short": "Calculus",
+            "question": "What is dental calculus (tartar)?",
+            "correct_pct": 51.4,
+            "incorrect_pct": 48.6
+          },
+          {
+            "id": "k10",
+            "short": "Specialty",
+            "question": "Which dental specialty focuses on prevention and treatment of gum disease?",
+            "correct_pct": 53.4,
+            "incorrect_pct": 46.6
+          },
+          {
+            "id": "k7",
+            "short": "Vitamin",
+            "question": "Which vitamin helps to keep your gums healthy?",
+            "correct_pct": 54.6,
+            "incorrect_pct": 45.4
+          }
+        ],
+        "value_key": "correct_pct",
+        "label_key": "short"
+      }
+    },
+    {
+      "id": "practice-bottlenecks",
+      "scope": "Overall",
+      "title": "Daily routines weaken most on interdental cleaning and dentist follow-up.",
+      "summary": "The weakest behaviors are not brushing basics alone; they are the routines people skip once a toothbrush is no longer enough.",
+      "evidence": [
+        "Only 12.0% land in the best-practice band for cleaning aids.",
+        "Dental visit recency reaches only 39.0% best-practice adherence.",
+        "Half or more of respondents remain in the low-quality bands for brushing direction and dentist visits."
+      ],
+      "why_it_matters": "This points to a concrete behavior agenda: move beyond brushing frequency and focus on interdental cleaning and regular dental follow-up.",
+      "chart": {
+        "id": "insight-practice-bottlenecks",
+        "kind": "horizontal-bar",
+        "title": "Practice items with the lowest best-practice share",
+        "subtitle": "Lower bars indicate the hardest routines to sustain.",
+        "caption": "Cleaning aids is the weakest behavior area, with only 12.0% in the best-practice band.",
+        "data": [
+          {
+            "id": "p7",
+            "short": "Cleaning aids",
+            "question": "Do you use any aids for cleaning your teeth, other than toothbrush and toothpaste?",
+            "least_healthy": 29.1,
+            "needs_work": 41.8,
+            "reasonable": 17.1,
+            "best_practice": 12.0,
+            "low_quality_pct": 70.9
+          },
+          {
+            "id": "p2",
+            "short": "Brushing direction",
+            "question": "In what direction do you brush your teeth?",
+            "least_healthy": 13.9,
+            "needs_work": 36.3,
+            "reasonable": 13.5,
+            "best_practice": 36.3,
+            "low_quality_pct": 50.2
+          },
+          {
+            "id": "p9",
+            "short": "Dental visit",
+            "question": "When did you last visit your dentist?",
+            "least_healthy": 15.9,
+            "needs_work": 35.9,
+            "reasonable": 9.2,
+            "best_practice": 39.0,
+            "low_quality_pct": 51.8
+          },
+          {
+            "id": "p4",
+            "short": "Brushing timing",
+            "question": "When do you brush your teeth?",
+            "least_healthy": 0.0,
+            "needs_work": 46.2,
+            "reasonable": 3.2,
+            "best_practice": 50.6,
+            "low_quality_pct": 46.2
+          },
+          {
+            "id": "p3",
+            "short": "Brush softness",
+            "question": "What type of toothbrush do you use?",
+            "least_healthy": 1.6,
+            "needs_work": 25.5,
+            "reasonable": 17.5,
+            "best_practice": 55.4,
+            "low_quality_pct": 27.1
+          }
+        ],
+        "value_key": "best_practice",
+        "label_key": "short",
+        "format": "percent"
+      }
+    },
+    {
+      "id": "geo-context",
+      "scope": "Outside Bangalore",
+      "title": "Bangalore respondents are more attitude-positive, but knowledge and behavior look broadly similar to the outside-Bangalore sample.",
+      "summary": "The geography story is more about attitude tone than about a dramatic difference in knowledge or practice.",
+      "evidence": [
+        "Bangalore averages 69.6% on attitude versus 66.1% outside Bangalore.",
+        "The attitude gap is 3.5 points with a small effect size of 0.190.",
+        "Knowledge and practice differences are directionally smaller than the attitude split."
+      ],
+      "why_it_matters": "Outside-Bangalore respondents still belong in the story because the differences are not large enough to dismiss them as a separate population.",
+      "chart": {
+        "id": "insight-geo-context",
+        "kind": "dumbbell",
+        "title": "Bangalore versus outside Bangalore",
+        "subtitle": "Mean standardized scores by geo scope.",
+        "caption": "Attitude shows the clearest Bangalore-versus-outside contrast, while knowledge and practice stay closer together.",
+        "data": [
+          {
+            "metric": "knowledge_pct",
+            "label": "Knowledge",
+            "bangalore_mean": 63.4,
+            "outside_mean": 63.9,
+            "difference": -0.5,
+            "p_value": 0.6551,
+            "effect_size": -0.033,
+            "statistic": 7413.0
+          },
+          {
+            "metric": "attitude_pct",
+            "label": "Attitude",
+            "bangalore_mean": 69.6,
+            "outside_mean": 66.1,
+            "difference": 3.5,
+            "p_value": 0.01,
+            "effect_size": 0.19,
+            "statistic": 9121.5
+          },
+          {
+            "metric": "practice_pct",
+            "label": "Practice",
+            "bangalore_mean": 70.9,
+            "outside_mean": 68.2,
+            "difference": 2.7,
+            "p_value": 0.2538,
+            "effect_size": 0.084,
+            "statistic": 8310.0
+          }
+        ],
+        "left_key": "outside_mean",
+        "right_key": "bangalore_mean",
+        "label_key": "label",
+        "format": "percent"
+      }
+    },
+    {
+      "id": "kap-link",
+      "scope": "Overall",
+      "title": "Knowledge aligns most strongly with practice, more than with attitude alone.",
+      "summary": "Among the three composite domains, the cleanest statistical relationship is between knowing more and reporting better routines.",
+      "evidence": [
+        "Knowledge vs Practice has the strongest Spearman rho at 0.381.",
+        "The 95% bootstrap interval runs from 0.264 to 0.491.",
+        "Attitude also matters, but the practice link is weaker when attitude is paired with practice directly."
+      ],
+      "why_it_matters": "This connects awareness-building with behavior change, while still acknowledging that knowledge alone is not sufficient in every locality or segment.",
+      "chart": {
+        "id": "insight-kap-link",
+        "kind": "correlation-circles",
+        "title": "Relationships among knowledge, attitude, and practice",
+        "subtitle": "Darker circles represent stronger monotonic relationships.",
+        "caption": "Knowledge shows its strongest alignment with practice at rho=0.381.",
+        "data": [
+          {
+            "left": "knowledge_pct",
+            "right": "practice_pct",
+            "label": "Knowledge vs Practice",
+            "rho": 0.381,
+            "p_value": 0.0,
+            "ci_low": 0.264,
+            "ci_high": 0.491,
+            "n": 251
+          },
+          {
+            "left": "knowledge_pct",
+            "right": "attitude_pct",
+            "label": "Knowledge vs Attitude",
+            "rho": 0.315,
+            "p_value": 0.0,
+            "ci_low": 0.204,
+            "ci_high": 0.417,
+            "n": 251
+          },
+          {
+            "left": "attitude_pct",
+            "right": "practice_pct",
+            "label": "Attitude vs Practice",
+            "rho": 0.239,
+            "p_value": 0.000128,
+            "ci_low": 0.124,
+            "ci_high": 0.348,
+            "n": 251
+          }
+        ]
+      }
+    },
+    {
+      "id": "weakest-segments",
+      "scope": "Overall",
+      "title": "The weakest reported practice is concentrated in a few work and career segments, not across the whole sample.",
+      "summary": "Behavior challenges are concentrated enough to support more targeted messaging instead of a single blanket intervention.",
+      "evidence": [
+        "Work from home (Remote) has the lowest practice score among segments with at least 10 respondents at 66.5%.",
+        "10-15 years follows close behind at 66.8%.",
+        "0-3 years rounds out the bottom three practice segments."
+      ],
+      "why_it_matters": "This makes the case for segment-aware outreach, especially when presenting recommendations to workplace or community stakeholders.",
+      "chart": {
+        "id": "insight-weakest-segments",
+        "kind": "horizontal-bar",
+        "title": "Lowest-practice respondent segments",
+        "subtitle": "Segments shown only when they include at least 10 respondents.",
+        "caption": "Work from home (Remote) is the lowest-practice segment in the dataset.",
+        "data": [
+          {
+            "group": "Work Mode",
+            "level": "Work from home (Remote)",
+            "n": 18,
+            "knowledge_pct": 57.8,
+            "attitude_pct": 73.6,
+            "practice_pct": 66.5,
+            "knowledge_practice_gap": -8.7,
+            "attitude_practice_gap": 7.1
+          },
+          {
+            "group": "Professional Experience",
+            "level": "10-15 years",
+            "n": 37,
+            "knowledge_pct": 69.7,
+            "attitude_pct": 66.6,
+            "practice_pct": 66.8,
+            "knowledge_practice_gap": 3.0,
+            "attitude_practice_gap": -0.2
+          },
+          {
+            "group": "Professional Experience",
+            "level": "0-3 years",
+            "n": 81,
+            "knowledge_pct": 64.3,
+            "attitude_pct": 69.4,
+            "practice_pct": 67.1,
+            "knowledge_practice_gap": -2.8,
+            "attitude_practice_gap": 2.2
+          },
+          {
+            "group": "Age Range",
+            "level": "30-40 years",
+            "n": 77,
+            "knowledge_pct": 65.1,
+            "attitude_pct": 64.9,
+            "practice_pct": 68.0,
+            "knowledge_practice_gap": -2.9,
+            "attitude_practice_gap": -3.0
+          },
+          {
+            "group": "Professional Experience",
+            "level": "6-10 years",
+            "n": 45,
+            "knowledge_pct": 60.4,
+            "attitude_pct": 66.3,
+            "practice_pct": 68.1,
+            "knowledge_practice_gap": -7.7,
+            "attitude_practice_gap": -1.8
+          }
+        ],
+        "value_key": "practice_pct",
+        "label_key": "level",
+        "format": "percent"
+      }
+    }
+  ],
+  "tables": {
+    "score_summaries": [
+      {
+        "metric": "knowledge_pct",
+        "label": "Knowledge",
+        "max_score": 10,
+        "mean_raw": 6.36,
+        "sd_raw": 2.36,
+        "median_raw": 6.0,
+        "q1_raw": 4.0,
+        "q3_raw": 8.0,
+        "min_raw": 1.0,
+        "max_raw": 10.0,
+        "mean_pct": 63.6,
+        "median_pct": 60.0,
+        "q1_pct": 40.0,
+        "q3_pct": 80.0,
+        "min_pct": 10.0,
+        "max_pct": 100.0
+      },
+      {
+        "metric": "attitude_pct",
+        "label": "Attitude",
+        "max_score": 40,
+        "mean_raw": 27.27,
+        "sd_raw": 4.64,
+        "median_raw": 28.0,
+        "q1_raw": 24.0,
+        "q3_raw": 30.0,
+        "min_raw": 16.0,
+        "max_raw": 38.0,
+        "mean_pct": 68.2,
+        "median_pct": 70.0,
+        "q1_pct": 60.0,
+        "q3_pct": 75.0,
+        "min_pct": 40.0,
+        "max_pct": 95.0
+      },
+      {
+        "metric": "practice_pct",
+        "label": "Practice",
+        "max_score": 30,
+        "mean_raw": 20.94,
+        "sd_raw": 4.27,
+        "median_raw": 22.0,
+        "q1_raw": 17.0,
+        "q3_raw": 24.0,
+        "min_raw": 9.0,
+        "max_raw": 30.0,
+        "mean_pct": 69.8,
+        "median_pct": 73.3,
+        "q1_pct": 56.7,
+        "q3_pct": 80.0,
+        "min_pct": 30.0,
+        "max_pct": 100.0
+      }
+    ],
+    "subgroup_tests": [
+      {
+        "metric": "Knowledge",
+        "group": "Age Range",
+        "test_type": "Kruskal-Wallis",
+        "levels": [
+          "20-30 years",
+          "30-40 years",
+          "40-50 years",
+          "50-60 years"
+        ],
+        "counts": [
+          155,
+          77,
+          14,
+          5
+        ],
+        "means": [
+          63.2,
+          65.1,
+          60.7,
+          62.0
+        ],
+        "p_value": 0.9387,
+        "effect_size": 0.0,
+        "effect_size_name": "epsilon-squared",
+        "top_level": "30-40 years"
+      },
+      {
+        "metric": "Knowledge",
+        "group": "Gender",
+        "test_type": "Kruskal-Wallis",
+        "levels": [
+          "Male",
+          "Female",
+          "Prefer not to say"
+        ],
+        "counts": [
+          170,
+          79,
+          2
+        ],
+        "means": [
+          57.3,
+          76.5,
+          95.0
+        ],
+        "p_value": 0.0,
+        "effect_size": 0.155,
+        "effect_size_name": "epsilon-squared",
+        "top_level": "Prefer not to say"
+      },
+      {
+        "metric": "Knowledge",
+        "group": "Professional Experience",
+        "test_type": "Kruskal-Wallis",
+        "levels": [
+          "0-3 years",
+          "3-6 years",
+          "6-10 years",
+          "10-15 years",
+          "15+ years"
+        ],
+        "counts": [
+          81,
+          67,
+          45,
+          37,
+          21
+        ],
+        "means": [
+          64.3,
+          65.1,
+          60.4,
+          69.7,
+          52.4
+        ],
+        "p_value": 0.0646,
+        "effect_size": 0.02,
+        "effect_size_name": "epsilon-squared",
+        "top_level": "10-15 years"
+      },
+      {
+        "metric": "Knowledge",
+        "group": "Work Mode",
+        "test_type": "Kruskal-Wallis",
+        "levels": [
+          "Full time",
+          "Hybrid",
+          "Work from home (Remote)"
+        ],
+        "counts": [
+          196,
+          37,
+          18
+        ],
+        "means": [
+          62.9,
+          70.5,
+          57.8
+        ],
+        "p_value": 0.0831,
+        "effect_size": 0.012,
+        "effect_size_name": "epsilon-squared",
+        "top_level": "Hybrid"
+      },
+      {
+        "metric": "Knowledge",
+        "group": "Previous Treatment",
+        "test_type": "Mann-Whitney U",
+        "levels": [
+          "No",
+          "Yes"
+        ],
+        "counts": [
+          199,
+          52
+        ],
+        "means": [
+          64.4,
+          60.6
+        ],
+        "p_value": 0.2115,
+        "effect_size": 0.112,
+        "effect_size_name": "Cliff's delta",
+        "top_level": "No"
+      },
+      {
+        "metric": "Knowledge",
+        "group": "Geo Scope",
+        "test_type": "Mann-Whitney U",
+        "levels": [
+          "Bangalore",
+          "Outside Bangalore"
+        ],
+        "counts": [
+          146,
+          105
+        ],
+        "means": [
+          63.4,
+          63.9
+        ],
+        "p_value": 0.6551,
+        "effect_size": -0.033,
+        "effect_size_name": "Cliff's delta",
+        "top_level": "Outside Bangalore"
+      },
+      {
+        "metric": "Attitude",
+        "group": "Age Range",
+        "test_type": "Kruskal-Wallis",
+        "levels": [
+          "20-30 years",
+          "30-40 years",
+          "40-50 years",
+          "50-60 years"
+        ],
+        "counts": [
+          155,
+          77,
+          14,
+          5
+        ],
+        "means": [
+          70.0,
+          64.9,
+          66.6,
+          67.0
+        ],
+        "p_value": 0.0611,
+        "effect_size": 0.018,
+        "effect_size_name": "epsilon-squared",
+        "top_level": "20-30 years"
+      },
+      {
+        "metric": "Attitude",
+        "group": "Gender",
+        "test_type": "Kruskal-Wallis",
+        "levels": [
+          "Male",
+          "Female",
+          "Prefer not to say"
+        ],
+        "counts": [
+          170,
+          79,
+          2
+        ],
+        "means": [
+          66.8,
+          71.0,
+          75.0
+        ],
+        "p_value": 0.0562,
+        "effect_size": 0.015,
+        "effect_size_name": "epsilon-squared",
+        "top_level": "Prefer not to say"
+      },
+      {
+        "metric": "Attitude",
+        "group": "Professional Experience",
+        "test_type": "Kruskal-Wallis",
+        "levels": [
+          "0-3 years",
+          "3-6 years",
+          "6-10 years",
+          "10-15 years",
+          "15+ years"
+        ],
+        "counts": [
+          81,
+          67,
+          45,
+          37,
+          21
+        ],
+        "means": [
+          69.4,
+          69.7,
+          66.3,
+          66.6,
+          65.6
+        ],
+        "p_value": 0.5029,
+        "effect_size": 0.0,
+        "effect_size_name": "epsilon-squared",
+        "top_level": "3-6 years"
+      },
+      {
+        "metric": "Attitude",
+        "group": "Work Mode",
+        "test_type": "Kruskal-Wallis",
+        "levels": [
+          "Full time",
+          "Hybrid",
+          "Work from home (Remote)"
+        ],
+        "counts": [
+          196,
+          37,
+          18
+        ],
+        "means": [
+          67.0,
+          71.6,
+          73.6
+        ],
+        "p_value": 0.0028,
+        "effect_size": 0.039,
+        "effect_size_name": "epsilon-squared",
+        "top_level": "Work from home (Remote)"
+      },
+      {
+        "metric": "Attitude",
+        "group": "Previous Treatment",
+        "test_type": "Mann-Whitney U",
+        "levels": [
+          "No",
+          "Yes"
+        ],
+        "counts": [
+          199,
+          52
+        ],
+        "means": [
+          68.2,
+          68.2
+        ],
+        "p_value": 0.164,
+        "effect_size": -0.125,
+        "effect_size_name": "Cliff's delta",
+        "top_level": "Yes"
+      },
+      {
+        "metric": "Attitude",
+        "group": "Geo Scope",
+        "test_type": "Mann-Whitney U",
+        "levels": [
+          "Bangalore",
+          "Outside Bangalore"
+        ],
+        "counts": [
+          146,
+          105
+        ],
+        "means": [
+          69.6,
+          66.1
+        ],
+        "p_value": 0.01,
+        "effect_size": 0.19,
+        "effect_size_name": "Cliff's delta",
+        "top_level": "Bangalore"
+      },
+      {
+        "metric": "Practice",
+        "group": "Age Range",
+        "test_type": "Kruskal-Wallis",
+        "levels": [
+          "20-30 years",
+          "30-40 years",
+          "40-50 years",
+          "50-60 years"
+        ],
+        "counts": [
+          155,
+          77,
+          14,
+          5
+        ],
+        "means": [
+          71.1,
+          68.0,
+          69.0,
+          60.7
+        ],
+        "p_value": 0.1854,
+        "effect_size": 0.007,
+        "effect_size_name": "epsilon-squared",
+        "top_level": "20-30 years"
+      },
+      {
+        "metric": "Practice",
+        "group": "Gender",
+        "test_type": "Kruskal-Wallis",
+        "levels": [
+          "Male",
+          "Female",
+          "Prefer not to say"
+        ],
+        "counts": [
+          170,
+          79,
+          2
+        ],
+        "means": [
+          69.0,
+          71.5,
+          73.3
+        ],
+        "p_value": 0.468,
+        "effect_size": 0.0,
+        "effect_size_name": "epsilon-squared",
+        "top_level": "Prefer not to say"
+      },
+      {
+        "metric": "Practice",
+        "group": "Professional Experience",
+        "test_type": "Kruskal-Wallis",
+        "levels": [
+          "0-3 years",
+          "3-6 years",
+          "6-10 years",
+          "10-15 years",
+          "15+ years"
+        ],
+        "counts": [
+          81,
+          67,
+          45,
+          37,
+          21
+        ],
+        "means": [
+          67.1,
+          75.7,
+          68.1,
+          66.8,
+          70.2
+        ],
+        "p_value": 0.0011,
+        "effect_size": 0.058,
+        "effect_size_name": "epsilon-squared",
+        "top_level": "3-6 years"
+      },
+      {
+        "metric": "Practice",
+        "group": "Work Mode",
+        "test_type": "Kruskal-Wallis",
+        "levels": [
+          "Full time",
+          "Hybrid",
+          "Work from home (Remote)"
+        ],
+        "counts": [
+          196,
+          37,
+          18
+        ],
+        "means": [
+          70.0,
+          70.2,
+          66.5
+        ],
+        "p_value": 0.3727,
+        "effect_size": 0.0,
+        "effect_size_name": "epsilon-squared",
+        "top_level": "Hybrid"
+      },
+      {
+        "metric": "Practice",
+        "group": "Previous Treatment",
+        "test_type": "Mann-Whitney U",
+        "levels": [
+          "No",
+          "Yes"
+        ],
+        "counts": [
+          199,
+          52
+        ],
+        "means": [
+          69.0,
+          72.7
+        ],
+        "p_value": 0.1028,
+        "effect_size": -0.146,
+        "effect_size_name": "Cliff's delta",
+        "top_level": "Yes"
+      },
+      {
+        "metric": "Practice",
+        "group": "Geo Scope",
+        "test_type": "Mann-Whitney U",
+        "levels": [
+          "Bangalore",
+          "Outside Bangalore"
+        ],
+        "counts": [
+          146,
+          105
+        ],
+        "means": [
+          70.9,
+          68.2
+        ],
+        "p_value": 0.2538,
+        "effect_size": 0.084,
+        "effect_size_name": "Cliff's delta",
+        "top_level": "Bangalore"
+      }
+    ],
+    "regression_fits": [
+      {
+        "model": "knowledge_model",
+        "outcome": "knowledge_pct",
+        "n_obs": 251,
+        "r_squared": 0.236,
+        "adj_r_squared": 0.195,
+        "aic": 2257.7,
+        "bic": 2307.1
+      },
+      {
+        "model": "attitude_model",
+        "outcome": "attitude_pct",
+        "n_obs": 251,
+        "r_squared": 0.215,
+        "adj_r_squared": 0.168,
+        "aic": 1911.5,
+        "bic": 1964.3
+      },
+      {
+        "model": "practice_model",
+        "outcome": "practice_pct",
+        "n_obs": 251,
+        "r_squared": 0.314,
+        "adj_r_squared": 0.27,
+        "aic": 1981.4,
+        "bic": 2037.8
+      }
+    ],
+    "regression_highlights": [
+      {
+        "model": "knowledge_model",
+        "outcome": "knowledge_pct",
+        "term_label": "Gender: Female vs Male",
+        "coef": 21.08,
+        "p_value": 0.0,
+        "ci_low": 15.074,
+        "ci_high": 27.086
+      },
+      {
+        "model": "knowledge_model",
+        "outcome": "knowledge_pct",
+        "term_label": "Gender: Prefer not to say vs Male",
+        "coef": 38.27,
+        "p_value": 0.002,
+        "ci_low": 14.029,
+        "ci_high": 62.511
+      },
+      {
+        "model": "knowledge_model",
+        "outcome": "knowledge_pct",
+        "term_label": "Age Range: 50-60 years vs 20-30 years",
+        "coef": 28.626,
+        "p_value": 0.0028,
+        "ci_low": 9.827,
+        "ci_high": 47.426
+      },
+      {
+        "model": "knowledge_model",
+        "outcome": "knowledge_pct",
+        "term_label": "Gender: Other vs Male",
+        "coef": -0.0,
+        "p_value": 0.0344,
+        "ci_low": -0.0,
+        "ci_high": -0.0
+      },
+      {
+        "model": "knowledge_model",
+        "outcome": "knowledge_pct",
+        "term_label": "Age Range: 40-50 years vs 20-30 years",
+        "coef": 15.216,
+        "p_value": 0.0391,
+        "ci_low": 0.762,
+        "ci_high": 29.671
+      },
+      {
+        "model": "attitude_model",
+        "outcome": "attitude_pct",
+        "term_label": "Knowledge Pct",
+        "coef": 0.156,
+        "p_value": 0.0,
+        "ci_low": 0.099,
+        "ci_high": 0.213
+      },
+      {
+        "model": "attitude_model",
+        "outcome": "attitude_pct",
+        "term_label": "Work Mode: Work from home (Remote) vs Full time",
+        "coef": 7.46,
+        "p_value": 0.0002,
+        "ci_low": 3.529,
+        "ci_high": 11.391
+      },
+      {
+        "model": "attitude_model",
+        "outcome": "attitude_pct",
+        "term_label": "Gender: Other vs Male",
+        "coef": -0.0,
+        "p_value": 0.0036,
+        "ci_low": -0.0,
+        "ci_high": -0.0
+      },
+      {
+        "model": "attitude_model",
+        "outcome": "attitude_pct",
+        "term_label": "Geo Scope: Outside Bangalore vs Bangalore",
+        "coef": -3.97,
+        "p_value": 0.0039,
+        "ci_low": -6.662,
+        "ci_high": -1.277
+      },
+      {
+        "model": "attitude_model",
+        "outcome": "attitude_pct",
+        "term_label": "Age Range: 30-40 years vs 20-30 years",
+        "coef": -7.227,
+        "p_value": 0.0071,
+        "ci_low": -12.492,
+        "ci_high": -1.961
+      },
+      {
+        "model": "practice_model",
+        "outcome": "practice_pct",
+        "term_label": "Professional Experience: 3-6 years vs 0-3 years",
+        "coef": 8.671,
+        "p_value": 0.0,
+        "ci_low": 4.694,
+        "ci_high": 12.647
+      },
+      {
+        "model": "practice_model",
+        "outcome": "practice_pct",
+        "term_label": "Knowledge Pct",
+        "coef": 0.272,
+        "p_value": 0.0,
+        "ci_low": 0.2,
+        "ci_high": 0.345
+      }
+    ],
+    "correlations": [
+      {
+        "left": "knowledge_pct",
+        "right": "practice_pct",
+        "label": "Knowledge vs Practice",
+        "rho": 0.381,
+        "p_value": 0.0,
+        "ci_low": 0.264,
+        "ci_high": 0.491,
+        "n": 251
+      },
+      {
+        "left": "knowledge_pct",
+        "right": "attitude_pct",
+        "label": "Knowledge vs Attitude",
+        "rho": 0.315,
+        "p_value": 0.0,
+        "ci_low": 0.204,
+        "ci_high": 0.417,
+        "n": 251
+      },
+      {
+        "left": "attitude_pct",
+        "right": "practice_pct",
+        "label": "Attitude vs Practice",
+        "rho": 0.239,
+        "p_value": 0.000128,
+        "ci_low": 0.124,
+        "ci_high": 0.348,
+        "n": 251
+      }
+    ],
+    "geo_scope_comparison": [
+      {
+        "metric": "knowledge_pct",
+        "label": "Knowledge",
+        "bangalore_mean": 63.4,
+        "outside_mean": 63.9,
+        "difference": -0.5,
+        "p_value": 0.6551,
+        "effect_size": -0.033,
+        "statistic": 7413.0
+      },
+      {
+        "metric": "attitude_pct",
+        "label": "Attitude",
+        "bangalore_mean": 69.6,
+        "outside_mean": 66.1,
+        "difference": 3.5,
+        "p_value": 0.01,
+        "effect_size": 0.19,
+        "statistic": 9121.5
+      },
+      {
+        "metric": "practice_pct",
+        "label": "Practice",
+        "bangalore_mean": 70.9,
+        "outside_mean": 68.2,
+        "difference": 2.7,
+        "p_value": 0.2538,
+        "effect_size": 0.084,
+        "statistic": 8310.0
+      }
+    ]
+  },
+  "appendix": {
+    "method_notes": [
+      "Knowledge, attitude, and practice scores are recomputed directly from the raw item responses in the source CSV.",
+      "Bangalore-specific locality analysis preserves named Bengaluru localities whenever a locality reaches at least three responses; smaller pockets roll into Other Bangalore localities.",
+      "Locality-level claims are only elevated when a Bangalore locality reaches at least five responses.",
+      "Subgroup comparisons use non-parametric tests, and the regression appendix is included only as a supporting validation layer."
+    ],
+    "mapping_review_head": "A reviewed locality-mapping table is written alongside the report data for inspection."
+  }
+}

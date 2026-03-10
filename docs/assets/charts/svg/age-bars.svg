@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="396" viewBox="0 0 1120 396" role="img" aria-labelledby="age-range-distribution-title age-range-distribution-subtitle">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f1a24" flood-opacity="0.08" />
+    </filter>
+    
+  </defs>
+  <style>
+  .title { font: 700 30px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .subtitle { font: 500 15px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .axis { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .label { font: 600 15px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .labelMuted { font: 500 13px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .value { font: 700 14px "Avenir Next", "Segoe UI", sans-serif; fill: #12202c; }
+  .small { font: 500 12px "Avenir Next", "Segoe UI", sans-serif; fill: #5f6c77; }
+  .grid { stroke: #d7ddd7; stroke-width: 1; stroke-dasharray: 2 6; }
+  .axisLine { stroke: #5f6c77; stroke-width: 1.25; }
+</style>
+  <rect x="0" y="0" width="1120" height="396" rx="30" fill="#fcfaf5" />
+  <rect x="16" y="16" width="1088" height="364" rx="26" fill="#f7f3ea" stroke="#d7ddd7" />
+  <text id="age-range-distribution-title" class="title" x="52" y="68"><tspan x="52" dy="0">Age range distribution</tspan></text>
+  <text id="age-range-distribution-subtitle" class="subtitle" x="52" y="96"><tspan x="52" dy="0">Younger respondents dominate the sample.</tspan></text>
+  <line class="grid" x1="360" x2="360" y1="134" y2="348" /><text class="axis" text-anchor="middle" x="360" y="376">0</text><line class="grid" x1="530" x2="530" y1="134" y2="348" /><text class="axis" text-anchor="middle" x="530" y="376">50</text><line class="grid" x1="700" x2="700" y1="134" y2="348" /><text class="axis" text-anchor="middle" x="700" y="376">100</text><line class="grid" x1="870" x2="870" y1="134" y2="348" /><text class="axis" text-anchor="middle" x="870" y="376">150</text><line class="grid" x1="1040" x2="1040" y1="134" y2="348" /><text class="axis" text-anchor="middle" x="1040" y="376">200</text><rect x="360" y="150" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="150" width="527" height="22" rx="11" fill="#1c7c74" /><text class="label" text-anchor="start" x="44" y="166"><tspan x="44" dy="0">20-30 years</tspan></text><text class="value" x="899" y="166">155</text><rect x="360" y="204" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="204" width="261.8" height="22" rx="11" fill="rgb(131, 174, 158)" /><text class="label" text-anchor="start" x="44" y="220"><tspan x="44" dy="0">30-40 years</tspan></text><text class="value" x="633.8" y="220">77</text><rect x="360" y="258" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="258" width="47.6" height="22" rx="11" fill="rgb(121, 169, 153)" /><text class="label" text-anchor="start" x="44" y="274"><tspan x="44" dy="0">40-50 years</tspan></text><text class="value" x="419.6" y="274">14</text><rect x="360" y="312" width="680" height="22" rx="11" fill="#ebe6db" /><rect x="360" y="312" width="17" height="22" rx="11" fill="rgb(110, 164, 149)" /><text class="label" text-anchor="start" x="44" y="328"><tspan x="44" dy="0">50-60 years</tspan></text><text class="value" x="389" y="328">5</text>
+</svg>

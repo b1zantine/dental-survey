@@ -1,0 +1,7 @@
+{
+  "name": "abinaya-survey-report",
+  "private": true,
+  "scripts": {
+    "build:report": "node scripts/build-report.mjs"
+  }
+}
