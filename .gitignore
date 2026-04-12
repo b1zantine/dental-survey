@@ -6,3 +6,4 @@
 .matplotlib/
 .pycache/
 docs/assets/tmp/
+__pycache__/
