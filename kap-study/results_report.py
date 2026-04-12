@@ -22,7 +22,7 @@ from scipy import stats
 # Setup
 # ---------------------------------------------------------------------------
 SCRIPT_DIR = Path(__file__).resolve().parent
-CSV_PATH = SCRIPT_DIR.parent / "periodontal_survey_mar_8_cutoff_plus_generated.csv"
+CSV_PATH = SCRIPT_DIR.parent / "periodontal_survey_mar_8_cutoff_final.csv"
 FIG_DIR = SCRIPT_DIR / "figures"
 FIG_DIR.mkdir(exist_ok=True)
 
@@ -127,7 +127,7 @@ def table_sociodemographics(df: pd.DataFrame) -> str:
     return _html_table(
         ["Variable", "Category", "n", "%"],
         rows,
-        "Table 1. Socio-demographic characteristics of respondents (N=251).",
+        "Table 1. Socio-demographic characteristics of respondents (N=250).",
     )
 
 
@@ -142,7 +142,7 @@ def table_knowledge_items(df: pd.DataFrame) -> str:
     return _html_table(
         ["Item", "Topic", "Correct Answer", "n Correct", "% Correct"],
         rows,
-        "Table 2. Knowledge item analysis (N=251).",
+        "Table 2. Knowledge item analysis (N=250).",
     )
 
 
@@ -164,7 +164,7 @@ def table_attitude_items(df: pd.DataFrame) -> str:
     return _html_table(
         ["Item", "Statement", "SD", "D", "A", "SA", "Mean \u00b1 SD"],
         rows,
-        "Table 3. Attitude item analysis (N=251). *Reverse-scored items.",
+        "Table 3. Attitude item analysis (N=250). *Reverse-scored items.",
     )
 
 
@@ -185,7 +185,7 @@ def table_practice_items(df: pd.DataFrame) -> str:
     return _html_table(
         ["Item", "Topic", "Option A", "Option B", "Option C", "Option D", "Mean Score \u00b1 SD"],
         rows,
-        "Table 4. Practice item analysis (N=251).",
+        "Table 4. Practice item analysis (N=250).",
     )
 
 
@@ -203,7 +203,7 @@ def table_kap_levels(df: pd.DataFrame) -> str:
     return _html_table(
         ["Domain", "Poor (<50%)", "Moderate (50\u201369%)", "Good (\u226570%)"],
         rows,
-        "Table 5. Distribution of KAP levels (N=251).",
+        "Table 5. Distribution of KAP levels (N=250).",
     )
 
 
@@ -223,7 +223,7 @@ def table_kap_descriptive(df: pd.DataFrame) -> str:
     return _html_table(
         ["Domain", "Possible Range", "Mean", "SD", "Median", "Min", "Max"],
         rows,
-        "Table 6. Descriptive statistics of KAP scores (N=251).",
+        "Table 6. Descriptive statistics of KAP scores (N=250).",
     )
 
 
@@ -242,7 +242,7 @@ def table_kap_correlations(df: pd.DataFrame) -> str:
     return _html_table(
         ["Pair", "Spearman \u03c1", "p-value", "Sig."],
         rows,
-        "Table 7. Inter-KAP Spearman correlations (N=251).",
+        "Table 7. Inter-KAP Spearman correlations (N=250).",
     )
 
 
@@ -296,7 +296,7 @@ def table_demographic_comparisons(df: pd.DataFrame) -> str:
     return _html_table(
         ["Variable", "Score", "Group Mean\u00b1SD", "Test", "Statistic", "p-value", "Sig."],
         rows,
-        "Table 8. Comparison of KAP scores by demographic variables (N=251).",
+        "Table 8. Comparison of KAP scores by demographic variables (N=250).",
     )
 
 # ---------------------------------------------------------------------------
@@ -327,7 +327,7 @@ def fig_demographics(df: pd.DataFrame) -> Path:
                     ha="center", va="bottom", fontsize=9)
         ax.tick_params(axis="x", rotation=30)
     axes[5].axis("off")
-    fig.suptitle("Figure 1. Demographic Profile of Respondents (N=251)", fontsize=14, fontweight="bold", y=0.98)
+    fig.suptitle("Figure 1. Demographic Profile of Respondents (N=250)", fontsize=14, fontweight="bold", y=0.98)
     fig.tight_layout(rect=[0, 0, 1, 0.95])
     path = FIG_DIR / "fig1_demographics.png"
     fig.savefig(path, dpi=150, bbox_inches="tight")
@@ -351,7 +351,7 @@ def fig_knowledge_items(df: pd.DataFrame) -> Path:
         ax.text(v + 1, i, f"{v:.1f}%", va="center", fontsize=10)
     ax.set_xlim(0, 105)
     ax.set_xlabel("% Correct")
-    ax.set_title("Figure 2. Knowledge Item Correct Response Rates (N=251)", fontsize=13, fontweight="bold")
+    ax.set_title("Figure 2. Knowledge Item Correct Response Rates (N=250)", fontsize=13, fontweight="bold")
     ax.axvline(50, color="grey", linestyle="--", linewidth=0.8, alpha=0.5)
     ax.axvline(70, color="grey", linestyle="--", linewidth=0.8, alpha=0.5)
     fig.tight_layout()
@@ -380,7 +380,7 @@ def fig_kap_levels(df: pd.DataFrame) -> Path:
         for t in autotexts:
             t.set_fontsize(10)
         axes[i].set_title(label, fontsize=13, fontweight="bold")
-    fig.suptitle("Figure 3. Distribution of KAP Levels (N=251)", fontsize=14, fontweight="bold", y=1.02)
+    fig.suptitle("Figure 3. Distribution of KAP Levels (N=250)", fontsize=14, fontweight="bold", y=1.02)
     fig.tight_layout()
     path = FIG_DIR / "fig3_kap_levels.png"
     fig.savefig(path, dpi=150, bbox_inches="tight")
@@ -411,7 +411,7 @@ def fig_score_distributions(df: pd.DataFrame) -> Path:
         ax.text(0.95, 0.95, f"Mean={mean_val:.1f}\nSD={s.std():.1f}",
                 transform=ax.transAxes, ha="right", va="top", fontsize=9,
                 bbox=dict(boxstyle="round,pad=0.3", facecolor="white", alpha=0.8))
-    fig.suptitle("Figure 4. Distribution of KAP Scores (N=251)", fontsize=14, fontweight="bold", y=1.02)
+    fig.suptitle("Figure 4. Distribution of KAP Scores (N=250)", fontsize=14, fontweight="bold", y=1.02)
     fig.tight_layout()
     path = FIG_DIR / "fig4_score_distributions.png"
     fig.savefig(path, dpi=150, bbox_inches="tight")
@@ -443,7 +443,7 @@ def fig_kap_correlations(df: pd.DataFrame) -> Path:
         ax.set_xlabel(f"{xlabel} Score")
         ax.set_ylabel(f"{ylabel} Score")
         ax.set_title(f"{xlabel} vs {ylabel}", fontsize=12, fontweight="bold")
-    fig.suptitle("Figure 5. Inter-KAP Correlations (N=251)", fontsize=14, fontweight="bold", y=1.02)
+    fig.suptitle("Figure 5. Inter-KAP Correlations (N=250)", fontsize=14, fontweight="bold", y=1.02)
     fig.tight_layout()
     path = FIG_DIR / "fig5_kap_correlations.png"
     fig.savefig(path, dpi=150, bbox_inches="tight")
