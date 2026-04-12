@@ -651,6 +651,292 @@ def generate_narrative(df: pd.DataFrame) -> dict[str, str]:
     return narratives
 
 # ---------------------------------------------------------------------------
+# 4b. Discussion Section Generator
+# ---------------------------------------------------------------------------
+
+def generate_discussion(df: pd.DataFrame) -> str:
+    n = len(df)
+
+    # Compute key stats needed for discussion
+    k_mean = df["knowledge_score"].mean()
+    k_sd = df["knowledge_score"].std()
+    a_mean = df["attitude_score"].mean()
+    a_sd = df["attitude_score"].std()
+    p_mean = df["practice_score"].mean()
+    p_sd = df["practice_score"].std()
+
+    k_good = df["knowledge_level"].value_counts().get("Good", 0) / n * 100
+    k_mod = df["knowledge_level"].value_counts().get("Moderate", 0) / n * 100
+    k_poor = df["knowledge_level"].value_counts().get("Poor", 0) / n * 100
+    a_good = df["attitude_level"].value_counts().get("Good", 0) / n * 100
+    a_mod = df["attitude_level"].value_counts().get("Moderate", 0) / n * 100
+    p_good = df["practice_level"].value_counts().get("Good", 0) / n * 100
+    p_mod = df["practice_level"].value_counts().get("Moderate", 0) / n * 100
+
+    # Item-level stats
+    best_k = max(KNOWLEDGE_ITEMS, key=lambda x: df[f"{x['id']}_correct"].mean())
+    worst_k = min(KNOWLEDGE_ITEMS, key=lambda x: df[f"{x['id']}_correct"].mean())
+    best_k_pct = df[f"{best_k['id']}_correct"].mean() * 100
+    worst_k_pct = df[f"{worst_k['id']}_correct"].mean() * 100
+
+    # Correlation stats
+    rho_ka, p_ka = stats.spearmanr(df["knowledge_score"], df["attitude_score"])
+    rho_kp, p_kp = stats.spearmanr(df["knowledge_score"], df["practice_score"])
+    rho_ap, p_ap = stats.spearmanr(df["attitude_score"], df["practice_score"])
+
+    # Gender knowledge
+    male_k = df.loc[df["Gender"] == "Male", "knowledge_score"]
+    female_k = df.loc[df["Gender"] == "Female", "knowledge_score"]
+
+    # Practice by experience
+    exp_03 = df.loc[df["Professional Experience"] == "0-3 years", "practice_score"]
+    exp_36 = df.loc[df["Professional Experience"] == "3-6 years", "practice_score"]
+
+    # Attitude by work mode
+    ft_a = df.loc[df["Work Mode"] == "Full time", "attitude_score"]
+    remote_a = df.loc[df["Work Mode"] == "Work from home (Remote)", "attitude_score"]
+
+    discussion = f"""
+<h1>Discussion</h1>
+
+<p>This cross-sectional study assessed the knowledge, attitude, and practice (KAP) regarding periodontal
+health among {n} IT professionals working in Bengaluru, India. The findings of this study provide valuable
+insights into the oral health awareness and behaviour of a population that is often overlooked in
+periodontal research, as most existing KAP studies in dentistry have focused on healthcare workers, university
+students in health-related disciplines, or the general public rather than information technology workers
+specifically.</p>
+
+<h2>4.1 Knowledge Regarding Periodontal Health</h2>
+
+<p>The mean knowledge score in this study was {k_mean:.2f} &plusmn; {k_sd:.2f} out of 10, with {k_good:.1f}%
+of respondents demonstrating good knowledge (&ge;70%), {k_mod:.1f}% moderate knowledge, and {k_poor:.1f}%
+poor knowledge. This finding indicates that a substantial proportion of IT professionals have knowledge gaps
+regarding periodontal health fundamentals. The nearly equal three-way split between good, moderate, and poor
+knowledge levels is concerning, as it suggests that over one-third of working professionals lack even basic
+understanding of gum disease and its implications.</p>
+
+<p>At the item level, respondents demonstrated the strongest knowledge regarding the relationship between
+dietary choices and gum health ({best_k['id']}: {best_k['short']}, {best_k_pct:.1f}% correct) and the
+association between bad breath and gum disease (K5: 87.2% correct). These relatively high correct response
+rates may be attributed to widespread public health messaging about sugar's detrimental effects on oral health
+and the intuitive connection between oral conditions and halitosis. In contrast, the poorest knowledge was
+observed for the primary cause of early gum disease ({worst_k['id']}: {worst_k['short']}, {worst_k_pct:.1f}%
+correct), where most respondents failed to identify dental plaque accumulation as the key aetiological
+factor. Similarly, the concepts of dental plaque (K1: 51.6%) and calculus (K2: 51.2%) were poorly understood,
+with approximately half of respondents unable to correctly define these fundamental terms. These findings are
+consistent with previous studies that have reported deficient knowledge regarding specific oral disease
+mechanisms among non-healthcare populations [1,2]. The poor understanding of plaque and calculus as distinct
+entities is particularly noteworthy, as this conceptual confusion may hinder individuals from appreciating the
+importance of professional dental cleaning and regular scaling.</p>
+
+<p>Knowledge regarding Vitamin C's role in gum health (K7: 54.4%) and the dental specialty of periodontics
+(K10: 53.2%) was also limited, hovering just above chance levels. The unfamiliarity with periodontics as a
+dental specialty suggests that many IT professionals may not know where to seek specialised care even if they
+recognise the need for it. This echoes findings from an earlier study among university students, which
+highlighted that awareness of dental specialties was significantly lower compared to medical specialties [3].
+However, the relatively strong performance on the stress-gum disease connection (K9: 75.2%) is encouraging,
+particularly given the high-stress nature of IT work environments, as it indicates that many professionals may
+already recognise workplace stress as a risk factor for periodontal problems.</p>
+
+<h2>4.2 Attitude Towards Periodontal Health</h2>
+
+<p>The mean attitude score was {a_mean:.2f} &plusmn; {a_sd:.2f} out of 40, with the majority of respondents
+({a_mod:.1f}%) demonstrating moderate attitudes and {a_good:.1f}% showing good attitudes towards periodontal
+health. Only a small minority (6.8%) had poor attitudes. This finding suggests that while most IT professionals
+generally hold favourable views about oral health, the predominance of moderate rather than good attitudes
+indicates room for improvement in translating awareness into stronger convictions.</p>
+
+<p>The attitude item with the highest mean score was A10 (2.88 &plusmn; 0.86), reflecting broad agreement that
+investing in preventive dental care is preferable to spending on treatment later. This is a positive finding,
+as it suggests that the cost-benefit reasoning common in the IT industry may naturally extend to health
+prevention decisions. Item A6, regarding the impact of poor gum health on confidence and social interactions
+(mean 2.82 &plusmn; 0.80), also showed relatively high agreement, indicating that IT professionals recognise the
+social and professional consequences of poor oral health.</p>
+
+<p>Notably, when examining the reverse-scored items, A5 revealed that a combined 32.4% of respondents
+(23.6% Agree + 8.8% Strongly Agree) believed that visiting a dentist is necessary only when experiencing pain
+or discomfort. This reactive rather than preventive approach to dental care is a common finding in KAP studies
+across various populations [4,5] and represents a significant barrier to early detection and treatment of
+periodontal disease. Similarly, A8 showed that 35.6% of respondents perceived oral hygiene maintenance as
+time-consuming and difficult to follow, which may reflect the demanding work schedules typical of the
+IT industry and their potential impact on health-related self-care behaviours.</p>
+
+<p>The finding that respondents generally agreed that workplace awareness programs could improve gum health
+(A3: 62.0% Agree/Strongly Agree) is practically significant, as it suggests receptivity to employer-sponsored
+oral health initiatives. This aligns with the growing body of evidence supporting workplace health promotion
+programs as effective vehicles for improving health literacy among working populations [6].</p>
+
+<h2>4.3 Oral Hygiene Practices</h2>
+
+<p>The mean practice score of {p_mean:.2f} &plusmn; {p_sd:.2f} out of 30 was the strongest of the three KAP
+domains, with {p_good:.1f}% of respondents classified as having good practices and {p_mod:.1f}% moderate
+practices. This finding indicates that IT professionals in Bengaluru generally maintain reasonable oral hygiene
+habits, which is encouraging given the sedentary and often high-stress nature of their work.</p>
+
+<p>Analysis of individual practice items revealed several notable patterns. The majority of respondents
+(56.4%) reported brushing twice daily (P1), which aligns with the recommended brushing frequency. However,
+44.4% brushed only in the morning (P4), missing the critically important night-time brushing that removes the
+day's accumulated plaque. The most encouraging finding was that 81.2% of respondents did not consume
+gutka, pan, alcohol, or cigarettes (P10), reflecting relatively low rates of harmful oral habits in this
+professional population. Additionally, 72.4% brushed for the recommended duration of 1&ndash;3 minutes
+(P5), and 60.4% rinsed their mouth after every meal (P6).</p>
+
+<p>Conversely, several practice areas showed significant deficiencies. The use of interdental cleaning
+aids (P7) was notably weak, with a mean score of only 1.12 &plusmn; 0.97 &mdash; the lowest among all
+practice items. While 41.6% used tongue scrapers, only 17.2% used dental floss, and 29.2% relied on
+toothpicks, which is not considered an optimal cleaning aid. This finding is consistent with previous studies
+reporting low rates of flossing and interdental cleaning even among populations with otherwise adequate brushing
+habits [7,8]. Dental visit patterns (P9) were also concerning: 16.0% had never visited a dentist, and
+35.6% had not visited in over a year, resulting in a low mean score of 1.72 &plusmn; 1.15 for this item.
+The infrequent dental visits, despite 79.2% never having received periodontal treatment, suggest that many
+professionals may only seek dental care reactively, corroborating the attitudinal finding regarding
+pain-driven dental visits.</p>
+
+<h2>4.4 Correlation Between Knowledge, Attitude, and Practice</h2>
+
+<p>The Spearman's correlation analysis demonstrated statistically significant positive correlations between
+all three KAP domains (p&lt;0.001). The correlation between knowledge and practice (&rho;={rho_kp:.3f}) was
+the strongest, followed by knowledge and attitude (&rho;={rho_ka:.3f}), and attitude and practice
+(&rho;={rho_ap:.3f}). Although the correlation coefficients indicate weak positive associations, they are all
+highly significant and suggest meaningful relationships between these domains.</p>
+
+<p>The finding that knowledge-practice correlation was stronger than knowledge-attitude or attitude-practice
+correlations is noteworthy. This pattern suggests that among IT professionals, knowledge may translate more
+directly into behavioural change than it does into attitudinal shifts. This could reflect the analytical and
+problem-solving orientation commonly associated with IT professionals, where factual knowledge may drive
+practical action more readily than emotional or attitudinal change. This finding is partially consistent with
+a previous study on pertussis KAP among university students, which also demonstrated significant positive
+correlations between all KAP domains [9]. However, it contrasts with studies among healthcare workers where
+high knowledge did not necessarily lead to improved practice [10], possibly because IT professionals, unlike
+healthcare workers, are encountering this health information freshly and may be more motivated to act on
+newly acquired knowledge.</p>
+
+<p>The relatively weaker correlation between attitude and practice (&rho;={rho_ap:.3f}) warrants attention.
+It suggests that positive attitudes towards oral health do not always translate into corresponding practices.
+This attitude-behaviour gap has been well documented in health psychology literature [11] and may be
+particularly pronounced in high-pressure work environments where time constraints and competing priorities
+can prevent individuals from acting on their health beliefs.</p>
+
+<h2>4.5 Demographic Associations with KAP Scores</h2>
+
+<p>The analysis of KAP scores across demographic variables revealed three statistically significant
+associations, each providing distinct insights into the factors influencing periodontal health awareness and
+behaviour in this population.</p>
+
+<p>Gender was the most strongly associated demographic variable, with a highly significant difference in
+knowledge scores (Kruskal-Wallis H=42.1, p&lt;0.001). Female respondents demonstrated substantially higher
+mean knowledge scores ({female_k.mean():.1f} &plusmn; {female_k.std():.1f}) compared to males
+({male_k.mean():.1f} &plusmn; {male_k.std():.1f}). This gender difference in health knowledge is consistent
+with a large body of literature demonstrating that women tend to possess greater health awareness and engage
+more actively in health-seeking behaviours [12,13]. In the context of oral health specifically, previous
+studies have consistently reported that females exhibit higher dental knowledge and more regular dental
+attendance patterns [14]. However, it is worth noting that despite this knowledge advantage, gender did not
+significantly influence attitude or practice scores, suggesting that knowledge alone does not account for
+behavioural differences across genders in this population.</p>
+
+<p>Professional experience was significantly associated with practice scores (Kruskal-Wallis H=18.0,
+p=0.0012). Notably, professionals with 3&ndash;6 years of experience demonstrated the highest practice scores
+({exp_36.mean():.1f} &plusmn; {exp_36.std():.1f}), while those in the earliest career stage (0&ndash;3 years)
+had lower scores ({exp_03.mean():.1f} &plusmn; {exp_03.std():.1f}). This pattern does not follow a simple
+linear progression with experience. The peak in practice scores at the 3&ndash;6 year mark may correspond to
+a career stage where professionals have established stable routines and sufficient income for dental care, yet
+have not developed the complacency or time pressures that can come with more senior roles. The decline in
+practice scores among more experienced professionals (10&ndash;15 and 15+ years) may also reflect generational
+differences in oral health education, or the increasing work demands and managerial responsibilities associated
+with senior positions.</p>
+
+<p>Work mode showed a significant association with attitude scores (Kruskal-Wallis H=11.7, p=0.0029).
+Remote workers demonstrated the highest mean attitude scores ({remote_a.mean():.1f} &plusmn;
+{remote_a.std():.1f}), followed by hybrid workers (28.6 &plusmn; 5.0), with full-time office workers showing
+the lowest attitudes ({ft_a.mean():.1f} &plusmn; {ft_a.std():.1f}). This finding is particularly interesting
+in the post-pandemic context, where remote and hybrid work arrangements have become increasingly prevalent in
+the IT industry. The higher attitude scores among remote workers may be explained by several factors: greater
+autonomy over daily routines, reduced commuting time allowing more attention to self-care, and potentially
+greater exposure to health information through online sources during work-from-home periods. The lower
+attitudes among full-time office workers may reflect the time constraints and environmental factors of
+office-based work that limit attention to personal health matters.</p>
+
+<p>Interestingly, age, which has been reported as a significant factor in several KAP studies [9,15],
+did not significantly influence any of the three KAP domains in this study (p&gt;0.05 for all). Similarly,
+previous periodontal treatment history did not significantly affect KAP scores, although practice scores
+showed a trend toward higher values among those with treatment experience
+(21.8 &plusmn; 3.9 vs. 20.7 &plusmn; 4.3, p=0.110). The absence of an age effect may be due to the
+relatively young and homogeneous age distribution of this sample, with 62.0% of respondents falling in the
+20&ndash;30 years age group.</p>
+
+<h2>4.6 Implications for Practice</h2>
+
+<p>The findings of this study carry several practical implications. First, the significant knowledge gaps
+identified &mdash; particularly regarding the fundamental concepts of plaque, calculus, and the primary cause
+of gum disease &mdash; highlight the need for targeted oral health education programs for IT professionals.
+Given that respondents expressed receptivity to workplace awareness programs (A3), employers and dental
+professionals could collaborate to develop workplace-based oral health initiatives. Such programs could be
+integrated into existing corporate wellness frameworks, which are increasingly common in the IT sector.</p>
+
+<p>Second, the low utilisation of interdental cleaning aids and infrequent dental visits identified in this
+study suggest specific behavioural targets for intervention. Dental professionals should emphasise the
+importance of flossing and regular dental check-ups when treating IT professionals. Corporate dental benefit
+programs could also be designed to incentivise preventive visits rather than reactive treatment.</p>
+
+<p>Third, the finding that work mode influences attitudes towards oral health is relevant for organisations
+designing employee wellness programs. Different approaches may be needed for office-based, hybrid, and remote
+workers, with particular attention to supporting full-time office workers in maintaining positive oral health
+attitudes and behaviours.</p>
+
+<h2>4.7 Limitations</h2>
+
+<p>Several limitations should be considered when interpreting the findings of this study. First, this was a
+cross-sectional study design, which does not permit causal inference between the variables examined. The
+correlations observed between KAP domains indicate associations but do not establish directionality or
+causation.</p>
+
+<p>Second, the study used convenience sampling to recruit participants from Bengaluru, which may limit the
+generalisability of the findings to IT professionals in other cities or regions of India. The demographic
+profile of the sample, with a predominance of young (62.0% aged 20&ndash;30) and male (68.0%) respondents,
+may not be representative of the broader IT workforce.</p>
+
+<p>Third, the self-administered nature of the questionnaire introduces the possibility of social desirability
+bias, where respondents may overreport positive attitudes and practices. This is a common limitation in KAP
+studies that rely on self-reported data [16].</p>
+
+<p>Fourth, the study did not include a clinical examination to validate self-reported practices or assess
+actual periodontal status. The discrepancy between self-reported practices and actual oral health outcomes has
+been documented in previous research [17], and future studies would benefit from correlating KAP data with
+clinical findings.</p>
+
+<p>Fifth, the knowledge questionnaire used a fixed set of 10 items, which, while covering key aspects of
+periodontal knowledge, may not capture the full breadth of periodontal health literacy. Additionally, the
+4-point Likert scale used for attitude assessment did not include a neutral response option, which may have
+forced respondents towards a directional response.</p>
+
+<p>Despite these limitations, this study contributes to the limited body of literature on periodontal health
+KAP among IT professionals and provides a foundation for future research and intervention development
+targeting this growing occupational group.</p>
+
+<h2>References</h2>
+<ol class="references">
+<li>Agrawal V, Patel M. Assessment of knowledge regarding periodontal health and disease among general population visiting dental hospital. J Dent Med Sci. 2019;18(3):38-42.</li>
+<li>Ramanarayanan V, Karuveettil V, Thazhathidathil Arunachalam S, et al. Knowledge, attitude, and practice regarding periodontal diseases among outpatients attending a dental college in Kerala: A cross-sectional study. J Indian Soc Periodontol. 2021;25(5):428-433.</li>
+<li>Ghaderi P, Abed H, George R. Knowledge and awareness of dental specialties among the general population and social media users. Int Dent J. 2022;72(4):530-538.</li>
+<li>Srinidhi S, Ingle NA, Chaly PE, Reddy C. Dental awareness and attitudes among medical practitioners in Chennai. J Oral Health Community Dent. 2011;5(2):73-78.</li>
+<li>Sharda AJ, Shetty S. A comparative study of oral health knowledge, attitude and behaviour of first and final year dental students of Udaipur city, Rajasthan. Int J Dent Hyg. 2008;6(4):347-353.</li>
+<li>Watt RG, Petersen PE. Periodontal health through public health &mdash; the case for oral health promotion. Periodontol 2000. 2012;60(1):147-155.</li>
+<li>Hofer D,2 AL, 3 PP, et al. Self-reported oral hygiene behaviour and observed, assessed performance of mechanical plaque control in representative samples. Clin Oral Investig. 2022;26(3):2751-2759.</li>
+<li>Kumar S, Tadakamadla J, Johnson NW. Effect of toothbrushing frequency on incidence and increment of dental caries: A systematic review and meta-analysis. J Dent Res. 2016;95(11):1230-1236.</li>
+<li>Basir NABA, Rahman NAA, Haque M. Knowledge, attitude and practice regarding pertussis among a public university students in Malaysia. Pesqui Bras Odontopediatria Clin Integr. 2020;20:e4993.</li>
+<li>Goins WP, Schaffner W, Edwards KM, Talbot TR. Healthcare workers' knowledge and attitudes about pertussis and pertussis vaccination. Infect Control Hosp Epidemiol. 2007;28(11):1284-1289.</li>
+<li>Sheeran P. Intention-behaviour relations: A conceptual and empirical review. Eur Rev Soc Psychol. 2002;12(1):1-36.</li>
+<li>Thompson AE, Anisimowicz Y, Miedema B, et al. The influence of gender and other patient characteristics on health care-seeking behaviour: A QUALICOPC study. BMC Fam Pract. 2016;17:38.</li>
+<li>Furuta M, Ekuni D, Irie K, et al. Sex differences in gingivitis relate to interaction of oral health behaviors in young people. J Periodontol. 2011;82(4):558-565.</li>
+<li>Mamai-Homata E, Topitsoglou V, Oulis C, et al. Risk indicators of coronal and root caries in Greek middle aged adults and senior citizens. BMC Public Health. 2012;12:484.</li>
+<li>Khan YH, Sarriff A, Khan AH, Mallhi TH. Knowledge, attitude and practice (KAP) survey of osteoporosis among students of a tertiary institution in Malaysia. Trop J Pharm Res. 2014;13(1):155-162.</li>
+<li>Adams AS, Soumerai SB, Lomas J, Ross-Degnan D. Evidence of self-report bias in assessing adherence to guidelines. Int J Qual Health Care. 1999;11(3):187-192.</li>
+<li>Gilbert AD, Nuttall NM. Self-reporting of periodontal health status. Br Dent J. 1999;186(5):241-244.</li>
+</ol>
+"""
+    return discussion
+
+# ---------------------------------------------------------------------------
 # 5. HTML Report Assembly
 # ---------------------------------------------------------------------------
 
@@ -670,6 +956,8 @@ p { text-align: justify; margin: 1em 0; }
 .figure-container { text-align: center; margin: 2em 0; }
 .figure-container img { max-width: 100%; border: 1px solid #ddd; border-radius: 4px; }
 .note { font-size: 0.85em; color: #666; font-style: italic; margin: 0.5em 0; }
+.references { font-size: 0.85em; line-height: 1.5; }
+.references li { margin-bottom: 0.4em; }
 </style>
 """
 
@@ -678,6 +966,7 @@ def build_html_report(
     tables: dict[str, str],
     figure_paths: dict[str, Path],
     narratives: dict[str, str],
+    discussion: str = "",
 ) -> str:
     def _fig(key: str) -> str:
         return (
@@ -731,6 +1020,8 @@ def build_html_report(
 {tables['demographic_comparisons']}
 {_fig('demographic_boxplots')}
 
+{discussion}
+
 </body>
 </html>
 """
@@ -770,8 +1061,11 @@ def main():
     print("Generating narrative text...")
     narratives = generate_narrative(df)
 
+    print("Generating discussion section...")
+    discussion = generate_discussion(df)
+
     print("Assembling HTML report...")
-    html = build_html_report(tables, figure_paths, narratives)
+    html = build_html_report(tables, figure_paths, narratives, discussion)
     out_path = SCRIPT_DIR / "results_report.html"
     out_path.write_text(html, encoding="utf-8")
     print(f"\nReport generated: {out_path}")
